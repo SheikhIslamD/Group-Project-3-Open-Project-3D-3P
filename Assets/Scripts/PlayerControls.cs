@@ -1,4 +1,5 @@
 using UnityEngine;
+using Vector3Helper;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class PlayerControls : MonoBehaviour
     private CharacterController characterController;
     private float ySpeed;
     private float originalStepOffset;
+    Transform cameraTransform;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset;
+        cameraTransform = Camera.main.transform;
     }
 
     void Update()
@@ -24,6 +27,11 @@ public class PlayerControls : MonoBehaviour
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
         movementDirection.Normalize();
+
+
+        //Alters the Direction by camera.
+        movementDirection = new Direction(movementDirection).Rotate(cameraTransform.eulerAngles.y, Direction.up);
+
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
