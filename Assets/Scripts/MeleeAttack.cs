@@ -16,9 +16,9 @@ public class MeleeAttack : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.transform.tag == "Enemy")
         {
             Health EnemyH = other.transform.GetComponent<Health>();
 
@@ -29,7 +29,6 @@ public class MeleeAttack : MonoBehaviour
                 return;
             }
             EnemyH.Damage(damage, Health.DamageType.Melee);
-            Destroy(gameObject);
         }
     }
 }

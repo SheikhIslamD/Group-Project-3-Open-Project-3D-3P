@@ -24,7 +24,8 @@ public class Health : MonoBehaviour
     
     void HealthDeplete()
     {
-         gameObject.SendMessage("OnHealthDeplete");
+        Destroy(gameObject);
+        gameObject.SendMessage("OnHealthDeplete");
     }
 
     public void Heal(int amount)
