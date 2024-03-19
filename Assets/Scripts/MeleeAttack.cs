@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
-    [SerializeField] private float damage= 20f;
+    [SerializeField] private int damage = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class MeleeAttack : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            EnemyHealth EnemyH = other.transform.GetComponent<EnemyHealth>();
+            Health EnemyH = other.transform.GetComponent<Health>();
 
             if (EnemyH == null)
             {
@@ -28,7 +28,7 @@ public class MeleeAttack : MonoBehaviour
 
                 return;
             }
-            EnemyH.TakeDamage(damage);
+            EnemyH.Damage(damage, Health.DamageType.Melee);
             Destroy(gameObject);
         }
     }
