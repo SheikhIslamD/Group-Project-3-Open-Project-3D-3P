@@ -20,6 +20,7 @@ public class EnemyOne : MonoBehaviour
     
     void OnHealthDeplete()
     {
+        GetComponent<LootBag>().InstantiateLoot(transform.position);
         Destroy(gameObject);
     }
 }
