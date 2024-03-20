@@ -7,11 +7,12 @@ public class Loot : ScriptableObject
 {
     public GameObject lootModel;
     public string lootName;
-    public int dropChance;
+    [Range(0, 100)]
+    public float dropChance;
 
-    public Loot(string lootName, int dropChance)
+    public Loot(string lootName, float dropChance)
     {
         this.lootName = lootName;
-        this.dropChance = dropChance;
+        this.dropChance = Mathf.Clamp(dropChance, 0, 100);
     }
 }

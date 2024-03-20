@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class LootBag : MonoBehaviour
 {
-    public GameObject droppedItemPrefab;
-    public List<Loot> lootList = new List<Loot>();
+    [SerializeField] GameObject droppedItemPrefab;
+    [SerializeField] List<Loot> lootList = new List<Loot>();
+    [SerializeField] int maxDrops;
+    [SerializeField] bool dropMultiple;
 
-    List<Loot> GetDroppedItem()
+    Loot GetDroppedItem()
     {
-        int randomNumber = Random.Range(1,101);
+        //Randomly chooses one item out of all items whose drop chance is below a single Random 0-100 roll.
+
+        float randomNumber = Random.Range(0f, 100f);
         List<Loot> possibleItems = new List<Loot>();
         foreach (Loot item in lootList)
         {
-            if(randomNumber <= item.dropChance)
-            {
-                possibleItems.Add(item);
-                return possibleItems;
-            }
+            if(randomNumber <= item.dropChance) possibleItems.Add(item);
         }
         if(possibleItems.Count > 0)
         {
@@ -26,13 +26,43 @@ public class LootBag : MonoBehaviour
         }
         Debug.Log("No loot dropped");
         return null;
-    }
-    public void InstantiateLoot(Vector3 spawnPosition)
+    }    
+    List<Loot> GetDroppedItems()
     {
-        Loot droppedItem = GetDroppedItem();
-        if(droppedItem != null)
+        //Runs a Random 0-100 roll for every possible item, removes possible items until maxItems is reached, and drops them all.
+
+        List<Loot> possibleItems = new List<Loot>();
+        foreach (Loot item in lootList)
         {
-            GameObject lootGameObject = Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
+            float randomNumber = Random.Range(0f, 100f);
+            if (randomNumber <= item.dropChance) possibleItems.Add(item);
         }
+        if(possibleItems.Count > 0)
+        {
+            while (possibleItems.Count > maxDrops) possibleItems.RemoveAt(Random.Range(0, possibleItems.Count));
+
+            return possibleItems;
+        }
+        Debug.Log("No loot dropped");
+        return null;
+    }
+
+    public void DropLoot(Vector3 spawnPosition)
+    {
+        if (!dropMultiple)
+        {
+            List<Loot> droppedItems = GetDroppedItems();
+            if (droppedItems.Count > 0)
+                foreach (Loot item in droppedItems)
+                    InstantiateLoot(item, spawnPosition);
+
+        }
+        else InstantiateLoot(GetDroppedItem(), spawnPosition);
+    }
+
+    public void InstantiateLoot(Loot loot, Vector3 spawnPosition)
+    {
+        if(loot == null) return;
+        GameObject lootGameObject = Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
     }
 }

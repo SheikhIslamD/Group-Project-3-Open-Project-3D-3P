@@ -14,8 +14,8 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private bool canGrow = true;
     [Tooltip("The transform the Objects will be parented under. (Defaults to the object this script is attached too.)")]
     [SerializeField] private Transform parent;    
-    private readonly List<PoolableObject> poolList = new List<PoolableObject>();
     
+    private readonly List<PoolableObject> poolList = new List<PoolableObject>();
     private int currentActiveObjects = 0;
     private int currentPooledObjects = 0;
     private int currentSelection = 0;
