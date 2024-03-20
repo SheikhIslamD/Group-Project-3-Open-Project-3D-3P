@@ -17,4 +17,9 @@ public class EnemyOne : MonoBehaviour
     {
         enemy.SetDestination(player.transform.position);
     }
+    
+    void OnHealthDeplete()
+    {
+        Destroy(gameObject);
+    }
 }

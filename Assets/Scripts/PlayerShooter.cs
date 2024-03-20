@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class PlayerShooter : MonoBehaviour
 {
     new Transform transform;
     private LineRenderer lineRenderer;
     new Camera camera;
+    InputActions input;
+    ObjectPool pool;
 
     Collider backCollider;
     [SerializeField] LayerMask aimRaycastLayerMask;
     [SerializeField] float aimRaycastMaxDistance;
+    [SerializeField] float knifeSpeed;
+
 
     void Start()
     {
+        input = new InputActions(); input.Enable();
         transform = GetComponent<Transform>();
         camera = Camera.main;
         lineRenderer = GetComponent<LineRenderer>();
         backCollider = FindFirstObjectByType<CameraMovementScript>().backCollider.GetComponent<Collider>();
+        pool = GetComponent<ObjectPool>();
     }
 
     void Update()
@@ -38,6 +45,8 @@ public class PlayerShooter : MonoBehaviour
         }
 
         DrawAimLine(transform.position, end);
+
+        if (input.Gameplay.Shoot.WasPressedThisFrame()) ShootKnife(end - transform.position);
     }
 
 
@@ -45,6 +54,18 @@ public class PlayerShooter : MonoBehaviour
     {
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
+    }
+
+    void ShootKnife(Vector3 direction)
+    {
+        PoolableObject knife = pool.Pump();
+        knife.gameObject.SetActive(true);
+        knife.transform.position = transform.position;
+        knife.transform.eulerAngles = Vector3.zero;
+        knife.transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
+
+        knife.transform.GetComponent<Rigidbody>().velocity = knife.transform.up * knifeSpeed;
+        Debug.Log("Test");
     }
 
 }
