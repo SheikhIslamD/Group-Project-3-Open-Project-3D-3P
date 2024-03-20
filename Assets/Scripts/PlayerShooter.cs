@@ -9,7 +9,7 @@ public class PlayerShooter : MonoBehaviour
     new Transform transform;
     private LineRenderer lineRenderer;
     new Camera camera;
-    InputActions input;
+    GameplayInputReader input;
     ObjectPool pool;
 
     Collider backCollider;
@@ -20,7 +20,7 @@ public class PlayerShooter : MonoBehaviour
 
     void Start()
     {
-        input = new InputActions(); input.Enable();
+        input = GameplayInputReader.Get();
         transform = GetComponent<Transform>();
         camera = Camera.main;
         lineRenderer = GetComponent<LineRenderer>();
@@ -46,7 +46,7 @@ public class PlayerShooter : MonoBehaviour
 
         DrawAimLine(transform.position, end);
 
-        if (input.Gameplay.Shoot.WasPressedThisFrame()) ShootKnife(end - transform.position);
+        if (input.shoot.WasPressedThisFrame()) ShootKnife(end - transform.position);
     }
 
 
