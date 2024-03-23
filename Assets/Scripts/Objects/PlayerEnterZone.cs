@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerEnterZoneScript : MonoBehaviour
+public class PlayerEnterZone : MonoBehaviour
 {
     public UnityEvent EnterEvent;
     public bool OneTime = true;

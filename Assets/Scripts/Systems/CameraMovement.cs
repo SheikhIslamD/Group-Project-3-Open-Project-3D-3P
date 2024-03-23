@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
-public class CameraMovementScript : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
 
 

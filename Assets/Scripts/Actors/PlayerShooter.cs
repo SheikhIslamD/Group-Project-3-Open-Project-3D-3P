@@ -24,7 +24,7 @@ public class PlayerShooter : MonoBehaviour
         transform = GetComponent<Transform>();
         camera = Camera.main;
         lineRenderer = GetComponent<LineRenderer>();
-        backCollider = FindFirstObjectByType<CameraMovementScript>().backCollider.GetComponent<Collider>();
+        backCollider = FindFirstObjectByType<CameraMovement>().backCollider.GetComponent<Collider>();
         pool = GetComponent<ObjectPool>();
     }
 
