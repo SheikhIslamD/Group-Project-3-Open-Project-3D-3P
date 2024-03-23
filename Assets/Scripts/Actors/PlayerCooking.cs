@@ -37,6 +37,7 @@ public class PlayerCooking : MonoBehaviour
             case 2: currentSeaweed++; break;
             default: Debug.LogError("Invalid Ingredient Type"); break;
         }
+        HUDUIManager.i.UpdateIngredients(currentRice, currentFish, currentSeaweed);
     }
 
     void Heal()
@@ -46,9 +47,15 @@ public class PlayerCooking : MonoBehaviour
         if(currentRice > 1 && currentFish > 0 && currentSeaweed > 0)
         {
             health.Heal(20);
-            currentRice--;
-            currentFish -= 2;
-            currentSeaweed--;
+            currentRice -= 2;
+            currentFish -= 1;
+            currentSeaweed -= 1;
         }
+        HUDUIManager.i.UpdateIngredients(currentRice, currentFish, currentSeaweed);
+    }
+
+    void OnHealthUpdate()
+    {
+        HUDUIManager.i.UpdateHealth(health.currentHealth);
     }
 }

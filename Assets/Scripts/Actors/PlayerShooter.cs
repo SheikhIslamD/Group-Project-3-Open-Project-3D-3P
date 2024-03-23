@@ -65,7 +65,6 @@ public class PlayerShooter : MonoBehaviour
         knife.transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
 
         knife.transform.GetComponent<Rigidbody>().velocity = knife.transform.up * knifeSpeed;
-        Debug.Log("Test");
     }
 
 }

@@ -20,5 +20,6 @@ public class AttackHitCollider : MonoBehaviour
         if (health) health.Damage(damage, type);
 
         if (deactivateOnHit) gameObject.SetActive(false);
+        Debug.Log("Hit " + subject);
     }
 }

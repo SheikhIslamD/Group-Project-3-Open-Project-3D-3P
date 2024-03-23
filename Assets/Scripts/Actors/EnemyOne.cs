@@ -18,7 +18,7 @@ public class EnemyOne : MonoBehaviour
         enemy.SetDestination(player.transform.position);
     }
     
-    void OnHealthDeplete()
+    void OnDeplete()
     {
         GetComponent<LootBag>().DropLoot(transform.position);
         Destroy(gameObject);
