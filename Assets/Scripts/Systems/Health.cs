@@ -5,12 +5,12 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public enum DamageType { Generic, Melee, Projectile }
-    //[System.Flags]
-    //public enum EntityType { Player, Enemy, Boss, Object, Other }
+    [System.Flags]
+    public enum EntityType { Player, Enemy, Boss, Object, Other }
     
-    [SerializeField] int maxHealth = 100;
-    [SerializeField] int currentHealth = 100;
-    //[SerializeField] public EntityType entityType;
+    public int maxHealth { get; private set; } = 100;
+    public int currentHealth { get; private set; } = 100;
+    [SerializeField] public EntityType entityType;
     
     public void Damage(int amount, DamageType type)
     {

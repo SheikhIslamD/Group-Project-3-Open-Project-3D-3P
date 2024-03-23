@@ -24,6 +24,7 @@ public class GameplayInputReader : Singleton<GameplayInputReader>
     public InputAction melee => input.Gameplay.Melee;
     public InputAction sprint => input.Gameplay.Sprint;
     public InputAction Pause => input.Gameplay.Pause;
+    public InputAction Heal => input.Gameplay.Heal;
 
 
 

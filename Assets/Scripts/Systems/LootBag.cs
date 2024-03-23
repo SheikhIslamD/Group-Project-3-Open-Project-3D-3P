@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class LootBag : MonoBehaviour
 {
-    [SerializeField] GameObject droppedItemPrefab;
-    [SerializeField] List<Loot> lootList = new List<Loot>();
+    [SerializeField] List<LootEntry> lootList = new List<LootEntry>();
     [SerializeField] int maxDrops;
     [SerializeField] bool dropMultiple;
+
+    [System.Serializable]
+    public struct LootEntry
+    {
+        public Loot loot;
+        [Range(0, 100)]
+        public float dropChance;
+    }
 
     Loot GetDroppedItem()
     {
@@ -15,9 +22,9 @@ public class LootBag : MonoBehaviour
 
         float randomNumber = Random.Range(0f, 100f);
         List<Loot> possibleItems = new List<Loot>();
-        foreach (Loot item in lootList)
+        foreach (LootEntry item in lootList)
         {
-            if(randomNumber <= item.dropChance) possibleItems.Add(item);
+            if(randomNumber <= item.dropChance) possibleItems.Add(item.loot);
         }
         if(possibleItems.Count > 0)
         {
@@ -32,10 +39,10 @@ public class LootBag : MonoBehaviour
         //Runs a Random 0-100 roll for every possible item, removes possible items until maxItems is reached, and drops them all.
 
         List<Loot> possibleItems = new List<Loot>();
-        foreach (Loot item in lootList)
+        foreach (LootEntry item in lootList)
         {
             float randomNumber = Random.Range(0f, 100f);
-            if (randomNumber <= item.dropChance) possibleItems.Add(item);
+            if (randomNumber <= item.dropChance) possibleItems.Add(item.loot);
         }
         if(possibleItems.Count > 0)
         {
@@ -63,6 +70,6 @@ public class LootBag : MonoBehaviour
     public void InstantiateLoot(Loot loot, Vector3 spawnPosition)
     {
         if(loot == null) return;
-        GameObject lootGameObject = Instantiate(droppedItemPrefab, spawnPosition, Quaternion.identity);
+        GameObject lootGameObject = Instantiate(loot.gameObject, spawnPosition, Quaternion.identity);
     }
 }
