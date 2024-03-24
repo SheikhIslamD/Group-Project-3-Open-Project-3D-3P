@@ -56,7 +56,7 @@ public class LootBag : MonoBehaviour
 
     public void DropLoot(Vector3 spawnPosition)
     {
-        if (!dropMultiple)
+        if (dropMultiple)
         {
             List<Loot> droppedItems = GetDroppedItems();
             if (droppedItems.Count > 0)
@@ -70,6 +70,9 @@ public class LootBag : MonoBehaviour
     public void InstantiateLoot(Loot loot, Vector3 spawnPosition)
     {
         if(loot == null) return;
-        GameObject lootGameObject = Instantiate(loot.gameObject, spawnPosition, Quaternion.identity);
+        GameObject lootGameObject = Instantiate(
+            loot.gameObject, 
+            spawnPosition + new Vector3(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f)), 
+            Quaternion.identity);
     }
 }
