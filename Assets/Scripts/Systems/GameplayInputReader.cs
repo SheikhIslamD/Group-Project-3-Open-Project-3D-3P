@@ -14,6 +14,11 @@ public class GameplayInputReader : Singleton<GameplayInputReader>
         input.Enable();
     }
 
+    private void Update()
+    {
+        if (pause.WasPressedThisFrame()) GameplayPauseManager.TogglePause();
+    }
+
     public InputAction movement => input.Gameplay.Movement;
     public Vector2 movementVector2 => input.Gameplay.Movement.ReadValue<Vector2>();
     public bool movementTouched => input.Gameplay.Movement.ReadValue<Vector2>() != Vector2.zero;
@@ -23,8 +28,8 @@ public class GameplayInputReader : Singleton<GameplayInputReader>
     public InputAction shoot => input.Gameplay.Shoot;
     public InputAction melee => input.Gameplay.Melee;
     public InputAction sprint => input.Gameplay.Sprint;
-    public InputAction Pause => input.Gameplay.Pause;
-    public InputAction Heal => input.Gameplay.Heal;
+    public InputAction pause => input.Gameplay.Pause;
+    public InputAction heal => input.Gameplay.Heal;
 
 
 

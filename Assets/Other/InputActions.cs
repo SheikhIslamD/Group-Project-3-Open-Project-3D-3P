@@ -354,6 +354,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""7d6662f3-293c-4e0f-9a92-08d0550c004b"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a92cf161-50ca-45a5-9719-2659041b2986"",
                     ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
