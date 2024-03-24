@@ -25,7 +25,7 @@ public class PlayerCooking : MonoBehaviour
 
     void Update()
     {
-        if (input.Heal.WasPressedThisFrame()) Heal();
+        if (input.heal.WasPressedThisFrame()) Heal();
     }
 
     public void AddIngredient(int ID)

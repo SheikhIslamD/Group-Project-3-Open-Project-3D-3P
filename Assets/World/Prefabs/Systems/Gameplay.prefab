@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8650564425491833517}
   - component: {fileID: 1593004628775111837}
+  - component: {fileID: 7661868876764656931}
   m_Layer: 0
   m_Name: Gameplay
   m_TagString: Untagged
@@ -46,6 +47,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50ef24a8746116743b2791f503c52cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7661868876764656931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295248893631358697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c3ec73a2e319545ad2c9716a2a20dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &730358860400995026
@@ -1097,6 +1110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2723082300647999425}
   - component: {fileID: 6969938821977399849}
+  - component: {fileID: 6576411676886399233}
   m_Layer: 0
   m_Name: CameraMovement
   m_TagString: Untagged
@@ -1142,6 +1156,18 @@ MonoBehaviour:
   currentSegmentID: 0
   transitionDuration: 0.5
   backCollider: {fileID: 7921975746351103594}
+--- !u!114 &6576411676886399233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7445106046064526794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e44435275258ef4cb95d58a35713d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8096254713356253625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,6 +1181,7 @@ GameObject:
   - component: {fileID: 439165374062158890}
   - component: {fileID: 3382885389338476257}
   - component: {fileID: 3105853249515069239}
+  - component: {fileID: 2767906188304958336}
   m_Layer: 0
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -1263,6 +1290,18 @@ MonoBehaviour:
   riceText: {fileID: 204696362978189882}
   fishText: {fileID: 1274394933067862640}
   SeaweedText: {fileID: 7440791042490343811}
+--- !u!114 &2767906188304958336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096254713356253625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e44435275258ef4cb95d58a35713d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8287893166279325600
 GameObject:
   m_ObjectHideFlags: 0
