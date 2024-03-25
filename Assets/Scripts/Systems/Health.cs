@@ -1,32 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     public enum DamageType { Generic, Melee, Projectile }
-    //[System.Flags]
-    //public enum EntityType { Player, Enemy, Boss, Object, Other }
+    [System.Flags]
+    public enum EntityType { Player, Enemy, Boss, Object, Other }
     
-    [SerializeField] int maxHealth = 100;
-    [SerializeField] int currentHealth = 100;
-    //[SerializeField] public EntityType entityType;
-    
+    public int maxHealth { get; private set; } = 100;
+    public int currentHealth { get; private set; } = 100;
+    [SerializeField] public EntityType entityType;
+
+    //Messages
+    [SerializeField] string onDamageMessage = "OnDamage";
+    [SerializeField] string onDepleteMessage = "OnDeplete";
+    [SerializeField] string onHealMessage = "OnHeal";
+    [SerializeField] string onHealthUpdateMessage = "OnHealthUpdate";
+
+
     public void Damage(int amount, DamageType type)
     {
-         currentHealth -= amount;
+        currentHealth -= amount;
+
+        SendMessage(onDamageMessage);
+        SendMessage(onHealthUpdateMessage);
     
-         gameObject.SendMessage("OnDamage", SendMessageOptions.DontRequireReceiver);
-    
-         if (currentHealth<=0)
-         {
-             HealthDeplete();
-         }
+        if (currentHealth<=0)
+        {
+            currentHealth = 0;
+            HealthDeplete();
+        }
     }
     
     void HealthDeplete()
     {
-        gameObject.SendMessage("OnHealthDeplete", SendMessageOptions.DontRequireReceiver);
+        SendMessage(onDepleteMessage);
     }
 
     public void Heal(int amount)
@@ -35,7 +45,11 @@ public class Health : MonoBehaviour
 
         if (currentHealth >= maxHealth) currentHealth = maxHealth;
         
-        gameObject.SendMessage("OnHeal", SendMessageOptions.DontRequireReceiver);
+        SendMessage(onHealMessage);
+        SendMessage(onHealthUpdateMessage);
 
     }
+
+    new void SendMessage(string name) { if (name != null) gameObject.SendMessage(name, SendMessageOptions.DontRequireReceiver); }
+
 }

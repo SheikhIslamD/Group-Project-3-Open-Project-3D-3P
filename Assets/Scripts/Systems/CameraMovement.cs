@@ -5,18 +5,20 @@ using UnityEditor;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraMovement : Singleton<CameraMovement>
 {
 
 
     public Transform player;
-    public Transform camera;
+    public new Transform camera;
     public Transform targetTransform;
 
-    public CameraPathSegment[] path;
-    public int currentSegmentID;
-    CameraPathSegment currentPathSegment => path[currentSegmentID];
-    BoxCollider currentSegmentCollider => path[currentSegmentID].collider;
+    //public CameraPathSegment[] path;
+    //public int currentSegmentID;
+    //CameraPathSegment currentPathSegment => path[currentSegmentID];
+    CameraBoundry currentPath;
+    [SerializeField] CameraBoundry defaultPath;
+    BoxCollider currentSegmentCollider => currentPath.boundry;
     public float transitionDuration = 1;
     float transitionTime = 1;
     public Transform backCollider;
@@ -24,7 +26,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        BeginSegmentTransition(0);
+        defaultPath = currentPath;
     }
 
     private void Update()
@@ -46,18 +48,18 @@ public class CameraMovement : MonoBehaviour
                 )
             );
 
-        Vector3 targetPos = targetTransform.position + currentPathSegment.cameraOffset;
+        Vector3 targetPos = targetTransform.position + currentPath.cameraOffset;
 
-        if(transitionTime < 1) transitionTime += Time.deltaTime / transitionDuration;
+        if (transitionTime < 1) transitionTime += Time.deltaTime / transitionDuration;
         if (transitionTime > 1) transitionTime = 1;
 
         camera.position = Vector3.Lerp(transitionBeginPos, targetPos, transitionTime);
-        camera.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBeginRot), Quaternion.Euler(currentPathSegment.cameraRotation), transitionTime);
+        camera.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBeginRot), Quaternion.Euler(currentPath.cameraRotation), transitionTime);
 
-        Vector3 targetBackPos = (currentPathSegment.backFromPlayer ? player.position : camera.position) + currentPathSegment.backOffset;
+        Vector3 targetBackPos = (currentPath.backFromPlayer ? player.position : camera.position) + currentPath.backOffset;
 
         backCollider.transform.position = Vector3.Lerp(transitionBackOffset, targetBackPos, transitionTime);
-        backCollider.transform.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBackRotation), Quaternion.Euler(currentPathSegment.backRotation), transitionTime);
+        backCollider.transform.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBackRotation), Quaternion.Euler(currentPath.backRotation), transitionTime);
         backCollider.transform.eulerAngles += new Vector3(-90, 0, 0);
     }
 
@@ -77,6 +79,7 @@ public class CameraMovement : MonoBehaviour
         public bool backFromPlayer;
     }
 
+    /*
     public void BeginSegmentTransition(int endSegment)
     {
         transitionBeginPos = camera.position;
@@ -91,7 +94,22 @@ public class CameraMovement : MonoBehaviour
         transitionTime = 0;
 
     }
+     */
 
+    public void BeginSegmentTransition(CameraBoundry newPath)
+    {
+        transitionBeginPos = camera.position;
+        transitionBeginRot = camera.eulerAngles;
+        transitionBackOffset = backCollider.position;
+        transitionBackRotation = backCollider.eulerAngles - new Vector3(-90, 0, 0);
+
+        if (newPath == currentPath) return;
+
+        currentPath = newPath;
+        targetTransform.parent = currentSegmentCollider.transform;
+        transitionTime = 0;
+
+    }
 }
 
 

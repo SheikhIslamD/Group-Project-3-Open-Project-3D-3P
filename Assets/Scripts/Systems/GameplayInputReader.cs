@@ -14,16 +14,26 @@ public class GameplayInputReader : Singleton<GameplayInputReader>
         input.Enable();
     }
 
-    public InputAction movement => input.Gameplay.Movement;
-    public Vector2 movementVector2 => input.Gameplay.Movement.ReadValue<Vector2>();
-    public bool movementTouched => input.Gameplay.Movement.ReadValue<Vector2>() != Vector2.zero;
-    public InputAction aim => input.Gameplay.Aim;
-    public Vector2 aimVector2 => input.Gameplay.Aim.ReadValue<Vector2>();
-    public InputAction jump => input.Gameplay.Jump;
-    public InputAction shoot => input.Gameplay.Shoot;
-    public InputAction melee => input.Gameplay.Melee;
-    public InputAction sprint => input.Gameplay.Sprint;
-    public InputAction Pause => input.Gameplay.Pause;
+    private void Update()
+    {
+        if (pause.WasPressedThisFrame()) GameplayStateManager.inst.TogglePause();
+    }
+
+
+
+
+
+    [HideInInspector] public InputAction movement => input.Gameplay.Movement;
+    [HideInInspector] public Vector2 movementVector2 => input.Gameplay.Movement.ReadValue<Vector2>();
+    [HideInInspector] public bool movementTouched => input.Gameplay.Movement.ReadValue<Vector2>() != Vector2.zero;
+    [HideInInspector] public InputAction aim => input.Gameplay.Aim;
+    [HideInInspector] public Vector2 aimVector2 => input.Gameplay.Aim.ReadValue<Vector2>();
+    [HideInInspector] public InputAction jump => input.Gameplay.Jump;
+    [HideInInspector] public InputAction shoot => input.Gameplay.Shoot;
+    [HideInInspector] public InputAction melee => input.Gameplay.Melee;
+    [HideInInspector] public InputAction sprint => input.Gameplay.Sprint;
+    [HideInInspector] public InputAction pause => input.Gameplay.Pause;
+    [HideInInspector] public InputAction heal => input.Gameplay.Heal;
 
 
 

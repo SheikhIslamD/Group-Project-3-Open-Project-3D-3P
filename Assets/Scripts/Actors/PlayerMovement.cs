@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        input = GameplayInputReader.Get();
+        input = GameplayInputReader.instance;
     }
     void Update()
     {
