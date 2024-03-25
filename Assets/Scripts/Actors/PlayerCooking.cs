@@ -18,7 +18,7 @@ public class PlayerCooking : MonoBehaviour
 
     void Start()
     {
-        input = GameplayInputReader.Get();
+        input = GameplayInputReader.instance;
         health = GetComponent<Health>();
 
     }

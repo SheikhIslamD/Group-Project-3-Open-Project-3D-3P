@@ -20,7 +20,7 @@ public class PlayerShooter : MonoBehaviour
 
     void Start()
     {
-        input = GameplayInputReader.Get();
+        input = GameplayInputReader.instance;
         transform = GetComponent<Transform>();
         camera = Camera.main;
         lineRenderer = GetComponent<LineRenderer>();
