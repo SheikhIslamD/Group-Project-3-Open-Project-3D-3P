@@ -7,7 +7,7 @@ public class Movement_For_ArtPrototype : MonoBehaviour
 
 
     #region "Variables"
-    public Rigidbody Rigid;
+    public Rigidbody rb;
     public float MouseSensitivity;
     public float MoveSpeed;
 
@@ -17,27 +17,45 @@ public class Movement_For_ArtPrototype : MonoBehaviour
     public Camera playerCamera; // Reference to the player's camera
     #endregion
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        if (rb == null) rb = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         
-        
-            float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity;
-            float mouseY = Input.GetAxis("Mouse Y") * MouseSensitivity;
+            
+        float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * MouseSensitivity;
 
-            // Rotate the player around the y-axis based on mouse input
-            Rigid.MoveRotation(Rigid.rotation * Quaternion.Euler(new Vector3(0, mouseX, 0)));
+        // Rotate the player around the y-axis based on mouse input
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0, mouseX, 0)));
 
-            // Calculate the new rotation for looking vertically
-            Quaternion camRotation = playerCamera.transform.rotation * Quaternion.Euler(-mouseY, 0, 0);
+        // Calculate the new rotation for looking vertically
+        Quaternion camRotation = playerCamera.transform.rotation * Quaternion.Euler(-mouseY, 0, 0);
 
-            // Apply the new rotation to the camera
-            playerCamera.transform.rotation = camRotation;
+        // Apply the new rotation to the camera
+        playerCamera.transform.rotation = camRotation;
 
-            // Move the player based on input
-            Vector3 movement = transform.forward * Input.GetAxis("Vertical") * MoveSpeed + transform.right * Input.GetAxis("Horizontal") * MoveSpeed;
-            Rigid.MovePosition(transform.position + movement);
+        // Move the player based on input
+        Vector2 control = GameplayInputReader.i.movementVector2;
+        Vector3 movement = ((transform.forward * control.y) + (transform.right * control.x)) * MoveSpeed * Time.deltaTime;
+        rb.MovePosition(transform.position + movement);
 
 
         
     }
+
+    void OnPause()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    void OnUnPause()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
 }
