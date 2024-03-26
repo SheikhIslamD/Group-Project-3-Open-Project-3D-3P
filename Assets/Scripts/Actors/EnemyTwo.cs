@@ -9,16 +9,18 @@ public class EnemyTwo : MonoBehaviour
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public float timeBetweenAttacks;
-    bool alreadyAttacked;
     public float attackRange;
     public bool playerInAttackRange;
     ObjectPool pool;
+
+    float timeLeftBeforeAttack;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
         pool = GetComponent<ObjectPool>();
+        timeLeftBeforeAttack = timeBetweenAttacks;
     }
     
     private void Update()
@@ -37,7 +39,12 @@ public class EnemyTwo : MonoBehaviour
     {
         enemy.SetDestination(transform.position);
         transform.LookAt(player);
-        if (!alreadyAttacked)
+
+        if(timeLeftBeforeAttack > 0)
+        {
+            timeLeftBeforeAttack -= Time.deltaTime;
+        }
+        else
         {
             PoolableObject sphere = pool.Pump();
             sphere.gameObject.SetActive(true);
@@ -47,15 +54,12 @@ public class EnemyTwo : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+
+            timeLeftBeforeAttack = timeBetweenAttacks;
         }
+
     }
 
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
-    }
 
     void OnDeplete()
     {

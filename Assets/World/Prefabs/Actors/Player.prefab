@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 5268864049015096330}
   - component: {fileID: 2962006598641387796}
   - component: {fileID: 2497882400312370488}
+  - component: {fileID: 814095944214848581}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -171,6 +172,7 @@ MonoBehaviour:
     m_Bits: 503
   aimRaycastMaxDistance: 70
   knifeSpeed: 20
+  aimDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &-1572151395676600341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +218,7 @@ MonoBehaviour:
   defaultPoolDepth: 10
   canGrow: 1
   parent: {fileID: 0}
+  autoDisableTime: -1
 --- !u!120 &2962006598641387796
 LineRenderer:
   serializedVersion: 2
@@ -333,3 +336,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   registered: 0
+--- !u!114 &814095944214848581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361231222474564621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2edcd5dd956d2fe4db3b6093a5534118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slashDistance: 2
+  slashTransform: {fileID: 0}
+  slashRadius: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  damage: 40
+  slashEcho: {fileID: 0}

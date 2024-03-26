@@ -48,7 +48,7 @@ public class PlayerMelee : MonoBehaviour
                 Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
                 rb.velocity = Vector3.zero;
                 Vector3 direction = reflect.sender.position - rb.position;
-                rb.AddForce(direction * 1000);
+                rb.AddForce(direction * 80);
                 reflect.MakeReflected();
             }
         }
