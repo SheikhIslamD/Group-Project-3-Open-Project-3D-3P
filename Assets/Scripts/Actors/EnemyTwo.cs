@@ -14,16 +14,15 @@ public class EnemyTwo : MonoBehaviour
     public bool playerInAttackRange;
     public GameObject projectile;
 
+    private void Awake()
+    {
+        player = GameObject.Find("Player").transform;
+        enemy = GetComponent<NavMeshAgent>();
+    }
+    
     private void Update()
     {
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-    }
-
-    private void Awake()
-    {
-        enemy = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player").transform;
-
         if (!playerInAttackRange) ChasePlayer();
         if (playerInAttackRange) AttackPlayer();
     }
