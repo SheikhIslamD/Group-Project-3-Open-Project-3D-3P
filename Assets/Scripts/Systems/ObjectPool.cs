@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class ObjectPool : MonoBehaviour
     [Tooltip("Whether or not more prefabs can be created beyond the initial Pool Depth.")]
     [SerializeField] private bool canGrow = true;
     [Tooltip("The transform the Objects will be parented under. (Defaults to the object this script is attached too.)")]
-    [SerializeField] private Transform parent;    
+    [SerializeField] private Transform parent;
+    [Tooltip("How long an instance will last until it is automatically disabled, set to -1 to never auto disable.")]
+    [SerializeField] private float autoDisableTime = -1;
     
     private readonly List<PoolableObject> poolList = new List<PoolableObject>();
     private int currentActiveObjects = 0;
@@ -28,7 +31,19 @@ public class ObjectPool : MonoBehaviour
         if(parent==null)parent=transform;
         Initialize();
     }
-    
+
+    void Update()
+    {
+        if(autoDisableTime > 0)
+        {
+            for (int i = 0; i < poolList.Count; i++)
+            {
+                if (poolList[i].Active) poolList[i].timeExisting += Time.deltaTime;
+                if (poolList[i].timeExisting >= autoDisableTime) poolList[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
     void Initialize(){
         for (int i = 0; i < defaultPoolDepth; i++) NewInstance();
     }
@@ -72,6 +87,7 @@ public class ObjectPool : MonoBehaviour
     {  
         instance.Active = true;
         currentActiveObjects++;
+        instance.timeExisting = 0;
         return instance;
     }
     

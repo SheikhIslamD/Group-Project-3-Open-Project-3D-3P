@@ -11,20 +11,21 @@ public class PlayerControls : MonoBehaviour
     private float ySpeed;
     private float originalStepOffset;
     Transform cameraTransform;
+    GameplayInputReader input;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset;
         cameraTransform = Camera.main.transform;
+        GameplayInputReader.Get(ref input);
     }
 
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        Vector2 movementInput = input.movementVector2;
 
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        Vector3 movementDirection = new Vector3(movementInput.x, 0, movementInput.y);
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
         movementDirection.Normalize();
 
