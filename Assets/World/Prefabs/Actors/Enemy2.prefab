@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 754566972590058309}
   - component: {fileID: 2289523109895011900}
   - component: {fileID: 6855836833254839442}
+  - component: {fileID: 4227707666005934761}
   - component: {fileID: 2895632879591992098}
   - component: {fileID: 2707462364418737651}
   m_Layer: 8
@@ -36,7 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8782980712758892804
 MeshFilter:
@@ -111,7 +112,6 @@ MonoBehaviour:
   timeBetweenAttacks: 0.5
   attackRange: 11
   playerInAttackRange: 0
-  projectile: {fileID: 0}
 --- !u!114 &2289523109895011900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +146,21 @@ MonoBehaviour:
   onDepleteMessage: OnDeplete
   onHealMessage: OnHeal
   onHealthUpdateMessage: OnHealthUpdate
+--- !u!114 &4227707666005934761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8890840573762573605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bf7ed545f2f495da0a3ed8acd80909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  type: 0
+  deactivateOnHit: 0
 --- !u!136 &2895632879591992098
 CapsuleCollider:
   m_ObjectHideFlags: 0
