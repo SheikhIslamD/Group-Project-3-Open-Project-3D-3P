@@ -24,5 +24,5 @@ public class PoolableObject : MonoBehaviour{
 
     }
     void OnDisable() => Disable();
-
+    void OnDeActivate() => Disable();
 }

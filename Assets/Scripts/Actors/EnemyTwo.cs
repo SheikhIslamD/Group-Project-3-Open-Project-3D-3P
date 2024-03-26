@@ -12,12 +12,13 @@ public class EnemyTwo : MonoBehaviour
     bool alreadyAttacked;
     public float attackRange;
     public bool playerInAttackRange;
-    public GameObject projectile;
+    ObjectPool pool;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
+        pool = GetComponent<ObjectPool>();
     }
     
     private void Update()
@@ -38,7 +39,12 @@ public class EnemyTwo : MonoBehaviour
         transform.LookAt(player);
         if (!alreadyAttacked)
         {
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            PoolableObject sphere = pool.Pump();
+            sphere.gameObject.SetActive(true);
+            sphere.transform.position = transform.position;
+            sphere.transform.eulerAngles = Vector3.zero;
+            Rigidbody rb = sphere.GetComponent<Rigidbody>();
+            rb.velocity = Vector3.zero;
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
             alreadyAttacked = true;
@@ -49,6 +55,12 @@ public class EnemyTwo : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    void OnDeplete()
+    {
+        GetComponent<LootBag>().DropLoot(transform.position);
+        Destroy(gameObject);
     }
 }
 
