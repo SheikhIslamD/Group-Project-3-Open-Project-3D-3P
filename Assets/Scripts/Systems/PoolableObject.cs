@@ -6,6 +6,7 @@ public class PoolableObject : MonoBehaviour{
 
     [HideInInspector] public ObjectPool pool;
     [HideInInspector] public bool Active;
+    [HideInInspector] public float timeExisting;
 
     /// <summary>
     /// If nothing calls this action when this object instance is done the object will never be available for reuse.

@@ -17,6 +17,8 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] float aimRaycastMaxDistance;
     [SerializeField] float knifeSpeed;
 
+    public Vector3 aimDirection;
+
 
     void Start()
     {
@@ -45,6 +47,8 @@ public class PlayerShooter : MonoBehaviour
         }
 
         DrawAimLine(transform.position, end);
+
+        aimDirection = end - transform.position;
 
         if (input.shoot.WasPressedThisFrame()) ShootKnife(end - transform.position);
     }
