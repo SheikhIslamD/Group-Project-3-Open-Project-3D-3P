@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6855836833254839442}
   - component: {fileID: 2895632879591992098}
   - component: {fileID: 2707462364418737651}
+  - component: {fileID: 7478867773781897259}
   m_Layer: 8
   m_Name: Enemy2
   m_TagString: Enemy
@@ -111,7 +112,6 @@ MonoBehaviour:
   timeBetweenAttacks: 0.5
   attackRange: 11
   playerInAttackRange: 0
-  projectile: {fileID: 0}
 --- !u!114 &2289523109895011900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +191,24 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7478867773781897259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8890840573762573605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1365110010c7e426d835a4dfd9319442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootList:
+  - loot: {fileID: 2317741100199364913, guid: b96850cc1f148ce4db6ee03a1f9a1b6e, type: 3}
+    dropChance: 60.8
+  - loot: {fileID: 2978663373069622260, guid: 684c66c6a294e68448318f78a0b3973a, type: 3}
+    dropChance: 100
+  - loot: {fileID: 4746736983757648747, guid: 6196676819234f1419830929ef58edcb, type: 3}
+    dropChance: 38.8
+  maxDrops: 3
+  dropMultiple: 1
