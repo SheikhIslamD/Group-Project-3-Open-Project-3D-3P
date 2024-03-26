@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5714795193199426761}
   - component: {fileID: 2883687900428550835}
   - component: {fileID: 2780212963633072989}
+  - component: {fileID: 6022750615932977929}
+  - component: {fileID: -9177393644655592679}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -99,7 +101,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -149,3 +151,39 @@ MonoBehaviour:
   pool: {fileID: 0}
   Active: 0
   timeExisting: 0
+--- !u!114 &6022750615932977929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926897355690397252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1f3ac73d711d14b95a50d71c05f30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalMask:
+    serializedVersion: 2
+    m_Bits: 256
+  reflectedMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &-9177393644655592679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926897355690397252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bf7ed545f2f495da0a3ed8acd80909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  type: 0
+  deactivateOnHit: 1
+  deactivateOnHitWithHealth: 1
+  useCollider: 1
+  useTrigger: 0
