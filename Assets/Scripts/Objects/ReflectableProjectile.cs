@@ -23,7 +23,7 @@ public class ReflectableProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (isReflected)
+        if (isReflected && collision.collider.GetComponent<Health>() != null)
         {
             MakeNormal();
         }

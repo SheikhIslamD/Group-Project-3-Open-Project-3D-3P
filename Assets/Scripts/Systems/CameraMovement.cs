@@ -30,6 +30,7 @@ public class CameraMovement : Singleton<CameraMovement>
 
     private void Update()
     {
+        if (targetTransform == null || currentSegmentCollider == null) return;
 
         targetTransform.position = player.position;
         targetTransform.localPosition = new Vector3(

@@ -22,10 +22,15 @@ public class PlayerMelee : MonoBehaviour
 
     void Update()
     {
-        Vector3 vagueDirection = new Vector3(shooter.aimDirection.x, 0, shooter.aimDirection.z).normalized;
-        
 
-        
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 vagueDirection = new Vector3(shooter.aimDirection.x, 0, shooter.aimDirection.z).normalized;
+
+
+
         slashEcho.SetActive(input.melee.IsPressed());
         if (input.melee.IsPressed())
         {
@@ -33,7 +38,7 @@ public class PlayerMelee : MonoBehaviour
             //Invoke("StopSlash", 0.1f);
 
             RaycastHit hit;
-            Physics.SphereCast(transform.position, slashRadius-1, slashDistance * vagueDirection, out hit, layerMask);
+            Physics.SphereCast(transform.position, slashRadius - 1, slashDistance * vagueDirection, out hit, layerMask);
 
             if (hit.collider == null) return;
 
@@ -48,16 +53,10 @@ public class PlayerMelee : MonoBehaviour
                 Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
                 rb.velocity = Vector3.zero;
                 Vector3 direction = reflect.sender.position - rb.position;
-                rb.AddForce(direction * 80);
+                rb.AddForce(direction.normalized * 1400);
                 reflect.MakeReflected();
             }
         }
-
-
-
-
-
-
     }
 
     void StopSlash() => slashEcho.SetActive(false);
