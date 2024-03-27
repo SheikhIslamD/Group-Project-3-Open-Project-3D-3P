@@ -110,7 +110,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  timeBetweenAttacks: 0.5
+  timeBetweenAttacks: 1.5
   attackRange: 11
   playerInAttackRange: 0
 --- !u!114 &2289523109895011900
@@ -125,11 +125,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674683ecb71f33548a4886fad127f26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 0}
-  defaultPoolDepth: 0
+  prefabObject: {fileID: 2780212963633072989, guid: ce199a86d48ac41d091463a324a0a17f, type: 3}
+  defaultPoolDepth: 5
   canGrow: 1
   parent: {fileID: 0}
-  autoDisableTime: -1
+  autoDisableTime: 3
 --- !u!114 &6855836833254839442
 MonoBehaviour:
   m_ObjectHideFlags: 0

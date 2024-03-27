@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Vector3Helper;
 
 public class PlayerControls : MonoBehaviour
 {
     public float speed = 6.0f;
+    public float sprintSpeed = 9.0f;
     public float rotationSpeed = 720.0f;
     public float jumpSpeed = 5.0f;
 
@@ -12,6 +14,8 @@ public class PlayerControls : MonoBehaviour
     private float originalStepOffset;
     Transform cameraTransform;
     GameplayInputReader input;
+    [SerializeField] UnityEvent onHealthDeplete;
+
 
     void Start()
     {
@@ -26,7 +30,7 @@ public class PlayerControls : MonoBehaviour
         Vector2 movementInput = input.movementVector2;
 
         Vector3 movementDirection = new Vector3(movementInput.x, 0, movementInput.y);
-        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
+        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * (input.sprint.IsPressed()? sprintSpeed : speed);
         movementDirection.Normalize();
 
 
@@ -63,4 +67,7 @@ public class PlayerControls : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
     }
+
+    void OnDeplete() => onHealthDeplete?.Invoke();
+
 }

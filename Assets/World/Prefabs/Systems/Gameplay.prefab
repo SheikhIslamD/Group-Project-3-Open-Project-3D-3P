@@ -3185,6 +3185,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6928702704622564422, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: onHealthDeplete.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928702704622564422, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: onHealthDeplete.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928702704622564422, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: onHealthDeplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8498879615782036343}
+    - target: {fileID: 6928702704622564422, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: onHealthDeplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928702704622564422, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: onHealthDeplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928702704622564422, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: onHealthDeplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayStateManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928702704622564422, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: onHealthDeplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -13,8 +13,8 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private int defaultPoolDepth;
     [Tooltip("Whether or not more prefabs can be created beyond the initial Pool Depth.")]
     [SerializeField] private bool canGrow = true;
-    [Tooltip("The transform the Objects will be parented under. (Defaults to the object this script is attached too.)")]
-    [SerializeField] private Transform parent;
+    [Tooltip("The transform the Objects will be parented under. (Defaults to the scene.)")]
+    [SerializeField] private Transform parent = null;
     [Tooltip("How long an instance will last until it is automatically disabled, set to -1 to never auto disable.")]
     [SerializeField] private float autoDisableTime = -1;
     
@@ -48,20 +48,14 @@ public class ObjectPool : MonoBehaviour
         for (int i = 0; i < defaultPoolDepth; i++) NewInstance();
     }
 
+
     public PoolableObject Pump()
     {
         FindNextInstance();
         PoolableObject instance = ActivateInstance(poolList[currentSelection]);
         IncrementSelection();
-        Prepare(instance);
         return instance;
     }
-
-    /// <summary>
-    /// This method is used for Setup of the Pooled Object Instance after it is Activated. In the default base of this script this method does nothing, if not overridden Setup is the responsibility of the script calling Pump();
-    /// </summary>
-    /// <param name="instance"></param>
-    protected virtual void Prepare(PoolableObject instance) { }
     
     void NewInstance(){
         PoolableObject pooledObject = Instantiate(prefabObject);
@@ -76,7 +70,9 @@ public class ObjectPool : MonoBehaviour
     void FindNextInstance(){  
         if (!poolList[currentSelection].Active) return;
         if (currentActiveObjects >= currentPooledObjects) 
-        {  
+        {
+            if (!canGrow) return;
+
             NewInstance();
             currentSelection = currentPooledObjects-1;
         }
@@ -84,7 +80,8 @@ public class ObjectPool : MonoBehaviour
     }
     void IncrementSelection() => currentSelection = (currentSelection == currentPooledObjects-1)? 0 : currentSelection+1; 
     PoolableObject ActivateInstance(PoolableObject instance)
-    {  
+    {
+        instance.gameObject.SetActive(true);
         instance.Active = true;
         currentActiveObjects++;
         instance.timeExisting = 0;

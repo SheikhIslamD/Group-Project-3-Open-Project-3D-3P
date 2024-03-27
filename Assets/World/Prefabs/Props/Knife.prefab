@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5559486470895703093}
   - component: {fileID: 4358401116587172876}
   - component: {fileID: 2937266717570764127}
+  - component: {fileID: 2118353417166162688}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1991426918176110017
 MeshFilter:
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool: {fileID: 0}
   Active: 0
+  timeExisting: 0
 --- !u!114 &4358401116587172876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +169,9 @@ MonoBehaviour:
   damage: 20
   type: 2
   deactivateOnHit: 1
+  deactivateOnHitWithHealth: 0
+  useCollider: 1
+  useTrigger: 1
 --- !u!114 &2937266717570764127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,3 +184,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e44435275258ef4cb95d58a35713d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  registered: 0
+--- !u!75 &2118353417166162688
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845017669099800132}
+  m_Enabled: 1
+  m_Force: {x: 0, y: -2.45, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}

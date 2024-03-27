@@ -47,6 +47,9 @@ public class EnemyTwo : MonoBehaviour
         else
         {
             PoolableObject sphere = pool.Pump();
+            sphere.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
+
+            /*
             sphere.gameObject.SetActive(true);
             sphere.transform.position = transform.position;
             sphere.transform.eulerAngles = Vector3.zero;
@@ -54,6 +57,7 @@ public class EnemyTwo : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+             */
 
             timeLeftBeforeAttack = timeBetweenAttacks;
         }

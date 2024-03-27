@@ -7,7 +7,6 @@ public class PlayerMelee : MonoBehaviour
     GameplayInputReader input;
     PlayerShooter shooter;
     [SerializeField] float slashDistance;
-    [SerializeField] Transform slashTransform;
     [SerializeField] float slashRadius;
     [SerializeField] LayerMask layerMask;
     [SerializeField] int damage = 40;
@@ -24,12 +23,13 @@ public class PlayerMelee : MonoBehaviour
     void Update()
     {
         Vector3 vagueDirection = new Vector3(shooter.aimDirection.x, 0, shooter.aimDirection.z).normalized;
-        slashTransform.position = transform.position + (slashDistance * vagueDirection);
+        
 
         
         slashEcho.SetActive(input.melee.IsPressed());
         if (input.melee.IsPressed())
         {
+            slashEcho.transform.position = transform.position + (slashDistance * vagueDirection);
             //Invoke("StopSlash", 0.1f);
 
             RaycastHit hit;

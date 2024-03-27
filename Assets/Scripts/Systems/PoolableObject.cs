@@ -14,6 +14,24 @@ public class PoolableObject : MonoBehaviour{
     public Action<PoolableObject> onDeactivate;
 
     /// <summary>
+    /// This method is used for Setup of the Pooled Object Instance after it is Activated. In the default base of this script this method does nothing, if not overridden Setup is the responsibility of the script calling Pump();
+    /// </summary>
+    public virtual void Prepare() { }
+
+    public virtual void Prepare_Basic(Vector3 position, Vector3 direction, Vector3 velocity)
+    {
+        transform.position = position;
+        transform.eulerAngles = direction;
+
+        Rigidbody rigid = rb;
+        if (rigid == null) return;
+
+        rigid.velocity = transform.TransformDirection(velocity);
+        rigid.angularVelocity = Vector3.zero;
+
+    }
+
+    /// <summary>
     /// An accesible function for another script to disable this Poolable Object without necessarily Deactivating the Game Object.
     /// </summary>
     public void Disable(bool deactivateGameObject = false)
@@ -24,5 +42,9 @@ public class PoolableObject : MonoBehaviour{
 
     }
     void OnDisable() => Disable();
-    void OnDeActivate() => Disable();
+
+    public Rigidbody rb => GetComponent<Rigidbody>();
+
+
+
 }

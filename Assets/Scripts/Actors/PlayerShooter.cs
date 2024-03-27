@@ -63,12 +63,16 @@ public class PlayerShooter : MonoBehaviour
     void ShootKnife(Vector3 direction)
     {
         PoolableObject knife = pool.Pump();
+        knife.Prepare_Basic(transform.position, Quaternion.FromToRotation(Vector3.up, direction).eulerAngles, Vector3.up * knifeSpeed);
+
+        /*
         knife.gameObject.SetActive(true);
         knife.transform.position = transform.position;
         knife.transform.eulerAngles = Vector3.zero;
         knife.transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
-
         knife.transform.GetComponent<Rigidbody>().velocity = knife.transform.up * knifeSpeed;
+         */
+
     }
 
 }
