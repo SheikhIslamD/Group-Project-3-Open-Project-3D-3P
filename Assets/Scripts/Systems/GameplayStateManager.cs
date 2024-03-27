@@ -28,6 +28,8 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
     public void ResetLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+    public void SwitchPrototypeLevel() => SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex == 1) ? 0 : 1);
+
     public void QuitApplication() => Application.Quit();
 
 }
