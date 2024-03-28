@@ -14,6 +14,7 @@ public class PlayerControls : MonoBehaviour
     private float originalStepOffset;
     Transform cameraTransform;
     GameplayInputReader input;
+    AudioCaller audioC;
     [SerializeField] UnityEvent onHealthDeplete;
 
 
@@ -23,6 +24,7 @@ public class PlayerControls : MonoBehaviour
         originalStepOffset = characterController.stepOffset;
         cameraTransform = Camera.main.transform;
         GameplayInputReader.Get(ref input);
+        audioC = GetComponent<AudioCaller>();
     }
 
     void Update()
@@ -45,8 +47,9 @@ public class PlayerControls : MonoBehaviour
             characterController.stepOffset = originalStepOffset;
             ySpeed = -0.5f;
 
-            if (Input.GetButtonDown("Jump"))
+            if (input.jump.WasPressedThisFrame())
             {
+                audioC.PlaySound("Jump");
                 ySpeed = jumpSpeed;
             }
         }
