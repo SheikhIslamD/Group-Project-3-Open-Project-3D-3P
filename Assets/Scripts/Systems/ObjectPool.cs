@@ -17,20 +17,19 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private Transform parent = null;
     [Tooltip("How long an instance will last until it is automatically disabled, set to -1 to never auto disable.")]
     [SerializeField] private float autoDisableTime = -1;
+    [Tooltip("Whether or not the Objects in this pool will disappear if the pool is destroyed.")]
+    [SerializeField] private bool deleteObjectsOnDestroy = true;
     
     private readonly List<PoolableObject> poolList = new List<PoolableObject>();
     private int currentActiveObjects = 0;
     private int currentPooledObjects = 0;
     private int currentSelection = 0;
+    private bool initialized;
     
     
     
     
-    void OnEnable()
-    {
-        if(parent==null)parent=transform;
-        Initialize();
-    }
+    void OnEnable() => Initialize();
 
     void Update()
     {
@@ -45,7 +44,10 @@ public class ObjectPool : MonoBehaviour
     }
 
     void Initialize(){
+
+        if(initialized) return;
         for (int i = 0; i < defaultPoolDepth; i++) NewInstance();
+        initialized = true;
     }
 
 
@@ -93,7 +95,11 @@ public class ObjectPool : MonoBehaviour
         instance.Active = false;
     }
 
-
+    private void OnDestroy()
+    {
+        for (int i = 0; i < poolList.Count; i++) Destroy(poolList[i]);
+        poolList.Clear();
+    }
 
 
 }
