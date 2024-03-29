@@ -897,6 +897,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CamTarget
       objectReference: {fileID: 0}
+    - target: {fileID: 7457374408135201895, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
+      propertyPath: clipNames.Array.data[4]
+      value: Cook
+      objectReference: {fileID: 0}
     - target: {fileID: 8029873286392709585, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
       propertyPath: m_Layer
       value: 9

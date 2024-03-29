@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 2962006598641387796}
   - component: {fileID: 2497882400312370488}
   - component: {fileID: 7350012777079012690}
+  - component: {fileID: 6710960657153376787}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -237,8 +238,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  sprintSpeed: 9
   rotationSpeed: 720
   jumpSpeed: 5
+  onHealthDeplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7256595565590103146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +308,7 @@ MonoBehaviour:
   canGrow: 1
   parent: {fileID: 0}
   autoDisableTime: 6
+  deleteObjectsOnDestroy: 1
 --- !u!120 &2962006598641387796
 LineRenderer:
   serializedVersion: 2
@@ -439,3 +445,19 @@ MonoBehaviour:
     m_Bits: 256
   damage: 40
   slashEcho: {fileID: 1238866800896763398}
+--- !u!114 &6710960657153376787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361231222474564621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bae0168d533ec44bbc8cb389520f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  clips: []
+  clipNames: []
+  soundID: 0

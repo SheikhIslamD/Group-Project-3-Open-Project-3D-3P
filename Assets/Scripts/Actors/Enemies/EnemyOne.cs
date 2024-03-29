@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyOne : MonoBehaviour
 {
+    AudioCaller audioC;
     NavMeshAgent enemy;
     GameObject player;
 
@@ -20,6 +21,7 @@ public class EnemyOne : MonoBehaviour
     
     void OnDeplete()
     {
+        audioC.PlaySound("Death");
         GetComponent<LootBag>().DropLoot(transform.position);
         Destroy(gameObject);
     }

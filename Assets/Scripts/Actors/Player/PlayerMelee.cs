@@ -6,6 +6,7 @@ public class PlayerMelee : MonoBehaviour
 {
     GameplayInputReader input;
     PlayerShooter shooter;
+    AudioCaller audioC;
     [SerializeField] float slashDistance;
     [SerializeField] float slashRadius;
     [SerializeField] LayerMask layerMask;
@@ -18,6 +19,7 @@ public class PlayerMelee : MonoBehaviour
         input = GameplayInputReader.Get();
         shooter = GetComponent<PlayerShooter>();
         slashEcho.transform.localScale = Vector3.one * slashRadius;
+        audioC = GetComponent<AudioCaller>();
     }
 
     void Update()
@@ -34,6 +36,7 @@ public class PlayerMelee : MonoBehaviour
         slashEcho.SetActive(input.melee.IsPressed());
         if (input.melee.IsPressed())
         {
+            audioC.PlaySound("Slash");
             slashEcho.transform.position = transform.position + (slashDistance * vagueDirection);
             //Invoke("StopSlash", 0.1f);
 
@@ -48,6 +51,7 @@ public class PlayerMelee : MonoBehaviour
             ReflectableProjectile reflect = hit.collider.GetComponent<ReflectableProjectile>();
             if (reflect != null)
             {
+                audioC.PlaySound("Parry");
                 Debug.Log("Hit Projectile");
 
                 Rigidbody rb = hit.collider.GetComponent<Rigidbody>();

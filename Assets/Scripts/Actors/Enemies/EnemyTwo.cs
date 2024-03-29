@@ -12,8 +12,14 @@ public class EnemyTwo : MonoBehaviour
     public float attackRange;
     public bool playerInAttackRange;
     ObjectPool pool;
+    AudioCaller audioC;
 
     float timeLeftBeforeAttack;
+
+    void Start()
+    {
+        audioC = GetComponent<AudioCaller>();
+    }
 
     private void Awake()
     {
@@ -46,6 +52,7 @@ public class EnemyTwo : MonoBehaviour
         }
         else
         {
+            audioC.PlaySound("Attack");
             PoolableObject sphere = pool.Pump();
             sphere.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
 
@@ -67,6 +74,7 @@ public class EnemyTwo : MonoBehaviour
 
     void OnDeplete()
     {
+        audioC.PlaySound("Death");
         GetComponent<LootBag>().DropLoot(transform.position);
         Destroy(gameObject);
     }

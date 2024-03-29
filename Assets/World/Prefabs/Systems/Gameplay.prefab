@@ -3185,6 +3185,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6710960657153376787, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: clips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6710960657153376787, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: clipNames.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6710960657153376787, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: clipNames.Array.data[0]
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 6710960657153376787, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: clipNames.Array.data[1]
+      value: Slash
+      objectReference: {fileID: 0}
+    - target: {fileID: 6710960657153376787, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: clipNames.Array.data[2]
+      value: Shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6710960657153376787, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: clipNames.Array.data[3]
+      value: Parry
+      objectReference: {fileID: 0}
+    - target: {fileID: 6710960657153376787, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: clipNames.Array.data[4]
+      value: Cooking
+      objectReference: {fileID: 0}
     - target: {fileID: 6928702704622564422, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: onHealthDeplete.m_PersistentCalls.m_Calls.Array.size
       value: 1
