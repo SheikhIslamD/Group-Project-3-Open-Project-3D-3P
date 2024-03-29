@@ -19,7 +19,7 @@ public class CameraBoundry : MonoBehaviour
     private new CameraMovement camera;
     private void Awake()
     {
-        camera = CameraMovement.Get();
+        camera = CameraMovement.instance;
         boundry = GetComponent<BoxCollider>();
         transform = base.transform;
     }

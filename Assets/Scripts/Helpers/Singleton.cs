@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //This Class is a Base Template for the Singleton Design pattern.
@@ -27,6 +25,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
             }
             else return _Instance; } }
     public static T Get() => instance;
+    public static T inst => instance;
     public static T i => instance;
     public static T single => instance;
 
@@ -120,5 +119,11 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
             else Destroy(true);
         @object.AddComponent<T>().Awake();
     }
+
+    /// <summary>
+    /// Use this method to place the instance of a singleton into a field.
+    /// </summary>
+    /// <param name="toInput">Place the field in this slot to fill it with the instance.</param>
+    public static void Get(ref T toInput) => toInput = instance;
 
 }

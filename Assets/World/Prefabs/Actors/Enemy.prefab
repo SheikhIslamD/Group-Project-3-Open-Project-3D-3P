@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6988335161977812351}
   - component: {fileID: 5389295469971958785}
   - component: {fileID: 454717146300430909}
+  - component: {fileID: 1098554619454024640}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -60,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e44435275258ef4cb95d58a35713d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  registered: 0
 --- !u!23 &7445353676380511725
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -212,3 +214,24 @@ MonoBehaviour:
   damage: 20
   type: 0
   deactivateOnHit: 0
+  deactivateOnHitWithHealth: 0
+  useCollider: 1
+  useTrigger: 1
+--- !u!114 &1098554619454024640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433244943992021922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bae0168d533ec44bbc8cb389520f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  clips:
+  - {fileID: 0}
+  clipNames:
+  - Death
+  soundID: 0

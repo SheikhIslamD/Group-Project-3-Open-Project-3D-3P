@@ -5,16 +5,7 @@ using UnityEngine.AI;
 
 public class Pauseable : MonoBehaviour
 {
-    public bool isPaused { get; private set; }
-    //[SerializeField] PauseableBehavior<MonoBehaviour>[] pauseableBehaviors;
-    //[SerializeField] string pauseCommand = "OnPause";
-    //[SerializeField] string unPauseCommand = "OnUnPause";
-    
-    private MonoBehaviour[] monos;
-    private Animator anim;
-    private NavMeshAgent nav;
-    private Rigidbody rb;
-
+    public bool paused { get; private set; }
 
     void Awake()
     {
@@ -22,40 +13,43 @@ public class Pauseable : MonoBehaviour
         getMonos.Remove(this);
         monos = getMonos.ToArray();
 
-        anim = GetComponent<Animator>();
-        nav = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+        navAgent = GetComponent<NavMeshAgent>();
+        rigidBody = GetComponent<Rigidbody>();
+        constForce = GetComponent<ConstantForce>();
     }
-
 
     public void SetPause(bool value)
     {
-        if (isPaused == value) return;
-        isPaused = value;
+        if (paused == value) return;
+        paused = value;
 
-        if (isPaused) SendMessage("OnPause", SendMessageOptions.DontRequireReceiver);
+        if (paused) SendMessage("OnPause", SendMessageOptions.DontRequireReceiver);
 
-        for (int i = 0; i < monos.Length; i++) monos[i].enabled = !isPaused;
+        for (int i = 0; i < monos.Length; i++) monos[i].enabled = !paused;
 
-        if (!isPaused) SendMessage("OnUnPause", SendMessageOptions.DontRequireReceiver);
+        if (!paused) SendMessage("OnUnPause", SendMessageOptions.DontRequireReceiver);
 
-        HandleComponent(anim);
-        HandleComponent(nav);
-        HandleComponent(rb);
+        HandleComponent(animator);
+        HandleComponent(navAgent);
+        HandleComponent(constForce);
+        HandleComponent(rigidBody);
 
     }
-    public void Pause()   => SetPause(true);
-    public void UnPause() => SetPause(false);
-    public void TogglePause() => SetPause(!isPaused);  
+    public void Pause()         => SetPause(true);
+    public void UnPause()       => SetPause(false);
+    public void TogglePause()   => SetPause(!paused);  
+
+    private MonoBehaviour[] monos;
 
 
-
+    private Animator animator;
     private bool s_anim_enabled;
     private void HandleComponent(Animator anim)
     {
         if(anim == null) return;
 
-        if (isPaused)
+        if (paused)
         {
             s_anim_enabled = anim.enabled;
             anim.enabled = false;
@@ -67,22 +61,23 @@ public class Pauseable : MonoBehaviour
 
     }
 
+    private NavMeshAgent navAgent;
     private Vector3 s_nav_destination;
     private Vector3 s_nav_velocity;
     private void HandleComponent(NavMeshAgent nav)
     {
         if(nav == null) return;
 
-        if (isPaused)
+        if (paused)
         {
             s_nav_destination = nav.destination;
             s_nav_velocity = nav.velocity;
             nav.isStopped = true;
         }
 
-        nav.enabled = !isPaused;
+        nav.enabled = !paused;
 
-        if (!isPaused)
+        if (!paused)
         {
             nav.isStopped = false;
             nav.destination = s_nav_destination;
@@ -90,13 +85,14 @@ public class Pauseable : MonoBehaviour
         }
     }
 
+    private Rigidbody rigidBody;
     private Vector3 s_rb_velocity;
     private Vector3 s_rb_angularVelocity;
     private void HandleComponent(Rigidbody rb)
     {
         if(rb == null) return;
 
-        if (isPaused)
+        if (paused)
         {
             s_rb_velocity = rb.velocity;
             s_rb_angularVelocity = rb.angularVelocity;
@@ -113,12 +109,35 @@ public class Pauseable : MonoBehaviour
 
     }
 
+    private ConstantForce constForce;
+    private void HandleComponent(ConstantForce force)
+    {
+        if(force == null) return;
+        constForce.enabled = !paused;
+    }
 
-    private void OnEnable() => GameplayPauseManager.RegisterPausable(this);
-    private void OnDisable() => GameplayPauseManager.UnRegisterPausable(this);
-    private void OnDestroy() => GameplayPauseManager.UnRegisterPausable(this);
+
+    private void OnEnable() => Register();
+
+    private void OnDisable() => UnRegister();
+    private void OnDestroy() => UnRegister();
 
 
+    [HideInInspector] public bool registered;
+    public void Register()
+    {
+        if (registered) return;
+        if (!GameplayPauseManager.Get()) return;
+
+        GameplayPauseManager.RegisterPausable(this);
+    }
+    public void UnRegister()
+    {
+        if (!registered) return;
+        if (!GameplayPauseManager.Get()) return;
+
+        GameplayPauseManager.UnRegisterPausable(this);
+    }
 }
 
 /*
