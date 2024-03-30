@@ -223,9 +223,9 @@ namespace Vector3Helper
         public static Vector3 DirToRot(this Vector3 value) => Quaternion.LookRotation(value.normalized).eulerAngles;
         public static Vector3 RotToDir(this Vector3 value) => Quaternion.Euler(value) * Vector3.forward;
 
-        public static Vector3 Position(this Vector3 value) => new Position(value);
-        public static Vector3 Rotation(this Vector3 value) => new Rotation(value);
-        public static Vector3 Direction(this Vector3 value) => new Direction(value);
+        public static Position Position(this Vector3 value) => new Position(value);
+        public static Rotation Rotation(this Vector3 value) => new Rotation(value);
+        public static Direction Direction(this Vector3 value) => new Direction(value);
 
     }
 
