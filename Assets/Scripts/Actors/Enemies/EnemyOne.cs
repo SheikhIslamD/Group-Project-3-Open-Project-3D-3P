@@ -13,6 +13,7 @@ public class EnemyOne : MonoBehaviour
     {
         enemy=GetComponent<NavMeshAgent>();
         player=GameObject.FindWithTag("Player");
+        audioC=GetComponent<AudioCaller>();
     }
     void Update()
     {

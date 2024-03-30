@@ -241,6 +241,8 @@ MonoBehaviour:
   sprintSpeed: 9
   rotationSpeed: 720
   jumpSpeed: 5
+  dodgeSpeed: 20
+  dodgeTime: 0.25
   onHealthDeplete:
     m_PersistentCalls:
       m_Calls: []
