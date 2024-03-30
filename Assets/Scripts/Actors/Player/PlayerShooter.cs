@@ -35,7 +35,7 @@ public class PlayerShooter : MonoBehaviour
     void Update()
     {
         Vector3 end = transform.position;
-        Ray cameraRay = camera.ScreenPointToRay(Input.mousePosition);
+        Ray cameraRay = camera.ScreenPointToRay(input.aimOutput);
 
         RaycastHit firstHit;
         bool firstHitDidHit = Physics.Raycast(cameraRay, out firstHit, aimRaycastMaxDistance, aimRaycastLayerMask);
