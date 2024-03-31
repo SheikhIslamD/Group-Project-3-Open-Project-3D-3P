@@ -15,7 +15,7 @@ public class AudioCaller : MonoBehaviour
     {
         if (clips[soundID] == null)
         {
-            Debug.LogErrorFormat("Open sound slot {1} on {0} found, ensure to fill at some point.", gameObject, soundID);
+            Debug.LogWarningFormat("Open sound slot {1} on {0} found, ensure to fill at some point.", gameObject, soundID);
             return;
         }
         audioSource.PlayOneShot(clips[soundID]);
@@ -28,7 +28,7 @@ public class AudioCaller : MonoBehaviour
             {
                 if (clips[i] == null)
                 {
-                    Debug.LogErrorFormat("Open sound slot with intended name \"{1}\" on {0} found, ensure to fill at some point.", gameObject, soundName);
+                    Debug.LogWarningFormat("Open sound slot with intended name \"{1}\" on {0} found, ensure to fill at some point.", gameObject, soundName);
                     return;
                 }
 
@@ -36,7 +36,7 @@ public class AudioCaller : MonoBehaviour
                 return;
             }
         }
-        Debug.LogErrorFormat("No sound with name {0} found on {1}.", soundName, gameObject);
+        Debug.LogWarningFormat("No sound with name {0} found on {1}.", soundName, gameObject);
     }
 
     /* These ones are not very helpful so they're commented out.
