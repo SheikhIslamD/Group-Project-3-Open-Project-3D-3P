@@ -849,13 +849,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slashDistance: 2
-  slashTransform: {fileID: 1335604848}
   slashRadius: 2
   layerMask:
     serializedVersion: 2
     m_Bits: 256
   damage: 40
   slashEcho: {fileID: 1335604847}
+--- !u!114 &583452376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583452361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839b956eb834d41fa8cd8428386ba12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6
+  sprintSpeed: 9
+  rotationSpeed: 720
+  jumpSpeed: 5
+  dodgeSpeed: 12
+  dodgeTime: 0.4
+  onHealthDeplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &788130502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,4 +2744,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8086528477921505913, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 583452362}
+    - targetCorrespondingSourceObject: {fileID: 8086528477921505913, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 583452376}
   m_SourcePrefab: {fileID: 100100000, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
