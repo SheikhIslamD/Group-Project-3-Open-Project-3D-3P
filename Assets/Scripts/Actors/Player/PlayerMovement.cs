@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     Transform cameraTransform;
     AudioCaller audioC;
     Health health;
+    PlayerShooter shooter;
     
     //Data
     Vector3 movementDirection;
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         GameplayInputReader.Get(ref input);
         audioC = GetComponent<AudioCaller>();
         health = GetComponent<Health>();
+        shooter = GetComponent<PlayerShooter>();
     }
 
     void Update()
@@ -58,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             velocity = BasicMovement();
-            Rotation();
+            AimBasedRotation();
 
             if (input.sprint.WasPressedThisFrame() && input.movementVector2 != Vector2.zero) BeginDodge();
         }
@@ -108,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         return dodgeDirection * dodgeSpeed;
     }
 
-    void Rotation()
+    void MovementBasedRotation()
     {
         if (movementDirection != Vector3.zero)
         {
@@ -116,6 +118,13 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
+    }
+
+    void AimBasedRotation()
+    {
+        Quaternion toRotation = Quaternion.LookRotation(new Vector3(shooter.aimDirection.x, 0, shooter.aimDirection.z), transform.up);
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
     }
 
     void BeginDodge()
