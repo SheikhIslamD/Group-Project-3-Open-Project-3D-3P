@@ -13,9 +13,10 @@ public class Pauseable : MonoBehaviour
         getMonos.Remove(this);
         monos = getMonos.ToArray();
 
-        anim = GetComponent<Animator>();
-        nav = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+        navAgent = GetComponent<NavMeshAgent>();
+        rigidBody = GetComponent<Rigidbody>();
+        constForce = GetComponent<ConstantForce>();
     }
 
     public void SetPause(bool value)
@@ -29,9 +30,10 @@ public class Pauseable : MonoBehaviour
 
         if (!paused) SendMessage("OnUnPause", SendMessageOptions.DontRequireReceiver);
 
-        HandleComponent(anim);
-        HandleComponent(nav);
-        HandleComponent(rb);
+        HandleComponent(animator);
+        HandleComponent(navAgent);
+        HandleComponent(constForce);
+        HandleComponent(rigidBody);
 
     }
     public void Pause()         => SetPause(true);
@@ -41,7 +43,7 @@ public class Pauseable : MonoBehaviour
     private MonoBehaviour[] monos;
 
 
-    private Animator anim;
+    private Animator animator;
     private bool s_anim_enabled;
     private void HandleComponent(Animator anim)
     {
@@ -59,7 +61,7 @@ public class Pauseable : MonoBehaviour
 
     }
 
-    private NavMeshAgent nav;
+    private NavMeshAgent navAgent;
     private Vector3 s_nav_destination;
     private Vector3 s_nav_velocity;
     private void HandleComponent(NavMeshAgent nav)
@@ -83,7 +85,7 @@ public class Pauseable : MonoBehaviour
         }
     }
 
-    private Rigidbody rb;
+    private Rigidbody rigidBody;
     private Vector3 s_rb_velocity;
     private Vector3 s_rb_angularVelocity;
     private void HandleComponent(Rigidbody rb)
@@ -105,6 +107,13 @@ public class Pauseable : MonoBehaviour
             rb.angularVelocity = s_rb_angularVelocity;
         }
 
+    }
+
+    private ConstantForce constForce;
+    private void HandleComponent(ConstantForce force)
+    {
+        if(force == null) return;
+        constForce.enabled = !paused;
     }
 
 

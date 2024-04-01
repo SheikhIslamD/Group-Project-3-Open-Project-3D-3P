@@ -9,7 +9,9 @@ public class Health : MonoBehaviour
     public enum DamageType { Generic, Melee, Projectile }
     [System.Flags]
     public enum EntityType { Player, Enemy, Boss, Object, Other }
-    
+
+    public bool damagable = true;
+
     public int maxHealth { get; private set; } = 100;
     public int currentHealth { get; private set; } = 100;
     [SerializeField] public EntityType entityType;
@@ -23,6 +25,8 @@ public class Health : MonoBehaviour
 
     public void Damage(int amount, DamageType type)
     {
+        if (!damagable) return;
+
         currentHealth -= amount;
 
         SendMessage(onDamageMessage);
@@ -51,6 +55,6 @@ public class Health : MonoBehaviour
 
     }
 
-    new void SendMessage(string name) { if (name != null) gameObject.SendMessage(name, SendMessageOptions.DontRequireReceiver); }
+    new void SendMessage(string name) { if (name != null) SendMessage(name, SendMessageOptions.DontRequireReceiver); }
 
 }

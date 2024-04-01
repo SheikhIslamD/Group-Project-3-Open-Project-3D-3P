@@ -1,32 +1,141 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using Vector3Helper;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Parameters
     [SerializeField] float speed = 6.0f;
-    [SerializeField] float jumpSpeed = 8.0f;
-    [SerializeField] float gravity = 20.0F;
-    [SerializeField] float rotateSpeed = 3.0f;
-    private Vector3 moveDirection = Vector3.zero;
+    [SerializeField] float sprintSpeed = 9.0f;
+    [SerializeField] float rotationSpeed = 720.0f;
+    [SerializeField] float jumpSpeed = 5.0f;
+    [SerializeField] float dodgeSpeed = 12.0f;
+    [SerializeField] float dodgeTime = 0.4f;
+    [SerializeField] UnityEvent onHealthDeplete;
+
+    //Connections
     GameplayInputReader input;
+    CharacterController characterController;
+    Transform cameraTransform;
+    AudioCaller audioC;
+    Health health;
+    PlayerShooter shooter;
+    
+    //Data
+    Vector3 movementDirection;
+    float movementMagnitude;
+    float ySpeed;
+    float originalStepOffset;
+    float dodgeTimeLeft;
+    Vector3 dodgeDirection;
 
     void Start()
     {
-        input = GameplayInputReader.instance;
+        characterController = GetComponent<CharacterController>();
+        originalStepOffset = characterController.stepOffset;
+        cameraTransform = Camera.main.transform;
+        GameplayInputReader.Get(ref input);
+        audioC = GetComponent<AudioCaller>();
+        health = GetComponent<Health>();
+        shooter = GetComponent<PlayerShooter>();
     }
+
     void Update()
     {
-        CharacterController controller = GetComponent<CharacterController>();
-        if (controller.isGrounded)
+        MovementDirection();
+
+        Vector3 velocity;
+
+        if (dodgeTimeLeft > 0)
         {
-            moveDirection = input.movementVector2;
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
-            if (Input.GetButton("Jump"))
-                moveDirection.y = jumpSpeed;
+            dodgeTimeLeft -= Time.deltaTime;
+            if (dodgeTimeLeft <= 0)
+            {
+                dodgeTimeLeft = 0;
+                health.damagable = true;
+            }
+
+            velocity = DodgeMovement();
         }
-        moveDirection.y -= gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime);
+        else
+        {
+            velocity = BasicMovement();
+            AimBasedRotation();
+
+            if (input.sprint.WasPressedThisFrame() && input.movementVector2 != Vector2.zero) BeginDodge();
+        }
+
+        characterController.Move(velocity * Time.deltaTime);
+
     }
+
+    void MovementDirection()
+    {
+        movementDirection = new Vector3(input.movementVector2.x, 0, input.movementVector2.y);
+        movementDirection = movementDirection.Direction().Rotate(cameraTransform.eulerAngles.y, Direction.up);
+
+        movementMagnitude = Mathf.Clamp01(movementDirection.magnitude);
+        movementDirection.Normalize();
+    }
+
+    Vector3 BasicMovement()
+    {
+        Vector3 velocity = movementDirection * movementMagnitude * speed;
+
+        ySpeed += Physics.gravity.y * Time.deltaTime;
+
+        if (characterController.isGrounded)
+        {
+            characterController.stepOffset = originalStepOffset;
+            ySpeed = -0.5f;
+
+            if (input.jump.WasPressedThisFrame())
+            {
+                audioC.PlaySound("Jump");
+                ySpeed = jumpSpeed;
+            }
+        }
+        else
+        {
+            characterController.stepOffset = 0;
+        }
+
+        velocity.y = ySpeed;
+
+        return velocity;
+    }
+
+    Vector3 DodgeMovement()
+    {
+        return dodgeDirection * dodgeSpeed;
+    }
+
+    void MovementBasedRotation()
+    {
+        if (movementDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    void AimBasedRotation()
+    {
+        Quaternion toRotation = Quaternion.LookRotation(new Vector3(shooter.aimDirection.x, 0, shooter.aimDirection.z), transform.up);
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    void BeginDodge()
+    {
+        dodgeTimeLeft = dodgeTime;
+        dodgeDirection = movementDirection;
+        health.damagable = false;
+
+    }
+
+
+    void OnDeplete() => onHealthDeplete?.Invoke();
+
 }

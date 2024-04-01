@@ -15,11 +15,14 @@ public class PlayerCooking : MonoBehaviour
     int currentFish;
     int currentSeaweed;
 
+    AudioCaller audioC;
+
 
     void Start()
     {
         input = GameplayInputReader.instance;
         health = GetComponent<Health>();
+        audioC = GetComponent<AudioCaller>();
 
     }
 
@@ -42,6 +45,7 @@ public class PlayerCooking : MonoBehaviour
 
     void Heal()
     {
+        audioC.PlaySound("Cook");
         if (health.currentHealth >= health.maxHealth) return;
 
         if(currentRice > 1 && currentFish > 0 && currentSeaweed > 0)
