@@ -3,47 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyTwo : MonoBehaviour
+public class EnemyRanged : EnemyBase
 {
-    public NavMeshAgent enemy;
-    public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+    //Config
+    public LayerMask whatIsGround;
     public float timeBetweenAttacks;
     public float attackRange;
-    public bool playerInAttackRange;
+    
+    //Connections
+    public NavMeshAgent navAgent;
     ObjectPool pool;
-    AudioCaller audioC;
 
+    //Data
     float timeLeftBeforeAttack;
-
-    void Start()
-    {
-        audioC = GetComponent<AudioCaller>();
-    }
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        enemy = GetComponent<NavMeshAgent>();
+        navAgent = GetComponent<NavMeshAgent>();
         pool = GetComponent<ObjectPool>();
         timeLeftBeforeAttack = timeBetweenAttacks;
     }
     
     private void Update()
     {
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        if (!playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange) AttackPlayer();
+        if (distanceFromPlayer < attackRange) AttackPlayer();
+        else ChasePlayer();
     }
 
     private void ChasePlayer()
     {
-        enemy.SetDestination(player.position);
+        navAgent.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
-        enemy.SetDestination(transform.position);
+        navAgent.SetDestination(transform.position);
         transform.LookAt(player);
 
         if(timeLeftBeforeAttack > 0)
@@ -53,8 +48,8 @@ public class EnemyTwo : MonoBehaviour
         else
         {
             audioC.PlaySound("Attack");
-            PoolableObject sphere = pool.Pump();
-            sphere.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
+            PoolableObject bullet = pool.Pump();
+            bullet.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
 
             /*
             sphere.gameObject.SetActive(true);
@@ -69,14 +64,6 @@ public class EnemyTwo : MonoBehaviour
             timeLeftBeforeAttack = timeBetweenAttacks;
         }
 
-    }
-
-
-    void OnDeplete()
-    {
-        audioC.PlaySound("Death");
-        GetComponent<LootBag>().DropLoot(transform.position);
-        Destroy(gameObject);
     }
 }
 
