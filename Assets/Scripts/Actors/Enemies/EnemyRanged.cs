@@ -6,9 +6,10 @@ using UnityEngine.AI;
 public class EnemyRanged : EnemyBase
 {
     //Config
-    public LayerMask whatIsGround;
+    public LayerMask whatIsGround, whatIsPlayer;
     public float timeBetweenAttacks;
-    public float attackRange;
+    public float sightRange, attackRange;
+    private bool inSightRange, inAttackRange;
     
     //Connections
     public NavMeshAgent navAgent;
@@ -27,8 +28,17 @@ public class EnemyRanged : EnemyBase
     
     private void Update()
     {
-        if (distanceFromPlayer < attackRange) AttackPlayer();
-        else ChasePlayer();
+        inSightRange = distanceFromPlayer < sightRange;
+        inAttackRange = distanceFromPlayer < attackRange;
+
+        if (!inSightRange && !inAttackRange) Idle();
+        if (inSightRange && !inAttackRange) ChasePlayer();
+        if (inSightRange && inAttackRange) AttackPlayer();
+    }
+
+    private void Idle()
+    {
+
     }
 
     private void ChasePlayer()

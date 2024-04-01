@@ -9,6 +9,8 @@ public class EnemyMelee : EnemyBase
     [SerializeField] float attackRange;
     [SerializeField] float attackRate;
     [SerializeField] int attackDamage;
+    public float sightRange, fightRange;
+    private bool inSightRange, inAttackRange;
 
     //Connections
     NavMeshAgent navAgent;
@@ -23,6 +25,21 @@ public class EnemyMelee : EnemyBase
     }
     void Update()
     {
+        inSightRange = distanceFromPlayer < sightRange;
+        inAttackRange = distanceFromPlayer < fightRange;
+
+        if (!inSightRange && !inAttackRange) Idle();
+        if (inSightRange) Chase();
+        
+    }
+
+    void Idle()
+    {
+
+    }
+
+    void Chase()
+    {
         navAgent.SetDestination(player.transform.position);
 
         attackTimer += Time.deltaTime;
@@ -32,9 +49,8 @@ public class EnemyMelee : EnemyBase
             attackTimer = 0;
             if (distanceFromPlayer < attackRange) Attack();
         }
-
     }
-    
+
     void Attack()
     {
         player.GetComponent<Health>().Damage(attackDamage, Health.DamageType.Melee);
