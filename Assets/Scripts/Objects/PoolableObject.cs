@@ -40,6 +40,7 @@ public class PoolableObject : MonoBehaviour{
         onDeactivate(this);
         if(deactivateGameObject) gameObject.SetActive(false);
 
+        if(pool == null) Destroy(gameObject);
     }
     void OnDisable() => Disable();
 

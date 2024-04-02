@@ -204,14 +204,23 @@ namespace Vector3Helper
         }
 
         public Direction Rotate(float amount, Vector3 axis) => Quaternion.AngleAxis(amount, axis) * value;
+        public Direction RotateTo(Direction towards, Direction reference) => Quaternion.FromToRotation(reference, towards) * value;
 
-        public static Direction up =      Vector3.up;
-        public static Direction down =    Vector3.down;
-        public static Direction right =   Vector3.right;
-        public static Direction left =    Vector3.left;
+
+
+        public static Direction up = Vector3.up;
+        public static Direction down = Vector3.down;
+        public static Direction right = Vector3.right;
+        public static Direction left = Vector3.left;
         public static Direction forward = Vector3.forward;
-        public static Direction back =    Vector3.back;
+        public static Direction front = Vector3.forward;
+        public static Direction back = Vector3.back;
+        public static Direction one = Vector3.one;
+        public static Direction zero = Vector3.zero;
 
+        public static Direction XY = Vector3.right + Vector3.up;
+        public static Direction YZ = Vector3.up + Vector3.forward;
+        public static Direction XZ = Vector3.right + Vector3.forward;
 
     }
 
@@ -226,6 +235,9 @@ namespace Vector3Helper
         public static Position Position(this Vector3 value) => new Position(value);
         public static Rotation Rotation(this Vector3 value) => new Rotation(value);
         public static Direction Direction(this Vector3 value) => new Direction(value);
+
+        public static Vector2 XYZToXZ(this Vector3 value) => new Vector2(value.x, value.z);
+        public static Vector3 XZToXYZ(this Vector2 value) => new Vector3(value.x, 0, value.y);
 
     }
 

@@ -26,7 +26,17 @@ public class ObjectPool : MonoBehaviour
     private int currentSelection = 0;
     private bool initialized;
     
-    
+    public static ObjectPool Create(GameObject @object, PoolableObject prefabObject, int defaultPoolDepth, bool canGrow = true, Transform parent = null, float autoDisableTime = -1, bool deleteObjectsOnDestroy = true)
+    {
+        ObjectPool pool = @object.AddComponent<ObjectPool>();
+        pool.prefabObject = prefabObject;
+        pool.defaultPoolDepth = defaultPoolDepth;
+        pool.canGrow = canGrow;
+        pool.parent = parent;
+        pool.autoDisableTime = autoDisableTime;
+
+        return pool;
+    }
     
     
     void OnEnable() => Initialize();
@@ -97,9 +107,13 @@ public class ObjectPool : MonoBehaviour
 
     private void OnDestroy()
     {
-        for (int i = 0; i < poolList.Count; i++) Destroy(poolList[i]);
+        for (int i = 0; i < poolList.Count; i++)
+        {
+            poolList[i].onDeactivate -= OnDeActivate;
+            if(deleteObjectsOnDestroy) Destroy(poolList[i]);
+        }
         poolList.Clear();
     }
 
-
+    public int ActiveObjects() => currentActiveObjects;
 }

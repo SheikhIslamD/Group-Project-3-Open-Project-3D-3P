@@ -24,6 +24,8 @@ public class EnemyBase : MonoBehaviour
     {
         audioC.PlaySound("Death");
         GetComponent<LootBag>()?.DropLoot(transform.position);
-        Destroy(gameObject);
+        PoolableObject pooled = GetComponent<PoolableObject>();
+        if (pooled != null) pooled.Disable();
+        else Destroy(gameObject);
     }
 }

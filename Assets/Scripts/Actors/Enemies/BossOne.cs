@@ -1,54 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class EnemyRanged : EnemyBase
+public class BossOne : MonoBehaviour
 {
-    //Config
+    public UnityEngine.AI.NavMeshAgent enemy;
+    public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public float timeBetweenAttacks;
-    public float sightRange, attackRange;
-    private bool inSightRange, inAttackRange;
-    
-    //Connections
-    public NavMeshAgent navAgent;
+    public float attackRange;
+    public bool playerInAttackRange;
     ObjectPool pool;
 
-    //Data
     float timeLeftBeforeAttack;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        navAgent = GetComponent<NavMeshAgent>();
+        enemy = GetComponent<UnityEngine.AI.NavMeshAgent>();
         pool = GetComponent<ObjectPool>();
         timeLeftBeforeAttack = timeBetweenAttacks;
     }
     
     private void Update()
     {
-        inSightRange = distanceFromPlayer < sightRange;
-        inAttackRange = distanceFromPlayer < attackRange;
-
-        if (!inSightRange && !inAttackRange) Idle();
-        if (inSightRange && !inAttackRange) ChasePlayer();
-        if (inSightRange && inAttackRange) AttackPlayer();
-    }
-
-    private void Idle()
-    {
-
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if (!playerInAttackRange) ChasePlayer();
+        if (playerInAttackRange) AttackPlayer();
     }
 
     private void ChasePlayer()
     {
-        navAgent.SetDestination(player.position);
+        enemy.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
-        navAgent.SetDestination(transform.position);
+        enemy.SetDestination(transform.position);
         transform.LookAt(player);
 
         if(timeLeftBeforeAttack > 0)
@@ -57,9 +45,8 @@ public class EnemyRanged : EnemyBase
         }
         else
         {
-            audioC.PlaySound("Attack");
-            PoolableObject bullet = pool.Pump();
-            bullet.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
+            PoolableObject sphere = pool.Pump();
+            sphere.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
 
             /*
             sphere.gameObject.SetActive(true);
@@ -75,5 +62,10 @@ public class EnemyRanged : EnemyBase
         }
 
     }
-}
 
+    void OnDeplete()
+    {
+        GetComponent<LootBag>().DropLoot(transform.position);
+        Destroy(gameObject);
+    }
+}
