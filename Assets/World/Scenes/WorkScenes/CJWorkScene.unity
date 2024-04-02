@@ -849,7 +849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slashDistance: 2
-  slashTransform: {fileID: 1335604848}
   slashRadius: 2
   layerMask:
     serializedVersion: 2

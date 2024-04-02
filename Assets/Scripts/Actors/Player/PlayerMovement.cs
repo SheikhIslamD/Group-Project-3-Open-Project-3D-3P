@@ -5,8 +5,7 @@ using Vector3Helper;
 public class PlayerMovement : MonoBehaviour
 {
     //Parameters
-    [SerializeField] float speed = 6.0f;
-    [SerializeField] float sprintSpeed = 9.0f;
+    [SerializeField] public float speed = 6.0f;
     [SerializeField] float rotationSpeed = 720.0f;
     [SerializeField] float jumpSpeed = 5.0f;
     [SerializeField] float dodgeSpeed = 12.0f;
@@ -28,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     float originalStepOffset;
     float dodgeTimeLeft;
     Vector3 dodgeDirection;
+    [HideInInspector] public Vector3 movementVelocity;
 
     void Start()
     {
@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
             if (input.sprint.WasPressedThisFrame() && input.movementVector2 != Vector2.zero) BeginDodge();
         }
 
+        movementVelocity = velocity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
     }
@@ -122,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
 
     void AimBasedRotation()
     {
-        Quaternion toRotation = Quaternion.LookRotation(new Vector3(shooter.aimDirection.x, 0, shooter.aimDirection.z), transform.up);
+        Quaternion toRotation = Quaternion.LookRotation(shooter.aimDirection * Direction.XZ, transform.up);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
     }
