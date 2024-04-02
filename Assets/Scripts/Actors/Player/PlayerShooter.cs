@@ -13,6 +13,7 @@ public class PlayerShooter : MonoBehaviour
     ObjectPool pool;
 
     Collider backCollider;
+    AudioCaller audioC;
     [SerializeField] LayerMask aimRaycastLayerMask;
     [SerializeField] float aimRaycastMaxDistance;
     [SerializeField] float knifeSpeed;
@@ -28,12 +29,13 @@ public class PlayerShooter : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         backCollider = FindFirstObjectByType<CameraMovement>().backCollider.GetComponent<Collider>();
         pool = GetComponent<ObjectPool>();
+        audioC = GetComponent<AudioCaller>();
     }
 
     void Update()
     {
         Vector3 end = transform.position;
-        Ray cameraRay = camera.ScreenPointToRay(Input.mousePosition);
+        Ray cameraRay = camera.ScreenPointToRay(input.aimOutput);
 
         RaycastHit firstHit;
         bool firstHitDidHit = Physics.Raycast(cameraRay, out firstHit, aimRaycastMaxDistance, aimRaycastLayerMask);
@@ -62,6 +64,7 @@ public class PlayerShooter : MonoBehaviour
 
     void ShootKnife(Vector3 direction)
     {
+        audioC.PlaySound("Shoot");
         PoolableObject knife = pool.Pump();
         knife.Prepare_Basic(transform.position, Quaternion.FromToRotation(Vector3.up, direction).eulerAngles, Vector3.up * knifeSpeed);
 

@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class EnemyTwo : MonoBehaviour
+public class BossOne : MonoBehaviour
 {
-    public NavMeshAgent enemy;
+    public UnityEngine.AI.NavMeshAgent enemy;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
     public float timeBetweenAttacks;
@@ -18,7 +17,7 @@ public class EnemyTwo : MonoBehaviour
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
-        enemy = GetComponent<NavMeshAgent>();
+        enemy = GetComponent<UnityEngine.AI.NavMeshAgent>();
         pool = GetComponent<ObjectPool>();
         timeLeftBeforeAttack = timeBetweenAttacks;
     }
@@ -64,11 +63,9 @@ public class EnemyTwo : MonoBehaviour
 
     }
 
-
     void OnDeplete()
     {
         GetComponent<LootBag>().DropLoot(transform.position);
         Destroy(gameObject);
     }
 }
-
