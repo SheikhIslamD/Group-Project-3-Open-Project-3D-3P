@@ -25,7 +25,7 @@ public class CameraMovement : Singleton<CameraMovement>
 
     private void Start()
     {
-        defaultPath = currentPath;
+        currentPath = defaultPath;
     }
 
     private void Update()
