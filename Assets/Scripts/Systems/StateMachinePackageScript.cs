@@ -213,7 +213,7 @@ namespace StateMachineSLS
         /// </summary>
         public class StateBase
         {
-            public MonoBehaviour owner;
+            protected MonoBehaviour owner;
 
             public StateBase(MonoBehaviour owner) => this.owner = owner;
 
