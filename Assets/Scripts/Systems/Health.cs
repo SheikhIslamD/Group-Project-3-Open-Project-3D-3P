@@ -12,8 +12,8 @@ public class Health : MonoBehaviour
 
     public bool damagable = true;
 
-    public int maxHealth { get; private set; } = 100;
-    public int currentHealth { get; private set; } = 100;
+    [SerializeField] int maxHealth = 100;
+    [SerializeField] int currentHealth = 100;
     [SerializeField] public EntityType entityType;
 
     //Messages
@@ -56,5 +56,8 @@ public class Health : MonoBehaviour
     }
 
     new void SendMessage(string name) { if (name != null) SendMessage(name, SendMessageOptions.DontRequireReceiver); }
+
+    public int GetCurrentHealth() => currentHealth;
+    public int GetMaxHealth() => maxHealth;
 
 }

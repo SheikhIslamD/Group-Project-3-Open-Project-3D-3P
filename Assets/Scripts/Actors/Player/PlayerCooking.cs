@@ -46,7 +46,7 @@ public class PlayerCooking : MonoBehaviour
     void Heal()
     {
         audioC.PlaySound("Cook");
-        if (health.currentHealth >= health.maxHealth) return;
+        if (health.GetCurrentHealth() >= health.GetMaxHealth()) return;
 
         if(currentRice > 1 && currentFish > 0 && currentSeaweed > 0)
         {
@@ -60,6 +60,6 @@ public class PlayerCooking : MonoBehaviour
 
     void OnHealthUpdate()
     {
-        HUDUIManager.i.UpdateHealth(health.currentHealth);
+        HUDUIManager.i.UpdateHealth(health.GetCurrentHealth());
     }
 }
