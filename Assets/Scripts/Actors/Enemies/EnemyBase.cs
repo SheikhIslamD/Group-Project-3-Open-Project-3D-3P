@@ -8,7 +8,7 @@ public class EnemyBase : MonoBehaviour
     //Connections
     protected new Transform transform;
     protected Transform player;
-    protected AudioCaller audioC;
+    protected new AudioCaller audio;
 
     //Data
     protected float distanceFromPlayer => Vector3.Distance(transform.position, player.position);
@@ -17,12 +17,12 @@ public class EnemyBase : MonoBehaviour
     {
         transform = GetComponent<Transform>();
         player = GameObject.Find("Player").transform;
-        audioC = GetComponent<AudioCaller>();
+        audio = GetComponent<AudioCaller>();
     }
 
     protected virtual void OnDeplete()
     {
-        audioC.PlaySound("Death");
+        audio.PlaySound("Death");
         GetComponent<LootBag>()?.DropLoot(transform.position);
         PoolableObject pooled = GetComponent<PoolableObject>();
         if (pooled != null) pooled.Disable();

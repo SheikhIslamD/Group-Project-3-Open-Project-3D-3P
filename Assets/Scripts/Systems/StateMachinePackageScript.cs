@@ -74,10 +74,14 @@ namespace StateMachineSLS
     public abstract class StateMachine
     {
         public MonoBehaviour owner;
-        public StateMachine(MonoBehaviour owner)
+
+        public static T Create<T>(MonoBehaviour owner) where T : StateMachine
         {
-            this.owner = owner;
-            InitializeStates();
+            T machine = default;
+            machine.owner = owner;
+            machine.InitializeStates();
+            machine.OnInitialize();
+            return machine;
         }
 
         /// <summary>
@@ -159,7 +163,7 @@ namespace StateMachineSLS
         {
             return stateObjectRefs[(int)state];
         }
-        
+
 
 
         private List<StateBase> stateObjectRefs = new List<StateBase>();
@@ -168,16 +172,23 @@ namespace StateMachineSLS
         /// Registers a newly created state with the List of States. Make sure to call in the same order as the State IDs are listed in the State ID Enum.
         /// </summary>
         /// <param name="newState"> The newly created State. Has to be created using a constructor like so "new STATECLASSNAME(owner)"</param>
-        protected void RegisterState(StateBase newState)=> stateObjectRefs.Add(newState);
+        protected void RegisterState<T>() where T : StateBase
+        {
+            T newState = default;
+            newState.owner = owner;
+            newState.machine = this;
+            newState.OnInitialize();
+            stateObjectRefs.Add(newState);
+        }
 
         /// <summary>
         /// This changes the state from one state to another. Running OnExitState() on the previous State and OnEnterState() on the new State.
         /// </summary>
         /// <param name="state">The State (ID Enum) that you wish to switch to.</param>
-        public void ChangeState(State state)
+        public void ChangeState(int state)
         {
             CurrentStateOB().OnExitState();
-            currentStateID = state;
+            currentStateID = (State)state;
             CurrentStateOB().OnEnterState();
         }
         /// <summary>
@@ -185,49 +196,58 @@ namespace StateMachineSLS
         /// </summary>
         /// <param name="state">The State (ID Enum) that you wish to switch to.</param>
         /// <returns> the State Object of the new state activated. </returns>
-        public StateBase ChangeStateReturn(State state)
+        public StateBase ChangeStateReturn(int state)
         {
             CurrentStateOB().OnExitState();
-            currentStateID = state;
+            currentStateID = (State)state;
             CurrentStateOB().OnEnterState();
             return CurrentStateOB();
         }
 
         /// <summary>
-        /// Runs the Update function of whichever State is currently running. I can't really imagine where else you'd use this besides Unity's Update function.
+        /// Runs upon creation of the StateMachine after InitializeStates.
         /// </summary>
-        public void Update() => CurrentStateOB().Update();
+        public virtual void OnInitialize() { }
         /// <summary>
-        /// Runs the FixedUpdate function of whichever State is currently running. I can't really imagine where else you'd use this besides Unity's FixedUpdate function.
+        /// The Update for the StateMachine. Runs the Update function of whichever State is currently running.<para />
+        /// IMPORTANT: If Overridden, call base.Update(); at some point during, or else the equivilent method on the current State won't run.
         /// </summary>
-        public void FixedUpdate() => CurrentStateOB().FixedUpdate();
+        public virtual void Update() => CurrentStateOB().Update();
+        /// <summary>
+        /// The FixedUpdate for the StateMachine. Runs the FixedUpdate function of whichever State is currently running.<para />
+        /// IMPORTANT: If Overridden, call base.FixedUpdate(); at some point during, or else the equivilent method on the current State won't run.
+        /// </summary>
+        public virtual void FixedUpdate() => CurrentStateOB().FixedUpdate();
 
 
 
 
 
-        
+
 
         /// <summary>
         /// The base State for a State Machine. If you use this as an actual state in your state machine, it's equivilent to having a dummy state that does literally nothing.
         /// </summary>
         public class StateBase
         {
-            protected MonoBehaviour owner;
+            public MonoBehaviour owner;
+            public StateMachine machine;
 
-            public StateBase(MonoBehaviour owner) => this.owner = owner;
-
+            public virtual void OnInitialize() { }
             public virtual void OnEnterState() { }
             public virtual void Update() { }
             public virtual void FixedUpdate() { }
             public virtual void OnExitState() { }
         }
 
+        /*
         ExampleState _exampleState;
         public class ExampleState : StateBase
         {
-            public ExampleState(MonoBehaviour owner) : base(owner) { }
+
         }
+         */
+
 
 
 
