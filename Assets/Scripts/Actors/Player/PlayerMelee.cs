@@ -45,8 +45,7 @@ public class PlayerMelee : MonoBehaviour
 
             if (hit.collider == null) return;
 
-            Health health = hit.collider.GetComponent<Health>();
-            if (health != null) health.Damage(damage, Health.DamageType.Melee);
+            hit.collider.GetComponent<Health>()?.Damage(damage, Health.DamageType.Melee, this);
 
             ReflectableProjectile reflect = hit.collider.GetComponent<ReflectableProjectile>();
             if (reflect != null)

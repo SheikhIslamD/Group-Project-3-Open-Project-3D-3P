@@ -71,11 +71,11 @@ namespace StateMachineSLS
     /// <summary>
     /// Custom State Machine system designed by StarLightShadows.
     /// </summary>
-    public abstract class StateMachine
+    public abstract class StateMachine<O> where O : MonoBehaviour
     {
-        public MonoBehaviour owner;
+        public O owner;
 
-        public static T Create<T>(MonoBehaviour owner) where T : StateMachine
+        public static T Create<T>(O owner) where T : StateMachine<O>
         {
             T machine = default;
             machine.owner = owner;
@@ -84,10 +84,6 @@ namespace StateMachineSLS
             return machine;
         }
 
-        /// <summary>
-        /// The ID Enum collection for this state machine. Make sure to setup InitializeStates() identically to this.
-        /// </summary>
-        public enum State { ExampleState }
         /// <summary>
         /// Initializer for the possible States of this State Machine. Necessary to set up correctly. See Tutorial for Information. (In Script File above Implementation.)
         /// </summary>
@@ -100,7 +96,7 @@ namespace StateMachineSLS
         /// <summary>
         /// The current state (ID Enum) of this state machine. Use this for comparisons.
         /// </summary>
-        public State currentStateID;
+        public int currentStateID;
 
         /// <summary>
         /// Returns the current State (Object) of this state machine. Cast this to the different State Types and use for finer control over the States' sub-conditions. 
@@ -112,9 +108,9 @@ namespace StateMachineSLS
         /// </summary> 
         /// <typeparam name="T">The specific State Type. (Returns null if State is not Active.)</typeparam>
         /// <returns> NULL if the States have been set up incorrectly OR the State specified in Parameters is not active. </returns>
-        public StateBase CurrentStateOB<T>()
+        public T CurrentStateOB<T>() where T : StateBase
         {
-            StateBase _currentStateObject = stateObjectRefs[(int)currentStateID];
+            T _currentStateObject = (T)stateObjectRefs[(int)currentStateID];
             if (_currentStateObject.GetType() != typeof(T)) return null;
             return _currentStateObject;
         }
@@ -123,7 +119,7 @@ namespace StateMachineSLS
         /// </summary> 
         /// <param name="state"> The specific State Object you are trying to recieve. (ID Enum.) (Returns null if State is not Active.) </param>
         /// <returns> NULL if the States have been set up incorrectly OR the State specified in Parameters is not active. </returns>
-        public StateBase CurrentStateOB(State state)
+        public StateBase CurrentStateOB(int state)
         {
             if (state != currentStateID) return null;
             return stateObjectRefs[(int)currentStateID];
@@ -134,9 +130,9 @@ namespace StateMachineSLS
         /// <typeparam name="T">The specific State Type. (Returns null if State is not Active.)</typeparam>
         /// <param name="state"> The specific State Object you are trying to recieve. (ID Enum.) (Returns null if State is not Active.) </param>
         /// <returns> NULL if the States have been set up incorrectly OR the State specified in Parameters is not active. </returns>
-        public StateBase CurrentStateOB<T>(State state)
+        public T CurrentStateOB<T>(int state) where T : StateBase
         {
-            StateBase _currentStateObject = stateObjectRefs[(int)currentStateID];
+            T _currentStateObject = (T)stateObjectRefs[(int)currentStateID];
             if (state != currentStateID || state.GetType() != typeof(T)) return null;
             return _currentStateObject;
         }
@@ -146,11 +142,11 @@ namespace StateMachineSLS
         /// </summary>
         /// <typeparam name="T">The State Type you are asking for.</typeparam>
         /// <returns>The State (Object) of Type T. (Assuming you set up InitializeStates() correctly, of course.)</returns>
-        public StateBase GetState<T>()
+        public T GetState<T>() where T : StateBase
         {
             for (int i = 0; i < stateObjectRefs.Count; i++)
             {
-                if (stateObjectRefs[i].GetType() == typeof(T)) return stateObjectRefs[i];
+                if (stateObjectRefs[i].GetType() == typeof(T)) return (T)stateObjectRefs[i];
             }
             return null;
         }
@@ -159,7 +155,7 @@ namespace StateMachineSLS
         /// </summary>
         /// <param name="state">The specific State Object you are trying to recieve. (ID Enum.)</param>
         /// <returns>The State (Object) based on the State (ID Enum) given. (Assuming you set up InitializeStates() correctly, of course.)</returns>
-        public StateBase GetState(State state)
+        public StateBase GetState(int state)
         {
             return stateObjectRefs[(int)state];
         }
@@ -185,21 +181,28 @@ namespace StateMachineSLS
         /// This changes the state from one state to another. Running OnExitState() on the previous State and OnEnterState() on the new State.
         /// </summary>
         /// <param name="state">The State (ID Enum) that you wish to switch to.</param>
-        public void ChangeState(int state)
+        /// <returns> the State Object of the new state activated. </returns>
+        public StateBase ChangeState(int state)
         {
             CurrentStateOB().OnExitState();
-            currentStateID = (State)state;
+            currentStateID = state;
             CurrentStateOB().OnEnterState();
+            return CurrentStateOB();
         }
         /// <summary>
         /// This changes the state from one state to another. Running OnExitState() on the previous State and OnEnterState() on the new State.
         /// </summary>
-        /// <param name="state">The State (ID Enum) that you wish to switch to.</param>
+        /// <typeparam name="T">The State Type you wish to switch to.</param>
         /// <returns> the State Object of the new state activated. </returns>
-        public StateBase ChangeStateReturn(int state)
+        public StateBase ChangeState<T>()
         {
             CurrentStateOB().OnExitState();
-            currentStateID = (State)state;
+            for (int i = 0; i < stateObjectRefs.Count; i++)
+                if (stateObjectRefs[i].GetType() == typeof(T))
+                {
+                    currentStateID = i;
+                    break;
+                }
             CurrentStateOB().OnEnterState();
             return CurrentStateOB();
         }
@@ -230,8 +233,8 @@ namespace StateMachineSLS
         /// </summary>
         public class StateBase
         {
-            public MonoBehaviour owner;
-            public StateMachine machine;
+            public O owner;
+            public StateMachine<O> machine;
 
             public virtual void OnInitialize() { }
             public virtual void OnEnterState() { }
@@ -247,9 +250,6 @@ namespace StateMachineSLS
 
         }
          */
-
-
-
 
 
         // Generic Attempt

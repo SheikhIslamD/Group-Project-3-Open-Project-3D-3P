@@ -20,12 +20,15 @@ public class EnemyBase : MonoBehaviour
         audio = GetComponent<AudioCaller>();
     }
 
-    protected virtual void OnDeplete()
+    protected virtual void OnHealthChange(Health.DamageArgs args)
     {
-        audio.PlaySound("Death");
-        GetComponent<LootBag>()?.DropLoot(transform.position);
-        PoolableObject pooled = GetComponent<PoolableObject>();
-        if (pooled != null) pooled.Disable();
-        else Destroy(gameObject);
+        if (args.depletes)
+        {
+            audio.PlaySound("Death");
+            GetComponent<LootBag>()?.DropLoot(transform.position);
+            PoolableObject pooled = GetComponent<PoolableObject>();
+            if (pooled != null) pooled.Disable();
+            else Destroy(gameObject);
+        }
     }
 }

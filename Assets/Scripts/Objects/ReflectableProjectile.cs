@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-
+[RequireComponent(typeof(PoolableObject))]
 public class ReflectableProjectile : MonoBehaviour
 {
     public Transform sender => GetComponent<PoolableObject>().pool.transform;

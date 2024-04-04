@@ -20,7 +20,10 @@ public class AttackHitCollider : MonoBehaviour
     void Hit(GameObject subject)
     {
         Health health = subject.GetComponent<Health>();
-        if (health) health.Damage(damage, type);
+        if (health)
+        {
+            health.Damage(damage, type, this);
+        }
 
         if (deactivateOnHit)
         {

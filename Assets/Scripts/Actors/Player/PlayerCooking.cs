@@ -50,7 +50,7 @@ public class PlayerCooking : MonoBehaviour
 
         if(currentRice > 1 && currentFish > 0 && currentSeaweed > 0)
         {
-            health.Heal(20);
+            health.Heal(20, this);
             currentRice -= 2;
             currentFish -= 1;
             currentSeaweed -= 1;
