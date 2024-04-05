@@ -234,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5361231222474564621}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839b956eb834d41fa8cd8428386ba12f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e056b860cde44683910809eafc226e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
@@ -289,6 +289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagable: 1
+  maxHealth: 100
+  currentHealth: 100
   entityType: 0
   onDamageMessage: OnDamage
   onDepleteMessage: OnDeplete

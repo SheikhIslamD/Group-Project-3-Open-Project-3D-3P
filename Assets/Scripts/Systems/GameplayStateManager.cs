@@ -30,6 +30,7 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
     public void SwitchPrototypeLevel() => SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex == 1) ? 0 : 1);
 
-    public void QuitApplication() => UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
+    public void QuitToMenu() => SceneManager.LoadScene(Scenes.mainMenu);
+    public void QuitApplication() => Application.Quit();
 
 }
