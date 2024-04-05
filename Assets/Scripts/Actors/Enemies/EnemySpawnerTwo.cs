@@ -27,7 +27,7 @@ public class EnemySpawnerTwo : MonoBehaviour
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 
-    void OnHealthChange(Health.DamageArgs args)
+    void OnHealthChange(Health.Interaction args)
     {
         if (args.depletes)
         {

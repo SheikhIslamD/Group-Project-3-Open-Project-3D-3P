@@ -22,11 +22,11 @@ public class Health : MonoBehaviour
     public int GetCurrentHealth() => currentHealth;
     public int GetMaxHealth() => maxHealth;
 
-    public class DamageArgs
+    public class Interaction
     {
-        public DamageArgs(int amount, DamageType type, MonoBehaviour source, Health reciever, string customIdentifier = null)
+        public Interaction(int amount, DamageType type, MonoBehaviour source, Health reciever, string customIdentifier = null)
         {
-            changeAmount = amount;
+            this.amount = amount;
             this.type = type;
             this.source = source;
             this.reciever = reciever;
@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
             expectedFinalAmount = -1;
         }
 
-        public int changeAmount;
+        public int amount;
         public int expectedFinalAmount;
         public DamageType type;
         public MonoBehaviour source;
@@ -43,28 +43,29 @@ public class Health : MonoBehaviour
         public string customIdentifier;
         public bool interrupted;
 
-        public bool isDamage => changeAmount < 0;
-        public bool isHealing => changeAmount > 0;
-        public bool depletes => expectedFinalAmount == 0;
-        public bool restored => expectedFinalAmount == reciever.GetMaxHealth();
+        public bool isDamage => amount < 0;
+        public bool isHealing => amount > 0;
+        public bool depletes => expectedFinalAmount == 0 && !interrupted;
+        public bool restored => expectedFinalAmount == reciever.GetMaxHealth() && !interrupted;
 
         public void Interrupt() => interrupted = true;
     }
 
 
-    public DamageArgs Damage(int amount, DamageType type, MonoBehaviour source, string customIdentifier = null)
+    public Interaction Damage(int amount, DamageType type, MonoBehaviour source, string customIdentifier = null)
     => ChangeHealth(-amount, type, source, customIdentifier);
 
-    public DamageArgs Heal(int amount, MonoBehaviour source, string customIdentifier = null)
+    public Interaction Heal(int amount, MonoBehaviour source, string customIdentifier = null)
     => ChangeHealth(amount, DamageType.Generic, source, customIdentifier);
 
-    public DamageArgs ChangeHealth(int amount, DamageType type, MonoBehaviour source, string customIdentifier = null)
+    public Interaction ChangeHealth(int amount, DamageType type, MonoBehaviour source, string customIdentifier = null)
     {
-        DamageArgs args = new DamageArgs(amount, type, source, this, customIdentifier);
+        Interaction args = new Interaction(amount, type, source, this, customIdentifier);
+        
 
         if (!damagable) args.interrupted = true;
 
-        args.expectedFinalAmount = currentHealth + args.changeAmount;
+        args.expectedFinalAmount = currentHealth + args.amount;
         if (args.expectedFinalAmount < 0) args.expectedFinalAmount = 0;
         if (args.expectedFinalAmount > maxHealth) args.expectedFinalAmount = maxHealth;
 

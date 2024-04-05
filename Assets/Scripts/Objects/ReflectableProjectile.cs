@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(PoolableObject))]
 public class ReflectableProjectile : MonoBehaviour
@@ -11,22 +10,27 @@ public class ReflectableProjectile : MonoBehaviour
 
     public void MakeReflected()
     {
-        GetComponent<Collider>().excludeLayers = reflectedMask;
+        var col = GetComponent<Collider>();
+        col.includeLayers = reflectedMask;
+        col.excludeLayers = ~reflectedMask;
         isReflected = true;
     }
 
     public void MakeNormal()
     {
-        GetComponent<Collider>().excludeLayers = normalMask;
+        var col = GetComponent<Collider>();
+        col.includeLayers = normalMask;
+        col.excludeLayers = ~normalMask;
         isReflected = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) => Collide(collision.gameObject);
+    private void OnTriggerEnter(Collider other) => Collide(other.gameObject);
+    void Collide(GameObject obj)
     {
-        if (isReflected && collision.collider.GetComponent<Health>() != null)
+        if (isReflected && obj.GetComponent<Health>() != null)
         {
             MakeNormal();
         }
     }
-
 }

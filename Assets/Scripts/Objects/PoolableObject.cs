@@ -37,13 +37,12 @@ public class PoolableObject : MonoBehaviour{
     public void Disable(bool deactivateGameObject = false)
     {
         Active = false;
-        onDeactivate(this);
+        if(onDeactivate.GetInvocationList().Length > 0) onDeactivate(this);
         if(deactivateGameObject) gameObject.SetActive(false);
 
         if(pool == null) Destroy(gameObject);
     }
-    void OnDisable() => Disable();
-
+    void OnDisable() { if (Active) Disable(); }
     public Rigidbody rb => GetComponent<Rigidbody>();
 
 

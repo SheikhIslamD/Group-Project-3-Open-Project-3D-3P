@@ -10,7 +10,7 @@ using static UnityEngine.UI.GridLayoutGroup;
 public class BossOne : EnemyBase
 {
     //Config
-    public bool on;
+    public bool on; public void TURNON() => on = true;
     [SerializeField] float idleAttackRate;
     [SerializeField] float idleAttackSpread;
     [SerializeField] float idleAttackVelocity;
@@ -30,27 +30,33 @@ public class BossOne : EnemyBase
     Health health;
     AttackHitCollider contactDamage;
 
+    //Data
+    public States currentStateVisual;
 
-    private void Awake()
+
+    protected override void Start()
     {
+        base.Start();
         thisTransform = transform;
-        playerTransform = GameObject.Find("player").transform;
+        playerTransform = GameObject.Find("Player").transform;
         health = GetComponent<Health>();
         contactDamage = GetComponent<AttackHitCollider>();
 
         stateMachine = StateMachine.Create<StateMachine>(this);
+        stateMachine.owner = this;
     }
     
     private void Update()
     {
         if (!on) return;
         stateMachine.Update();
+        currentStateVisual = stateMachine.currentStateID;
     }
 
     public enum States
     {
         Idle,
-        Spin,
+        Swirling,
         Guarding,
         Stunned
     }
@@ -76,7 +82,7 @@ public class BossOne : EnemyBase
         }
 
 
-        public class BossStateBase : StateBase { public StateMachine Machine => (StateMachine)machine; }
+        public class BossStateBase : StateBase { public StateMachine M => (StateMachine)machine; }
 
 
         public class IdleState : BossStateBase
@@ -102,7 +108,7 @@ public class BossOne : EnemyBase
                     if(spinTimer < owner.spinactivationTime) spinTimer += Time.deltaTime;
                     else
                     {
-                        machine.ChangeState((int)States.Spin);
+                        //M.ChangeState(States.Swirling);
                         spinTimer = 0;
                     }
                 }
@@ -112,7 +118,7 @@ public class BossOne : EnemyBase
                 else
                 {
                     changeTimer = 0;
-                    machine.ChangeState((int)States.Guarding);
+                    M.ChangeState(States.Guarding);
                 }
 
             }
@@ -154,7 +160,7 @@ public class BossOne : EnemyBase
                 else
                 {
                     changeTimer = 0;
-                    machine.ChangeState((int)States.Guarding);
+                    machine.ChangeState((int)States.Idle);
                 }
             }
 
@@ -209,8 +215,8 @@ public class BossOne : EnemyBase
 
         proj.Prepare_Basic(thisTransform.position, Vector3.zero,
             ((playerTransform.position - thisTransform.position)
-            * Direction.XZ).Rotate(guardAttackAngle, thisTransform.right)
-            * guardAttackVelocity
+            * Direction.XZ).Rotate(-guardAttackAngle, thisTransform.right)
+            * guardAttackVelocity * (Vector3.Distance(playerTransform.position, thisTransform.position) / 5)
             );
     }
 
@@ -227,10 +233,11 @@ public class BossOne : EnemyBase
 
 
 
-    protected override void OnHealthChange(Health.DamageArgs args)
+    protected override void OnHealthChange(Health.Interaction args)
     {
         if(stateMachine.currentStateID == States.Guarding && args.source.GetComponent<ReflectableProjectile>())
         {
+            Debug.Log("Stunned");
             args.interrupted = false;
             stateMachine.ChangeState(States.Stunned);
         }

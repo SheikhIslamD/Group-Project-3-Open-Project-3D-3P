@@ -77,12 +77,13 @@ namespace StateMachineSLS
 
         public static T Create<T>(O owner) where T : StateMachine<O>
         {
-            T machine = default;
+            T machine = Activator.CreateInstance<T>();
             machine.owner = owner;
             machine.InitializeStates();
             machine.OnInitialize();
             return machine;
         }
+
 
         /// <summary>
         /// Initializer for the possible States of this State Machine. Necessary to set up correctly. See Tutorial for Information. (In Script File above Implementation.)
@@ -170,7 +171,7 @@ namespace StateMachineSLS
         /// <param name="newState"> The newly created State. Has to be created using a constructor like so "new STATECLASSNAME(owner)"</param>
         protected void RegisterState<T>() where T : StateBase
         {
-            T newState = default;
+            T newState = Activator.CreateInstance<T>();
             newState.owner = owner;
             newState.machine = this;
             newState.OnInitialize();

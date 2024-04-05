@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3041923223630457472}
   - component: {fileID: 2237032971447051212}
   - component: {fileID: 5965354302645576307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LittlePearlProj
   m_TagString: Untagged
   m_Icon: {fileID: 0}

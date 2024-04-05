@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    void OnHealthChange(Health.DamageArgs args)
+    public void OnHealthChange(Health.Interaction args)
     {
         if(args.depletes) onHealthDeplete?.Invoke();
     }

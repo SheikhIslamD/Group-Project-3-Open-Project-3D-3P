@@ -18,7 +18,7 @@ public class PlayerMelee : MonoBehaviour
     {
         input = GameplayInputReader.Get();
         shooter = GetComponent<PlayerShooter>();
-        slashEcho.transform.localScale = Vector3.one * slashRadius;
+        slashEcho.transform.localScale = Vector3.one * (slashRadius*2);
         audioC = GetComponent<AudioCaller>();
     }
 
@@ -41,17 +41,18 @@ public class PlayerMelee : MonoBehaviour
             //Invoke("StopSlash", 0.1f);
 
             RaycastHit hit;
-            Physics.SphereCast(transform.position, slashRadius - 1, slashDistance * vagueDirection, out hit, layerMask);
+            Physics.SphereCast(transform.position, slashRadius, slashDistance * vagueDirection, out hit, slashDistance, layerMask);
 
             if (hit.collider == null) return;
 
-            hit.collider.GetComponent<Health>()?.Damage(damage, Health.DamageType.Melee, this);
+            Health health = hit.collider.GetComponent<Health>();
+            if(health != null) health.Damage(damage, Health.DamageType.Melee, this);
 
             ReflectableProjectile reflect = hit.collider.GetComponent<ReflectableProjectile>();
             if (reflect != null)
             {
                 audioC.PlaySound("Parry");
-                Debug.Log("Hit Projectile");
+                //Debug.Log("Hit Projectile");
 
                 Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
                 rb.velocity = Vector3.zero;

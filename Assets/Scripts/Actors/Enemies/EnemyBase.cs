@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-
+[RequireComponent(typeof(AudioCaller))]
 public class EnemyBase : MonoBehaviour
 {
 
@@ -20,14 +19,19 @@ public class EnemyBase : MonoBehaviour
         audio = GetComponent<AudioCaller>();
     }
 
-    protected virtual void OnHealthChange(Health.DamageArgs args)
+    protected virtual void OnHealthChange(Health.Interaction args)
     {
+
         if (args.depletes)
         {
             audio.PlaySound("Death");
             GetComponent<LootBag>()?.DropLoot(transform.position);
             PoolableObject pooled = GetComponent<PoolableObject>();
-            if (pooled != null) pooled.Disable();
+            if (pooled != null)
+            {
+                pooled.Disable();
+                gameObject.SetActive(false);
+            }
             else Destroy(gameObject);
         }
     }
