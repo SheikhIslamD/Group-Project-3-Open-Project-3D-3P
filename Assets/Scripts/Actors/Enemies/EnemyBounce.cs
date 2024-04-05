@@ -7,13 +7,13 @@ public class EnemyBounce : EnemyBase
     public float speed;
     public float sightRange;
     private bool inSightRange;
-    [SerializeField] string playerTag;
-    [SerializeField] float bounceForce;
+    private bool bounce;
     void Update()
     {
         inSightRange = distanceFromPlayer < sightRange;
         if (!inSightRange) Idle();
         if (inSightRange) Chase();
+        if (inSightRange && bounce) Bounce();
     }
     void Idle()
     {
@@ -23,12 +23,8 @@ public class EnemyBounce : EnemyBase
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
-    private void OnCollisionEnter(Collision collision)
+    void Bounce()
     {
-        if(collision.transform.tag == playerTag)
-        {
-            Rigidbody otherRB = collision.rigidbody;
-            otherRB.AddExplosionForce(bounceForce, collision.contacts[0].point, 5);
-        }
+        
     }
 }
