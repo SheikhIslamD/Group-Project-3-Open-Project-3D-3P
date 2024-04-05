@@ -42,7 +42,7 @@ public class BossOne : EnemyBase
         health = GetComponent<Health>();
         contactDamage = GetComponent<AttackHitCollider>();
 
-        stateMachine = StateMachine.Create<StateMachine>(this);
+        stateMachine = StateMachine.Create(this);
         stateMachine.owner = this;
     }
     
@@ -64,7 +64,7 @@ public class BossOne : EnemyBase
     //State Machine
 
     private StateMachine stateMachine;
-    public class StateMachine : StateMachineSLS.StateMachine<BossOne>
+    public class StateMachine : StateMachine<BossOne, StateMachine>
     {
 
 
@@ -82,10 +82,9 @@ public class BossOne : EnemyBase
         }
 
 
-        public class BossStateBase : StateBase { public StateMachine M => (StateMachine)machine; }
 
 
-        public class IdleState : BossStateBase
+        public class IdleState : StateBase
         {
             float attackTimer;
             float spinTimer;
@@ -118,7 +117,7 @@ public class BossOne : EnemyBase
                 else
                 {
                     changeTimer = 0;
-                    M.ChangeState(States.Guarding);
+                    machine.ChangeState(States.Guarding);
                 }
 
             }
@@ -128,7 +127,7 @@ public class BossOne : EnemyBase
                 changeTimer = 0;
             }
         }
-        public class SwirlState : BossStateBase
+        public class SwirlState : StateBase
         {
 
             public override void OnEnterState()
@@ -140,7 +139,7 @@ public class BossOne : EnemyBase
                 owner.contactDamage.enabled = false;
             }
         }
-        public class GuardingState : BossStateBase
+        public class GuardingState : StateBase
         {
             float attackTimer;
             float changeTimer;
@@ -174,7 +173,7 @@ public class BossOne : EnemyBase
                 owner.health.damagable = true;
             }
         }
-        public class StunnedState : BossStateBase
+        public class StunnedState : StateBase
         {
             float timeLeft;
 

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,22 +7,21 @@ using UnityEngine;
   
   >> To Add a State Machine to your class. Follow these steps.
   
-  >>* 1 * Create a new sub-class inhereting from StateMachine, as well as its necessary Constructor. 
-  >>      An instance of this StateMachine will have to be created at runtime using the Constructor.
-  >>      If there's anything you want to happen immediately after the StateMachine is created, add it to the empty curly brackets in the constructor. (The same goes for States.)
+  >>* 1 * Create a new sub-class inhereting from StateMachine. Its Type parameters have to be equivilent to the MonoBehavior holding it and its own type.
+  >>      An instance of this StateMachine will have to be created at runtime the static Create<>() method.
+  >>      If there's anything you want to happen immediately after the StateMachine is created, create an override for OnInitialize(). (The same goes for States.)
   >>      You'll also want to call the StateMachine's Cleanup() method in Unity's OnDestroy() method so the State Objects aren't left floating around.
   >>      Example Below.
   
   public MyStateMachine stateMachine;
-  public class MyStateMachine : StateMachine
+  public class MyStateMachine : StateMachine<OwnerClass, MyStateMachine>
   {
-      public MyStateMachine(MonoBehaviour owner) : base(owner){}
-  
+      
   }
   
   void Awake()
   {
-      stateMachine = new MyStateMachine(this);
+      stateMachine = MyStateMachine.Create(this);
   }
   void OnDestroy()
   {
@@ -31,31 +29,31 @@ using UnityEngine;
   }
   
   
-  >>* 2 * Create a new sub-class inside the StateMachine inhereting from StateBase. All states will also need similar constructors.
+  >>* 2 * Create a new sub-class inside the StateMachine inhereting from StateBase. 
 
       public class FirstState : StateBase
       {
-          public FirstState(MonoBehaviour owner) : base(owner){}
+          
       }
       public class SecondState : StateBase
       {
-          public SecondState(MonoBehaviour owner) : base(owner){}
+          
       }
   
   >> Each of these States you create can have unique Update(), OnEnterState(), and OnExitState() methods, as well as any other fields you wish to make use of.
   >> You could even have a StateMachine inside of a specific state. ;)
   
-  >>* 3 * Create an Enum to cleanly identify every State you make.
+  >>* 3 * Create an Enum to cleanly identify every State you make. This can be defined in the owner MonoBehavior or in the machine (the former is cleaner.)
   
-      public new enum State { FirstState, SecondState };
+      public enum States { FirstState, SecondState };
   
   >>* 4 * Create the StateMachine's InitializeStates() method Within this method, you must, for every State ID in to The State ID Enum, in order,
-  >>      Run RegisterState() and feed in a constructor call for the appropriate state class, as shown below.
+  >>      Run RegisterState<>() using the type of the States defined in the StateMachine, as shown below.
   
       protected override void InitializeStates()
       {
-           RegisterState(new FirstState(owner));
-           RegisterState(new SecondState(owner));
+           RegisterState<FirstState>();
+           RegisterState<SecondState>();
       }
   
   >> That should be it. Happy State Machining!
@@ -71,13 +69,13 @@ namespace StateMachineSLS
     /// <summary>
     /// Custom State Machine system designed by StarLightShadows.
     /// </summary>
-    public abstract class StateMachine<O> where O : MonoBehaviour
+    public abstract class StateMachine<O, M> where O : MonoBehaviour where M : StateMachine<O, M>
     {
         public O owner;
 
-        public static T Create<T>(O owner) where T : StateMachine<O>
+        public static M Create(O owner)
         {
-            T machine = Activator.CreateInstance<T>();
+            M machine = Activator.CreateInstance<M>();
             machine.owner = owner;
             machine.InitializeStates();
             machine.OnInitialize();
@@ -156,14 +154,11 @@ namespace StateMachineSLS
         /// </summary>
         /// <param name="state">The specific State Object you are trying to recieve. (ID Enum.)</param>
         /// <returns>The State (Object) based on the State (ID Enum) given. (Assuming you set up InitializeStates() correctly, of course.)</returns>
-        public StateBase GetState(int state)
-        {
-            return stateObjectRefs[(int)state];
-        }
+        public StateBase GetState(int state) => stateObjectRefs[(int)state];
 
 
 
-        private List<StateBase> stateObjectRefs = new List<StateBase>();
+        private List<StateBase> stateObjectRefs = new();
 
         /// <summary>
         /// Registers a newly created state with the List of States. Make sure to call in the same order as the State IDs are listed in the State ID Enum.
@@ -173,7 +168,7 @@ namespace StateMachineSLS
         {
             T newState = Activator.CreateInstance<T>();
             newState.owner = owner;
-            newState.machine = this;
+            newState.machine = (M)this;
             newState.OnInitialize();
             stateObjectRefs.Add(newState);
         }
@@ -235,7 +230,7 @@ namespace StateMachineSLS
         public class StateBase
         {
             public O owner;
-            public StateMachine<O> machine;
+            public M machine;
 
             public virtual void OnInitialize() { }
             public virtual void OnEnterState() { }
