@@ -80,6 +80,8 @@ public class Health : MonoBehaviour
 
         healthChangeEvent?.Invoke(currentHealth);
 
+        var eter = 23f;
+
         return args;
         //if (cleanup) args = null;
         //Note: investigate the Garbage Collection (Or lack thereof) of custom classes.    }
