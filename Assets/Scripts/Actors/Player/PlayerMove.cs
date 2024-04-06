@@ -18,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     AudioCaller audioC;
     Health health;
     PlayerShooter shooter;
+    PlayerAnimator anim;
     
     //Data
     Vector3 movementDirection;
@@ -37,6 +38,7 @@ public class PlayerMove : MonoBehaviour
         audioC = GetComponent<AudioCaller>();
         health = GetComponent<Health>();
         shooter = GetComponent<PlayerShooter>();
+        anim = GetComponentInChildren<PlayerAnimator>();
     }
 
     void Update()
@@ -93,6 +95,7 @@ public class PlayerMove : MonoBehaviour
             {
                 audioC.PlaySound("Jump");
                 ySpeed = jumpSpeed;
+                anim.Jump();
             }
         }
         else
@@ -132,7 +135,7 @@ public class PlayerMove : MonoBehaviour
         dodgeTimeLeft = dodgeTime;
         dodgeDirection = movementDirection;
         health.damagable = false;
-
+        anim.Dodge();
     }
 
 

@@ -14,6 +14,8 @@ public class PlayerMelee : MonoBehaviour
     [SerializeField] GameObject slashEcho;
     [SerializeField] Animation slashPlaceholderAnim;
 
+    PlayerAnimator anim;
+
 
     private void Start()
     {
@@ -21,25 +23,20 @@ public class PlayerMelee : MonoBehaviour
         shooter = GetComponent<PlayerShooter>();
         slashEcho.transform.localScale = Vector3.one * (slashRadius*2);
         audioC = GetComponent<AudioCaller>();
+        anim = GetComponentInChildren<PlayerAnimator>();
         //transform.Find("PlaceholderSword/SlashHitbox").GetComponent<SwordHitCollider>().Setup(damage, audioC);
     }
 
-    void Update()
-    {
-
-    }
-
-    private void FixedUpdate()
+    private void Update()
     {
         Vector3 vagueDirection = new Vector3(shooter.aimDirection.x, 0, shooter.aimDirection.z).normalized;
 
 
-
-        //slashEcho.SetActive(input.melee.IsPressed());
-        if (input.melee.IsPressed())
+        if (input.melee.WasPressedThisFrame())
         {
             audioC.PlaySound("Slash");
-            slashPlaceholderAnim.Play();
+            //slashPlaceholderAnim.Play();
+            anim.Melee();
 
             /*
             slashEcho.transform.position = transform.position + (slashDistance * vagueDirection);

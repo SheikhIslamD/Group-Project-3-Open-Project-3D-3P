@@ -15,6 +15,8 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private float knifeSpeed;
 
     public Vector3 aimDirection;
+    PlayerAnimator anim;
+
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class PlayerShooter : MonoBehaviour
         backCollider = FindFirstObjectByType<CameraMovement>().backCollider.GetComponent<Collider>();
         pool = GetComponent<ObjectPool>();
         audioC = GetComponent<AudioCaller>();
+        anim = GetComponentInChildren<PlayerAnimator>();
     }
 
     private void Update()
@@ -45,7 +48,7 @@ public class PlayerShooter : MonoBehaviour
 
         aimDirection = end - transform.position;
 
-        if (input.shoot.WasPressedThisFrame()) ShootKnife(end - transform.position);
+        if (input.shoot.WasPressedThisFrame()) ShootKnife();
     }
 
     private void DrawAimLine(Vector3 start, Vector3 end)
@@ -54,11 +57,10 @@ public class PlayerShooter : MonoBehaviour
         lineRenderer.SetPosition(1, end);
     }
 
-    private void ShootKnife(Vector3 direction)
+    private void ShootKnife()
     {
         audioC.PlaySound("Shoot");
-        PoolableObject knife = pool.Pump();
-        knife.Prepare_Basic(transform.position, Quaternion.FromToRotation(Vector3.up, direction).eulerAngles, Vector3.up * knifeSpeed);
+        anim.Throw();
 
         /*
         knife.gameObject.SetActive(true);
@@ -68,6 +70,12 @@ public class PlayerShooter : MonoBehaviour
         knife.transform.GetComponent<Rigidbody>().velocity = knife.transform.up * knifeSpeed;
          */
 
+    }
+
+    public void KnifeCallback()
+    {
+        PoolableObject knife = pool.Pump();
+        knife.Prepare_Basic(transform.position, Quaternion.FromToRotation(Vector3.up, aimDirection).eulerAngles, Vector3.up * knifeSpeed);
     }
 
 }
