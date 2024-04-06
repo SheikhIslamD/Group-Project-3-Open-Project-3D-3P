@@ -12,7 +12,7 @@ public class PlayerEnterZone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (OneTime && wasDone) return;
-        if (other.GetComponent<PlayerMovement>())
+        if (other.GetComponent<PlayerMove>())
         {
             EnterEvent?.Invoke();
             wasDone = true;

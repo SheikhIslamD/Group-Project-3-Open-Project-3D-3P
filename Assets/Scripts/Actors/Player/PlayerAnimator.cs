@@ -11,7 +11,7 @@ public class PlayerAnimator : MonoBehaviour
 
     //Components
     Animator animator;
-    PlayerMovement movement;
+    PlayerMove movement;
     Transform movementTransform;
 
     //Data
@@ -30,7 +30,7 @@ public class PlayerAnimator : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
-        movement = GetComponentInParent<PlayerMovement>();
+        movement = GetComponentInParent<PlayerMove>();
         movementTransform = movement.transform;
         fullSpeed = movement.speed;
     }

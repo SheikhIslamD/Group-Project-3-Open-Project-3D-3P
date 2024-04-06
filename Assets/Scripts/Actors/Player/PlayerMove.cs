@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Vector3Helper;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     //Parameters
     [SerializeField] public float speed = 6.0f;

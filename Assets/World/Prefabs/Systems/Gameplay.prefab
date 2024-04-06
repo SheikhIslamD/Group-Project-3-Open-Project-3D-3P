@@ -3490,7 +3490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: healthChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
