@@ -145,8 +145,8 @@ MonoBehaviour:
   stateSwitchRate: 5
   stunTime: 4.25
   guardAttackRate: 2.4
-  guardAttackVelocity: 10
-  guardAttackAngle: 80
+  guardAttackVelocity: 1
+  guardAttackAngle: 50
   guardProjPool: {fileID: 901169119403944363}
   currentStateVisual: 0
 --- !u!114 &3894077020209665391
@@ -166,9 +166,14 @@ MonoBehaviour:
   currentHealth: 1000
   entityType: 2
   healthChangeMessage: OnHealthChange
+  depleteMessage: OnHealthDeplete
   healthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
+  depleteEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyOnDeplete: 1
 --- !u!114 &1524034840217974904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674683ecb71f33548a4886fad127f26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 2237032971447051212, guid: 0584dc4b870bdd44391aab53b580a3fc, type: 3}
+  prefabObject: {fileID: 1026974257064736955, guid: 0584dc4b870bdd44391aab53b580a3fc, type: 3}
   defaultPoolDepth: 15
   canGrow: 1
   parent: {fileID: 0}
@@ -230,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674683ecb71f33548a4886fad127f26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 4773271290219001480, guid: 6ab5cecb3f8cabc4d884560ca6bf5fdf, type: 3}
+  prefabObject: {fileID: 2065540779776097866, guid: 6ab5cecb3f8cabc4d884560ca6bf5fdf, type: 3}
   defaultPoolDepth: 5
   canGrow: 1
   parent: {fileID: 0}

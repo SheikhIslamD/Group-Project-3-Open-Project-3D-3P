@@ -439,9 +439,6 @@ MonoBehaviour:
   jumpSpeed: 5
   dodgeSpeed: 12
   dodgeTime: 0.4
-  onHealthDeplete:
-    m_PersistentCalls:
-      m_Calls: []
   movementVelocity: {x: 0, y: 0, z: 0}
 --- !u!114 &7256595565590103146
 MonoBehaviour:
@@ -490,9 +487,14 @@ MonoBehaviour:
   currentHealth: 100
   entityType: 0
   healthChangeMessage: OnHealthChange
+  depleteMessage: OnHealthDeplete
   healthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
+  depleteEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyOnDeplete: 1
 --- !u!114 &5268864049015096330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674683ecb71f33548a4886fad127f26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 5559486470895703093, guid: 27b8c67131f20d94991d164e8a260846, type: 3}
+  prefabObject: {fileID: 0}
   defaultPoolDepth: 10
   canGrow: 1
   parent: {fileID: 0}
@@ -725,7 +727,7 @@ GameObject:
   - component: {fileID: 2689146059956742204}
   - component: {fileID: 3818990009351396762}
   - component: {fileID: 6952109271098812387}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: SlashHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,7 +762,7 @@ SphereCollider:
     m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 759
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -781,10 +783,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 40
-  type: 0
+  type: 1
   deactivateOnHit: 1
   deactivateOnHitWithHealth: 0
-  useCollider: 1
+  useCollider: 0
   useTrigger: 1
   audioC: {fileID: 6710960657153376787}
 --- !u!54 &6952109271098812387

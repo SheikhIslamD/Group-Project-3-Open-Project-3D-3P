@@ -232,7 +232,7 @@ public class BossOne : EnemyBase
 
 
 
-    protected override void OnHealthChange(Health.Interaction args)
+    protected void OnHealthChange(Health.Interaction args)
     {
         if(stateMachine.currentStateID == States.Guarding && args.source.GetComponent<ReflectableProjectile>())
         {
@@ -240,8 +240,6 @@ public class BossOne : EnemyBase
             args.interrupted = false;
             stateMachine.ChangeState(States.Stunned);
         }
-
-        base.OnHealthChange(args);
     }
 
 

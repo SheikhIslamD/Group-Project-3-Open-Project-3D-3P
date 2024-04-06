@@ -3135,12 +3135,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 8650564425491833517}
     m_Modifications:
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: healthChangeEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8498879615782036343}
+    - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: healthChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: healthChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3155,8 +3175,16 @@ PrefabInstance:
       value: UpdateHealth
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameplayStateManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: healthChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: HUDUIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: healthChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

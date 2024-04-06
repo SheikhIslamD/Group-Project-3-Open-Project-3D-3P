@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,13 +9,16 @@ public class Health : MonoBehaviour
 
     public bool damagable = true;
 
-    [SerializeField] int maxHealth = 100;
-    [SerializeField] int currentHealth = 100;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int currentHealth = 100;
     [SerializeField] public EntityType entityType;
 
     //Messages
-    [SerializeField] string healthChangeMessage = "OnHealthChange";
-    [SerializeField] UnityEvent<int> healthChangeEvent;
+    [SerializeField] private string healthChangeMessage = "OnHealthChange";
+    [SerializeField] private string depleteMessage = "OnHealthDeplete";
+    [SerializeField] private UnityEvent<int> healthChangeEvent;
+    [SerializeField] private UnityEvent depleteEvent;
+    [SerializeField] private bool destroyOnDeplete = true;
 
     public int GetCurrentHealth() => currentHealth;
     public int GetMaxHealth() => maxHealth;
@@ -60,8 +61,8 @@ public class Health : MonoBehaviour
 
     public Interaction ChangeHealth(int amount, DamageType type, MonoBehaviour source, string customIdentifier = null)
     {
-        Interaction args = new Interaction(amount, type, source, this, customIdentifier);
-        
+        Interaction args = new(amount, type, source, this, customIdentifier);
+
 
         if (!damagable) args.interrupted = true;
 
@@ -80,13 +81,28 @@ public class Health : MonoBehaviour
 
         healthChangeEvent?.Invoke(currentHealth);
 
-        var eter = 23f;
+        if (args.depletes) DepleteCalls();
 
         return args;
         //if (cleanup) args = null;
-        //Note: investigate the Garbage Collection (Or lack thereof) of custom classes.    }
+        //Note: investigate the Garbage Collection (Or lack thereof) of custom classes.
     }
 
+    private void DepleteCalls()
+    {
+        SendMessage(depleteMessage, SendMessageOptions.DontRequireReceiver);
+        depleteEvent?.Invoke();
+
+        AudioCaller audio = GetComponent<AudioCaller>();
+        if (audio) audio.PlaySound("Death");
+
+        if (destroyOnDeplete)
+        {
+            PoolableObject pooled = PoolableObject.IsPooled(gameObject);
+            if (pooled) pooled.Disable();
+            else Destroy(gameObject);
+        }
+    }
 
     /* OBSOLETE
 

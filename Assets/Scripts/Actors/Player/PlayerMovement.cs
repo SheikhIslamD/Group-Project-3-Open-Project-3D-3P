@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpSpeed = 5.0f;
     [SerializeField] float dodgeSpeed = 12.0f;
     [SerializeField] float dodgeTime = 0.4f;
-    [SerializeField] UnityEvent onHealthDeplete;
 
     //Connections
     GameplayInputReader input;
@@ -136,10 +135,5 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
-    public void OnHealthChange(Health.Interaction args)
-    {
-        if(args.depletes) onHealthDeplete?.Invoke();
-    }
 
 }

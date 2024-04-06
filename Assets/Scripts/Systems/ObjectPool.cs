@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class ObjectPool : MonoBehaviour
 {
     [Tooltip("The prefab to pool.")]
-    [SerializeField] private PoolableObject prefabObject;
+    [SerializeField] private GameObject prefabObject;
     [Tooltip("The number of prefabs to create on startup.")]
     [SerializeField] private int defaultPoolDepth;
     [Tooltip("Whether or not more prefabs can be created beyond the initial Pool Depth.")]
@@ -19,14 +16,14 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private float autoDisableTime = -1;
     [Tooltip("Whether or not the Objects in this pool will disappear if the pool is destroyed.")]
     [SerializeField] private bool deleteObjectsOnDestroy = true;
-    
-    private readonly List<PoolableObject> poolList = new List<PoolableObject>();
+
+    private readonly List<PoolableObject> poolList = new();
     private int currentActiveObjects = 0;
     private int currentPooledObjects = 0;
     private int currentSelection = 0;
     private bool initialized;
-    
-    public static ObjectPool Create(GameObject @object, PoolableObject prefabObject, int defaultPoolDepth, bool canGrow = true, Transform parent = null, float autoDisableTime = -1, bool deleteObjectsOnDestroy = true)
+
+    public static ObjectPool Create(GameObject @object, GameObject prefabObject, int defaultPoolDepth, bool canGrow = true, Transform parent = null, float autoDisableTime = -1, bool deleteObjectsOnDestroy = true)
     {
         ObjectPool pool = @object.AddComponent<ObjectPool>();
         pool.prefabObject = prefabObject;
@@ -37,13 +34,12 @@ public class ObjectPool : MonoBehaviour
 
         return pool;
     }
-    
-    
-    void OnEnable() => Initialize();
 
-    void Update()
+    private void OnEnable() => Initialize();
+
+    private void Update()
     {
-        if(autoDisableTime > 0)
+        if (autoDisableTime > 0)
         {
             for (int i = 0; i < poolList.Count; i++)
             {
@@ -53,9 +49,10 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    void Initialize(){
+    private void Initialize()
+    {
 
-        if(initialized) return;
+        if (initialized) return;
         for (int i = 0; i < defaultPoolDepth; i++) NewInstance();
         initialized = true;
     }
@@ -68,30 +65,37 @@ public class ObjectPool : MonoBehaviour
         IncrementSelection();
         return instance;
     }
-    
-    void NewInstance(){
-        PoolableObject pooledObject = Instantiate(prefabObject);
-        pooledObject.transform.parent = parent;
-        pooledObject.pool = this;
-        pooledObject.onDeactivate += OnDeActivate;
-        poolList.Add(pooledObject);
+
+    private void NewInstance()
+    {
+
+        GameObject pooledObject = Instantiate(prefabObject);
+        PoolableObject poolable = pooledObject.GetOrAddComponent<PoolableObject>();
+        poolable.transform.parent = parent;
+        poolable.pool = this;
+        poolable.onDeactivate += OnDeActivate;
+        poolList.Add(poolable);
         currentPooledObjects++;
         currentActiveObjects++;
-        pooledObject.gameObject.SetActive(false);
+        pooledObject.SetActive(false);
     }
-    void FindNextInstance(){  
+
+    private void FindNextInstance()
+    {
         if (!poolList[currentSelection].Active) return;
-        if (currentActiveObjects >= currentPooledObjects) 
+        if (currentActiveObjects >= currentPooledObjects)
         {
             if (!canGrow) return;
 
             NewInstance();
-            currentSelection = currentPooledObjects-1;
+            currentSelection = currentPooledObjects - 1;
         }
-        while(poolList[currentSelection].Active) IncrementSelection();
+        while (poolList[currentSelection].Active) IncrementSelection();
     }
-    void IncrementSelection() => currentSelection = (currentSelection == currentPooledObjects-1)? 0 : currentSelection+1; 
-    PoolableObject ActivateInstance(PoolableObject instance)
+
+    private void IncrementSelection() => currentSelection = (currentSelection == currentPooledObjects - 1) ? 0 : currentSelection + 1;
+
+    private PoolableObject ActivateInstance(PoolableObject instance)
     {
         instance.gameObject.SetActive(true);
         instance.Active = true;
@@ -99,8 +103,9 @@ public class ObjectPool : MonoBehaviour
         instance.timeExisting = 0;
         return instance;
     }
-    
-    void OnDeActivate(PoolableObject instance){  
+
+    private void OnDeActivate(PoolableObject instance)
+    {
         currentActiveObjects--;
         instance.Active = false;
     }
@@ -111,7 +116,7 @@ public class ObjectPool : MonoBehaviour
         {
             poolList[i].Disable(false);
             poolList[i].onDeactivate -= OnDeActivate;
-            if(deleteObjectsOnDestroy) if(poolList[i] != null) Destroy(poolList[i].gameObject);
+            if (deleteObjectsOnDestroy) if (poolList[i] != null) Destroy(poolList[i].gameObject);
         }
         poolList.Clear();
     }

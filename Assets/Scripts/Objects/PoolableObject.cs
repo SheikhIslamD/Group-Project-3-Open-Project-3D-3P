@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using UnityEngine.Pool;
 
-public class PoolableObject : MonoBehaviour{
+public class PoolableObject : MonoBehaviour
+{
 
     [HideInInspector] public ObjectPool pool;
     [HideInInspector] public bool Active;
@@ -36,15 +36,23 @@ public class PoolableObject : MonoBehaviour{
     /// </summary>
     public void Disable(bool deactivateGameObject = false)
     {
+        bool wasActive = Active;
         Active = false;
-        if(onDeactivate.GetInvocationList().Length > 0) onDeactivate(this);
-        if(deactivateGameObject) gameObject.SetActive(false);
+        if (onDeactivate.GetInvocationList().Length > 0 && wasActive) onDeactivate(this);
+        if (deactivateGameObject) gameObject.SetActive(false);
 
-        if(pool == null) Destroy(gameObject);
+        if (pool == null) Destroy(gameObject);
     }
-    void OnDisable() { if (Active) Disable(); }
+
+    private void OnDisable() { if (Active) Disable(); }
     public Rigidbody rb => GetComponent<Rigidbody>();
 
-
+    public static PoolableObject IsPooled(GameObject subject)
+    {
+        PoolableObject pool = subject.GetComponent<PoolableObject>(); 
+        if (pool == null) return null;
+        if (pool.pool == null) return null;
+        return pool;
+    }
 
 }

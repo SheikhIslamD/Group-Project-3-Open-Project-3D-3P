@@ -15,24 +15,14 @@ public class SwordHitCollider : AttackHitCollider
     }
 
 
+    protected new void OnCollisionEnter(Collision other) { Hit(other.gameObject); }
     protected new void OnTriggerEnter(Collider other) { Hit(other.gameObject); }
 
     protected override void Hit(GameObject subject)
     {
         base.Hit(subject);
-        Debug.Log("Test");
 
-        ReflectableProjectile reflect = subject.GetComponent<ReflectableProjectile>();
-        if (reflect != null)
-        {
-            audioC.PlaySound("Parry");
-
-            Rigidbody rb = subject.GetComponent<Rigidbody>();
-            rb.velocity = Vector3.zero;
-            Vector3 direction = reflect.sender.position - rb.position;
-            rb.AddForce(direction.normalized * 1400);
-            reflect.MakeReflected();
-        }
+        if (ReflectableProjectile.Reflect(subject)) audioC.PlaySound("Parry");
 
     }
 }
