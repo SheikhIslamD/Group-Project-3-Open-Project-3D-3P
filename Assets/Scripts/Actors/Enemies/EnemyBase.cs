@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-
+[RequireComponent(typeof(AudioCaller))]
 public class EnemyBase : MonoBehaviour
 {
 
     //Connections
     protected new Transform transform;
     protected Transform player;
-    protected AudioCaller audioC;
+    protected new AudioCaller audio;
 
     //Data
     protected float distanceFromPlayer => Vector3.Distance(transform.position, player.position);
@@ -17,13 +16,11 @@ public class EnemyBase : MonoBehaviour
     {
         transform = GetComponent<Transform>();
         player = GameObject.Find("Player").transform;
-        audioC = GetComponent<AudioCaller>();
+        audio = GetComponent<AudioCaller>();
     }
 
-    protected virtual void OnDeplete()
+    protected virtual void OnHealthDeplete()
     {
-        audioC.PlaySound("Death");
         GetComponent<LootBag>()?.DropLoot(transform.position);
-        Destroy(gameObject);
     }
 }

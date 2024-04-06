@@ -53,7 +53,7 @@ public class EnemyMelee : EnemyBase
 
     void Attack()
     {
-        player.GetComponent<Health>().Damage(attackDamage, Health.DamageType.Melee);
+        player.GetComponent<Health>()?.Damage(attackDamage, Health.DamageType.Melee, this);
     }
 
 }

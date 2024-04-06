@@ -1,27 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class PlayerShooter : MonoBehaviour
 {
-    new Transform transform;
+    private new Transform transform;
     private LineRenderer lineRenderer;
-    new Camera camera;
-    GameplayInputReader input;
-    ObjectPool pool;
-
-    Collider backCollider;
-    AudioCaller audioC;
-    [SerializeField] LayerMask aimRaycastLayerMask;
-    [SerializeField] float aimRaycastMaxDistance;
-    [SerializeField] float knifeSpeed;
+    private new Camera camera;
+    private GameplayInputReader input;
+    private ObjectPool pool;
+    private Collider backCollider;
+    private AudioCaller audioC;
+    [SerializeField] private LayerMask aimRaycastLayerMask;
+    [SerializeField] private float aimRaycastMaxDistance;
+    [SerializeField] private float knifeSpeed;
 
     public Vector3 aimDirection;
 
-
-    void Start()
+    private void Start()
     {
         input = GameplayInputReader.instance;
         transform = GetComponent<Transform>();
@@ -32,20 +27,18 @@ public class PlayerShooter : MonoBehaviour
         audioC = GetComponent<AudioCaller>();
     }
 
-    void Update()
+    private void Update()
     {
         Vector3 end = transform.position;
         Ray cameraRay = camera.ScreenPointToRay(input.aimOutput);
 
-        RaycastHit firstHit;
-        bool firstHitDidHit = Physics.Raycast(cameraRay, out firstHit, aimRaycastMaxDistance, aimRaycastLayerMask);
+        bool firstHitDidHit = Physics.Raycast(cameraRay, out RaycastHit firstHit, aimRaycastMaxDistance, aimRaycastLayerMask);
 
         if (firstHitDidHit) end = firstHit.point;
         else
         {
-            RaycastHit secondHit;
-            bool secondHitDidHit = backCollider.Raycast(cameraRay, out secondHit, Mathf.Infinity);
-            if(secondHitDidHit) end = secondHit.point;
+            bool secondHitDidHit = backCollider.Raycast(cameraRay, out RaycastHit secondHit, Mathf.Infinity);
+            if (secondHitDidHit) end = secondHit.point;
         }
 
         DrawAimLine(transform.position, end);
@@ -55,14 +48,13 @@ public class PlayerShooter : MonoBehaviour
         if (input.shoot.WasPressedThisFrame()) ShootKnife(end - transform.position);
     }
 
-
-    void DrawAimLine(Vector3 start, Vector3 end)
+    private void DrawAimLine(Vector3 start, Vector3 end)
     {
         lineRenderer.SetPosition(0, start);
         lineRenderer.SetPosition(1, end);
     }
 
-    void ShootKnife(Vector3 direction)
+    private void ShootKnife(Vector3 direction)
     {
         audioC.PlaySound("Shoot");
         PoolableObject knife = pool.Pump();

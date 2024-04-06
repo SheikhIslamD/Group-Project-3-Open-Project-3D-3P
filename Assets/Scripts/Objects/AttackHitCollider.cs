@@ -5,22 +5,25 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class AttackHitCollider : MonoBehaviour
 {
-    [SerializeField] int damage = 20;
-    [SerializeField] Health.DamageType type;
-    [SerializeField] bool deactivateOnHit = true;
-    [SerializeField] bool deactivateOnHitWithHealth;
-    [SerializeField] bool useCollider = true;
-    [SerializeField] bool useTrigger = true;
+    [SerializeField] protected int damage = 20;
+    [SerializeField] protected Health.DamageType type;
+    [SerializeField] protected bool deactivateOnHit = true;
+    [SerializeField] protected bool deactivateOnHitWithHealth;
+    [SerializeField] protected bool useCollider = true;
+    [SerializeField] protected bool useTrigger = true;
     //[SerializeField] Health.EntityType willHitTypes;
 
-    private void OnTriggerEnter(Collider other) { if (useTrigger) Hit(other.gameObject); }
+    protected void OnTriggerEnter(Collider other) { if (useTrigger) Hit(other.gameObject); }
 
-    private void OnCollisionEnter(Collision collision) { if (useCollider) Hit(collision.gameObject); }
+    protected void OnCollisionEnter(Collision collision) { if (useCollider) Hit(collision.gameObject); }
 
-    void Hit(GameObject subject)
+    protected virtual void Hit(GameObject subject)
     {
         Health health = subject.GetComponent<Health>();
-        if (health) health.Damage(damage, type);
+        if (health)
+        {
+            health.Damage(damage, type, this);
+        }
 
         if (deactivateOnHit)
         {

@@ -103,8 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5196fe92c051b4711a88ad0e19348dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -112,8 +110,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   timeBetweenAttacks: 1.5
+  sightRange: 0
   attackRange: 11
-  playerInAttackRange: 0
+  navAgent: {fileID: 0}
 --- !u!114 &2289523109895011900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674683ecb71f33548a4886fad127f26e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabObject: {fileID: 2780212963633072989, guid: ce199a86d48ac41d091463a324a0a17f, type: 3}
+  prefabObject: {fileID: 1926897355690397252, guid: ce199a86d48ac41d091463a324a0a17f, type: 3}
   defaultPoolDepth: 5
   canGrow: 1
   parent: {fileID: 0}
@@ -144,11 +143,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1026f572a0983491f8258e9376f6aa13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagable: 1
+  maxHealth: 100
+  currentHealth: 100
   entityType: 0
-  onDamageMessage: OnDamage
-  onDepleteMessage: OnDeplete
-  onHealMessage: OnHeal
-  onHealthUpdateMessage: OnHealthUpdate
+  healthChangeMessage: OnHealthChange
+  depleteMessage: OnHealthDeplete
+  healthChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  depleteEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyOnDeplete: 1
 --- !u!136 &2895632879591992098
 CapsuleCollider:
   m_ObjectHideFlags: 0
