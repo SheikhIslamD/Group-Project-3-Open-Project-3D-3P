@@ -6,9 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/World/Scenes/Menus/MenuScene.unity
+    guid: eb8ba469295be4e83896d7785d21c69f
+  - enabled: 1
+    path: Assets/World/Scenes/Menus/WinScene.unity
+    guid: 5452a669e072643e6b6f58b09560713d
+  - enabled: 1
+    path: Assets/World/Scenes/Menus/LoseScene.unity
+    guid: 29f6d0bd62560440e921bc81ac5e9e6a
+  - enabled: 1
+    path: Assets/World/Scenes/Menus/CreditsScene.unity
+    guid: b3c517a3e088f420696d9a6f3f45f240
+  - enabled: 1
+    path: Assets/World/Scenes/Menus/HowToPlayScene.unity
+    guid: 016159bf4c5774a359fb61215a21858a
+  - enabled: 1
     path: Assets/World/Scenes/Prototypes/GameplayPrototypeScene.unity
     guid: c2055ebefbd2ff449b5f5ea3db018546
-  - enabled: 1
-    path: Assets/World/Scenes/Prototypes/ArtPrototypeScene.unity
-    guid: 65d7c838ab03b4521bb8d6c970d72201
   m_configObjects: {}

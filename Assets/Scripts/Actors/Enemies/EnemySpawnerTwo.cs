@@ -27,9 +27,13 @@ public class EnemySpawnerTwo : MonoBehaviour
         StartCoroutine(spawnEnemy(interval, enemy));
     }
 
-    void OnDeplete()
+    void OnHealthChange(Health.Interaction args)
     {
-        GetComponent<LootBag>().DropLoot(transform.position);
-        Destroy(gameObject);
+        if (args.depletes)
+        {
+            GetComponent<LootBag>().DropLoot(transform.position);
+            Destroy(gameObject);
+        }
+
     }
 }

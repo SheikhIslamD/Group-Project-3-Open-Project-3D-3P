@@ -16,6 +16,7 @@ public class PlayerCooking : MonoBehaviour
     int currentSeaweed;
 
     AudioCaller audioC;
+    PlayerAnimator anim;
 
 
     void Start()
@@ -23,7 +24,7 @@ public class PlayerCooking : MonoBehaviour
         input = GameplayInputReader.instance;
         health = GetComponent<Health>();
         audioC = GetComponent<AudioCaller>();
-
+        anim = GetComponentInChildren<PlayerAnimator>();
     }
 
     void Update()
@@ -45,21 +46,24 @@ public class PlayerCooking : MonoBehaviour
 
     void Heal()
     {
-        audioC.PlaySound("Cook");
-        if (health.currentHealth >= health.maxHealth) return;
+        anim.Cook(); //Temp for show
+
+        if (health.GetCurrentHealth() >= health.GetMaxHealth()) return;
 
         if(currentRice > 1 && currentFish > 0 && currentSeaweed > 0)
         {
-            health.Heal(20);
+            health.Heal(20, this);
             currentRice -= 2;
             currentFish -= 1;
             currentSeaweed -= 1;
+            audioC.PlaySound("Cook");
+            anim.Cook();
         }
         HUDUIManager.i.UpdateIngredients(currentRice, currentFish, currentSeaweed);
     }
 
     void OnHealthUpdate()
     {
-        HUDUIManager.i.UpdateHealth(health.currentHealth);
+        HUDUIManager.i.UpdateHealth(health.GetCurrentHealth());
     }
 }

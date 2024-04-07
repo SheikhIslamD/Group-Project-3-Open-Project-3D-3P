@@ -11,10 +11,13 @@ public class HUDUIManager : Singleton<HUDUIManager>
     public TextMeshProUGUI fishText;
     public TextMeshProUGUI SeaweedText;
 
+    [SerializeField] RectTransform reticle;
 
 
-
-
+    public void SetReticlePos(Vector2 pos)
+    {
+        reticle.position = pos;
+    }
 
     public void UpdateHealth(int hp)
     {

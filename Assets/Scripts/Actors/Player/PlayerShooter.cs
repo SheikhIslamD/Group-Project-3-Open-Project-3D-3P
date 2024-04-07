@@ -1,27 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class PlayerShooter : MonoBehaviour
 {
-    new Transform transform;
+    private new Transform transform;
     private LineRenderer lineRenderer;
-    new Camera camera;
-    GameplayInputReader input;
-    ObjectPool pool;
-
-    Collider backCollider;
-    AudioCaller audioC;
-    [SerializeField] LayerMask aimRaycastLayerMask;
-    [SerializeField] float aimRaycastMaxDistance;
-    [SerializeField] float knifeSpeed;
+    private new Camera camera;
+    private GameplayInputReader input;
+    private ObjectPool pool;
+    private Collider backCollider;
+    private AudioCaller audioC;
+    [SerializeField] private LayerMask aimRaycastLayerMask;
+    [SerializeField] private float aimRaycastMaxDistance;
+    [SerializeField] private float knifeSpeed;
+    [SerializeField] Transform handTransform;
+    [SerializeField] float lineFactor;
 
     public Vector3 aimDirection;
+    PlayerAnimator anim;
+    HUDUIManager hud;
 
-
-    void Start()
+    private void Start()
     {
         input = GameplayInputReader.instance;
         transform = GetComponent<Transform>();
@@ -30,39 +29,40 @@ public class PlayerShooter : MonoBehaviour
         backCollider = FindFirstObjectByType<CameraMovement>().backCollider.GetComponent<Collider>();
         pool = GetComponent<ObjectPool>();
         audioC = GetComponent<AudioCaller>();
+        anim = GetComponentInChildren<PlayerAnimator>();
+        hud = HUDUIManager.instance;
     }
 
-    void Update()
+    private void Update()
     {
-        Vector3 end = transform.position;
+        Vector3 end = handTransform.position;
         Ray cameraRay = camera.ScreenPointToRay(input.aimOutput);
 
-        RaycastHit firstHit;
-        bool firstHitDidHit = Physics.Raycast(cameraRay, out firstHit, aimRaycastMaxDistance, aimRaycastLayerMask);
+        bool firstHitDidHit = Physics.Raycast(cameraRay, out RaycastHit firstHit, aimRaycastMaxDistance, aimRaycastLayerMask);
 
         if (firstHitDidHit) end = firstHit.point;
         else
         {
-            RaycastHit secondHit;
-            bool secondHitDidHit = backCollider.Raycast(cameraRay, out secondHit, Mathf.Infinity);
-            if(secondHitDidHit) end = secondHit.point;
+            bool secondHitDidHit = backCollider.Raycast(cameraRay, out RaycastHit secondHit, Mathf.Infinity);
+            if (secondHitDidHit) end = secondHit.point;
         }
 
-        DrawAimLine(transform.position, end);
+        DrawAimLine(handTransform.position, end);
 
-        aimDirection = end - transform.position;
+        aimDirection = end - handTransform.position;
+
+        hud.SetReticlePos(camera.WorldToScreenPoint(end));
 
         if (input.shoot.WasPressedThisFrame()) ShootKnife(end - transform.position);
     }
 
-
-    void DrawAimLine(Vector3 start, Vector3 end)
+    private void DrawAimLine(Vector3 start, Vector3 end)
     {
-        lineRenderer.SetPosition(0, start);
+        lineRenderer.SetPosition(0, Vector3.Lerp(start, end, lineFactor));
         lineRenderer.SetPosition(1, end);
     }
 
-    void ShootKnife(Vector3 direction)
+    private void ShootKnife(Vector3 direction)
     {
         audioC.PlaySound("Shoot");
         PoolableObject knife = pool.Pump();
@@ -76,6 +76,12 @@ public class PlayerShooter : MonoBehaviour
         knife.transform.GetComponent<Rigidbody>().velocity = knife.transform.up * knifeSpeed;
          */
 
+    }
+
+    public void KnifeCallback()
+    {
+        PoolableObject knife = pool.Pump();
+        knife.Prepare_Basic(handTransform.position, Quaternion.FromToRotation(Vector3.up, aimDirection).eulerAngles, Vector3.up * knifeSpeed);
     }
 
 }

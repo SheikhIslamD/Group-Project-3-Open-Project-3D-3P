@@ -57,7 +57,7 @@ public class EnemyRanged : EnemyBase
         }
         else
         {
-            audioC.PlaySound("Attack");
+            audio.PlaySound("Attack");
             PoolableObject bullet = pool.Pump();
             bullet.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
 

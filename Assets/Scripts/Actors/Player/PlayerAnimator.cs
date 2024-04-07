@@ -11,7 +11,9 @@ public class PlayerAnimator : MonoBehaviour
 
     //Components
     Animator animator;
-    PlayerMovement movement;
+    PlayerMove movement;
+    PlayerShooter shooter;
+    PlayerMelee melee;
     Transform movementTransform;
 
     //Data
@@ -24,13 +26,16 @@ public class PlayerAnimator : MonoBehaviour
     void p_Melee() => animator.SetTrigger("Melee");
     void p_Throw() => animator.SetTrigger("Throw");
     void p_Jump() => animator.SetTrigger("Jump");
+    void p_Cook() => animator.SetTrigger("Cook");
 
 
 
     void Awake()
     {
         animator = GetComponent<Animator>();
-        movement = GetComponentInParent<PlayerMovement>();
+        movement = GetComponentInParent<PlayerMove>();
+        shooter = GetComponentInParent<PlayerShooter>();
+        melee = GetComponentInParent<PlayerMelee>();
         movementTransform = movement.transform;
         fullSpeed = movement.speed;
     }
@@ -57,7 +62,15 @@ public class PlayerAnimator : MonoBehaviour
     public void Melee() => p_Melee();
     public void Throw() => p_Throw();
     public void Jump() => p_Jump();
+    public void Cook() => p_Cook();
 
+    public void ThrowCallback()
+    {
+        shooter.KnifeCallback();
+    }
+    public void CookCallback()
+    {
 
+    }
 
 }
