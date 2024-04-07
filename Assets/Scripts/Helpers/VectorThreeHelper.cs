@@ -264,6 +264,14 @@ namespace Vector3Helper
         public static Vector2 XYZToXZ(this Vector3 value) => new Vector2(value.x, value.z);
         public static Vector3 XZToXYZ(this Vector2 value) => new Vector3(value.x, 0, value.y);
 
+        public static Vector3 Randomize(this Vector3 value, float min, float max)
+        {
+            value.x = UnityEngine.Random.Range(min, max);
+            value.y = UnityEngine.Random.Range(min, max);
+            value.z = UnityEngine.Random.Range(min, max);
+            return value;
+        }
+
     }
 
 
