@@ -13,10 +13,12 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private LayerMask aimRaycastLayerMask;
     [SerializeField] private float aimRaycastMaxDistance;
     [SerializeField] private float knifeSpeed;
+    [SerializeField] Transform handTransform;
+    [SerializeField] float lineFactor;
 
     public Vector3 aimDirection;
     PlayerAnimator anim;
-
+    HUDUIManager hud;
 
     private void Start()
     {
@@ -28,11 +30,12 @@ public class PlayerShooter : MonoBehaviour
         pool = GetComponent<ObjectPool>();
         audioC = GetComponent<AudioCaller>();
         anim = GetComponentInChildren<PlayerAnimator>();
+        hud = HUDUIManager.instance;
     }
 
     private void Update()
     {
-        Vector3 end = transform.position;
+        Vector3 end = handTransform.position;
         Ray cameraRay = camera.ScreenPointToRay(input.aimOutput);
 
         bool firstHitDidHit = Physics.Raycast(cameraRay, out RaycastHit firstHit, aimRaycastMaxDistance, aimRaycastLayerMask);
@@ -44,23 +47,26 @@ public class PlayerShooter : MonoBehaviour
             if (secondHitDidHit) end = secondHit.point;
         }
 
-        DrawAimLine(transform.position, end);
+        DrawAimLine(handTransform.position, end);
 
-        aimDirection = end - transform.position;
+        aimDirection = end - handTransform.position;
 
-        if (input.shoot.WasPressedThisFrame()) ShootKnife();
+        hud.SetReticlePos(camera.WorldToScreenPoint(end));
+
+        if (input.shoot.WasPressedThisFrame()) ShootKnife(end - transform.position);
     }
 
     private void DrawAimLine(Vector3 start, Vector3 end)
     {
-        lineRenderer.SetPosition(0, start);
+        lineRenderer.SetPosition(0, Vector3.Lerp(start, end, lineFactor));
         lineRenderer.SetPosition(1, end);
     }
 
-    private void ShootKnife()
+    private void ShootKnife(Vector3 direction)
     {
         audioC.PlaySound("Shoot");
-        anim.Throw();
+        PoolableObject knife = pool.Pump();
+        knife.Prepare_Basic(transform.position, Quaternion.FromToRotation(Vector3.up, direction).eulerAngles, Vector3.up * knifeSpeed);
 
         /*
         knife.gameObject.SetActive(true);
@@ -75,7 +81,7 @@ public class PlayerShooter : MonoBehaviour
     public void KnifeCallback()
     {
         PoolableObject knife = pool.Pump();
-        knife.Prepare_Basic(transform.position, Quaternion.FromToRotation(Vector3.up, aimDirection).eulerAngles, Vector3.up * knifeSpeed);
+        knife.Prepare_Basic(handTransform.position, Quaternion.FromToRotation(Vector3.up, aimDirection).eulerAngles, Vector3.up * knifeSpeed);
     }
 
 }

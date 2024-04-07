@@ -378,6 +378,8 @@ MonoBehaviour:
     m_Bits: 375
   aimRaycastMaxDistance: 70
   knifeSpeed: 20
+  handTransform: {fileID: 6446552897187280444}
+  lineFactor: 0.6
   aimDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &-1572151395676600341
 MonoBehaviour:
@@ -455,7 +457,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -499,7 +501,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 0}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -515,7 +517,7 @@ LineRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 0
+      atime0: 20239
       atime1: 65535
       atime2: 0
       atime3: 0
@@ -524,7 +526,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -3162,6 +3164,11 @@ MonoBehaviour:
 --- !u!4 &1945284188115934263 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: d3244bbe6eb4f2f438c483b7bb066add, type: 3}
+  m_PrefabInstance: {fileID: 237183778546410495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6446552897187280444 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6502182839619065283, guid: d3244bbe6eb4f2f438c483b7bb066add, type: 3}
   m_PrefabInstance: {fileID: 237183778546410495}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4690262522565705439

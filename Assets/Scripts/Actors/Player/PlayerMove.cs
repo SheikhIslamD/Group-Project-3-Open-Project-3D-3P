@@ -91,7 +91,7 @@ public class PlayerMove : MonoBehaviour
             characterController.stepOffset = originalStepOffset;
             ySpeed = -0.5f;
 
-            if (input.jump.WasPressedThisFrame())
+            if (input.jump.WasPressedThisFrame() || input.jump.WasReleasedThisFrame())
             {
                 audioC.PlaySound("Jump");
                 ySpeed = jumpSpeed;
