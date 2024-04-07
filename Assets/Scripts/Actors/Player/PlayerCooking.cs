@@ -46,7 +46,6 @@ public class PlayerCooking : MonoBehaviour
 
     void Heal()
     {
-        anim.Cook(); //Temp for show
 
         if (health.GetCurrentHealth() >= health.GetMaxHealth()) return;
 

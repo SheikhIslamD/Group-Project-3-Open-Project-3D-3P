@@ -65,8 +65,7 @@ public class PlayerShooter : MonoBehaviour
     private void ShootKnife(Vector3 direction)
     {
         audioC.PlaySound("Shoot");
-        PoolableObject knife = pool.Pump();
-        knife.Prepare_Basic(transform.position, Quaternion.FromToRotation(Vector3.up, direction).eulerAngles, Vector3.up * knifeSpeed);
+        anim.Throw();
 
         /*
         knife.gameObject.SetActive(true);
