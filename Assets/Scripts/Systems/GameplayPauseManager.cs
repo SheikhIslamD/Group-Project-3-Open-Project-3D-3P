@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 
 public class GameplayPauseManager : Singleton<GameplayPauseManager>
 {
 
-    public static bool paused { get { return instance._paused; } private set { instance._paused = value; } }
+    public static bool paused { get => instance._paused; private set => instance._paused = value; }
     private bool _paused;
-    private List<Pauseable> pauseables = new List<Pauseable>(); 
+    private List<Pauseable> pauseables = new();
 
     private void _SetPause(bool value)
     {
-        if(paused == value) return;
+        if (paused == value) return;
         paused = value;
 
         for (int i = 0; i < pauseables.Count; i++) pauseables[i].SetPause(paused);
@@ -20,9 +18,9 @@ public class GameplayPauseManager : Singleton<GameplayPauseManager>
     }
 
     public static void SetPause(bool value) => instance._SetPause(value);
-    public static void Pause()              => instance._SetPause(true);
-    public static void UnPause()            => instance._SetPause(false);
-    public static void TogglePause()        => instance._SetPause(!paused);
+    public static void Pause() => instance._SetPause(true);
+    public static void UnPause() => instance._SetPause(false);
+    public static void TogglePause() => instance._SetPause(!paused);
 
 
     public static void RegisterPausable(Pauseable pauseable)
@@ -38,7 +36,8 @@ public class GameplayPauseManager : Singleton<GameplayPauseManager>
 
     private void OnDisable() => UnRegisterAll();
     private void OnDestroy() => UnRegisterAll();
-    void UnRegisterAll()
+
+    private void UnRegisterAll()
     {
         for (int i = 0; i < pauseables.Count; i++) UnRegisterPausable(pauseables[i]);
     }
