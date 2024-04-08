@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Visual/Models/cart.fbx.meta
 guid: b7ec1ad327859d34bbd2a34c41a3e597
+=======
+guid: a3e892f9db6512041ac0f9e2ee20ed03
+>>>>>>> Stashed changes:Assets/Visual/Models/G5_LobsterSculpt.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []

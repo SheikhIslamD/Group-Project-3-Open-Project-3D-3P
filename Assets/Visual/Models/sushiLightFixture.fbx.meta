@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Visual/Models/sushiLightFixture.fbx.meta
 guid: b2401fe0902a24b4c839e908d9004be2
+=======
+guid: fe8c4ebb71b15d640be4c640fbd240c1
+>>>>>>> Stashed changes:Assets/Visual/Models/PlayerBakeFinal.fbx.meta
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
