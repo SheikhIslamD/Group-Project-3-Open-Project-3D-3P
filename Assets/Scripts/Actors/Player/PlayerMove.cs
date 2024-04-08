@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float jumpSpeed = 5.0f;
     [SerializeField] float dodgeSpeed = 12.0f;
     [SerializeField] float dodgeTime = 0.4f;
+    [SerializeField] float deathBarrier = -15f;
 
     //Connections
     GameplayInputReader input;
@@ -27,6 +28,7 @@ public class PlayerMove : MonoBehaviour
     float originalStepOffset;
     float dodgeTimeLeft;
     Vector3 dodgeDirection;
+    Vector3 lastGroundedPosition;
     [HideInInspector] public Vector3 movementVelocity;
 
     void Start()
@@ -68,6 +70,12 @@ public class PlayerMove : MonoBehaviour
 
         movementVelocity = velocity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
+
+        if(transform.position.y < deathBarrier)
+        {
+            characterController.Move(lastGroundedPosition - transform.position);
+            GetComponent<Health>().Damage(25, Health.DamageType.Generic, this, "BottomlessPit");
+        }
 
     }
 
@@ -138,5 +146,9 @@ public class PlayerMove : MonoBehaviour
         anim.Dodge();
     }
 
+    public void StorePosition()
+    {
+        lastGroundedPosition = transform.position;
+    }
 
 }

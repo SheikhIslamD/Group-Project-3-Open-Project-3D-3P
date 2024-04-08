@@ -203,7 +203,7 @@ public class BossOne : EnemyBase
     {
         if(currentState == States.Idle)
         {
-            Vector3 baseDirection = (playerTransform.position - pearlSpawnPoint.position);
+            Vector3 baseDirection = ((playerTransform.position + Vector3.up) - pearlSpawnPoint.position);
 
             PoolableObject proj1 = idleProjPool.Pump();
             PoolableObject proj2 = idleProjPool.Pump();

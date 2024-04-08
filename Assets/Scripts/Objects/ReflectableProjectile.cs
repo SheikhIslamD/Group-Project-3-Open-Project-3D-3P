@@ -1,13 +1,13 @@
-﻿using System.Reflection;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(PoolableObject))]
 public class ReflectableProjectile : MonoBehaviour
 {
     public Transform sender => GetComponent<PoolableObject>().pool.transform;
-    LayerMask normalMask;
-    [SerializeField] LayerMask reflectedMask;
-    bool isReflected;
+
+    private LayerMask normalMask;
+    [SerializeField] private LayerMask reflectedMask;
+    private bool isReflected;
 
     public static bool Reflect(GameObject target)
     {
@@ -17,7 +17,7 @@ public class ReflectableProjectile : MonoBehaviour
         reflect.MakeReflected();
         Rigidbody rb = reflect.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
-        Vector3 direction = reflect.sender.position - rb.position;
+        Vector3 direction = (reflect.sender.position + (Vector3.up*2)) - rb.position;
         rb.AddForce(direction.normalized * 1600);
         return true;
     }
@@ -26,7 +26,7 @@ public class ReflectableProjectile : MonoBehaviour
     {
         if (isReflected) return;
         Debug.Log("refele");
-        var col = GetComponent<Collider>();
+        Collider col = GetComponent<Collider>();
         normalMask = col.includeLayers;
         col.includeLayers = reflectedMask;
         col.excludeLayers = ~reflectedMask;
@@ -36,7 +36,7 @@ public class ReflectableProjectile : MonoBehaviour
     public void MakeNormal()
     {
         if (!isReflected) return;
-        var col = GetComponent<Collider>();
+        Collider col = GetComponent<Collider>();
         col.includeLayers = normalMask;
         col.excludeLayers = ~normalMask;
         isReflected = false;
@@ -44,11 +44,14 @@ public class ReflectableProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision) => Collide(collision.gameObject);
     private void OnTriggerEnter(Collider other) => Collide(other.gameObject);
-    void Collide(GameObject obj)
+
+    private void Collide(GameObject obj)
     {
         if (isReflected && obj.GetComponent<Health>() != null)
         {
             MakeNormal();
         }
     }
+
+    private void OnDisable() => MakeNormal();
 }

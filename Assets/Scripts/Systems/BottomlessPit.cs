@@ -4,22 +4,13 @@ using UnityEngine;
 
 public class BottomlessPit : MonoBehaviour
 {
-    Vector3 storedPosition;
-    Transform playerTransform;
+    PlayerMove player;
 
-    private void OnTriggerEnter(Collider other)
+    private void Awake()
     {
-        if(other.gameObject.GetComponent<PlayerMove>() != null)
-        {
-            storedPosition = other.transform.position;
-            playerTransform = other.transform;
-        }
+        player = GameObject.Find("Player").GetComponent<PlayerMove>();
     }
 
-    public void Return()
-    {
-        if (playerTransform == null) return;
-        playerTransform.GetComponent<CharacterController>().Move(storedPosition - playerTransform.transform.position);
-        playerTransform.GetComponent<Health>().Damage(25, Health.DamageType.Generic, this, "BottomlessPit");
-    }
+    private void OnTriggerExit(Collider other) => player.StorePosition();
+    private void OnTriggerEnter(Collider other) => player.StorePosition();
 }
