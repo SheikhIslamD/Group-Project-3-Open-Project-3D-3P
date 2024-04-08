@@ -118,6 +118,8 @@ MonoBehaviour:
   attackRange: 1.8
   attackRate: 3.5
   attackDamage: 15
+  sightRange: 30
+  fightRange: 10
 --- !u!114 &6571558288486719362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,11 +133,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagable: 1
+  maxHealth: 100
+  currentHealth: 100
   entityType: 0
-  onDamageMessage: OnDamage
-  onDepleteMessage: OnDeplete
-  onHealMessage: OnHeal
-  onHealthUpdateMessage: OnHealthUpdate
+  healthChangeMessage: OnHealthChange
+  depleteMessage: OnHealthDeplete
+  healthChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  depleteEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  destroyOnDeplete: 1
 --- !u!136 &6249028078808198818
 CapsuleCollider:
   m_ObjectHideFlags: 0
