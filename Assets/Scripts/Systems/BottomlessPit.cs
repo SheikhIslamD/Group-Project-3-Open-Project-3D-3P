@@ -18,6 +18,7 @@ public class BottomlessPit : MonoBehaviour
 
     public void Return()
     {
+        if (playerTransform == null) return;
         playerTransform.GetComponent<CharacterController>().Move(storedPosition - playerTransform.transform.position);
         playerTransform.GetComponent<Health>().Damage(25, Health.DamageType.Generic, this, "BottomlessPit");
     }
