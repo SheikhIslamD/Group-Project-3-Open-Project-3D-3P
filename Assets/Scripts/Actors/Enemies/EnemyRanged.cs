@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Vector3Helper;
 
 public class EnemyRanged : EnemyBase
 {
@@ -49,7 +50,7 @@ public class EnemyRanged : EnemyBase
     private void AttackPlayer()
     {
         navAgent.SetDestination(transform.position);
-        transform.LookAt(player);
+        transform.LookAt(player.position * Direction.XZ);
 
         if(timeLeftBeforeAttack > 0)
         {
