@@ -11,6 +11,7 @@ public class EnemyRanged : EnemyBase
     public float timeBetweenAttacks;
     public float sightRange, attackRange;
     private bool inSightRange, inAttackRange;
+    public float throwSpeed = 15f;
     
     //Connections
     public NavMeshAgent navAgent;
@@ -83,7 +84,7 @@ public class EnemyRanged : EnemyBase
     {
         audio.PlaySound("Attack");
         PoolableObject bullet = pool.Pump();
-        bullet.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
+        bullet.Prepare_Basic(transform.position, Vector3.zero, transform.forward * throwSpeed + transform.up * 2f);
     }
 
 }
