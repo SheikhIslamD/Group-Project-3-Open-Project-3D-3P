@@ -3316,12 +3316,8 @@ PrefabInstance:
       value: ScallopBoss
       objectReference: {fileID: 0}
     - target: {fileID: 7464684652582484294, guid: 513940306643e6648a46c7ca7098f3cd, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7464684652582484294, guid: 513940306643e6648a46c7ca7098f3cd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7904342072018857733, guid: 513940306643e6648a46c7ca7098f3cd, type: 3}
       propertyPath: m_Layer

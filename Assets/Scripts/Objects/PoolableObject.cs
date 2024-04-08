@@ -40,6 +40,7 @@ public class PoolableObject : MonoBehaviour
         Active = false;
         if (onDeactivate.GetInvocationList().Length > 0 && wasActive) onDeactivate(this);
         if (deactivateGameObject) gameObject.SetActive(false);
+        GetComponent<ReflectableProjectile>().MakeNormal();
 
         if (pool == null) Destroy(gameObject);
     }

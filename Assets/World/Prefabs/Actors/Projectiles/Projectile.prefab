@@ -165,12 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af1f3ac73d711d14b95a50d71c05f30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalMask:
-    serializedVersion: 2
-    m_Bits: 256
   reflectedMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 257
 --- !u!114 &-9177393644655592679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  type: 0
+  type: 2
   deactivateOnHit: 1
   deactivateOnHitWithHealth: 1
   useCollider: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReflectableProjectile : MonoBehaviour
 {
     public Transform sender => GetComponent<PoolableObject>().pool.transform;
-    [SerializeField] LayerMask normalMask;
+    LayerMask normalMask;
     [SerializeField] LayerMask reflectedMask;
     bool isReflected;
 
@@ -18,14 +18,16 @@ public class ReflectableProjectile : MonoBehaviour
         Rigidbody rb = reflect.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         Vector3 direction = reflect.sender.position - rb.position;
-        rb.AddForce(direction.normalized * 1400);
+        rb.AddForce(direction.normalized * 1600);
         return true;
     }
 
     public void MakeReflected()
     {
+        if (isReflected) return;
         Debug.Log("refele");
         var col = GetComponent<Collider>();
+        normalMask = col.includeLayers;
         col.includeLayers = reflectedMask;
         col.excludeLayers = ~reflectedMask;
         isReflected = true;
@@ -33,6 +35,7 @@ public class ReflectableProjectile : MonoBehaviour
 
     public void MakeNormal()
     {
+        if (!isReflected) return;
         var col = GetComponent<Collider>();
         col.includeLayers = normalMask;
         col.excludeLayers = ~normalMask;

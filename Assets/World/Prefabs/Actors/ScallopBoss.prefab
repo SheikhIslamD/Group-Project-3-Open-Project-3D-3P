@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 901169119403944363}
   - component: {fileID: 7647146826751384074}
   - component: {fileID: 3808031846857404858}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ScallopBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
