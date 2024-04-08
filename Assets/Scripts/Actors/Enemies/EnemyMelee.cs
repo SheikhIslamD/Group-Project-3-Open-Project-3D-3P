@@ -14,6 +14,7 @@ public class EnemyMelee : EnemyBase
 
     //Connections
     NavMeshAgent navAgent;
+    Animator anim;
 
     //Data
     float attackTimer;
@@ -22,6 +23,7 @@ public class EnemyMelee : EnemyBase
     {
         base.Start();
         navAgent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
     }
     void Update()
     {
@@ -30,7 +32,9 @@ public class EnemyMelee : EnemyBase
 
         if (!inSightRange && !inAttackRange) Idle();
         if (inSightRange) Chase();
-        
+
+        anim.SetFloat("Speed", navAgent.velocity.magnitude);
+
     }
 
     void Idle()
@@ -47,13 +51,13 @@ public class EnemyMelee : EnemyBase
         if(attackTimer > attackRate)
         {
             attackTimer = 0;
-            if (distanceFromPlayer < attackRange) Attack();
+            if (distanceFromPlayer < attackRange) anim.SetTrigger("Attack");
         }
     }
 
-    void Attack()
+    public void Attack()
     {
-        player.GetComponent<Health>()?.Damage(attackDamage, Health.DamageType.Melee, this);
+        if (distanceFromPlayer < attackRange) player.GetComponent<Health>()?.Damage(attackDamage, Health.DamageType.Melee, this);
     }
 
 }

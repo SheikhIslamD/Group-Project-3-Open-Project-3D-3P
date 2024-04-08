@@ -15,6 +15,7 @@ public class EnemyRanged : EnemyBase
     //Connections
     public NavMeshAgent navAgent;
     ObjectPool pool;
+    Animator anim;
 
     //Data
     float timeLeftBeforeAttack;
@@ -25,6 +26,7 @@ public class EnemyRanged : EnemyBase
         navAgent = GetComponent<NavMeshAgent>();
         pool = GetComponent<ObjectPool>();
         timeLeftBeforeAttack = timeBetweenAttacks;
+        anim = GetComponentInChildren<Animator>();
     }
     
     private void Update()
@@ -35,6 +37,8 @@ public class EnemyRanged : EnemyBase
         if (!inSightRange && !inAttackRange) Idle();
         if (inSightRange && !inAttackRange) ChasePlayer();
         if (inSightRange && inAttackRange) AttackPlayer();
+
+        anim.SetFloat("Speed", navAgent.velocity.magnitude);
     }
 
     private void Idle()
@@ -58,9 +62,7 @@ public class EnemyRanged : EnemyBase
         }
         else
         {
-            audio.PlaySound("Attack");
-            PoolableObject bullet = pool.Pump();
-            bullet.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
+            anim.SetTrigger("Attack");
 
             /*
             sphere.gameObject.SetActive(true);
@@ -76,5 +78,13 @@ public class EnemyRanged : EnemyBase
         }
 
     }
+
+    public void AttackCallback()
+    {
+        audio.PlaySound("Attack");
+        PoolableObject bullet = pool.Pump();
+        bullet.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
+    }
+
 }
 

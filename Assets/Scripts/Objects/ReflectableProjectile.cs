@@ -24,6 +24,7 @@ public class ReflectableProjectile : MonoBehaviour
 
     public void MakeReflected()
     {
+        Debug.Log("refele");
         var col = GetComponent<Collider>();
         col.includeLayers = reflectedMask;
         col.excludeLayers = ~reflectedMask;
