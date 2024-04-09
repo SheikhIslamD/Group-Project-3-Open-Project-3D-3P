@@ -24,6 +24,8 @@ public class BossOne : EnemyBase
     [SerializeField] float guardAttackAngle;
     [SerializeField] ObjectPool guardProjPool;
     [SerializeField] Transform pearlSpawnPoint;
+    [SerializeField] GameObject bossHealthSlider;
+    public static bool nearBoss = false;
 
     //Connections
     Transform thisTransform;
@@ -55,6 +57,7 @@ public class BossOne : EnemyBase
         if (!on) return;
         stateMachine.Update();
         currentStateVisual = stateMachine.currentStateID;
+        bossHealthSlider.SetActive(true);
     }
 
     public enum States

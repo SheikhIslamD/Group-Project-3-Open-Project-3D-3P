@@ -7,6 +7,7 @@ using TMPro;
 public class HUDUIManager : Singleton<HUDUIManager>
 {
     public Slider health;
+    public Slider bossHealth;
     public TextMeshProUGUI riceText;
     public TextMeshProUGUI fishText;
     public TextMeshProUGUI SeaweedText;
@@ -22,6 +23,11 @@ public class HUDUIManager : Singleton<HUDUIManager>
     public void UpdateHealth(int hp)
     {
         health.value = hp;
+    }
+
+    public void UpdateBossHealth(int hp)
+    {
+        bossHealth.value = hp;
     }
 
     public void UpdateIngredients(int rice, int fish, int seaweed)
