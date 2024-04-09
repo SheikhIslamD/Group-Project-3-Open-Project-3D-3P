@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6540350588660581619}
   - component: {fileID: 4752993757650891295}
   - component: {fileID: 2197664705609573252}
-  m_Layer: 9
+  m_Layer: 3
   m_Name: Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 4121366097026330801}
   - {fileID: 8310998524054854902}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4752993757650891295
 BoxCollider:
@@ -83,7 +83,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4121366097026330801}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: CameraT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 2223870116169356087}
   - component: {fileID: 265280983954889103}
   - component: {fileID: 2684938623818769622}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,10 +148,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 887
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -196,7 +196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8310998524054854902}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: BackT
   m_TagString: Untagged
   m_Icon: {fileID: 0}

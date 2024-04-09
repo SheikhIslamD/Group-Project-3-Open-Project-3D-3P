@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5763022814226455691}
   - component: {fileID: 1946819897266979569}
   - component: {fileID: 7193907892567258879}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: BottomlessPit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,10 +56,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 887
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 4891404785742827701}
   - component: {fileID: 37184075161135011}
   - component: {fileID: 7629753238245414879}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Pit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
