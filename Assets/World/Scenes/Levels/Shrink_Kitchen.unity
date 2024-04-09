@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276797, g: 0.21589167, b: 0.29782546, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4561,8 +4561,8 @@ GameObject:
   - component: {fileID: 451728463}
   - component: {fileID: 451728462}
   - component: {fileID: 451728461}
-  m_Layer: 9
-  m_Name: GameObject
+  m_Layer: 10
+  m_Name: BossArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

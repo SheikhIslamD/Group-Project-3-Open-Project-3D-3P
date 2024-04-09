@@ -10,7 +10,7 @@ using static UnityEngine.UI.GridLayoutGroup;
 public class BossOne : EnemyBase
 {
     //Config
-    public bool on; public void TURNON() => on = true;
+    public bool on;
     [SerializeField] float idleAttackRate;
     [SerializeField] float idleAttackSpread;
     [SerializeField] float idleAttackVelocity;
@@ -35,7 +35,7 @@ public class BossOne : EnemyBase
     BossOneAnimator anim;
 
     //Data
-    public States currentStateVisual;
+    //public States currentStateVisual;
     private States currentState => stateMachine.currentStateID;
 
 
@@ -52,12 +52,18 @@ public class BossOne : EnemyBase
         stateMachine.owner = this;
     }
     
+    public void TURNON()
+    {
+        on = true;
+        bossHealthSlider.SetActive(true);
+    }
+
     private void Update()
     {
         if (!on) return;
         stateMachine.Update();
-        currentStateVisual = stateMachine.currentStateID;
-        bossHealthSlider.SetActive(true);
+        //currentStateVisual = stateMachine.currentStateID;
+        
     }
 
     public enum States
