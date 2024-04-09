@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Vector3Helper;
 
@@ -10,42 +8,42 @@ public class PlayerAnimator : MonoBehaviour
 
 
     //Components
-    Animator animator;
-    PlayerMove movement;
-    PlayerShooter shooter;
-    PlayerMelee melee;
-    Transform movementTransform;
+    private Animator animator;
+    private PlayerMove movement;
+    private PlayerShooter shooter;
+    private PlayerMelee melee;
+    private PlayerCooking cooking;
+    private Transform movementTransform;
 
     //Data
-    float fullSpeed;
+    private float fullSpeed;
 
     //Animation Parameters
-    float p_walkX { set { animator.SetFloat("walkX", value); } }
-    float p_walkZ { set { animator.SetFloat("walkZ", value); } }
-    void p_Dodge() => animator.SetTrigger("Dodge");
-    void p_Melee() => animator.SetTrigger("Melee");
-    void p_Throw() => animator.SetTrigger("Throw");
-    void p_Jump() => animator.SetTrigger("Jump");
-    void p_Cook() => animator.SetTrigger("Cook");
+    private float p_walkX { set => animator.SetFloat("walkX", value); }
+    private float p_walkZ { set => animator.SetFloat("walkZ", value); }
+    public bool p_inAir { set => animator.SetBool("InAir", value); }
 
+    public void Dodge() => animator.SetTrigger("Dodge");
+    public void Melee() => animator.SetTrigger("Melee");
+    public void Throw() => animator.SetTrigger("Throw");
+    public void Jump() => animator.SetTrigger("Jump");
+    public void Land() => animator.SetTrigger("Land");
+    public void Cook() => animator.SetTrigger("Cook");
 
-
-    void Awake()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         movement = GetComponentInParent<PlayerMove>();
         shooter = GetComponentInParent<PlayerShooter>();
         melee = GetComponentInParent<PlayerMelee>();
+        cooking = GetComponentInParent<PlayerCooking>();
         movementTransform = movement.transform;
         fullSpeed = movement.speed;
     }
 
-    private void Update()
-    {
-        SetDirection();
-    }
+    private void Update() => SetDirection();
 
-    void SetDirection()
+    private void SetDirection()
     {
 
         Vector3 result = movementTransform.worldToLocalMatrix * (Vector3)(movement.movementVelocity * Direction.XZ / (fullSpeed * Time.deltaTime));
@@ -58,19 +56,8 @@ public class PlayerAnimator : MonoBehaviour
         //Direction result = Quaternion.LookRotation(aimDirection, transform.up) * moveDirection;
     }
 
-    public void Dodge() => p_Dodge();
-    public void Melee() => p_Melee();
-    public void Throw() => p_Throw();
-    public void Jump() => p_Jump();
-    public void Cook() => p_Cook();
-
-    public void ThrowCallback()
-    {
-        shooter.KnifeCallback();
-    }
-    public void CookCallback()
-    {
-
-    }
+    public void ThrowCallback() => shooter.KnifeCallback();
+    public void CookCallback() => cooking.HealFinishCallback();
+    public void JumpCallback() => movement.JumpCallback();
 
 }

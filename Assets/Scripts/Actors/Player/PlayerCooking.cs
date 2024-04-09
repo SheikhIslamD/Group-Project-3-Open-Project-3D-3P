@@ -17,6 +17,9 @@ public class PlayerCooking : MonoBehaviour
 
     AudioCaller audioC;
     PlayerAnimator anim;
+    PlayerMove move;
+    PlayerMelee melee;
+    PlayerShooter shooter;
 
 
     void Start()
@@ -25,6 +28,9 @@ public class PlayerCooking : MonoBehaviour
         health = GetComponent<Health>();
         audioC = GetComponent<AudioCaller>();
         anim = GetComponentInChildren<PlayerAnimator>();
+        move = GetComponent<PlayerMove>();
+        melee = GetComponent<PlayerMelee>();
+        shooter = GetComponent<PlayerShooter>();
     }
 
     void Update()
@@ -51,15 +57,27 @@ public class PlayerCooking : MonoBehaviour
 
         if(currentRice > 1 && currentFish > 0 && currentSeaweed > 0)
         {
-            health.Heal(20, this);
             currentRice -= 2;
             currentFish -= 1;
             currentSeaweed -= 1;
             audioC.PlaySound("Cook");
             anim.Cook();
+            move.enabled = false;
+            melee.enabled = false;
+            shooter.enabled = false;
         }
         HUDUIManager.i.UpdateIngredients(currentRice, currentFish, currentSeaweed);
     }
+    public void HealFinishCallback()
+    {
+        health.Heal(20, this);
+        move.enabled = true;
+        melee.enabled = true;
+        shooter.enabled = true;
+
+    }
+
+
 
     void OnHealthUpdate()
     {

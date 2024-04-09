@@ -11,6 +11,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float dodgeSpeed = 12.0f;
     [SerializeField] float dodgeTime = 0.4f;
     [SerializeField] float deathBarrier = -15f;
+    [SerializeField] int amountOfAirDodges = 1;
 
     //Connections
     GameplayInputReader input;
@@ -30,6 +31,8 @@ public class PlayerMove : MonoBehaviour
     float dodgeTimeLeft;
     Vector3 dodgeDirection;
     Vector3 lastGroundedPosition;
+    bool onGround => characterController.isGrounded;
+    int dodgesLeft;
     [HideInInspector] public Vector3 movementVelocity;
     [HideInInspector] public Vector3 position => transform.position;
     [HideInInspector] public Vector3 centerPos => transform.position + collider.center;
@@ -81,6 +84,8 @@ public class PlayerMove : MonoBehaviour
             GetComponent<Health>().Damage(25, Health.DamageType.Generic, this, "BottomlessPit");
         }
 
+        anim.p_inAir = !characterController.isGrounded;
+        if(onGround && dodgesLeft != amountOfAirDodges) dodgesLeft = amountOfAirDodges;
     }
 
     void MovementDirection()
@@ -103,11 +108,11 @@ public class PlayerMove : MonoBehaviour
             characterController.stepOffset = originalStepOffset;
             ySpeed = -0.5f;
 
-            if (input.jump.WasPressedThisFrame() || input.jump.WasReleasedThisFrame())
+            if (input.jump.WasPressedThisFrame()) anim.Jump();
+            if (jumping)
             {
-                audioC.PlaySound("Jump");
                 ySpeed = jumpSpeed;
-                anim.Jump();
+                jumping = false;
             }
         }
         else
@@ -144,15 +149,25 @@ public class PlayerMove : MonoBehaviour
 
     void BeginDodge()
     {
+        if (!onGround && dodgesLeft < 1) return;
         dodgeTimeLeft = dodgeTime;
         dodgeDirection = movementDirection;
         health.damagable = false;
         anim.Dodge();
+        dodgesLeft--;
     }
 
     public void StorePosition()
     {
         lastGroundedPosition = transform.position;
+    }
+
+    bool jumping;
+    public void JumpCallback()
+    {
+        Debug.Log("Jump");
+        audioC.PlaySound("Jump");
+        jumping = true;
     }
 
 }
