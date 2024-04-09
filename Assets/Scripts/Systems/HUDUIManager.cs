@@ -24,7 +24,7 @@ public class HUDUIManager : Singleton<HUDUIManager>
     public void SetReticlePos(Vector2 pos, float scale)
     {
         reticle.position = pos;
-        reticle.localScale = Vector3.one * initialScale / scale;
+        reticle.localScale = Vector3.one * 4 * initialScale / scale;
     }
 
     public void UpdateHealth(int hp)
