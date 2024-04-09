@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1116154822393926564}
   - component: {fileID: 4536201268687730114}
   - component: {fileID: 2978663373069622260}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,6 +175,10 @@ PrefabInstance:
     - target: {fileID: 2102255390779569835, guid: 4d9e3b09a4cf50e43b118f89b14ff9bb, type: 3}
       propertyPath: m_Name
       value: ricePiece Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102255390779569835, guid: 4d9e3b09a4cf50e43b118f89b14ff9bb, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

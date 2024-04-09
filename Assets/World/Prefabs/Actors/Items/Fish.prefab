@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1249061477802978486}
   - component: {fileID: 7298504752213418612}
   - component: {fileID: 2317741100199364913}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,6 +175,10 @@ PrefabInstance:
     - target: {fileID: 625179227028595251, guid: 9cffacd3dc70b2946ae2f359b6e4f404, type: 3}
       propertyPath: m_Name
       value: salmonStrip Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 625179227028595251, guid: 9cffacd3dc70b2946ae2f359b6e4f404, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

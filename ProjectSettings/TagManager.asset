@@ -9,14 +9,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NonCollide
   - Water
   - UI
-  - Ground
   - Player
   - Enemy
-  - NonCollide
-  - 
+  - PlayerProjectile
+  - EnemyProjectile
+  - PlayerTriggers
   - 
   - 
   - 

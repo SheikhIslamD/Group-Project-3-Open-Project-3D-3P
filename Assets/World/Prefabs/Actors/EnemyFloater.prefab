@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 429666431142689601}
   - component: {fileID: 8178192130084227998}
   - component: {fileID: 2200350448549786567}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: EnemyFloater
   m_TagString: Enemy
   m_Icon: {fileID: 0}

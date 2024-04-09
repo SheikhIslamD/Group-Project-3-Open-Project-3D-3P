@@ -5,8 +5,6 @@ public class ReflectableProjectile : MonoBehaviour
 {
     public Transform sender => GetComponent<PoolableObject>().pool.transform;
 
-    private LayerMask normalMask;
-    [SerializeField] private LayerMask reflectedMask;
     private bool isReflected;
 
     public static bool Reflect(GameObject target)
@@ -25,20 +23,16 @@ public class ReflectableProjectile : MonoBehaviour
     public void MakeReflected()
     {
         if (isReflected) return;
-        Debug.Log("refele");
-        Collider col = GetComponent<Collider>();
-        normalMask = col.includeLayers;
-        col.includeLayers = reflectedMask;
-        col.excludeLayers = ~reflectedMask;
+
+        gameObject.layer = Layers.PlayerProjectile;
         isReflected = true;
     }
 
     public void MakeNormal()
     {
         if (!isReflected) return;
-        Collider col = GetComponent<Collider>();
-        col.includeLayers = normalMask;
-        col.excludeLayers = ~normalMask;
+
+        gameObject.layer = Layers.EnemyProjectile;
         isReflected = false;
     }
 

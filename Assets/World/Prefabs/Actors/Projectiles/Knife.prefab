@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4358401116587172876}
   - component: {fileID: 2937266717570764127}
   - component: {fileID: 2118353417166162688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,10 +100,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -269,6 +269,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e324d4802b0ee5143a36221d8a6f62db, type: 3}
       propertyPath: m_Name
       value: kunai
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e324d4802b0ee5143a36221d8a6f62db, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507767883509144192, guid: e324d4802b0ee5143a36221d8a6f62db, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3306512618393000541, guid: e324d4802b0ee5143a36221d8a6f62db, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994721076960434074, guid: e324d4802b0ee5143a36221d8a6f62db, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
