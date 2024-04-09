@@ -13,12 +13,12 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private LayerMask aimRaycastLayerMask;
     [SerializeField] private float aimRaycastMaxDistance;
     [SerializeField] private float knifeSpeed;
-    [SerializeField] Transform handTransform;
-    [SerializeField] float lineFactor;
+    [SerializeField] private Transform handTransform;
+    [SerializeField] private float lineFactor;
 
     public Vector3 aimDirection;
-    PlayerAnimator anim;
-    HUDUIManager hud;
+    private PlayerAnimator anim;
+    private HUDUIManager hud;
 
     private void Start()
     {
@@ -38,20 +38,20 @@ public class PlayerShooter : MonoBehaviour
         Vector3 end = handTransform.position;
         Ray cameraRay = camera.ScreenPointToRay(input.aimOutput);
 
-        bool firstHitDidHit = Physics.Raycast(cameraRay, out RaycastHit firstHit, aimRaycastMaxDistance, aimRaycastLayerMask);
+        bool firstHitDidHit = Physics.Raycast(cameraRay, out RaycastHit hit, aimRaycastMaxDistance, aimRaycastLayerMask);
 
-        if (firstHitDidHit) end = firstHit.point;
+        if (firstHitDidHit) end = hit.point;
         else
         {
-            bool secondHitDidHit = backCollider.Raycast(cameraRay, out RaycastHit secondHit, Mathf.Infinity);
-            if (secondHitDidHit) end = secondHit.point;
+            bool secondHitDidHit = backCollider.Raycast(cameraRay, out hit, Mathf.Infinity);
+            if (secondHitDidHit) end = hit.point;
         }
 
         DrawAimLine(handTransform.position, end);
 
         aimDirection = end - handTransform.position;
 
-        hud.SetReticlePos(camera.WorldToScreenPoint(end));
+        hud.SetReticlePos(camera.WorldToScreenPoint(end), hit.distance);
 
         if (input.shoot.WasPressedThisFrame()) ShootKnife(end - transform.position);
     }

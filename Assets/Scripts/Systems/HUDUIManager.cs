@@ -13,11 +13,18 @@ public class HUDUIManager : Singleton<HUDUIManager>
     public TextMeshProUGUI SeaweedText;
 
     [SerializeField] RectTransform reticle;
+    float initialScale;
+
+    private void Awake()
+    {
+        initialScale = reticle.localScale.x;
+    }
 
 
-    public void SetReticlePos(Vector2 pos)
+    public void SetReticlePos(Vector2 pos, float scale)
     {
         reticle.position = pos;
+        reticle.localScale = Vector3.one * initialScale / scale;
     }
 
     public void UpdateHealth(int hp)
