@@ -54,7 +54,7 @@ public class EnemyBounce : EnemyBase
     }
     private void Chase()
     {
-        rb.AddForce((player.transform.position - transform.position) * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
+        rb.AddForce((player.centerPos - transform.position) * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
 
         //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }

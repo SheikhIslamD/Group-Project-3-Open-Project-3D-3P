@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
     Health health;
     PlayerShooter shooter;
     PlayerAnimator anim;
+    new BoxCollider collider;
     
     //Data
     Vector3 movementDirection;
@@ -30,8 +31,10 @@ public class PlayerMove : MonoBehaviour
     Vector3 dodgeDirection;
     Vector3 lastGroundedPosition;
     [HideInInspector] public Vector3 movementVelocity;
+    [HideInInspector] public Vector3 position => transform.position;
+    [HideInInspector] public Vector3 centerPos => transform.position + collider.center;
 
-    void Start()
+    void Awake()
     {
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset;
@@ -41,6 +44,7 @@ public class PlayerMove : MonoBehaviour
         health = GetComponent<Health>();
         shooter = GetComponent<PlayerShooter>();
         anim = GetComponentInChildren<PlayerAnimator>();
+        collider = GetComponent<BoxCollider>();
     }
 
     void Update()

@@ -114,6 +114,10 @@ MonoBehaviour:
   sightRange: 30
   attackRange: 11
   throwSpeed: 15
+  thrower:
+    angle: 20
+    maxSpeed: 12
+    gravity: 9.81
   navAgent: {fileID: 0}
 --- !u!114 &2289523109895011900
 MonoBehaviour:

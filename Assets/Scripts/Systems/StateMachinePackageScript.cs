@@ -131,7 +131,7 @@ namespace StateMachineSLS
         /// <returns> NULL if the States have been set up incorrectly OR the State specified in Parameters is not active. </returns>
         public T CurrentStateOB<T>(int state) where T : StateBase
         {
-            T _currentStateObject = (T)stateObjectRefs[(int)currentStateID];
+            T _currentStateObject = (T)stateObjectRefs[currentStateID];
             if (state != currentStateID || state.GetType() != typeof(T)) return null;
             return _currentStateObject;
         }
@@ -152,9 +152,9 @@ namespace StateMachineSLS
         /// <summary>
         /// Gets a specific State (Object). Use for finer control over the States' sub-conditions. Does NOT ensure this state is the currently running one, so use wisely.
         /// </summary>
-        /// <param name="state">The specific State Object you are trying to recieve. (ID Enum.)</param>
+        /// <param name="state">The specific State you are trying to recieve. (ID Enum.)</param>
         /// <returns>The State (Object) based on the State (ID Enum) given. (Assuming you set up InitializeStates() correctly, of course.)</returns>
-        public StateBase GetState(int state) => stateObjectRefs[(int)state];
+        public StateBase GetState(int state) => stateObjectRefs[state];
 
 
 
@@ -185,11 +185,12 @@ namespace StateMachineSLS
             CurrentStateOB().OnEnterState();
             return CurrentStateOB();
         }
+
         /// <summary>
         /// This changes the state from one state to another. Running OnExitState() on the previous State and OnEnterState() on the new State.
         /// </summary>
-        /// <typeparam name="T">The State Type you wish to switch to.</param>
-        /// <returns> the State Object of the new state activated. </returns>
+        /// <typeparam name="T">The State Type you wish to switch to.</typeparam>
+        /// <returns>The State Object of the new state activated. </returns>
         public StateBase ChangeState<T>()
         {
             CurrentStateOB().OnExitState();
@@ -238,48 +239,5 @@ namespace StateMachineSLS
             public virtual void FixedUpdate() { }
             public virtual void OnExitState() { }
         }
-
-        /*
-        ExampleState _exampleState;
-        public class ExampleState : StateBase
-        {
-
-        }
-         */
-
-
-        // Generic Attempt
-        // This would've made everything infinitely easier.
-
-        // /// <summary>
-        // /// This creates a State object and adds it to the stateObjectRefs. Ensure this Method is called once for every state named in the State enum, in order.
-        // /// </summary>
-        // /// <param name="state"> This is the State Object slot you need to pass in to create the new state.</param>
-        // protected void CreateState<StateT>(ref StateT state)
-        // {
-        //     StateBase<StateT> NEWSTATE = new StateBase<StateT>(this.owner);
-        //     state = (StateT)Convert.ChangeType(NEWSTATE, typeof(StateT));
-        //     stateObjectRefs.Add(state);
-        // }
-        //private class StateList<StateT> where StateT : StateBase<StateT>
-        //{
-        //    List<StateT> list = new List<StateT>();
-        //
-        //    public void Add(StateT state) => list.Add(state);
-        //}
-        // /// <summary>
-        // /// The base State for a State Machine. If you use this as an actual state in your state machine, it's equivilent to having a dummy state that does literally nothing.
-        // /// </summary>
-        // public class StateBase<StateType>
-        // {
-        //     public MonoBehaviour owner;
-        // 
-        //     public StateBase(MonoBehaviour owner) => this.owner = owner;
-        // 
-        //     public virtual void OnEnterState() { }
-        //     public virtual void Update() { }
-        //     public virtual void OnExitState() { }
-        // }
-
     }
 }

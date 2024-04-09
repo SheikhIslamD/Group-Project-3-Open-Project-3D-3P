@@ -17,9 +17,9 @@ public class EnemySpawner : EnemyBase
     //Data
     float spawnTimer;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         
         objectPools = new ObjectPool[enemyPrefabs.Length];
         for (int i = 0; i < objectPools.Length; i++) objectPools[i] = ObjectPool.Create(gameObject, enemyPrefabs[i], 1, deleteObjectsOnDestroy: false);

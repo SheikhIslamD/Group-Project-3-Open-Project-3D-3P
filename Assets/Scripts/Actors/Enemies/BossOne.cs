@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using StateMachineSLS;
+using Unity.VisualScripting;
+using UnityEngine;
 using Vector3Helper;
-using static UnityEngine.UI.GridLayoutGroup;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(Pauseable), typeof(ObjectPool))]
@@ -11,39 +9,35 @@ public class BossOne : EnemyBase
 {
     //Config
     public bool on;
-    [SerializeField] float idleAttackRate;
-    [SerializeField] float idleAttackSpread;
-    [SerializeField] float idleAttackVelocity;
-    [SerializeField] ObjectPool idleProjPool;
-    [SerializeField] float spinactivationTime;
-    [SerializeField] float spinactivationRange;
-    [SerializeField] float stateSwitchRate;
-    [SerializeField] float stunTime;
-    [SerializeField] float guardAttackRate;
-    [SerializeField] float guardAttackVelocity;
-    [SerializeField] float guardAttackAngle;
-    [SerializeField] ObjectPool guardProjPool;
-    [SerializeField] Transform pearlSpawnPoint;
-    [SerializeField] GameObject bossHealthSlider;
+    [SerializeField] private float idleAttackRate;
+    [SerializeField] private float idleAttackSpread;
+    [SerializeField] private float idleAttackVelocity;
+    [SerializeField] private ObjectPool idleProjPool;
+    [SerializeField] private float spinactivationTime;
+    [SerializeField] private float spinactivationRange;
+    [SerializeField] private float stateSwitchRate;
+    [SerializeField] private float stunTime;
+    [SerializeField] private float guardAttackRate;
+    [SerializeField] private ObjectPool guardProjPool;
+    [SerializeField] private ThrowingSystem heavyThrower;
+    [SerializeField] private Transform pearlSpawnPoint;
+    [SerializeField] private GameObject bossHealthSlider;
     public static bool nearBoss = false;
 
     //Connections
-    Transform thisTransform;
-    Transform playerTransform;
-    Health health;
-    AttackHitCollider contactDamage;
-    BossOneAnimator anim;
+    private Transform thisTransform;
+    private Health health;
+    private AttackHitCollider contactDamage;
+    private BossOneAnimator anim;
 
     //Data
-    //public States currentStateVisual;
     private States currentState => stateMachine.currentStateID;
 
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         thisTransform = transform;
-        playerTransform = GameObject.Find("Player").transform;
         health = GetComponent<Health>();
         contactDamage = GetComponent<AttackHitCollider>();
         anim = GetComponentInChildren<BossOneAnimator>();
@@ -51,7 +45,7 @@ public class BossOne : EnemyBase
         stateMachine = StateMachine.Create(this);
         stateMachine.owner = this;
     }
-    
+
     public void TURNON()
     {
         on = true;
@@ -62,8 +56,6 @@ public class BossOne : EnemyBase
     {
         if (!on) return;
         stateMachine.Update();
-        //currentStateVisual = stateMachine.currentStateID;
-        
     }
 
     public enum States
@@ -99,14 +91,14 @@ public class BossOne : EnemyBase
 
         public class IdleState : StateBase
         {
-            float attackTimer;
-            float spinTimer;
-            float changeTimer;
+            private float attackTimer;
+            private float spinTimer;
+            private float changeTimer;
 
             public override void Update()
             {
-                owner.thisTransform.LookAt(owner.playerTransform.position * Direction.XZ);
-                float distance = Vector2.Distance(owner.playerTransform.position, owner.thisTransform.position);
+                owner.thisTransform.LookAt(owner.player.position * Direction.XZ);
+                float distance = Vector2.Distance(owner.player.position, owner.thisTransform.position);
 
                 if (attackTimer < owner.idleAttackRate) attackTimer += Time.deltaTime;
                 if (attackTimer >= owner.idleAttackRate)
@@ -117,7 +109,7 @@ public class BossOne : EnemyBase
 
                 if (distance < owner.spinactivationRange)
                 {
-                    if(spinTimer < owner.spinactivationTime) spinTimer += Time.deltaTime;
+                    if (spinTimer < owner.spinactivationTime) spinTimer += Time.deltaTime;
                     else
                     {
                         //M.ChangeState(States.Swirling);
@@ -126,7 +118,7 @@ public class BossOne : EnemyBase
                 }
                 else if (spinTimer > 0) spinTimer = 0;
 
-                if(changeTimer < owner.stateSwitchRate) changeTimer += Time.deltaTime;
+                if (changeTimer < owner.stateSwitchRate) changeTimer += Time.deltaTime;
                 else
                 {
                     changeTimer = 0;
@@ -145,23 +137,17 @@ public class BossOne : EnemyBase
         public class SwirlState : StateBase
         {
 
-            public override void OnEnterState()
-            {
-                owner.contactDamage.enabled = true;
-            }
-            public override void OnExitState()
-            {
-                owner.contactDamage.enabled = false;
-            }
+            public override void OnEnterState() => owner.contactDamage.enabled = true;
+            public override void OnExitState() => owner.contactDamage.enabled = false;
         }
         public class GuardingState : StateBase
         {
-            float attackTimer;
-            float changeTimer;
+            private float attackTimer;
+            private float changeTimer;
 
             public override void Update()
             {
-                owner.thisTransform.LookAt(owner.playerTransform.position * Direction.XZ);
+                owner.thisTransform.LookAt(owner.player.position * Direction.XZ);
 
                 if (attackTimer < owner.guardAttackRate) attackTimer += Time.deltaTime;
                 else
@@ -185,18 +171,15 @@ public class BossOne : EnemyBase
                 changeTimer = 0;
                 attackTimer = 0;
             }
-            public override void OnExitState()
-            {
-                owner.health.damagable = true;
-            }
+            public override void OnExitState() => owner.health.damagable = true;
         }
         public class StunnedState : StateBase
         {
-            float timeLeft;
+            private float timeLeft;
 
             public override void Update()
             {
-                if(timeLeft < owner.stunTime) timeLeft += Time.deltaTime;
+                if (timeLeft < owner.stunTime) timeLeft += Time.deltaTime;
                 else
                 {
                     timeLeft = 0;
@@ -210,9 +193,9 @@ public class BossOne : EnemyBase
 
     public void AttackCallback()
     {
-        if(currentState == States.Idle)
+        if (currentState == States.Idle)
         {
-            Vector3 baseDirection = ((playerTransform.position + Vector3.up) - pearlSpawnPoint.position);
+            Vector3 baseDirection = player.centerPos - pearlSpawnPoint.position;
 
             PoolableObject proj1 = idleProjPool.Pump();
             PoolableObject proj2 = idleProjPool.Pump();
@@ -228,13 +211,12 @@ public class BossOne : EnemyBase
         }
         else if (currentState == States.Guarding)
         {
-            var proj = guardProjPool.Pump();
+            PoolableObject proj = guardProjPool.Pump();
 
-            proj.Prepare_Basic(thisTransform.position, Vector3.zero,
-                ((playerTransform.position - thisTransform.position)
-                * Direction.XZ).Rotate(-guardAttackAngle, thisTransform.right)
-                * guardAttackVelocity * (Vector3.Distance(playerTransform.position, thisTransform.position) / 5)
-                );
+            Direction direction = player.centerPos - transform.position;
+            float power = heavyThrower.Throw(direction);
+            proj.Prepare_Basic(thisTransform.position, Vector3.zero, direction.Rotate(-heavyThrower.angle, transform.right).normalized * power);
+
         }
 
 
@@ -242,7 +224,7 @@ public class BossOne : EnemyBase
 
     protected void OnHealthChange(Health.Interaction args)
     {
-        if(stateMachine.currentStateID == States.Guarding && args.source.GetComponent<ReflectableProjectile>())
+        if (stateMachine.currentStateID == States.Guarding && args.source.GetComponent<ReflectableProjectile>())
         {
             Debug.Log("Stunned");
             args.interrupted = false;
@@ -251,80 +233,5 @@ public class BossOne : EnemyBase
         }
     }
 
-
-    void OnDestroy()
-    {
-        stateMachine.Cleanup();
-    }
-
-    /*
-        public UnityEngine.AI.NavMeshAgent enemy;
-        public LayerMask whatIsGround, whatIsPlayer;
-        public float timeBetweenAttacks;
-        public float attackRange;
-        public bool playerInAttackRange;
-        ObjectPool pool;
-
-    float timeLeftBeforeAttack;
-    
-            player = GameObject.Find("Player").transform;
-        enemy = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        pool = GetComponent<ObjectPool>();
-        timeLeftBeforeAttack = timeBetweenAttacks;
-
-        private void Update()
-    {
-        
-
-
-
-
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        if (!playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange) AttackPlayer();
-    }
-    
-    
-    
-    
-    private void ChasePlayer()
-    {
-        enemy.SetDestination(player.position);
-    }
-
-    private void AttackPlayer()
-    {
-        enemy.SetDestination(transform.position);
-        transform.LookAt(player);
-
-        if(timeLeftBeforeAttack > 0)
-        {
-            timeLeftBeforeAttack -= Time.deltaTime;
-        }
-        else
-        {
-            PoolableObject sphere = pool.Pump();
-            sphere.Prepare_Basic(transform.position, Vector3.zero, transform.forward * 32f + transform.up * 2f);
-
-            /*
-            sphere.gameObject.SetActive(true);
-            sphere.transform.position = transform.position;
-            sphere.transform.eulerAngles = Vector3.zero;
-            Rigidbody rb = sphere.GetComponent<Rigidbody>();
-            rb.velocity = Vector3.zero;
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-             
-
-    timeLeftBeforeAttack = timeBetweenAttacks;
-        }
-
-    }
-
-    void OnHealthChange(Health.DamageArgs args)
-    {
-        GetComponent<LootBag>().DropLoot(transform.position);
-        Destroy(gameObject);
-    }
-     */
+    private void OnDestroy() => stateMachine.Cleanup();
 }

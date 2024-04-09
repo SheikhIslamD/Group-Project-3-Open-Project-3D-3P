@@ -5,17 +5,15 @@ public class EnemyBase : MonoBehaviour
 {
 
     //Connections
-    protected new Transform transform;
-    protected Transform player;
+    protected PlayerMove player;
     protected new AudioCaller audio;
 
     //Data
     protected float distanceFromPlayer => Vector3.Distance(transform.position, player.position);
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
-        transform = GetComponent<Transform>();
-        player = GameObject.Find("Player").transform;
+        player = GameObject.Find("Player").GetComponent<PlayerMove>();
         audio = GetComponent<AudioCaller>();
     }
 

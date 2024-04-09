@@ -145,11 +145,13 @@ MonoBehaviour:
   stateSwitchRate: 10
   stunTime: 4.25
   guardAttackRate: 3.5
-  guardAttackVelocity: 1
-  guardAttackAngle: 50
   guardProjPool: {fileID: 901169119403944363}
+  heavyThrower:
+    angle: 60
+    maxSpeed: 250
+    gravity: 9.81
   pearlSpawnPoint: {fileID: 1358318253219351843}
-  currentStateVisual: 0
+  bossHealthSlider: {fileID: 0}
 --- !u!114 &3894077020209665391
 MonoBehaviour:
   m_ObjectHideFlags: 0
