@@ -9,14 +9,4 @@ public static class ExtensionMethods
         boolean = !boolean;
         return boolean;
     }
-
-    /*
-
-    public static T Get<T>(this ref T c, MonoBehaviour mono) where T : struct
-    {
-        Component C = mono.GetComponent<Component>();
-        c = C;
-        return c;
-    }
-     */
 }
