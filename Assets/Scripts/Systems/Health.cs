@@ -20,6 +20,8 @@ public class Health : MonoBehaviour
     [SerializeField] private UnityEvent depleteEvent;
     [SerializeField] private bool destroyOnDeplete = true;
 
+
+    //Data
     public int GetCurrentHealth() => currentHealth;
     public int GetMaxHealth() => maxHealth;
 
@@ -80,7 +82,7 @@ public class Health : MonoBehaviour
         currentHealth = args.expectedFinalAmount;
 
         healthChangeEvent?.Invoke(currentHealth);
-
+        if (args.isDamage && !args.depletes) AudioCall("Hurt");
         if (args.depletes) DepleteCalls();
 
         return args;
@@ -93,8 +95,7 @@ public class Health : MonoBehaviour
         SendMessage(depleteMessage, SendMessageOptions.DontRequireReceiver);
         depleteEvent?.Invoke();
 
-        AudioCaller audio = GetComponent<AudioCaller>();
-        if (audio) audio.PlaySound("Death");
+        AudioCall("Death");
 
         if (destroyOnDeplete)
         {
@@ -102,6 +103,14 @@ public class Health : MonoBehaviour
             if (pooled) pooled.Disable();
             else Destroy(gameObject);
         }
+    }
+
+    private new AudioCaller audio;
+    private void AudioCall(string name)
+    {
+        if (audio == null) audio = GetComponent<AudioCaller>();
+        if (audio == null) return;
+        audio.PlaySound(name, false);
     }
 
     /* OBSOLETE

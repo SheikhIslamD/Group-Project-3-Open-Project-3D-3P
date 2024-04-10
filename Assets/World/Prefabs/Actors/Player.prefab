@@ -362,6 +362,7 @@ MonoBehaviour:
   dodgeSpeed: 12
   dodgeTime: 0.4
   deathBarrier: -15
+  amountOfAirDodges: 1
   movementVelocity: {x: 0, y: 0, z: 0}
 --- !u!114 &7256595565590103146
 MonoBehaviour:
@@ -587,9 +588,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  clips: []
-  clipNames: []
-  soundID: 0
+  clips:
+    _serializedList:
+    - Key: Jump
+      Value: {fileID: 8300000, guid: 3f288bc12bf4d384b9279e31725de8e4, type: 3}
+    - Key: Slash
+      Value: {fileID: 8300000, guid: b80d27d22ad75f549a4e1b77f09af28f, type: 3}
+    - Key: Shoot
+      Value: {fileID: 8300000, guid: 952650f9278675b4c8285d9154f50002, type: 3}
+    - Key: Parry
+      Value: {fileID: 8300000, guid: 299abeb552787f846b5b15e858dd9e4f, type: 3}
+    - Key: Cooking
+      Value: {fileID: 8300000, guid: bf11f9ec8d99cd84399c15ef45b8fa34, type: 3}
+  remote: {fileID: 0}
 --- !u!1 &5553969350556631279
 GameObject:
   m_ObjectHideFlags: 0
