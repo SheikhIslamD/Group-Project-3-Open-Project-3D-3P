@@ -46,7 +46,7 @@ public class PlayerAnimator : MonoBehaviour
     private void SetDirection()
     {
 
-        Vector3 result = movementTransform.worldToLocalMatrix * (Vector3)(movement.movementVelocity * Direction.XZ / (fullSpeed * Time.deltaTime));
+        Vector3 result = movementTransform.worldToLocalMatrix * (Vector3)(movement.velocity * Direction.XZ / (fullSpeed * Time.deltaTime));
 
         p_walkX = result.x;
         p_walkZ = result.z;

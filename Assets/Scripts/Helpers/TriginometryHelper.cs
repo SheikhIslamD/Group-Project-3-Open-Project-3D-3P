@@ -211,14 +211,3 @@ namespace TrigHelper
 
 
 }
-
-public static class EasierMathExtensions
-{
-    public static float P(this float F) => Mathf.Pow(F, 2);
-    public static float P(this float F, int power) => Mathf.Pow(F, power);
-    public static float SQRT(this float F) => Mathf.Sqrt(F);
-    public static float Sin(this float F) => Mathf.Sin(F);
-    public static float Cos(this float F) => Mathf.Cos(F);
-    public static float Tan(this float F) => Mathf.Tan(F);
-
-}

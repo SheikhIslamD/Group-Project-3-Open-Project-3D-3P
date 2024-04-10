@@ -1,60 +1,61 @@
 using UnityEngine;
-using UnityEngine.Events;
 using Vector3Helper;
 
 public class PlayerMove : MonoBehaviour
 {
     //Parameters
+    [SerializeField] public float acceleration = 2.0f;
     [SerializeField] public float speed = 6.0f;
-    [SerializeField] float rotationSpeed = 720.0f;
-    [SerializeField] float jumpSpeed = 5.0f;
-    [SerializeField] float dodgeSpeed = 12.0f;
-    [SerializeField] float dodgeTime = 0.4f;
-    [SerializeField] float deathBarrier = -15f;
-    [SerializeField] int amountOfAirDodges = 1;
+    [SerializeField] private float rotationSpeed = 720.0f;
+    [SerializeField] private float jumpSpeed = 5.0f;
+    [SerializeField] private float dodgeSpeed = 12.0f;
+    [SerializeField] private float dodgeTime = 0.4f;
+    [SerializeField] private float deathBarrier = -15f;
+    [SerializeField] private int amountOfAirDodges = 1;
+    [SerializeField] private LayerMask groundLayers;
 
     //Connections
-    GameplayInputReader input;
-    CharacterController characterController;
-    Transform cameraTransform;
-    AudioCaller audioC;
-    Health health;
-    PlayerShooter shooter;
-    PlayerAnimator anim;
-    new BoxCollider collider;
-    
+    private GameplayInputReader input;
+    private Rigidbody rb;
+    private Transform cameraTransform;
+    private AudioCaller audioC;
+    private Health health;
+    private PlayerShooter shooter;
+    private PlayerAnimator anim;
+    private new CapsuleCollider collider;
+
     //Data
-    Vector3 movementDirection;
-    float movementMagnitude;
-    float ySpeed;
-    float originalStepOffset;
-    float dodgeTimeLeft;
-    Vector3 dodgeDirection;
-    Vector3 lastGroundedPosition;
-    bool onGround => characterController.isGrounded;
-    int dodgesLeft;
-    [HideInInspector] public Vector3 movementVelocity;
+    private Vector3 movementDirection;
+    Vector3 nextVelocity;
+    private float dodgeTimeLeft;
+    private Vector3 dodgeDirection;
+    public Vector3 lastGroundedPosition;
+    private int dodgesLeft;
+    private bool onGround;
+
+    private float accel => speed / acceleration;
+    [HideInInspector] public Vector3 velocity { get => rb.velocity; set => rb.velocity = value; }
     [HideInInspector] public Vector3 position => transform.position;
     [HideInInspector] public Vector3 centerPos => transform.position + collider.center;
 
-    void Awake()
+    private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
-        originalStepOffset = characterController.stepOffset;
+        rb = GetComponent<Rigidbody>();
         cameraTransform = Camera.main.transform;
         GameplayInputReader.Get(ref input);
         audioC = GetComponent<AudioCaller>();
         health = GetComponent<Health>();
         shooter = GetComponent<PlayerShooter>();
         anim = GetComponentInChildren<PlayerAnimator>();
-        collider = GetComponent<BoxCollider>();
+        collider = GetComponent<CapsuleCollider>();
     }
 
-    void Update()
+    private void Update()
     {
         MovementDirection();
+        onGround = OnGround();
 
-        Vector3 velocity;
+        nextVelocity = velocity;
 
         if (dodgeTimeLeft > 0)
         {
@@ -65,72 +66,64 @@ public class PlayerMove : MonoBehaviour
                 health.damagable = true;
             }
 
-            velocity = DodgeMovement();
+            DodgeMovement();
         }
         else
         {
-            velocity = BasicMovement();
+            BasicMovement();
             AimBasedRotation();
+
+            if (input.jump.WasPressedThisFrame() && onGround) anim.Jump();
+            if (jumping)
+            {
+                nextVelocity = new(nextVelocity.x, jumpSpeed, nextVelocity.z);
+                jumping = false;
+            }
 
             if (input.sprint.WasPressedThisFrame() && input.movementVector2 != Vector2.zero) BeginDodge();
         }
 
-        movementVelocity = velocity * Time.deltaTime;
-        characterController.Move(velocity * Time.deltaTime);
 
-        if(transform.position.y < deathBarrier)
+        if (transform.position.y < deathBarrier)
         {
-            characterController.Move(lastGroundedPosition - transform.position);
+            rb.Move(lastGroundedPosition, rb.rotation);
+            rb.velocity = new(rb.velocity.x, rb.velocity.y.Min(-9.81f), rb.velocity.z);
             GetComponent<Health>().Damage(25, Health.DamageType.Generic, this, "BottomlessPit");
         }
 
-        anim.p_inAir = !characterController.isGrounded;
-        if(onGround && dodgesLeft != amountOfAirDodges) dodgesLeft = amountOfAirDodges;
+        anim.p_inAir = !onGround;
+        if (onGround && dodgesLeft != amountOfAirDodges) dodgesLeft = amountOfAirDodges;
+
+        rb.velocity = nextVelocity;
     }
 
-    void MovementDirection()
+    private void MovementDirection()
     {
         movementDirection = new Vector3(input.movementVector2.x, 0, input.movementVector2.y);
         movementDirection = movementDirection.Direction().Rotate(cameraTransform.eulerAngles.y, Direction.up);
-
-        movementMagnitude = Mathf.Clamp01(movementDirection.magnitude);
-        movementDirection.Normalize();
     }
 
-    Vector3 BasicMovement()
+    private void BasicMovement()
     {
-        Vector3 velocity = movementDirection * movementMagnitude * speed;
+        Direction direction = (Direction)nextVelocity * Direction.XZ;
 
-        ySpeed += Physics.gravity.y * Time.deltaTime;
-
-        if (characterController.isGrounded)
+        if (movementDirection.magnitude > 0)
         {
-            characterController.stepOffset = originalStepOffset;
-            ySpeed = -0.5f;
-
-            if (input.jump.WasPressedThisFrame()) anim.Jump();
-            if (jumping)
-            {
-                ySpeed = jumpSpeed;
-                jumping = false;
-            }
+            direction += (Direction)movementDirection * accel;
         }
-        else
-        {
-            characterController.stepOffset = 0;
-        }
+        else if (movementDirection.magnitude == 0) direction -= direction * accel;
+        if (direction.magnitude > speed * movementDirection.magnitude) direction = direction.normalized * speed * movementDirection.magnitude;
 
-        velocity.y = ySpeed;
 
-        return velocity;
+        direction.y = (onGround && nextVelocity.y < 0) ? 0 : nextVelocity.y;
+
+        nextVelocity = direction;
+
     }
 
-    Vector3 DodgeMovement()
-    {
-        return dodgeDirection * dodgeSpeed;
-    }
+    private void DodgeMovement() => nextVelocity = dodgeDirection * dodgeSpeed;
 
-    void MovementBasedRotation()
+    private void MovementBasedRotation()
     {
         if (movementDirection != Vector3.zero)
         {
@@ -140,16 +133,16 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    void AimBasedRotation()
+    private void AimBasedRotation()
     {
         Quaternion toRotation = Quaternion.LookRotation(shooter.aimDirection * Direction.XZ, transform.up);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
     }
 
-    void BeginDodge()
+    private void BeginDodge()
     {
-        if (!onGround && dodgesLeft < 1) return;
+        if (!OnGround() && dodgesLeft < 1) return;
         dodgeTimeLeft = dodgeTime;
         dodgeDirection = movementDirection;
         health.damagable = false;
@@ -157,17 +150,34 @@ public class PlayerMove : MonoBehaviour
         dodgesLeft--;
     }
 
-    public void StorePosition()
-    {
-        lastGroundedPosition = transform.position;
-    }
+    public void StorePosition() => lastGroundedPosition = transform.position;
 
-    bool jumping;
+    private bool jumping;
     public void JumpCallback()
     {
         Debug.Log("Jump");
         audioC.PlaySound("Jump");
         jumping = true;
+    }
+
+    public bool OnGround()
+    {
+
+        bool hit = Physics.SphereCast(
+            origin: centerPos - Vector3.up * (collider.height / 2 - collider.radius - 0.001f),
+            radius: collider.radius,
+            direction: Vector3.down,
+            hitInfo: out RaycastHit result,
+            maxDistance: 0.005f,
+            layerMask: groundLayers
+            );
+
+        return hit;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!Application.isEditor) Gizmos.DrawSphere(centerPos - Vector3.up * (collider.height / 2 - collider.radius + 0.01f), collider.radius);
     }
 
 }

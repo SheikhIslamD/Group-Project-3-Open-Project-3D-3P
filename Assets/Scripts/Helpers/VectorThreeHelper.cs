@@ -134,10 +134,11 @@ namespace Vector3Helper
     public struct Direction
     {
         public Vector3 vector;
-        public float x => vector.x;
-        public float y => vector.y;
-        public float z => vector.z;
+        public float x { get => vector.x; set => vector.x = value; }
+        public float y { get => vector.y; set => vector.y = value; }
+        public float z { get => vector.z; set => vector.z = value; }
         public Vector3 normalized => vector.normalized;
+        public float magnitude => vector.magnitude;
 
         public Direction(float x, float y, float z, Vector3Type type = Vector3Type.Direction, bool normalize = false)
         {
@@ -205,9 +206,21 @@ namespace Vector3Helper
             return HashCode.Combine(vector, x, y, z, normalized);
         }
 
-        public Direction Rotate(float amount, Vector3 axis) => Quaternion.AngleAxis(amount, axis) * vector;
-        public Direction RotateTo(Direction towards, Direction reference) => Quaternion.FromToRotation(reference, towards) * vector;
-
+        public Direction Rotate(float amount, Vector3 axis)
+        {
+            vector = Quaternion.AngleAxis(amount, axis) * vector;
+            return this;
+        }
+        public Direction RotateTo(Direction towards, Direction reference)
+        {
+            vector = Quaternion.FromToRotation(reference, towards) * vector;
+            return this;
+        }
+        public Direction Normalize()
+        {
+            vector.Normalize();
+            return this;
+        }
 
 
         public static Direction up = Vector3.up;
@@ -220,9 +233,9 @@ namespace Vector3Helper
         public static Direction one = Vector3.one;
         public static Direction zero = Vector3.zero;
 
-        public static Direction XY = Vector3.right + Vector3.up;
-        public static Direction YZ = Vector3.up + Vector3.forward;
-        public static Direction XZ = Vector3.right + Vector3.forward;
+        public static Direction XY = Vector3.one - Vector3.forward;
+        public static Direction YZ = Vector3.one - Vector3.right;
+        public static Direction XZ = Vector3.one - Vector3.up;
 
     }
 

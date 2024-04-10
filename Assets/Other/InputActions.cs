@@ -225,7 +225,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""id"": ""59e9d827-3ad7-4869-b119-cec8b4927690"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
