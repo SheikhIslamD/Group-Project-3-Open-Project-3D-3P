@@ -16,7 +16,6 @@ public class PlayerAnimator : MonoBehaviour
     private Transform movementTransform;
 
     //Data
-    private float fullSpeed;
 
     //Animation Parameters
     private float p_walkX { set => animator.SetFloat("walkX", value); }
@@ -38,7 +37,6 @@ public class PlayerAnimator : MonoBehaviour
         melee = GetComponentInParent<PlayerMelee>();
         cooking = GetComponentInParent<PlayerCooking>();
         movementTransform = movement.transform;
-        fullSpeed = movement.speed;
     }
 
     private void Update() => SetDirection();
@@ -46,7 +44,7 @@ public class PlayerAnimator : MonoBehaviour
     private void SetDirection()
     {
 
-        Vector3 result = movementTransform.worldToLocalMatrix * (Vector3)(movement.velocity * Direction.XZ / (fullSpeed * Time.deltaTime));
+        Vector3 result = movementTransform.worldToLocalMatrix * (Vector3)(movement.velocity * Direction.XZ / (movement.speed));
 
         p_walkX = result.x;
         p_walkZ = result.z;

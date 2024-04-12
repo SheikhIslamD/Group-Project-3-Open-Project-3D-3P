@@ -114,7 +114,7 @@ public class PlayerMove : MonoBehaviour
         {
             direction += (Direction)movementDirection * accel;
         }
-        else if (movementDirection.magnitude == 0) direction -= direction * accel;
+        else if (movementDirection.magnitude == 0) direction -= direction.normalized * accel;
         if (direction.magnitude > speed * movementDirection.magnitude) direction = direction.normalized * speed * movementDirection.magnitude;
         /*
         #region NonSidewaysStuck Section

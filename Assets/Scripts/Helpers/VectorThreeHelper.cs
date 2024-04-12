@@ -137,7 +137,7 @@ namespace Vector3Helper
         public float x { get => vector.x; set => vector.x = value; }
         public float y { get => vector.y; set => vector.y = value; }
         public float z { get => vector.z; set => vector.z = value; }
-        public Vector3 normalized => vector.normalized;
+        public Direction normalized => vector.normalized;
         public float magnitude => vector.magnitude;
 
         public Direction(float x, float y, float z, Vector3Type type = Vector3Type.Direction, bool normalize = false)
