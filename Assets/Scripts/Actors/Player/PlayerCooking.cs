@@ -21,6 +21,8 @@ public class PlayerCooking : MonoBehaviour
     PlayerMelee melee;
     PlayerShooter shooter;
 
+    bool canCook = true;
+
 
     void Start()
     {
@@ -54,6 +56,7 @@ public class PlayerCooking : MonoBehaviour
     {
 
         if (health.GetCurrentHealth() >= health.GetMaxHealth()) return;
+        if (!canCook) return;
 
         if(currentRice > 1 && currentFish > 0 && currentSeaweed > 0)
         {
@@ -65,6 +68,7 @@ public class PlayerCooking : MonoBehaviour
             move.enabled = false;
             melee.enabled = false;
             shooter.enabled = false;
+            canCook = false;
         }
         HUDUIManager.i.UpdateIngredients(currentRice, currentFish, currentSeaweed);
     }
@@ -74,7 +78,7 @@ public class PlayerCooking : MonoBehaviour
         move.enabled = true;
         melee.enabled = true;
         shooter.enabled = true;
-
+        canCook = true;
     }
 
 

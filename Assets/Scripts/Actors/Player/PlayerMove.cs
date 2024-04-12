@@ -23,6 +23,7 @@ public class PlayerMove : MonoBehaviour
     private PlayerShooter shooter;
     private PlayerAnimator anim;
     private new CapsuleCollider collider;
+    private SphereCollider colliderFoot;
 
     //Data
     private Vector3 movementDirection;
@@ -48,6 +49,7 @@ public class PlayerMove : MonoBehaviour
         shooter = GetComponent<PlayerShooter>();
         anim = GetComponentInChildren<PlayerAnimator>();
         collider = GetComponent<CapsuleCollider>();
+        colliderFoot = GetComponent<SphereCollider>();
     }
 
     private void Update()
@@ -86,6 +88,7 @@ public class PlayerMove : MonoBehaviour
 
         if (transform.position.y < deathBarrier)
         {
+            transform.position = lastGroundedPosition;
             rb.Move(lastGroundedPosition, rb.rotation);
             rb.velocity = new(rb.velocity.x, rb.velocity.y.Min(-9.81f), rb.velocity.z);
             GetComponent<Health>().Damage(25, Health.DamageType.Generic, this, "BottomlessPit");
@@ -113,13 +116,37 @@ public class PlayerMove : MonoBehaviour
         }
         else if (movementDirection.magnitude == 0) direction -= direction * accel;
         if (direction.magnitude > speed * movementDirection.magnitude) direction = direction.normalized * speed * movementDirection.magnitude;
+        /*
+        #region NonSidewaysStuck Section
 
+        bool sideHit = Physics.CapsuleCast(
+            point1: transform.position + collider.center + transform.up * (collider.height / 2 - collider.radius),
+            point2: transform.position + collider.center - transform.up * (collider.height / 2 - collider.radius),
+            radius: collider.radius,
+            direction: direction.normalized,
+            hitInfo: out RaycastHit sideHitInfo,
+            maxDistance: direction.magnitude * Time.deltaTime * 2,
+            layerMask: groundLayers
+            );
+        d_hit = sideHit;
+
+        if (sideHit)
+        {
+            d_Distance = sideHitInfo.distance;
+            direction = direction.normalized * sideHitInfo.distance;
+        }
+
+        #endregion NonSidewaysStuck Section
+         */
 
         direction.y = (onGround && nextVelocity.y < 0) ? 0 : nextVelocity.y;
 
         nextVelocity = direction;
 
     }
+
+    public bool d_hit;
+    public float d_Distance;
 
     private void DodgeMovement() => nextVelocity = dodgeDirection * dodgeSpeed;
 
@@ -164,8 +191,8 @@ public class PlayerMove : MonoBehaviour
     {
 
         bool hit = Physics.SphereCast(
-            origin: centerPos - Vector3.up * (collider.height / 2 - collider.radius - 0.001f),
-            radius: collider.radius,
+            origin: transform.position + colliderFoot.center + Vector3.up * 0.001f,
+            radius: colliderFoot.radius,
             direction: Vector3.down,
             hitInfo: out RaycastHit result,
             maxDistance: 0.005f,
