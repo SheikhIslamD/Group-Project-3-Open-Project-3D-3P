@@ -4911,6 +4911,7 @@ GameObject:
   - component: {fileID: 327019602}
   - component: {fileID: 327019601}
   - component: {fileID: 327019600}
+  - component: {fileID: 327019603}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -4933,8 +4934,6 @@ MonoBehaviour:
   spawnRange: 10
   spawnRate: 1
   maxEnemies: 12
-  enemyPrefabs:
-  - {fileID: 7433244943992021922, guid: 63e7db13f42358144b84a161af0c0976, type: 3}
   canSpawn: 1
 --- !u!114 &327019601
 MonoBehaviour:
@@ -4960,13 +4959,31 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327019599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.23, y: 0, z: -28.95}
+  m_LocalPosition: {x: -39.82, y: 1, z: 26.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &327019603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327019599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 674683ecb71f33548a4886fad127f26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabObject: {fileID: 7433244943992021922, guid: 63e7db13f42358144b84a161af0c0976, type: 3}
+  defaultPoolDepth: 1
+  canGrow: 1
+  parent: {fileID: 0}
+  autoDisableTime: -1
+  deleteObjectsOnDestroy: 1
 --- !u!1001 &328950585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15681,9 +15698,6 @@ MonoBehaviour:
   spawnRange: 10
   spawnRate: 5
   maxEnemies: 12
-  enemyPrefabs:
-  - {fileID: 7433244943992021922, guid: 63e7db13f42358144b84a161af0c0976, type: 3}
-  - {fileID: 8890840573762573605, guid: 91118794deb4c4f7ea759c8ed664a453, type: 3}
   canSpawn: 1
 --- !u!135 &1052717724
 SphereCollider:
