@@ -3026,7 +3026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 5365854135862981539}
-  bossHealth: {fileID: 0}
+  bossHealth: {fileID: 974143122744738614}
   riceText: {fileID: 204696362978189882}
   fishText: {fileID: 1274394933067862640}
   SeaweedText: {fileID: 7440791042490343811}

@@ -10,12 +10,13 @@ public class Health : MonoBehaviour
     public bool damagable = true;
 
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int currentHealth = 100;
+    [SerializeField] private int currentHealth;
     [SerializeField] public EntityType entityType;
 
-    //Messages
+    //Messages & Events
     [SerializeField] private string healthChangeMessage = "OnHealthChange";
     [SerializeField] private string depleteMessage = "OnHealthDeplete";
+    [SerializeField] private GameObject healthChangeAux;
     [SerializeField] private UnityEvent<int> healthChangeEvent;
     [SerializeField] private UnityEvent depleteEvent;
     [SerializeField] private bool destroyOnDeplete = true;
@@ -55,16 +56,31 @@ public class Health : MonoBehaviour
     }
 
 
-    public Interaction Damage(int amount, DamageType type, MonoBehaviour source, string customIdentifier = null)
-    => ChangeHealth(-amount, type, source, customIdentifier);
-
-    public Interaction Heal(int amount, MonoBehaviour source, string customIdentifier = null)
-    => ChangeHealth(amount, DamageType.Generic, source, customIdentifier);
-
-    public Interaction ChangeHealth(int amount, DamageType type, MonoBehaviour source, string customIdentifier = null)
+    private void Awake()
     {
-        Interaction args = new(amount, type, source, this, customIdentifier);
+        audio = GetComponent<AudioCaller>();
+        hasAudioCaller = audio != null;
+        currentHealth = maxHealth;
+    }
 
+
+
+    public Interaction Damage(int amount, DamageType type, MonoBehaviour source, Health reciever = null, string customIdentifier = null)
+    {
+        Interaction args = new(-amount, type, source, (reciever == null) ? this : reciever, customIdentifier);
+        return ChangeHealth(args);
+    }
+
+    public Interaction Heal(int amount, MonoBehaviour source, Health reciever = null, string customIdentifier = null)
+    {
+        Interaction args = new(amount, DamageType.Generic, source, (reciever == null) ? this : reciever, customIdentifier);
+        return ChangeHealth(args);
+    }
+
+    public Interaction ChangeHealth(Interaction args)
+    {
+
+        //Interaction args = new(amount, type, source, reciever, customIdentifier);
 
         if (!damagable) args.interrupted = true;
 
@@ -73,6 +89,7 @@ public class Health : MonoBehaviour
         if (args.expectedFinalAmount > maxHealth) args.expectedFinalAmount = maxHealth;
 
         SendMessage(healthChangeMessage, args, SendMessageOptions.DontRequireReceiver);
+        if (healthChangeAux != null) healthChangeAux.SendMessage(healthChangeMessage, args, SendMessageOptions.DontRequireReceiver);
 
         if (args.expectedFinalAmount < 0) args.expectedFinalAmount = 0;
         if (args.expectedFinalAmount > maxHealth) args.expectedFinalAmount = maxHealth;
@@ -106,12 +123,8 @@ public class Health : MonoBehaviour
     }
 
     private new AudioCaller audio;
-    private void AudioCall(string name)
-    {
-        if (audio == null) audio = GetComponent<AudioCaller>();
-        if (audio == null) return;
-        audio.PlaySound(name, false);
-    }
+    private bool hasAudioCaller;
+    private void AudioCall(string name) { if (hasAudioCaller) audio.PlaySound(name, false); }
 
     /* OBSOLETE
 

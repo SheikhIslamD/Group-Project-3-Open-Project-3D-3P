@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float deathBarrier = -15f;
     [SerializeField] private int amountOfAirDodges = 1;
     [SerializeField] private LayerMask groundLayers;
+    [SerializeField] private float IFrames = 0.5f;
 
     //Connections
     private GameplayInputReader input;
@@ -33,6 +34,7 @@ public class PlayerMove : MonoBehaviour
     public Vector3 lastGroundedPosition;
     private int dodgesLeft;
     private bool onGround;
+    private float IFrameTimeLeft;
 
     private float accel => speed / acceleration;
     [HideInInspector] public Vector3 velocity { get => rb.velocity; set => rb.velocity = value; }
@@ -91,13 +93,16 @@ public class PlayerMove : MonoBehaviour
             transform.position = lastGroundedPosition;
             rb.Move(lastGroundedPosition, rb.rotation);
             rb.velocity = new(rb.velocity.x, rb.velocity.y.Min(-9.81f), rb.velocity.z);
-            GetComponent<Health>().Damage(25, Health.DamageType.Generic, this, "BottomlessPit");
+            GetComponent<Health>().Damage(25, Health.DamageType.Generic, this, customIdentifier: "BottomlessPit");
         }
 
         anim.p_inAir = !onGround;
         if (onGround && dodgesLeft != amountOfAirDodges) dodgesLeft = amountOfAirDodges;
 
         rb.velocity = nextVelocity;
+
+
+        if (IFrameTimeLeft > 0) IFrameTimeLeft -= Time.deltaTime;
     }
 
     private void MovementDirection()
@@ -205,6 +210,15 @@ public class PlayerMove : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (!Application.isEditor) Gizmos.DrawSphere(centerPos - Vector3.up * (collider.height / 2 - collider.radius + 0.01f), collider.radius);
+    }
+
+    public void OnHealthChange(Health.Interaction args)
+    {
+        if (IFrameTimeLeft > 0) args.Interrupt();
+        else
+        {
+            IFrameTimeLeft = IFrames;
+        }
     }
 
 }
