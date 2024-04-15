@@ -11,8 +11,8 @@ public class PlayerMelee : MonoBehaviour
     [SerializeField] float slashRadius;
     [SerializeField] LayerMask layerMask;
     //[SerializeField] int damage = 40;
-    [SerializeField] GameObject slashEcho;
-    [SerializeField] Animation slashPlaceholderAnim;
+    //[SerializeField] GameObject slashEcho;
+    //[SerializeField] Animation slashPlaceholderAnim;
 
     PlayerAnimator anim;
 
@@ -21,7 +21,7 @@ public class PlayerMelee : MonoBehaviour
     {
         input = GameplayInputReader.Get();
         shooter = GetComponent<PlayerShooter>();
-        slashEcho.transform.localScale = Vector3.one * (slashRadius*2);
+        //slashEcho.transform.localScale = Vector3.one * (slashRadius*2);
         audioC = GetComponent<AudioCaller>();
         anim = GetComponentInChildren<PlayerAnimator>();
         //transform.Find("PlaceholderSword/SlashHitbox").GetComponent<SwordHitCollider>().Setup(damage, audioC);
@@ -66,7 +66,7 @@ public class PlayerMelee : MonoBehaviour
         }
     }
 
-    void StopSlash() => slashEcho.SetActive(false);
+    //void StopSlash() => slashEcho.SetActive(false);
 
     private void OnDrawGizmos()
     {

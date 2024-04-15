@@ -1,26 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioCaller : MonoBehaviour
 {
+
     public AudioSource audioSource;
 
-    public AudioClip[] clips;
-    public string[] clipNames;
+    [SerializedDictionary("Name", "Audio Clip")]
+    public SerializedDictionary<string, AudioClip> clips;
 
+    public void PlaySound(string soundName, bool warn = true)
+    {
+        if (remote) { remote.PlaySound(soundName); return; }
+
+        bool nameExists = clips.TryGetValue(soundName, out AudioClip clip);
+        if (!nameExists) if (warn) Debug.LogWarningFormat("No sound with name {0} found on {1}.", soundName, gameObject);
+        else if (clip == null) Debug.LogWarningFormat("Open sound slot with intended name \"{1}\" on {0} found, ensure to fill at some point.", gameObject, soundName);
+        else audioSource.PlayOneShot(clip);
+    }
+
+    public AudioCaller remote;
+
+
+
+
+    /* These ones are not very helpful/no longer work so they're commented out.
+
+    
     public int soundID;
 
-    public void PlaySound(int soundID)
-    {
-        if (clips[soundID] == null)
-        {
-            Debug.LogWarningFormat("Open sound slot {1} on {0} found, ensure to fill at some point.", gameObject, soundID);
-            return;
-        }
-        audioSource.PlayOneShot(clips[soundID]);
-    }
-    public void PlaySound(string soundName)
+        public void PlaySound(string soundName)
     {
         for (int i = 0; i < clips.Length; i++)
         {
@@ -39,7 +49,16 @@ public class AudioCaller : MonoBehaviour
         Debug.LogWarningFormat("No sound with name {0} found on {1}.", soundName, gameObject);
     }
 
-    /* These ones are not very helpful so they're commented out.
+    [Obsolete]
+    public void PlaySoundID(int soundID)
+    {
+        if (clips[soundID] == null)
+        {
+            Debug.LogWarningFormat("Open sound slot {1} on {0} found, ensure to fill at some point.", gameObject, soundID);
+            return;
+        }
+        audioSource.PlayOneShot(clips[soundID]);
+    }
 
     public void PlayCurrentSound()
     {
@@ -60,7 +79,6 @@ public class AudioCaller : MonoBehaviour
 
     private void Awake()
     {
-        if (audioSource == null) audioSource = GetComponent<AudioSource>();
-        if (audioSource == null) enabled = false;
+        if (!remote && !audioSource) audioSource = gameObject.GetOrAddComponent<AudioSource>();
     }
 }

@@ -18,7 +18,7 @@ public class PoolableObject : MonoBehaviour
     /// </summary>
     public virtual void Prepare() { }
 
-    public virtual void Prepare_Basic(Vector3 position, Vector3 direction, Vector3 velocity)
+    public virtual void Prepare_Basic(Vector3 position, Vector3 direction, Vector3 velocity, bool relative = true)
     {
         transform.position = position;
         transform.eulerAngles = direction;
@@ -26,7 +26,7 @@ public class PoolableObject : MonoBehaviour
         Rigidbody rigid = rb;
         if (rigid == null) return;
 
-        rigid.velocity = transform.TransformDirection(velocity);
+        rigid.velocity = relative ? transform.TransformDirection(velocity) : velocity;
         rigid.angularVelocity = Vector3.zero;
 
     }

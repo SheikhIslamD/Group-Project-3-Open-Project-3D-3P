@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using Vector3Helper;
 
 [RequireComponent(typeof(PoolableObject))]
 public class ReflectableProjectile : MonoBehaviour
 {
     public Transform sender => GetComponent<PoolableObject>().pool.transform;
 
+
+    private ThrowingSystem thrower = new(20, 2000);
     private bool isReflected;
 
     public static bool Reflect(GameObject target)
@@ -14,9 +17,12 @@ public class ReflectableProjectile : MonoBehaviour
 
         reflect.MakeReflected();
         Rigidbody rb = reflect.GetComponent<Rigidbody>();
-        rb.velocity = Vector3.zero;
-        Vector3 direction = (reflect.sender.position + (Vector3.up*2)) - rb.position;
-        rb.AddForce(direction.normalized * 1600);
+
+        Direction direction = reflect.sender.position - (rb.position + Vector3.up);
+        float power = reflect.thrower.Throw(direction);
+        rb.velocity = direction.Rotate(reflect.thrower.angle, Vector3.Cross(direction, Vector3.up)).normalized * (power + 6f);
+
+
         return true;
     }
 

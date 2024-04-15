@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Vector3Helper;
@@ -12,24 +10,25 @@ public class EnemyRanged : EnemyBase
     public float sightRange, attackRange;
     private bool inSightRange, inAttackRange;
     public float throwSpeed = 15f;
-    
+    [SerializeField] private ThrowingSystem thrower;
+
     //Connections
     public NavMeshAgent navAgent;
-    ObjectPool pool;
-    Animator anim;
+    private ObjectPool pool;
+    private Animator anim;
 
     //Data
-    float timeLeftBeforeAttack;
+    private float timeLeftBeforeAttack;
 
-    private void Awake()
+    protected override void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        base.Awake();
         navAgent = GetComponent<NavMeshAgent>();
         pool = GetComponent<ObjectPool>();
         timeLeftBeforeAttack = timeBetweenAttacks;
         anim = GetComponentInChildren<Animator>();
     }
-    
+
     private void Update()
     {
         inSightRange = distanceFromPlayer < sightRange;
@@ -47,33 +46,20 @@ public class EnemyRanged : EnemyBase
 
     }
 
-    private void ChasePlayer()
-    {
-        navAgent.SetDestination(player.position);
-    }
+    private void ChasePlayer() => navAgent.SetDestination(player.position);
 
     private void AttackPlayer()
     {
         navAgent.SetDestination(transform.position);
-        transform.LookAt(player.position * Direction.XZ);
+        transform.LookAt((player.position * Direction.XZ) + (Direction.up * transform.position.y));
 
-        if(timeLeftBeforeAttack > 0)
+        if (timeLeftBeforeAttack > 0)
         {
             timeLeftBeforeAttack -= Time.deltaTime;
         }
         else
         {
             anim.SetTrigger("Attack");
-
-            /*
-            sphere.gameObject.SetActive(true);
-            sphere.transform.position = transform.position;
-            sphere.transform.eulerAngles = Vector3.zero;
-            Rigidbody rb = sphere.GetComponent<Rigidbody>();
-            rb.velocity = Vector3.zero;
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-             */
 
             timeLeftBeforeAttack = timeBetweenAttacks;
         }
@@ -84,7 +70,9 @@ public class EnemyRanged : EnemyBase
     {
         audio.PlaySound("Attack");
         PoolableObject bullet = pool.Pump();
-        bullet.Prepare_Basic(transform.position, Vector3.zero, transform.forward * throwSpeed + transform.up * 2f);
+        Direction direction = player.centerPos - transform.position;
+        float power = thrower.Throw(direction);
+        bullet.Prepare_Basic(transform.position, Vector3.zero, direction.Rotate(-thrower.angle, transform.right).normalized * power);
     }
 
 }

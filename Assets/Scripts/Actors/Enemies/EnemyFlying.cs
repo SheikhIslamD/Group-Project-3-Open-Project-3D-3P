@@ -20,6 +20,6 @@ public class EnemyFlying : EnemyBase
     }
     private void Chase()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.centerPos, speed * Time.deltaTime);
     }
 }
