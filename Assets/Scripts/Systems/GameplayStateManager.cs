@@ -11,6 +11,7 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
     public bool paused;
 
     [SerializeField] GameObject pauseMenuHolder;
+    [SerializeField] int levelID = 1;
 
     void Awake()
     {
@@ -28,9 +29,25 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
     public void ResetLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-    public void SwitchPrototypeLevel() => SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex == 1) ? 0 : 1);
+    //public void SwitchPrototypeLevel() => SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex == 1) ? 0 : 1);
 
     public void QuitToMenu() => SceneManager.LoadScene(Scenes.mainMenu);
     public void QuitApplication() => Application.Quit();
+
+    public void LoadLevel(string levelname) => UnityEngine.SceneManagement.SceneManager.LoadScene(levelname);
+
+    public void FinishLevel()
+    {
+        switch (levelID)
+        {
+            case 1: SaveSystem.i.SetLevelComplete1(true); break;
+            case 2: SaveSystem.i.SetLevelComplete2(true); break;
+            case 3: SaveSystem.i.SetLevelComplete3(true); break;
+            default:
+                break;
+        }
+        SceneManager.LoadScene(Scenes.win);
+    }
+
 
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8498879615782036343}
   - component: {fileID: 1593004628775111837}
   - component: {fileID: 7661868876764656931}
+  - component: {fileID: 5078378026383278914}
   m_Layer: 0
   m_Name: Gameplay
   m_TagString: Untagged
@@ -54,6 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paused: 0
   pauseMenuHolder: {fileID: 1182632908508507215}
+  levelID: 1
 --- !u!114 &1593004628775111837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +81,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c3ec73a2e319545ad2c9716a2a20dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5078378026383278914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295248893631358697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7469dc585c14ac140af731861d597fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level1DataEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  Level2DataEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  Level3DataEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &570758342987036032
 GameObject:
   m_ObjectHideFlags: 0
