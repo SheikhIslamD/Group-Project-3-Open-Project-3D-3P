@@ -21,7 +21,6 @@ public class BossOne : EnemyBase
     [SerializeField] private ObjectPool guardProjPool;
     [SerializeField] private ThrowingSystem heavyThrower;
     [SerializeField] private Transform pearlSpawnPoint;
-    [SerializeField] private GameObject bossHealthSlider;
     public static bool nearBoss = false;
 
     //Connections
@@ -49,7 +48,7 @@ public class BossOne : EnemyBase
     public void TURNON()
     {
         on = true;
-        bossHealthSlider.SetActive(true);
+        HUDUIManager.i.ActivateBossSection();
     }
 
     private void Update()
