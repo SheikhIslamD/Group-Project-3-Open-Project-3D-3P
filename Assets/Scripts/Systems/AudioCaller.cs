@@ -10,7 +10,7 @@ public class AudioCaller : MonoBehaviour
     [SerializedDictionary("Name", "Audio Clip")]
     public SerializedDictionary<string, AudioClip> clips;
 
-    public void PlaySound(string soundName) => PlaySound(soundName);
+    public void PlaySound(string soundName) => PlaySound(soundName, false);
     public void PlaySound(string soundName, bool warn = true)
     {
         if (remote) { remote.PlaySound(soundName); return; }

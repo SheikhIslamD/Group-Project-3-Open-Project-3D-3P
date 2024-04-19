@@ -21,6 +21,7 @@ public class BossOctopus : EnemyBase
     ObjectPool rubblePool;
     private Transform thisTransform;
     private Health health;
+    Animator anim;
 
 
     //Data
@@ -37,6 +38,7 @@ public class BossOctopus : EnemyBase
         thisTransform = transform;
         health = GetComponent<Health>();
         rubblePool = GetComponent<ObjectPool>();
+        anim = GetComponent<Animator>();
         //tentacleAttackTimer = Random.Range(tentacleAttackRate.x, tentacleAttackRate.y);
         if (on) TURNON();
     }
@@ -124,8 +126,13 @@ public class BossOctopus : EnemyBase
             {
                 args.amount *= (int)faceDamageMult;
                 bigRubble.SetActive(false);
+                anim.SetTrigger("Attacked2");
             }
-            else args.amount *= 10;
+            else
+            {
+                args.amount *= 10;
+                anim.SetTrigger("Attacked1");
+            }
         }
         if (args.type == Health.DamageType.Projectile) args.amount /= 2;
     }
