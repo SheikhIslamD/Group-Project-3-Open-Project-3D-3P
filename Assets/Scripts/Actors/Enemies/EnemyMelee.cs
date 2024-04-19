@@ -19,9 +19,9 @@ public class EnemyMelee : EnemyBase
     //Data
     float attackTimer;
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         navAgent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -44,7 +44,7 @@ public class EnemyMelee : EnemyBase
 
     void Chase()
     {
-        navAgent.SetDestination(player.transform.position);
+        navAgent.SetDestination(player.position);
 
         attackTimer += Time.deltaTime;
 

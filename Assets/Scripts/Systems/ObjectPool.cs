@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public class ObjectPool : MonoBehaviour
     [Tooltip("The prefab to pool.")]
     [SerializeField] private GameObject prefabObject;
     [Tooltip("The number of prefabs to create on startup.")]
-    [SerializeField] private int defaultPoolDepth;
+    [SerializeField] private int defaultPoolDepth = 1;
     [Tooltip("Whether or not more prefabs can be created beyond the initial Pool Depth.")]
     [SerializeField] private bool canGrow = true;
     [Tooltip("The transform the Objects will be parented under. (Defaults to the scene.)")]
@@ -23,6 +24,7 @@ public class ObjectPool : MonoBehaviour
     private int currentSelection = 0;
     private bool initialized;
 
+    [Obsolete]
     public static ObjectPool Create(GameObject @object, GameObject prefabObject, int defaultPoolDepth, bool canGrow = true, Transform parent = null, float autoDisableTime = -1, bool deleteObjectsOnDestroy = true)
     {
         ObjectPool pool = @object.AddComponent<ObjectPool>();
@@ -31,10 +33,11 @@ public class ObjectPool : MonoBehaviour
         pool.canGrow = canGrow;
         pool.parent = parent;
         pool.autoDisableTime = autoDisableTime;
-
+        
         return pool;
     }
 
+    private void Awake() => Initialize();
     private void OnEnable() => Initialize();
 
     private void Update()
@@ -55,6 +58,7 @@ public class ObjectPool : MonoBehaviour
         if (initialized) return;
         for (int i = 0; i < defaultPoolDepth; i++) NewInstance();
         initialized = true;
+
     }
 
 
@@ -68,8 +72,7 @@ public class ObjectPool : MonoBehaviour
 
     private void NewInstance()
     {
-
-        GameObject pooledObject = Instantiate(prefabObject);
+        GameObject pooledObject = Instantiate(prefabObject); 
         PoolableObject poolable = pooledObject.GetOrAddComponent<PoolableObject>();
         poolable.transform.parent = parent;
         poolable.pool = this;

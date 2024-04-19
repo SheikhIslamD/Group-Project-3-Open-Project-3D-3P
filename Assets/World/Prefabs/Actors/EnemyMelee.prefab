@@ -226,10 +226,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   clips:
-  - {fileID: 0}
-  clipNames:
-  - Death
-  soundID: 0
+    _serializedList:
+    - Key: Death
+      Value: {fileID: 0}
+  remote: {fileID: 0}
 --- !u!1001 &1807183428288200492
 PrefabInstance:
   m_ObjectHideFlags: 0
