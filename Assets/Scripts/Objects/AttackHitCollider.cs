@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class AttackHitCollider : MonoBehaviour
 {
+    public bool active = true;
     [SerializeField] protected int damage = 20;
     [SerializeField] protected Health.DamageType type;
     [SerializeField] protected bool deactivateOnHit = true;
@@ -19,6 +20,8 @@ public class AttackHitCollider : MonoBehaviour
 
     protected virtual void Hit(GameObject subject)
     {
+        if(!active) return;
+
         Health health = subject.GetComponent<Health>();
         if (health)
         {

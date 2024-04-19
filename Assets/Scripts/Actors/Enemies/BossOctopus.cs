@@ -12,8 +12,8 @@ public class BossOctopus : EnemyBase
     [SerializeField] GameObject bigRubble;
     [SerializeField] int bigRubbleFallRate;
     [SerializeField] BoxCollider rubbleSpawnArea;
-    [SerializeField] Vector2 tentacleAttackRate;
-    [SerializeField] OctopusBossTentacle[] arms;
+    //[SerializeField] Vector2 tentacleAttackRate;
+    //[SerializeField] OctopusBossTentacle[] arms;
     [SerializeField] float faceDamageMult = 10;
 
 
@@ -37,13 +37,14 @@ public class BossOctopus : EnemyBase
         thisTransform = transform;
         health = GetComponent<Health>();
         rubblePool = GetComponent<ObjectPool>();
-        tentacleAttackTimer = Random.Range(tentacleAttackRate.x, tentacleAttackRate.y);
-
+        //tentacleAttackTimer = Random.Range(tentacleAttackRate.x, tentacleAttackRate.y);
+        if (on) TURNON();
     }
 
     public void TURNON()
     {
         on = true;
+        HUDUIManager.i.ActivateBossSection();
     }
 
     private void Update()
@@ -78,6 +79,7 @@ public class BossOctopus : EnemyBase
             rubbleSpawnTimer = 0;
         }
 
+        /*
         if (tentacleAttackTimer > 0) tentacleAttackTimer -= Time.deltaTime;
         else
         {
@@ -85,17 +87,18 @@ public class BossOctopus : EnemyBase
             OctopusBossTentacle arm = GetTentacleToUse();
             arm.BeginAttack(Random.value > 0.5f);
         }
+         */
 
 
     }
-
+    /*
     OctopusBossTentacle GetTentacleToUse()
     {
         OctopusBossTentacle result = arms[0];
 
         result = arms[Random.Range(0, arms.Length)];
 
-        /*
+        
         int antiFreeze = 0;
         while (result.dead || result.attacking)
         {
@@ -103,9 +106,10 @@ public class BossOctopus : EnemyBase
             if (antiFreeze == 200) break;
             antiFreeze++;
         }
-         */
+         
         return result;
     }
+     */
 
 
 
