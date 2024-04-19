@@ -10,7 +10,7 @@ public class UIInputHelper : MonoBehaviour
     private EventSystem eventSystem;
     private Selectable defaultButton;
 
-    private void Awake()
+    private void Start()
     {
         eventSystem = GetComponent<EventSystem>();
         ui = GetComponent<InputSystemUIInputModule>();
