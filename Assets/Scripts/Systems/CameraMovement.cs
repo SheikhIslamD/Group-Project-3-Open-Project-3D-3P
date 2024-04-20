@@ -13,18 +13,15 @@ public class CameraMovement : Singleton<CameraMovement>
     //[SerializeField] CameraBoundry defaultPath;
     public float transitionDuration = 1;
     public Transform backCollider;
-    public float nearClipMod = 0.5f;
 
     CameraBoundry currentPath;
     float transitionTime = 1;
     Camera cameraCam;
-    Camera wallCam;
 
 
     private void Start()
     {
         cameraCam = camera.GetComponent<Camera>();
-        wallCam = camera.Find("WallCamera").GetComponent<Camera>();
         //currentPath = defaultPath;
     }
 
@@ -37,8 +34,7 @@ public class CameraMovement : Singleton<CameraMovement>
 
         camera.position = Vector3.Lerp(transitionBeginPos, currentPath.GetTargetPosition(player.position), transitionTime);
         camera.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBeginRot), Quaternion.Euler(currentPath.cameraRotation), transitionTime);
-        SetCamFOV(Mathf.Lerp(transitionFov, currentPath.cameraFOV, transitionTime));
-        wallCam.nearClipPlane = Mathf.Lerp(transitionWallNearClip, currentPath.cameraOffset.magnitude * nearClipMod, transitionTime);
+        cameraCam.fieldOfView = Mathf.Lerp(transitionFov, currentPath.cameraFOV, transitionTime);
 
         Vector3 targetBackPos = (currentPath.backFromPlayer ? player.position : camera.position) + currentPath.backOffset;
 
@@ -52,13 +48,34 @@ public class CameraMovement : Singleton<CameraMovement>
     Vector3 transitionBackOffset;
     Vector3 transitionBackRotation;
     float transitionFov;
-    float transitionWallNearClip;
 
-    void SetCamFOV(float value)
+    [Serializable]
+    public struct CameraPathSegment
     {
-        cameraCam.fieldOfView = value;
-        wallCam.fieldOfView = value;
+        public BoxCollider collider;
+        public Vector3 cameraOffset;
+        public Vector3 cameraRotation;
+        public Vector3 backOffset;
+        public Vector3 backRotation;
+        public bool backFromPlayer;
     }
+
+    /*
+    public void BeginSegmentTransition(int endSegment)
+    {
+        transitionBeginPos = camera.position;
+        transitionBeginRot = camera.eulerAngles;
+        transitionBackOffset = backCollider.position;
+        transitionBackRotation = backCollider.eulerAngles - new Vector3(-90, 0, 0);
+
+        if (endSegment == currentSegmentID) return;
+
+        currentSegmentID = endSegment;
+        targetTransform.parent = currentSegmentCollider.transform;
+        transitionTime = 0;
+
+    }
+     */
 
     public void BeginSegmentTransition(CameraBoundry newPath)
     {
@@ -67,7 +84,6 @@ public class CameraMovement : Singleton<CameraMovement>
         transitionBackOffset = backCollider.position;
         transitionBackRotation = backCollider.eulerAngles - new Vector3(-90, 0, 0);
         transitionFov = cameraCam.fieldOfView;
-        transitionWallNearClip = wallCam.nearClipPlane;
 
         if (newPath == currentPath) return;
 
