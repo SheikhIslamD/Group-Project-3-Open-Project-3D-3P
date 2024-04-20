@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 701da0281a4d8ca448e36c4a54127da8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7e1c8fa9b937a0241879c8b9ddc82a09, type: 2}
+      objectReference: {fileID: 2100000, guid: 3dba671b70ee9374c8667b5a1d7dc1b9, type: 2}
     - target: {fileID: 919132149155446097, guid: 701da0281a4d8ca448e36c4a54127da8, type: 3}
       propertyPath: m_Name
       value: largesoysauceBottle Variant
