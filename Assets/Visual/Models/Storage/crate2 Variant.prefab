@@ -547,7 +547,7 @@ PrefabInstance:
     - target: {fileID: -3907514041796132678, guid: 1c87de5bc7661bd4b9b29f0dbe7292c0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2926557707537190794, guid: 1816dac0aae31c846b19e2c68cbf29e5, type: 3}
+      objectReference: {fileID: 2100000, guid: 0367b5cca46dc68459f14c91f7c3cea0, type: 2}
     - target: {fileID: 919132149155446097, guid: 1c87de5bc7661bd4b9b29f0dbe7292c0, type: 3}
       propertyPath: m_Name
       value: crate2 Variant
