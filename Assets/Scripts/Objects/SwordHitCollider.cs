@@ -24,5 +24,7 @@ public class SwordHitCollider : AttackHitCollider
 
         if (ReflectableProjectile.Reflect(subject)) audioC.PlaySound("Parry");
 
+        if (subject.tag == "BouncingBall")
+            subject.GetComponent<Rigidbody>().AddForce(transform.forward * 400 + transform.up * 90);
     }
 }

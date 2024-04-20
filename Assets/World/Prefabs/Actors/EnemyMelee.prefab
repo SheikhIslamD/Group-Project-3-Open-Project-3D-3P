@@ -139,6 +139,7 @@ MonoBehaviour:
   entityType: 0
   healthChangeMessage: OnHealthChange
   depleteMessage: OnHealthDeplete
+  healthChangeAux: {fileID: 0}
   healthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -414,6 +415,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -5960997642085333049, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e8b731eb0a8af947ae8e23e259e5645, type: 2}
     - target: {fileID: -5561550452697079657, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -442,6 +447,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -4302745935510907849, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e8b731eb0a8af947ae8e23e259e5645, type: 2}
     - target: {fileID: -4278032810995721380, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -570,6 +579,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1527614881612994136, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e8b731eb0a8af947ae8e23e259e5645, type: 2}
     - target: {fileID: -1200856079203341021, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -878,6 +891,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 133.8291
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e8b731eb0a8af947ae8e23e259e5645, type: 2}
     - target: {fileID: 8447082967072642302, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -3.432947
