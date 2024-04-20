@@ -308,6 +308,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 133
+  IFrames: 0.5
   lastGroundedPosition: {x: 0, y: 0, z: 0}
   d_hit: 0
   d_Distance: 0
@@ -361,6 +362,7 @@ MonoBehaviour:
   entityType: 0
   healthChangeMessage: OnHealthChange
   depleteMessage: OnHealthDeplete
+  healthChangeAux: {fileID: 0}
   healthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -557,7 +559,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -709,6 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da99120f39d95d43a0903be4b93b2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
   damage: 40
   type: 1
   deactivateOnHit: 1
