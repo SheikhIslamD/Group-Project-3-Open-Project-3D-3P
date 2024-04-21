@@ -119,8 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bf7ed545f2f495da0a3ed8acd80909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
   damage: 30
-  type: 1
+  type: 2
   deactivateOnHit: 1
   deactivateOnHitWithHealth: 0
   useCollider: 1

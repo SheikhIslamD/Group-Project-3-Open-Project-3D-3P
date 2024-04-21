@@ -22,7 +22,7 @@ public class UIInputHelper : MonoBehaviour
 
     private void GrabCursor(InputAction.CallbackContext ctx)
     {
-        if (eventSystem.currentSelectedGameObject == null) defaultButton.Select();
+        if (eventSystem.currentSelectedGameObject == null && defaultButton != null) defaultButton.Select();
 
     }
 }
