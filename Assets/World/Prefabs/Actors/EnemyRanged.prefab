@@ -259,6 +259,8 @@ MonoBehaviour:
     _serializedList:
     - Key: Death
       Value: {fileID: 0}
+    - Key: Hurt
+      Value: {fileID: 0}
     - Key: Attack
       Value: {fileID: 0}
   remote: {fileID: 0}
