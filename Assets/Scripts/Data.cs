@@ -41,3 +41,13 @@ public static class Layers
 
 
 }
+
+/*
+
+Broken Model changes fix (Copy into Git Bash)
+
+git rm .gitattributes
+git reset .
+git checkout .
+
+ */
