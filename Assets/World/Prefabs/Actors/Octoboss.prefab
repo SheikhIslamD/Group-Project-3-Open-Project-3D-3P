@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722dfa3577a29fd4cb478ab1d61b7648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  on: 1
+  on: 0
   rubbleFallRate: 0.7
   bigRubble: {fileID: 488627160325376560}
   bigRubbleFallRate: 25
