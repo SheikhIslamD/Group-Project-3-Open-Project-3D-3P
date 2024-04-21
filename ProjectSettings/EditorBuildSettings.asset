@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/World/Scenes/Levels/Shrink_Kitchen.unity
     guid: 1359cb85be616ce4bb02919834276fd1
+  - enabled: 1
+    path: Assets/World/Scenes/Levels/Storage.unity
+    guid: 7da2ffec73ce63741a705b80d61dc7af
   m_configObjects: {}
