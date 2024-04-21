@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   damage: 30
-  type: 1
+  type: 2
   deactivateOnHit: 1
   deactivateOnHitWithHealth: 0
   useCollider: 1

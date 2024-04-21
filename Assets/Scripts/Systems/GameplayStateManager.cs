@@ -40,13 +40,14 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
     {
         switch (levelID)
         {
+            case 0: SaveSystem.i.SetTutorialComplete(true); break;
             case 1: SaveSystem.i.SetLevelComplete1(true); break;
             case 2: SaveSystem.i.SetLevelComplete2(true); break;
             case 3: SaveSystem.i.SetLevelComplete3(true); break;
             default:
                 break;
         }
-        SceneManager.LoadScene(Scenes.win);
+        if(levelID != 0) SceneManager.LoadScene(Scenes.win);
     }
 
 
