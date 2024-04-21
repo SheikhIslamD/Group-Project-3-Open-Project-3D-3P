@@ -545,7 +545,7 @@ MonoBehaviour:
       Value: {fileID: 8300000, guid: 952650f9278675b4c8285d9154f50002, type: 3}
     - Key: Parry
       Value: {fileID: 8300000, guid: 299abeb552787f846b5b15e858dd9e4f, type: 3}
-    - Key: Cooking
+    - Key: Cook
       Value: {fileID: 8300000, guid: bf11f9ec8d99cd84399c15ef45b8fa34, type: 3}
   remote: {fileID: 0}
 --- !u!82 &6939611801626752050
