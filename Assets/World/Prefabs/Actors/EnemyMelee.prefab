@@ -228,6 +228,10 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   clips:
     _serializedList:
+    - Key: Attack
+      Value: {fileID: 8300000, guid: 96d0412636518874486b2bcabe936ab4, type: 3}
+    - Key: Hurt
+      Value: {fileID: 0}
     - Key: Death
       Value: {fileID: 0}
   remote: {fileID: 0}
