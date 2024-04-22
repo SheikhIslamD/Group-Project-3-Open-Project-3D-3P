@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
-  damage: 30
+  damage: 15
   type: 2
   deactivateOnHit: 1
   deactivateOnHitWithHealth: 0

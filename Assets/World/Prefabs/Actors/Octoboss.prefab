@@ -145,8 +145,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.45
-  m_Center: {x: -4.3, y: 7.19, z: 5.83}
+  m_Radius: 4.6750364
+  m_Center: {x: -3, y: 9.394961, z: 6.5000544}
 --- !u!114 &7420919000065015652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,6 +881,10 @@ PrefabInstance:
       propertyPath: baseHealth
       value: 
       objectReference: {fileID: 7420919000065015652}
+    - target: {fileID: 5942196580380160215, guid: aef9cec6005f40545859496251d7adb0, type: 3}
+      propertyPath: baseHealth
+      value: 
+      objectReference: {fileID: 7420919000065015652}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -951,6 +955,10 @@ PrefabInstance:
       propertyPath: baseHealth
       value: 
       objectReference: {fileID: 7420919000065015652}
+    - target: {fileID: 5942196580380160215, guid: aef9cec6005f40545859496251d7adb0, type: 3}
+      propertyPath: baseHealth
+      value: 
+      objectReference: {fileID: 7420919000065015652}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1018,6 +1026,10 @@ PrefabInstance:
       value: OctoBossTentaclev2 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4878876301536906150, guid: aef9cec6005f40545859496251d7adb0, type: 3}
+      propertyPath: baseHealth
+      value: 
+      objectReference: {fileID: 7420919000065015652}
+    - target: {fileID: 5942196580380160215, guid: aef9cec6005f40545859496251d7adb0, type: 3}
       propertyPath: baseHealth
       value: 
       objectReference: {fileID: 7420919000065015652}
@@ -1166,6 +1178,10 @@ PrefabInstance:
       value: OctoBossTentaclev2 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4878876301536906150, guid: aef9cec6005f40545859496251d7adb0, type: 3}
+      propertyPath: baseHealth
+      value: 
+      objectReference: {fileID: 7420919000065015652}
+    - target: {fileID: 5942196580380160215, guid: aef9cec6005f40545859496251d7adb0, type: 3}
       propertyPath: baseHealth
       value: 
       objectReference: {fileID: 7420919000065015652}
