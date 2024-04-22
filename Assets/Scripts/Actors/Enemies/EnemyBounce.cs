@@ -16,8 +16,9 @@ public class EnemyBounce : EnemyBase
     private bool bounce;
     private Rigidbody rb;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         rb = GetComponent<Rigidbody>();
         Vector3 initialVelocity = new Vector3().Randomize(-100f, 100f);
         initialVelocity = initialVelocity.normalized * speed/100;
@@ -26,14 +27,14 @@ public class EnemyBounce : EnemyBase
 
     void Update()
     {
-
+        inSightRange = distanceFromPlayer < sightRange;
+        if (!inSightRange) Idle();
+        if (inSightRange) Chase();
     }
 
     private void FixedUpdate()
     {
-        inSightRange = distanceFromPlayer < sightRange;
-        if (!inSightRange) Idle();
-        if (inSightRange) Chase();
+        
 
         if (rb.velocity.magnitude > speed * Time.fixedDeltaTime)
         {
@@ -55,6 +56,7 @@ public class EnemyBounce : EnemyBase
     private void Chase()
     {
         rb.AddForce((player.centerPos - transform.position) * speed * Time.fixedDeltaTime, ForceMode.Acceleration);
+        transform.LookAt((player.position));
 
         //transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
