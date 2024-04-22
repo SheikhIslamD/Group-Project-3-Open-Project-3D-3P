@@ -10,7 +10,7 @@ public class UIInputHelper : MonoBehaviour
     private EventSystem eventSystem;
     private Selectable defaultButton;
 
-    private void Awake()
+    private void Start()
     {
         eventSystem = GetComponent<EventSystem>();
         ui = GetComponent<InputSystemUIInputModule>();
@@ -22,7 +22,7 @@ public class UIInputHelper : MonoBehaviour
 
     private void GrabCursor(InputAction.CallbackContext ctx)
     {
-        if (eventSystem.currentSelectedGameObject == null) defaultButton.Select();
+        if (eventSystem.currentSelectedGameObject == null && defaultButton != null) defaultButton.Select();
 
     }
 }

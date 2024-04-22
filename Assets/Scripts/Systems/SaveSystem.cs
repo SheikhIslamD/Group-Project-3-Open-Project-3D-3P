@@ -44,6 +44,11 @@ public class SaveSystem : Singleton<SaveSystem>
         saveData.levelComplete3 = value;
         saveData.WriteData();
     }
+    public void SetTutorialComplete(bool value) 
+    { 
+        saveData.tutorialComplete = value;
+        saveData.WriteData();
+    }
 
     public void WriteData() => saveData.WriteData();
     public void ResetSaveData() => saveData.ReadData();
@@ -58,6 +63,7 @@ public class SaveSystem : Singleton<SaveSystem>
         public bool levelComplete1;
         public bool levelComplete2;
         public bool levelComplete3;
+        public bool tutorialComplete;
 
         string dataPath => Application.persistentDataPath + "/Saves/SaveData.json";
 

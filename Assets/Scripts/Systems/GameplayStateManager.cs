@@ -12,12 +12,15 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
     [SerializeField] GameObject pauseMenuHolder;
     [SerializeField] int levelID = 1;
+    [SerializeField] Vector3 tutorialCompletePosition;
 
     void Awake()
     {
         GameplayInputReader.Get(ref input);
         GameplayPauseManager.Get(ref pause);
         HUDUIManager.Get(ref hudUI);
+
+        if (levelID == 0) TUTORIALPOSITION();
     }
 
     public void TogglePause()
@@ -40,14 +43,18 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
     {
         switch (levelID)
         {
+            case 0: SaveSystem.i.SetTutorialComplete(true); break;
             case 1: SaveSystem.i.SetLevelComplete1(true); break;
             case 2: SaveSystem.i.SetLevelComplete2(true); break;
             case 3: SaveSystem.i.SetLevelComplete3(true); break;
             default:
                 break;
         }
-        SceneManager.LoadScene(Scenes.win);
+        if(levelID != 0) SceneManager.LoadScene(Scenes.win);
     }
 
-
+    void TUTORIALPOSITION()
+    {
+        if (SaveSystem.saveData.tutorialComplete) transform.position = tutorialCompletePosition;
+    }
 }

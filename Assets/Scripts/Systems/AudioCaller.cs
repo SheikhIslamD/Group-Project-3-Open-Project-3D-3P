@@ -1,23 +1,27 @@
 using AYellowpaper.SerializedCollections;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class AudioCaller : MonoBehaviour
 {
 
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
+    new Transform transform;
 
     [SerializedDictionary("Name", "Audio Clip")]
     public SerializedDictionary<string, AudioClip> clips;
 
+    public void PlaySound(string soundName) => PlaySound(soundName, false);
     public void PlaySound(string soundName, bool warn = true)
     {
-        if (remote) { remote.PlaySound(soundName); return; }
+        if (remote) { remote.PlaySound(soundName, warn); return; }
 
         bool nameExists = clips.TryGetValue(soundName, out AudioClip clip);
-        if (!nameExists) if (warn) Debug.LogWarningFormat("No sound with name {0} found on {1}.", soundName, gameObject);
+        if (!nameExists) { if (warn) Debug.LogWarningFormat("No sound with name {0} found on {1}.", soundName, gameObject); }
         else if (clip == null) Debug.LogWarningFormat("Open sound slot with intended name \"{1}\" on {0} found, ensure to fill at some point.", gameObject, soundName);
-        else audioSource.PlayOneShot(clip);
+        else AudioSource.PlayClipAtPoint(clip, transform.position, 1);
+
     }
 
     public AudioCaller remote;
@@ -79,6 +83,8 @@ public class AudioCaller : MonoBehaviour
 
     private void Awake()
     {
-        if (!remote && !audioSource) audioSource = gameObject.GetOrAddComponent<AudioSource>();
+        //if (!remote && !audioSource) audioSource = gameObject.GetComponent<AudioSource>();
+        //if(!audioSource) audioSource = gameObject.AddComponent<AudioSource>();
+        transform = GetComponent<Transform>();
     }
 }
