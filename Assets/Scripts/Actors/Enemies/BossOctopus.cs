@@ -63,7 +63,7 @@ public class BossOctopus : EnemyBase
                 bigRubble.SetActive(true);
 
                 Position basePosition = thisTransform.position + rubbleSpawnArea.center;
-                Position offsetFactor = Vector3.zero.Randomize(-1, 1); offsetFactor.z = 1; offsetFactor.x /= 2;
+                Position offsetFactor = Vector3.zero.Randomize(-1, 1); offsetFactor.z = -1; offsetFactor.x /= 2;
                 bigRubble.transform.position = basePosition + offsetFactor * (rubbleSpawnArea.size / 2);
 
             }
