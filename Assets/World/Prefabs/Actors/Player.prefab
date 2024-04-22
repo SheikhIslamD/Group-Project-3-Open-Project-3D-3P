@@ -537,15 +537,17 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Jump
-      Value: {fileID: 8300000, guid: 3f288bc12bf4d384b9279e31725de8e4, type: 3}
+      Value: {fileID: 8300000, guid: cb926df9360596d4e92ed800bb15c275, type: 3}
+    - Key: Hurt
+      Value: {fileID: 8300000, guid: 22ad97618bb34e64d9dfa38423c8fd59, type: 3}
     - Key: Slash
-      Value: {fileID: 8300000, guid: b80d27d22ad75f549a4e1b77f09af28f, type: 3}
+      Value: {fileID: 8300000, guid: 05180b4239b87e74182ff0e08d1540fd, type: 3}
     - Key: Shoot
-      Value: {fileID: 8300000, guid: 952650f9278675b4c8285d9154f50002, type: 3}
+      Value: {fileID: 8300000, guid: e94b95f5cc0f04c49a8c0da2806f2971, type: 3}
     - Key: Parry
-      Value: {fileID: 8300000, guid: 299abeb552787f846b5b15e858dd9e4f, type: 3}
+      Value: {fileID: 8300000, guid: 0213c0c73cc928f4cae0c3ac6997d605, type: 3}
     - Key: Cook
-      Value: {fileID: 8300000, guid: bf11f9ec8d99cd84399c15ef45b8fa34, type: 3}
+      Value: {fileID: 8300000, guid: 2ae6e6a111818de4fb51aa9314091b81, type: 3}
   remote: {fileID: 0}
 --- !u!81 &7325146479965346615
 AudioListener:
