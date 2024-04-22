@@ -8266,7 +8266,7 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Hurt
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
   remote: {fileID: 0}
 --- !u!114 &419465812
 MonoBehaviour:
@@ -9438,7 +9438,7 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Hurt
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
   remote: {fileID: 0}
 --- !u!114 &481431458
 MonoBehaviour:
@@ -16520,7 +16520,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f60e83fa5882d2c4394b7cde92854641, type: 2}
+  - {fileID: 2100000, guid: b583d44cc1bb91544b11933c5e88ac03, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21094,7 +21094,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1113266914
 PrefabInstance:
@@ -22281,7 +22281,7 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Hurt
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
   remote: {fileID: 0}
 --- !u!114 &1149661192
 MonoBehaviour:
@@ -37458,7 +37458,7 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Hurt
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
   remote: {fileID: 0}
 --- !u!114 &1945436558
 MonoBehaviour:
