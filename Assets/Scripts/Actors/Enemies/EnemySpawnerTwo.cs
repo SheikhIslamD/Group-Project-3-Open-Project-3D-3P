@@ -5,19 +5,24 @@ using UnityEngine;
 public class EnemySpawnerTwo : MonoBehaviour
 {
     [SerializeField]
-    private GameObject enemyOnePrefab;
+    private GameObject enemyOne;
     [SerializeField]
-    private GameObject enemyTwoPrefab;
+    private GameObject enemyTwo;
+    [SerializeField]
+    private GameObject enemyThree;
 
     [SerializeField]
-    private float enemyOneInterval = 3.5f;
+    private float enemyOneInterval = 3f;
     [SerializeField]
-    private float enemyTwoInterval = 10f;
+    private float enemyTwoInterval = 5f;
+    [SerializeField]
+    private float enemyThreeInterval = 7f;
 
     void Start()
     {
-        StartCoroutine(spawnEnemy(enemyOneInterval, enemyOnePrefab));
-        StartCoroutine(spawnEnemy(enemyTwoInterval, enemyTwoPrefab));
+        StartCoroutine(spawnEnemy(enemyOneInterval, enemyOne));
+        StartCoroutine(spawnEnemy(enemyTwoInterval, enemyTwo));
+        StartCoroutine(spawnEnemy(enemyThreeInterval, enemyTwo));
     }
 
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
