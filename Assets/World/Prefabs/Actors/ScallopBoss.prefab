@@ -238,13 +238,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bae0168d533ec44bbc8cb389520f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
   clips:
     _serializedList:
     - Key: Death
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: 8b2dc252b489e0f4785f4433612535d3, type: 3}
     - Key: Hurt
-      Value: {fileID: 0}
+      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
   remote: {fileID: 0}
 --- !u!136 &3808031846857404858
 CapsuleCollider:

@@ -197,9 +197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bae0168d533ec44bbc8cb389520f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
   clips:
-    _serializedList: []
+    _serializedList:
+    - Key: Hurt
+      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
+    - Key: Death
+      Value: {fileID: 8300000, guid: 5b585847937d97b479bf4c1ea1256bce, type: 3}
   remote: {fileID: 0}
 --- !u!114 &925643066029185076
 MonoBehaviour:
