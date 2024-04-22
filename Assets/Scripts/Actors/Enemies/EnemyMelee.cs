@@ -9,7 +9,7 @@ public class EnemyMelee : EnemyBase
     [SerializeField] float attackRange;
     [SerializeField] float attackRate;
     [SerializeField] int attackDamage;
-    public float sightRange, fightRange;
+    public float sightRange;
     private bool inSightRange, inAttackRange;
 
     //Connections
@@ -28,7 +28,7 @@ public class EnemyMelee : EnemyBase
     void Update()
     {
         inSightRange = distanceFromPlayer < sightRange;
-        inAttackRange = distanceFromPlayer < fightRange;
+        inAttackRange = distanceFromPlayer < attackRange;
 
         if (!inSightRange && !inAttackRange) Idle();
         if (inSightRange) Chase();
