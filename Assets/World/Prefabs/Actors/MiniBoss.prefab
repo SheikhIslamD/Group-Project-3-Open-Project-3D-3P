@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mixamorig:RightHandIndex2
       objectReference: {fileID: 0}
+    - target: {fileID: -8798396467675099539, guid: 2129926e70b04f74e95e643d46768424, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9e9f2aca4a51a14a86e736745783bab, type: 2}
     - target: {fileID: -8679921383154817045, guid: 2129926e70b04f74e95e643d46768424, type: 3}
       propertyPath: m_RootOrder
       value: 0
