@@ -17257,6 +17257,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4126d2ba2e754ae42a2db13930d7c17a, type: 3}
+--- !u!1001 &1263117119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 39.094
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.752
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 46.047
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7142573
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6998833
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -88.835
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429076372571907338, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201356385096908720, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
+      propertyPath: m_Name
+      value: SculptedCat Variant (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74bc6db984a566d44acdec264943fd34, type: 3}
 --- !u!1 &1264116860
 GameObject:
   m_ObjectHideFlags: 0
