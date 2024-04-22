@@ -155,6 +155,7 @@ MonoBehaviour:
   entityType: 0
   healthChangeMessage: OnHealthChange
   depleteMessage: OnHealthDeplete
+  healthChangeAux: {fileID: 0}
   healthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -257,6 +258,8 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Death
+      Value: {fileID: 0}
+    - Key: Hurt
       Value: {fileID: 0}
     - Key: Attack
       Value: {fileID: 0}
@@ -445,6 +448,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -5960997642085333049, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2bfa243437f0d4a4eac7f5b37f3097ed, type: 2}
     - target: {fileID: -5561550452697079657, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -473,6 +480,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -4302745935510907849, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2bfa243437f0d4a4eac7f5b37f3097ed, type: 2}
     - target: {fileID: -4278032810995721380, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -601,6 +612,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -1527614881612994136, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2bfa243437f0d4a4eac7f5b37f3097ed, type: 2}
     - target: {fileID: -1200856079203341021, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -909,6 +924,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 133.8291
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2bfa243437f0d4a4eac7f5b37f3097ed, type: 2}
     - target: {fileID: 8447082967072642302, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -3.432947

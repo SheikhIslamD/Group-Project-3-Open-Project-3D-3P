@@ -151,7 +151,6 @@ MonoBehaviour:
     maxSpeed: 250
     gravity: 9.81
   pearlSpawnPoint: {fileID: 1358318253219351843}
-  bossHealthSlider: {fileID: 0}
 --- !u!114 &3894077020209665391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +169,7 @@ MonoBehaviour:
   entityType: 2
   healthChangeMessage: OnHealthChange
   depleteMessage: OnHealthDeplete
+  healthChangeAux: {fileID: 0}
   healthChangeEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1211,7 +1211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3371951392191877564, guid: db76ad0ce88694c4589c90895458fd17, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3382952122049589119, guid: db76ad0ce88694c4589c90895458fd17, type: 3}
       propertyPath: m_Layer

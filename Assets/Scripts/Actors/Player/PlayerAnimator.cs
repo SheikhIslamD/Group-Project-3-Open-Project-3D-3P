@@ -46,8 +46,8 @@ public class PlayerAnimator : MonoBehaviour
 
         Vector3 result = movementTransform.worldToLocalMatrix * (Vector3)(movement.velocity * Direction.XZ / (movement.speed));
 
-        p_walkX = result.x;
-        p_walkZ = result.z;
+        p_walkX = (result.x.Abs() > 0.2) ? result.x : 0;
+        p_walkZ = (result.z.Abs() > 0.2) ? result.z : 0;
 
         //Neither of these worked and I honestly have no clue why
         //Vector3 result = ((Direction)moveDirection).RotateTo(aimDirection, Direction.front);
