@@ -73,7 +73,9 @@ PrefabInstance:
       value: japaneseEggPan_Large
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -8513424388201257645, guid: a1dbb93e120b56948ba5a87dac9b4c1d, type: 3}
+    - {fileID: 3779745573541866595, guid: a1dbb93e120b56948ba5a87dac9b4c1d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1dbb93e120b56948ba5a87dac9b4c1d, type: 3}
