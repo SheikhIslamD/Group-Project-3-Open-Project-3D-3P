@@ -12,12 +12,15 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
     [SerializeField] GameObject pauseMenuHolder;
     [SerializeField] int levelID = 1;
+    [SerializeField] Vector3 tutorialCompletePosition;
 
     void Awake()
     {
         GameplayInputReader.Get(ref input);
         GameplayPauseManager.Get(ref pause);
         HUDUIManager.Get(ref hudUI);
+
+        if (levelID == 0) TUTORIALPOSITION();
     }
 
     public void TogglePause()
@@ -50,5 +53,8 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
         if(levelID != 0) SceneManager.LoadScene(Scenes.win);
     }
 
-
+    void TUTORIALPOSITION()
+    {
+        if (SaveSystem.saveData.tutorialComplete) transform.position = tutorialCompletePosition;
+    }
 }
