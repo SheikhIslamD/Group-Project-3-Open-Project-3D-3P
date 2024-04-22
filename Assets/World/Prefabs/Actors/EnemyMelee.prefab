@@ -120,7 +120,6 @@ MonoBehaviour:
   attackRate: 3.5
   attackDamage: 15
   sightRange: 30
-  fightRange: 10
 --- !u!114 &6571558288486719362
 MonoBehaviour:
   m_ObjectHideFlags: 0
