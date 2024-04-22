@@ -264,6 +264,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7445353676380511725, guid: 63e7db13f42358144b84a161af0c0976, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3515,13 +3519,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 909902613498724956, guid: b811b8e933d234e3d891abe425f2e787, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 909902613498724956, guid: b811b8e933d234e3d891abe425f2e787, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3145064492344536633, guid: b811b8e933d234e3d891abe425f2e787, type: 3}
       propertyPath: m_Name
       value: EnemyBounce
-      objectReference: {fileID: 0}
-    - target: {fileID: 3145064492344536633, guid: b811b8e933d234e3d891abe425f2e787, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
