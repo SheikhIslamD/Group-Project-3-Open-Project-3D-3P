@@ -47,7 +47,7 @@ public class Pauseable : MonoBehaviour
     private bool s_anim_enabled;
     private void HandleComponent(Animator anim)
     {
-        if(anim == null) return;
+        if(!anim) return;
 
         if (paused)
         {
@@ -66,7 +66,7 @@ public class Pauseable : MonoBehaviour
     private Vector3 s_nav_velocity;
     private void HandleComponent(NavMeshAgent nav)
     {
-        if(nav == null) return;
+        if(!nav) return;
 
         if (paused)
         {
@@ -90,7 +90,7 @@ public class Pauseable : MonoBehaviour
     private Vector3 s_rb_angularVelocity;
     private void HandleComponent(Rigidbody rb)
     {
-        if(rb == null) return;
+        if(!rb) return;
 
         if (paused)
         {
@@ -112,7 +112,7 @@ public class Pauseable : MonoBehaviour
     private ConstantForce constForce;
     private void HandleComponent(ConstantForce force)
     {
-        if(force == null) return;
+        if(!force) return;
         constForce.enabled = !paused;
     }
 

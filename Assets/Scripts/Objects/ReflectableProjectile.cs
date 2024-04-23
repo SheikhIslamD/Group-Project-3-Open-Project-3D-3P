@@ -13,7 +13,7 @@ public class ReflectableProjectile : MonoBehaviour
     public static bool Reflect(GameObject target)
     {
         ReflectableProjectile reflect = target.GetComponent<ReflectableProjectile>();
-        if (reflect == null) return false;
+        if (!reflect) return false;
 
         reflect.MakeReflected();
         Rigidbody rb = reflect.GetComponent<Rigidbody>();
@@ -47,7 +47,7 @@ public class ReflectableProjectile : MonoBehaviour
 
     private void Collide(GameObject obj)
     {
-        if (isReflected && obj.GetComponent<Health>() != null)
+        if (isReflected && obj.GetComponent<Health>())
         {
             MakeNormal();
         }

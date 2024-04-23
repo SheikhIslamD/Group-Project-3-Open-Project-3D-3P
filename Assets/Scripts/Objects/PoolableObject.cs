@@ -24,7 +24,7 @@ public class PoolableObject : MonoBehaviour
         transform.eulerAngles = direction;
 
         Rigidbody rigid = rb;
-        if (rigid == null) return;
+        if (!rigid) return;
 
         rigid.velocity = relative ? transform.TransformDirection(velocity) : velocity;
         rigid.angularVelocity = Vector3.zero;
@@ -42,7 +42,7 @@ public class PoolableObject : MonoBehaviour
         if (deactivateGameObject) gameObject.SetActive(false);
         
 
-        if (pool == null) Destroy(gameObject);
+        if (!pool) Destroy(gameObject);
     }
 
     private void OnDisable() { if (Active) Disable(); }
@@ -51,8 +51,8 @@ public class PoolableObject : MonoBehaviour
     public static PoolableObject IsPooled(GameObject subject)
     {
         PoolableObject pool = subject.GetComponent<PoolableObject>(); 
-        if (pool == null) return null;
-        if (pool.pool == null) return null;
+        if (!pool) return null;
+        if (!pool.pool) return null;
         return pool;
     }
 

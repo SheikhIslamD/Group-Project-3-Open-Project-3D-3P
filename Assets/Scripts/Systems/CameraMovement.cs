@@ -27,7 +27,7 @@ public class CameraMovement : Singleton<CameraMovement>
 
     private void Update()
     {
-        if (currentPath == null) return;
+        if (!currentPath) return;
 
         if (transitionTime < 1) transitionTime += Time.deltaTime / transitionDuration;
         if (transitionTime > 1) transitionTime = 1;

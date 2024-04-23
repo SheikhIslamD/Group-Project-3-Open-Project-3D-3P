@@ -121,8 +121,6 @@ public class BossOctopus : EnemyBase
 
     public void OnHealthChange(Health.Interaction args)
     {
-        Debug.Log("test");
-
         if(args.type == Health.DamageType.Melee)
         {
             if(args.customIdentifier != "TentacleDamaged")

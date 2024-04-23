@@ -5,8 +5,6 @@ public class PlayerAnimator : MonoBehaviour
 {
     //Config
 
-
-
     //Components
     private Animator animator;
     private PlayerMove movement;
@@ -16,6 +14,7 @@ public class PlayerAnimator : MonoBehaviour
     private Transform movementTransform;
 
     //Data
+    float speed;
 
     //Animation Parameters
     private float p_walkX { set => animator.SetFloat("walkX", value); }
@@ -37,17 +36,18 @@ public class PlayerAnimator : MonoBehaviour
         melee = GetComponentInParent<PlayerMelee>();
         cooking = GetComponentInParent<PlayerCooking>();
         movementTransform = movement.transform;
+        speed = movement.speed - 0.9f;
     }
 
-    private void Update() => SetDirection();
+    private void FixedUpdate() => SetDirection();
 
     private void SetDirection()
     {
 
-        Vector3 result = movementTransform.worldToLocalMatrix * (Vector3)(movement.velocity * Direction.XZ / (movement.speed));
+        Vector3 result = movementTransform.worldToLocalMatrix * (Vector3)(movement.velocity * Direction.XZ / speed);
 
-        p_walkX = (result.x.Abs() > 0.2) ? result.x : 0;
-        p_walkZ = (result.z.Abs() > 0.2) ? result.z : 0;
+        p_walkX = result.x;
+        p_walkZ = result.z;
 
         //Neither of these worked and I honestly have no clue why
         //Vector3 result = ((Direction)moveDirection).RotateTo(aimDirection, Direction.front);

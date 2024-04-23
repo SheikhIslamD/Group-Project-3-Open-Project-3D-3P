@@ -70,7 +70,7 @@ public class LootBag : MonoBehaviour
 
     public void InstantiateLoot(Loot loot, Vector3 spawnPosition)
     {
-        if (loot == null) return;
+        if (!loot) return;
         GameObject lootGameObject = Instantiate(
             loot.gameObject,
             spawnPosition + new Vector3(Random.Range(-0.5f, 0.5f), 0, Random.Range(-0.5f, 0.5f)),

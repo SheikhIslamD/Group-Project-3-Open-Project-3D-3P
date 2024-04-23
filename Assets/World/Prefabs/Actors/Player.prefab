@@ -126,8 +126,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1174886509356497155}
-  - component: {fileID: 3503873851315093435}
-  - component: {fileID: 1728696968260153764}
   - component: {fileID: 7340060523124424850}
   - component: {fileID: 4189098180382408265}
   - component: {fileID: 4521049798979372847}
@@ -164,56 +162,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3503873851315093435
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5361231222474564621}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1728696968260153764
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5361231222474564621}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 49f51d9715fd742c5afeaf8228f20df0, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &7340060523124424850
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -297,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e056b860cde44683910809eafc226e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 0.02
+  acceleration: 1
   speed: 6
   rotationSpeed: 720
   jumpSpeed: 5
@@ -310,8 +258,6 @@ MonoBehaviour:
     m_Bits: 133
   IFrames: 0.5
   lastGroundedPosition: {x: 0, y: 0, z: 0}
-  d_hit: 0
-  d_Distance: 0
 --- !u!114 &7256595565590103146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4366,6 +4312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2980085e45c7a4e9ea38ef17e394ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minMoveForAnim: 0.2
 --- !u!4 &1945284188115934263 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: d3244bbe6eb4f2f438c483b7bb066add, type: 3}

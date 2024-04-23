@@ -9,10 +9,10 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     private static T _Instance;
     public static T instance { get { 
-            if (_Instance == null)
+            if (!_Instance)
             {
                 T findAttempt = FindFirstObjectByType<T>();
-                if (findAttempt != null)
+                if (findAttempt)
                 {
                     findAttempt.Awake();
                     return findAttempt;
@@ -31,7 +31,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 
     public static bool IsInitialized
     {
-        get { return _Instance != null; }
+        get { return _Instance; }
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     /// </summary>
     private void Awake()
     {
-        if (_Instance != null && _Instance != this)
+        if (_Instance && _Instance != this)
         {
             Debug.LogError(
                 "Something or someone is attempting to create a second " + 
@@ -86,7 +86,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     /// <param name="leaveGameObject"> Whether the Game Object that contains the Singleton is left behind.</param>
     public static void Destroy(bool leaveGameObject = false)
     {
-        if (instance == null) return;
+        if (!instance) return;
         if(!leaveGameObject)
         {
             MonoBehaviour.Destroy(instance.gameObject);
@@ -115,7 +115,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     /// <param name="replace"> Whether or not this will forcibly replace an existing instance with the new one.</param>
     public static void Create(GameObject @object, bool replace = false)
     {
-        if (!replace) if (instance != null) return;
+        if (!replace) if (instance) return;
             else Destroy(true);
         @object.AddComponent<T>().Awake();
     }

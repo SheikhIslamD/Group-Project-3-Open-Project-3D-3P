@@ -225,7 +225,6 @@ public class BossOne : EnemyBase
     {
         if (stateMachine.currentStateID == States.Guarding && args.source.GetComponent<ReflectableProjectile>())
         {
-            Debug.Log("Stunned");
             args.interrupted = false;
             stateMachine.ChangeState(States.Stunned);
             anim.Stun(true);

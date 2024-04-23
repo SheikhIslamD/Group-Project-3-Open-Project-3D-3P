@@ -16,7 +16,6 @@ public class BossOneAnimator : MonoBehaviour
     public void BeginAttack()
     {
         anim.SetTrigger("Attack");
-        Debug.Log("Attack");
     }
     public void SetGuarding(bool value) => anim.SetBool("Guarding", value);
     public void Stun(bool value)

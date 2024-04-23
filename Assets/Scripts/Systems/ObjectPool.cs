@@ -119,7 +119,7 @@ public class ObjectPool : MonoBehaviour
         {
             poolList[i].Disable(false);
             poolList[i].onDeactivate -= OnDeActivate;
-            if (deleteObjectsOnDestroy) if (poolList[i] != null) Destroy(poolList[i].gameObject);
+            if (deleteObjectsOnDestroy) if (poolList[i]) Destroy(poolList[i].gameObject);
         }
         poolList.Clear();
     }

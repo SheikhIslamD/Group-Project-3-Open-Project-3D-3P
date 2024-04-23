@@ -20,7 +20,7 @@ public class Movement_For_ArtPrototype : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        if (rb == null) rb = GetComponent<Rigidbody>();
+        if (!rb) rb = GetComponent<Rigidbody>();
     }
 
     void Update()

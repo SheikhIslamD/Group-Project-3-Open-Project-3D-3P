@@ -41,7 +41,7 @@ public class OctopusBossTentacle : EnemyBase
 
     private void Update()
     {
-        if(dead || !active || player == null) return;
+        if(dead || !active || !player) return;
         if (aiming) Aim();
         if (timer > 0) timer -= Time.deltaTime;
         else TimerStrike();
@@ -135,7 +135,6 @@ public class OctopusBossTentacle : EnemyBase
             return;
         }
 
-        //Debug.LogFormat("Source:{0}, Rec:{1}, Amount:{2}", args.source, args.reciever, args.amount);
         args.customIdentifier = "TentacleDamaged";
         baseHealth.ChangeHealth(args);
         CounterAttacked();

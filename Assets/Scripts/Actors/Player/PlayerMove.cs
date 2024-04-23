@@ -23,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     private Health health;
     private PlayerShooter shooter;
     private PlayerAnimator anim;
-    private new CapsuleCollider collider;
+    private CapsuleCollider colliderSide;
     private SphereCollider colliderFoot;
 
     //Data
@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviour
     private float accel => speed / acceleration;
     [HideInInspector] public Vector3 velocity { get => rb.velocity; set => rb.velocity = value; }
     [HideInInspector] public Vector3 position => transform.position;
-    [HideInInspector] public Vector3 centerPos => transform.position + collider.center;
+    [HideInInspector] public Vector3 centerPos => transform.position + colliderSide.center;
 
     private void Awake()
     {
@@ -50,13 +50,24 @@ public class PlayerMove : MonoBehaviour
         health = GetComponent<Health>();
         shooter = GetComponent<PlayerShooter>();
         anim = GetComponentInChildren<PlayerAnimator>();
-        collider = GetComponent<CapsuleCollider>();
+        colliderSide = GetComponent<CapsuleCollider>();
         colliderFoot = GetComponent<SphereCollider>();
+        lastGroundedPosition = transform.position;
     }
+
 
     private void Update()
     {
         MovementDirection();
+        if (!(dodgeTimeLeft > 0))
+        {
+            if (input.jump.WasPressedThisFrame() && onGround) anim.Jump();
+            if (input.sprint.WasPressedThisFrame() && input.movementVector2 != Vector2.zero) BeginDodge();
+        }
+    }
+
+    private void FixedUpdate()
+    {
         onGround = OnGround();
 
         nextVelocity = velocity;
@@ -77,14 +88,11 @@ public class PlayerMove : MonoBehaviour
             BasicMovement();
             AimBasedRotation();
 
-            if (input.jump.WasPressedThisFrame() && onGround) anim.Jump();
             if (jumping)
             {
                 nextVelocity = new(nextVelocity.x, jumpSpeed, nextVelocity.z);
                 jumping = false;
             }
-
-            if (input.sprint.WasPressedThisFrame() && input.movementVector2 != Vector2.zero) BeginDodge();
         }
 
 
@@ -101,8 +109,8 @@ public class PlayerMove : MonoBehaviour
 
         rb.velocity = nextVelocity;
 
-
         if (IFrameTimeLeft > 0) IFrameTimeLeft -= Time.deltaTime;
+
     }
 
     private void MovementDirection()
@@ -121,27 +129,22 @@ public class PlayerMove : MonoBehaviour
         }
         else if (movementDirection.magnitude == 0) direction -= direction.normalized * accel;
         if (direction.magnitude > speed * movementDirection.magnitude) direction = direction.normalized * speed * movementDirection.magnitude;
+
         /*
-        #region NonSidewaysStuck Section
+        { // NonSidewaysStuck Section
 
-        bool sideHit = Physics.CapsuleCast(
-            point1: transform.position + collider.center + transform.up * (collider.height / 2 - collider.radius),
-            point2: transform.position + collider.center - transform.up * (collider.height / 2 - collider.radius),
-            radius: collider.radius,
-            direction: direction.normalized,
-            hitInfo: out RaycastHit sideHitInfo,
-            maxDistance: direction.magnitude * Time.deltaTime * 2,
-            layerMask: groundLayers
-            );
-        d_hit = sideHit;
+            bool sideHit = Physics.CapsuleCast(
+                point1: transform.position + colliderSide.center + transform.up * (colliderSide.height / 2 - colliderSide.radius),
+                point2: transform.position + colliderSide.center - transform.up * (colliderSide.height / 2 - colliderSide.radius),
+                radius: colliderSide.radius,
+                direction: direction.normalized,
+                hitInfo: out RaycastHit sideHitInfo,
+                maxDistance: direction.magnitude * Time.deltaTime * 2,
+                layerMask: groundLayers
+                );
+            if (sideHit && Vector3.Dot(sideHitInfo.normal, direction.normalized) < -0.7222) direction = Direction.zero;
 
-        if (sideHit)
-        {
-            d_Distance = sideHitInfo.distance;
-            direction = direction.normalized * sideHitInfo.distance;
         }
-
-        #endregion NonSidewaysStuck Section
          */
 
         direction.y = (onGround && nextVelocity.y < 0) ? 0 : nextVelocity.y;
@@ -149,9 +152,6 @@ public class PlayerMove : MonoBehaviour
         nextVelocity = direction;
 
     }
-
-    public bool d_hit;
-    public float d_Distance;
 
     private void DodgeMovement() => nextVelocity = dodgeDirection * dodgeSpeed;
 
@@ -187,7 +187,6 @@ public class PlayerMove : MonoBehaviour
     private bool jumping;
     public void JumpCallback()
     {
-        Debug.Log("Jump");
         audioC.PlaySound("Jump");
         jumping = true;
     }
@@ -209,16 +208,13 @@ public class PlayerMove : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (!Application.isEditor) Gizmos.DrawSphere(centerPos - Vector3.up * (collider.height / 2 - collider.radius + 0.01f), collider.radius);
+        if (!Application.isEditor) Gizmos.DrawSphere(centerPos - Vector3.up * (colliderSide.height / 2 - colliderSide.radius + 0.01f), colliderSide.radius);
     }
 
     public void OnHealthChange(Health.Interaction args)
     {
         if (IFrameTimeLeft > 0) args.Interrupt();
-        else
-        {
-            IFrameTimeLeft = IFrames;
-        }
+        else IFrameTimeLeft = IFrames;
     }
 
 }

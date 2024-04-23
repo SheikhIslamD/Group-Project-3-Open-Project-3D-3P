@@ -59,7 +59,7 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         audio = GetComponent<AudioCaller>();
-        hasAudioCaller = audio != null;
+        hasAudioCaller = audio;
         currentHealth = maxHealth;
     }
 
@@ -67,13 +67,13 @@ public class Health : MonoBehaviour
 
     public Interaction Damage(int amount, DamageType type, MonoBehaviour source, Health reciever = null, string customIdentifier = null)
     {
-        Interaction args = new(-amount, type, source, (reciever == null) ? this : reciever, customIdentifier);
+        Interaction args = new(-amount, type, source, (!reciever) ? this : reciever, customIdentifier);
         return ChangeHealth(args);
     }
 
     public Interaction Heal(int amount, MonoBehaviour source, Health reciever = null, string customIdentifier = null)
     {
-        Interaction args = new(amount, DamageType.Generic, source, (reciever == null) ? this : reciever, customIdentifier);
+        Interaction args = new(amount, DamageType.Generic, source, (!reciever) ? this : reciever, customIdentifier);
         return ChangeHealth(args);
     }
 
@@ -89,7 +89,7 @@ public class Health : MonoBehaviour
         if (args.expectedFinalAmount > maxHealth) args.expectedFinalAmount = maxHealth;
 
         SendMessage(healthChangeMessage, args, SendMessageOptions.DontRequireReceiver);
-        if (healthChangeAux != null) healthChangeAux.SendMessage(healthChangeMessage, args, SendMessageOptions.DontRequireReceiver);
+        if (healthChangeAux) healthChangeAux.SendMessage(healthChangeMessage, args, SendMessageOptions.DontRequireReceiver);
 
         if (args.expectedFinalAmount < 0) args.expectedFinalAmount = 0;
         if (args.expectedFinalAmount > maxHealth) args.expectedFinalAmount = maxHealth;
