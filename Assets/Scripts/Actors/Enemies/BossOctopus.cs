@@ -12,6 +12,7 @@ public class BossOctopus : EnemyBase
     [SerializeField] GameObject bigRubble;
     [SerializeField] int bigRubbleFallRate;
     [SerializeField] BoxCollider rubbleSpawnArea;
+    [SerializeField] BoxCollider bigRubbleSpawnArea;
     //[SerializeField] Vector2 tentacleAttackRate;
     //[SerializeField] OctopusBossTentacle[] arms;
     [SerializeField] float faceDamageMult = 10;
@@ -56,27 +57,29 @@ public class BossOctopus : EnemyBase
         if (rubbleSpawnTimer < rubbleFallRate) rubbleSpawnTimer += Time.deltaTime;
         else
         {
-            if(bigRubbleSpawnProgress >= bigRubbleFallRate && !bigRubble.activeSelf)
+            if(bigRubbleSpawnProgress >= bigRubbleFallRate)
             {
                 bigRubbleSpawnProgress = Random.Range(-1, 2);
 
-                bigRubble.SetActive(true);
-
-                Position basePosition = thisTransform.position + rubbleSpawnArea.center;
-                Position offsetFactor = Vector3.zero.Randomize(-1, 1); offsetFactor.z = -1; offsetFactor.x /= 2;
-                bigRubble.transform.position = basePosition + offsetFactor * (rubbleSpawnArea.size / 2);
-
+                if (!bigRubble.activeSelf)
+                {
+                    bigRubble.SetActive(true);
+                    Position basePosition = thisTransform.position + thisTransform.TransformDirection(bigRubbleSpawnArea.center);
+                    Position offsetFactor = Vector3.zero.Randomize(-1, 1);
+                    bigRubble.transform.position = basePosition + (Position)thisTransform.TransformDirection(offsetFactor * (bigRubbleSpawnArea.size / 2));
+                    bigRubble.transform.eulerAngles = Vector3.up * Random.Range(-90, 90);
+                }
             }
             else
             {
                 PoolableObject rub;
-                Position basePosition = thisTransform.position + rubbleSpawnArea.center;
+                Position basePosition = thisTransform.position + thisTransform.TransformDirection(rubbleSpawnArea.center);
                 Position offsetFactor = Vector3.zero.Randomize(-1, 1);
 
                 bigRubbleSpawnProgress++;
                 rub = rubblePool.Pump();
 
-                rub.Prepare_Basic(basePosition + offsetFactor * (rubbleSpawnArea.size / 2), Vector3.zero.Randomize(0, 360), Vector3.zero);
+                rub.Prepare_Basic(basePosition + offsetFactor * thisTransform.TransformDirection(rubbleSpawnArea.size / 2), Vector3.zero.Randomize(0, 360), Vector3.zero);
             }
             rubbleSpawnTimer = 0;
         }

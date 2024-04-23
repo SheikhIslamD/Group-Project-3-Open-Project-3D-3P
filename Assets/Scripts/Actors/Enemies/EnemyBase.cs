@@ -19,6 +19,6 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void OnHealthDeplete()
     {
-        GetComponent<LootBag>()?.DropLoot(transform.position);
+        GetComponent<LootBag>()?.DropLoot();
     }
 }

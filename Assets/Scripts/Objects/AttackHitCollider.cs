@@ -30,7 +30,7 @@ public class AttackHitCollider : MonoBehaviour
 
         if (deactivateOnHit)
         {
-            if((deactivateOnHitWithHealth && health) || !deactivateOnHitWithHealth) gameObject.SetActive(false);
+            if((deactivateOnHitWithHealth && health) || !deactivateOnHitWithHealth)gameObject.SetActive(false);
         }
     }
 }
