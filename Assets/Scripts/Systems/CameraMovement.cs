@@ -36,10 +36,10 @@ public class CameraMovement : Singleton<CameraMovement>
         camera.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBeginRot), Quaternion.Euler(currentPath.cameraRotation), transitionTime);
         cameraCam.fieldOfView = Mathf.Lerp(transitionFov, currentPath.cameraFOV, transitionTime);
 
-        Vector3 targetBackPos = (currentPath.backFromPlayer ? player.position : camera.position) + currentPath.backOffset;
+        Vector3 targetBackPos = (currentPath.backFromPlayer ? player.position : camera.position) + camera.TransformDirection(currentPath.backOffset);
 
         backCollider.transform.position = Vector3.Lerp(transitionBackOffset, targetBackPos, transitionTime);
-        backCollider.transform.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBackRotation), Quaternion.Euler(currentPath.backRotation), transitionTime);
+        backCollider.transform.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBackRotation), Quaternion.Euler(camera.eulerAngles + currentPath.backRotation), transitionTime);
         backCollider.transform.eulerAngles += new Vector3(-90, 0, 0);
     }
 

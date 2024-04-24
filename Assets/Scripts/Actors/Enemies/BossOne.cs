@@ -228,6 +228,7 @@ public class BossOne : EnemyBase
             args.interrupted = false;
             stateMachine.ChangeState(States.Stunned);
             anim.Stun(true);
+            audio.PlaySound("Dizzy");
         }
     }
 

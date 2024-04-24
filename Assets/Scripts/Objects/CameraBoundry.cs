@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class CameraBoundry : MonoBehaviour
@@ -12,10 +11,9 @@ public class CameraBoundry : MonoBehaviour
     [HideInInspector] public Vector3 backRotation;
     public bool backFromPlayer;
     public float cameraFOV = 60f;
-
-    Transform cameraTransform;
-    Transform backTransform;
-    Transform targetTransform;
+    private Transform cameraTransform;
+    private Transform backTransform;
+    private Transform targetTransform;
 
     private new CameraMovement camera;
     private void Awake()
@@ -35,12 +33,9 @@ public class CameraBoundry : MonoBehaviour
 
         Destroy(cameraTransform.gameObject); cameraTransform = null;
         Destroy(backTransform.gameObject); backTransform = null;
-}
-
-public void ActivateBoundry()
-    {
-        camera.BeginSegmentTransition(this);
     }
+
+    public void ActivateBoundry() => camera.BeginSegmentTransition(this);
 
     public Vector3 GetTargetPosition(Vector3 playerPos)
     {
@@ -55,7 +50,7 @@ public void ActivateBoundry()
                 boundry.center.y + ((boundry.size.y / 2) - 0.5f)
                 ),
             Mathf.Clamp(targetTransform.localPosition.z,
-                boundry.center.z - ((boundry.size.z / 2) - 0.5f), 
+                boundry.center.z - ((boundry.size.z / 2) - 0.5f),
                 boundry.center.z + ((boundry.size.z / 2) - 0.5f)
                 )
             );
