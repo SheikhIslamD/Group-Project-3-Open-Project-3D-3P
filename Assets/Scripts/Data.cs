@@ -7,6 +7,7 @@ public static class Scenes
     public const string howToPlay = "HowToPlayScene";
     public const string win = "WinScene";
     public const string lose = "LoseScene";
+    public const string cutsceneScene = "CutsceneScene";
 
 }
 

@@ -50,7 +50,10 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
             default:
                 break;
         }
-        if(levelID != 0) SceneManager.LoadScene(Scenes.win);
+        if(levelID != 0)
+        {
+            GetComponent<CutsceneCaller>().CallCutscene();
+        }
     }
 
     void TUTORIALPOSITION()

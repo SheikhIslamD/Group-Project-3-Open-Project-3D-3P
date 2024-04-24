@@ -386,6 +386,76 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Cutscenes",
+            "id": "b0f54a6f-23ca-4428-b38c-3d431f7696c3",
+            "actions": [
+                {
+                    "name": "Proceed",
+                    "type": "Button",
+                    "id": "8f8a2f5c-afd9-450c-8b57-dbf147dfd2c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "2792392f-4ad0-4334-ad20-439fdad6ad56",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "890284e7-fc25-441a-afb4-0ea806ec178e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Proceed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b6ad1fd-6585-43a0-9c5e-5505b649826b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Proceed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da33f6f8-d778-4b59-9619-76f3ecae29f9",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60b178e6-d620-4949-b6da-b0a76a8d3c65",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

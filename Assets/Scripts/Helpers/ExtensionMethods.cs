@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public static class ExtensionMethods
@@ -9,6 +8,9 @@ public static class ExtensionMethods
         boolean = !boolean;
         return boolean;
     }
+
+    public static void SetAlpha(this Color color, float set) => color = new Color(color.r, color.g, color.b, set);
+    public static void ChangeAlpha(this Color color, float change) => color = new Color(color.r, color.g, color.b, color.a += change);
 
 }
 

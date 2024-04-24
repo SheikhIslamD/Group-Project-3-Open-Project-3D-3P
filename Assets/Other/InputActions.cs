@@ -408,6 +408,76 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Cutscenes"",
+            ""id"": ""b0f54a6f-23ca-4428-b38c-3d431f7696c3"",
+            ""actions"": [
+                {
+                    ""name"": ""Proceed"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f8a2f5c-afd9-450c-8b57-dbf147dfd2c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""2792392f-4ad0-4334-ad20-439fdad6ad56"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""890284e7-fc25-441a-afb4-0ea806ec178e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Proceed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b6ad1fd-6585-43a0-9c5e-5505b649826b"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Proceed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da33f6f8-d778-4b59-9619-76f3ecae29f9"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60b178e6-d620-4949-b6da-b0a76a8d3c65"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -451,6 +521,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Gameplay_Sprint = m_Gameplay.FindAction("Sprint", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_Heal = m_Gameplay.FindAction("Heal", throwIfNotFound: true);
+        // Cutscenes
+        m_Cutscenes = asset.FindActionMap("Cutscenes", throwIfNotFound: true);
+        m_Cutscenes_Proceed = m_Cutscenes.FindAction("Proceed", throwIfNotFound: true);
+        m_Cutscenes_Skip = m_Cutscenes.FindAction("Skip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -618,6 +692,60 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Cutscenes
+    private readonly InputActionMap m_Cutscenes;
+    private List<ICutscenesActions> m_CutscenesActionsCallbackInterfaces = new List<ICutscenesActions>();
+    private readonly InputAction m_Cutscenes_Proceed;
+    private readonly InputAction m_Cutscenes_Skip;
+    public struct CutscenesActions
+    {
+        private @InputActions m_Wrapper;
+        public CutscenesActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Proceed => m_Wrapper.m_Cutscenes_Proceed;
+        public InputAction @Skip => m_Wrapper.m_Cutscenes_Skip;
+        public InputActionMap Get() { return m_Wrapper.m_Cutscenes; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CutscenesActions set) { return set.Get(); }
+        public void AddCallbacks(ICutscenesActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CutscenesActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CutscenesActionsCallbackInterfaces.Add(instance);
+            @Proceed.started += instance.OnProceed;
+            @Proceed.performed += instance.OnProceed;
+            @Proceed.canceled += instance.OnProceed;
+            @Skip.started += instance.OnSkip;
+            @Skip.performed += instance.OnSkip;
+            @Skip.canceled += instance.OnSkip;
+        }
+
+        private void UnregisterCallbacks(ICutscenesActions instance)
+        {
+            @Proceed.started -= instance.OnProceed;
+            @Proceed.performed -= instance.OnProceed;
+            @Proceed.canceled -= instance.OnProceed;
+            @Skip.started -= instance.OnSkip;
+            @Skip.performed -= instance.OnSkip;
+            @Skip.canceled -= instance.OnSkip;
+        }
+
+        public void RemoveCallbacks(ICutscenesActions instance)
+        {
+            if (m_Wrapper.m_CutscenesActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICutscenesActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CutscenesActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CutscenesActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CutscenesActions @Cutscenes => new CutscenesActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -647,5 +775,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnHeal(InputAction.CallbackContext context);
+    }
+    public interface ICutscenesActions
+    {
+        void OnProceed(InputAction.CallbackContext context);
+        void OnSkip(InputAction.CallbackContext context);
     }
 }
