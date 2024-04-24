@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 901169119403944363}
   - component: {fileID: 7647146826751384074}
   - component: {fileID: 3808031846857404858}
+  - component: {fileID: 5073411065411882764}
   m_Layer: 7
   m_Name: ScallopBoss
   m_TagString: Untagged
@@ -268,6 +269,19 @@ CapsuleCollider:
   m_Height: 3.2309034
   m_Direction: 1
   m_Center: {x: 0, y: 1.5787154, z: -0.04799199}
+--- !u!114 &5073411065411882764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464684652582484294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49d365c9c230d1429c27992f71c9e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 7357530372171751410}
 --- !u!1 &7904342072018857733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1587,5 +1601,10 @@ MonoBehaviour:
 --- !u!4 &5348013135863626492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: db76ad0ce88694c4589c90895458fd17, type: 3}
+  m_PrefabInstance: {fileID: 5601718044259474711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7357530372171751410 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6078032084758527259, guid: db76ad0ce88694c4589c90895458fd17, type: 3}
   m_PrefabInstance: {fileID: 5601718044259474711}
   m_PrefabAsset: {fileID: 0}

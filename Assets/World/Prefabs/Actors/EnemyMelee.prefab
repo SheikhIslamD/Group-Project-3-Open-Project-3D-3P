@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6988335161977812351}
   - component: {fileID: 5389295469971958785}
   - component: {fileID: 1098554619454024640}
+  - component: {fileID: 7435059844118025617}
   m_Layer: 7
   m_Name: EnemyMelee
   m_TagString: Enemy
@@ -212,6 +213,7 @@ MonoBehaviour:
     dropChance: 38.8
   maxDrops: 3
   dropMultiple: 1
+  autoDropOnDisable: 0
 --- !u!114 &1098554619454024640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +235,19 @@ MonoBehaviour:
     - Key: Death
       Value: {fileID: 8300000, guid: 178137832d6c5154c993416b76aad24c, type: 3}
   remote: {fileID: 0}
+--- !u!114 &7435059844118025617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433244943992021922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49d365c9c230d1429c27992f71c9e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 7909480174288845490}
 --- !u!1001 &1807183428288200492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -987,5 +1002,10 @@ MonoBehaviour:
 --- !u!4 &2206445773769038023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+  m_PrefabInstance: {fileID: 1807183428288200492}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7909480174288845490 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8417361359673230750, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
   m_PrefabInstance: {fileID: 1807183428288200492}
   m_PrefabAsset: {fileID: 0}

@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7478867773781897259}
   - component: {fileID: 1474539152400675883}
   - component: {fileID: 276118913433516797}
+  - component: {fileID: 1554435538899581576}
   m_Layer: 7
   m_Name: EnemyRanged
   m_TagString: Enemy
@@ -229,6 +230,7 @@ MonoBehaviour:
     dropChance: 38.8
   maxDrops: 3
   dropMultiple: 1
+  autoDropOnDisable: 0
 --- !u!114 &1474539152400675883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +265,19 @@ MonoBehaviour:
     - Key: Death
       Value: {fileID: 8300000, guid: 286b22385be79e849b8696aab650ec53, type: 3}
   remote: {fileID: 0}
+--- !u!114 &1554435538899581576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8890840573762573605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49d365c9c230d1429c27992f71c9e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 8318052928754275408}
 --- !u!1001 &558394257520972238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1019,3 +1034,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!137 &8318052928754275408 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8417361359673230750, guid: 271a2abc8f365584084b21e8f34d2485, type: 3}
+  m_PrefabInstance: {fileID: 558394257520972238}
+  m_PrefabAsset: {fileID: 0}
