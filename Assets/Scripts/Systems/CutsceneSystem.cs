@@ -1,12 +1,86 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CutsceneSystem : MonoBehaviour
 {
     public static int cutsceneID;
+
+    //Config
+
+    [SerializeField] private string[] endScenes;
+    [SerializeField] private string animationName;
+    [SerializeField] private float fadeTime = 1;
+    [SerializeField] private Image blackout;
+    [SerializeField] private Button continueButton;
+    private Animator animator;
+    private bool waitingForPlayer;
+    private bool fadingOut;
+    private float fadeTimer = 1;
+    private InputActions input;
+
+
+    private void Awake()
+    {
+        input = new();
+        input.Cutscenes.Enable();
+        animator = GetComponent<Animator>();
+        continueButton.interactable = false;
+        blackout.color = Color.black;
+    }
+
+    private void Update()
+    {
+        if (input.Cutscenes.Proceed.WasPerformedThisFrame()) Continue();
+        if (input.Cutscenes.Skip.IsPressed()) End();
+
+        if (fadingOut)
+        {
+            if (fadeTimer < 1) fadeTimer += Time.deltaTime / fadeTime;
+            else SceneManager.LoadScene(endScenes[cutsceneID]);
+        }
+        else
+        {
+            if (fadeTimer > 0) fadeTimer -= Time.deltaTime / fadeTime;
+            else
+            {
+                fadeTimer = 0;
+                BeginAnimation();
+            }
+        }
+        blackout.color = new(0, 0, 0, fadeTimer);
+    }
+
+    private void Continue()
+    {
+        animator.speed = 1;
+        waitingForPlayer = false;
+        continueButton.interactable = false;
+    }
+
+    private void BeginAnimation() => animator.Play(animationName + cutsceneID);
+
+
+    //Callbacks
+    public void Pause()
+    {
+        animator.speed = 0;
+        waitingForPlayer = true;
+        continueButton.interactable = true;
+    }
+    public void End() => fadingOut = true;
+
+
+
+
+
+
+
+
+
+    /* OLD VERSION
+     
+    
 
     //[SerializeField] private float timeToSkip;
     [SerializeField] private float fadeTime;
@@ -65,7 +139,7 @@ public class CutsceneSystem : MonoBehaviour
                     }
                     else Finish();
                 }
-                else if (skipTimer > 0) skipTimer = 0;*/
+                else if (skipTimer > 0) skipTimer = 0;* /
 
             if (fadeTimer > -fadeTime)
             {
@@ -114,5 +188,8 @@ public class CutsceneSystem : MonoBehaviour
 
         public string endScene;
     }
+    */
+
+
 
 }
