@@ -100,11 +100,11 @@ MonoBehaviour:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
     hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
   m_RendererFeatures:
-  - {fileID: -579580309877863592}
-  - {fileID: -4999986730695326360}
   - {fileID: 1432292028704498526}
   - {fileID: 8727288007385302954}
-  m_RendererFeatureMap: 584beb66c7eaf4f768053d3b8f7a9cba5e238ef10286e013aa47ba1c348e1d79
+  - {fileID: -579580309877863592}
+  - {fileID: -4999986730695326360}
+  m_RendererFeatureMap: 5e238ef10286e013aa47ba1c348e1d79584beb66c7eaf4f768053d3b8f7a9cba
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 1855
+    m_Bits: 4294967295
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

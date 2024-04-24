@@ -194,6 +194,7 @@ MonoBehaviour:
     dropChance: 38.8
   maxDrops: 3
   dropMultiple: 1
+  autoDropOnDisable: 0
 --- !u!114 &16157732575536883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +312,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 93c155e5d58074ef5a7af4eb8e75e3b7, type: 3}
       propertyPath: m_Name
       value: pufferfish
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 93c155e5d58074ef5a7af4eb8e75e3b7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
