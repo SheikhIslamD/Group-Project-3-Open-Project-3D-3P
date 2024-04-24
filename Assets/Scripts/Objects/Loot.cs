@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Loot : MonoBehaviour
 {
+
     public enum ItemType
     {
         Rice,
@@ -16,6 +17,7 @@ public class Loot : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerCooking>() == null) return;
+        GetComponent<AudioCaller>().PlaySound("Pickup");
         other.GetComponent<PlayerCooking>().AddIngredient((int)itemType);
         Destroy(gameObject);
     }
