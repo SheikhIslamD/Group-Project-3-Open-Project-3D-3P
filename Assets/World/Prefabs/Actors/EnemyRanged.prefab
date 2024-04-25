@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1474539152400675883}
   - component: {fileID: 276118913433516797}
   - component: {fileID: 1554435538899581576}
+  - component: {fileID: 8412298450840956029}
   m_Layer: 7
   m_Name: EnemyRanged
   m_TagString: Enemy
@@ -278,6 +279,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 8318052928754275408}
+--- !u!114 &8412298450840956029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8890840573762573605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c75614e12f5df478d9880298211139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+    _serializedList:
+    - Key: Death
+      Value:
+        prefab: {fileID: 7072080275861842485, guid: 074dd22b5523f184aa3c4e020a09cce0, type: 3}
+        refTransform: {fileID: 0}
+  remote: {fileID: 0}
 --- !u!1001 &558394257520972238
 PrefabInstance:
   m_ObjectHideFlags: 0

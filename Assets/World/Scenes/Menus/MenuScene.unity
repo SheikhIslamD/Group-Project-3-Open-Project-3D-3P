@@ -637,8 +637,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1634867923}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
+        m_MethodName: BeginGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2260,6 +2260,7 @@ GameObject:
   - component: {fileID: 1634867920}
   - component: {fileID: 1634867919}
   - component: {fileID: 1634867923}
+  - component: {fileID: 1634867924}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2363,6 +2364,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941029c45afbae14ab6349d0b4265bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1634867924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634867918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7469dc585c14ac140af731861d597fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level1DataEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  Level2DataEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  Level3DataEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1674916481
 GameObject:
   m_ObjectHideFlags: 0

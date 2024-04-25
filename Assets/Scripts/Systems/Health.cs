@@ -60,6 +60,8 @@ public class Health : MonoBehaviour
     {
         audio = GetComponent<AudioCaller>();
         hasAudioCaller = audio;
+        partic = GetComponent<ParticleCaller>();
+        hasParticleCaller = partic;
         currentHealth = maxHealth;
     }
 
@@ -113,6 +115,7 @@ public class Health : MonoBehaviour
         depleteEvent?.Invoke();
 
         AudioCall("Death");
+        ParticleCall("Death");
 
         if (destroyOnDeplete)
         {
@@ -125,6 +128,9 @@ public class Health : MonoBehaviour
     private new AudioCaller audio;
     private bool hasAudioCaller;
     private void AudioCall(string name) { if (hasAudioCaller) audio.PlaySound(name, false); }
+    private ParticleCaller partic;
+    private bool hasParticleCaller;
+    private void ParticleCall(string name) { if (hasParticleCaller) partic.PlayEffect(name, false); }
 
     /* OBSOLETE
 
