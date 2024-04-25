@@ -27,6 +27,7 @@ public class CutsceneSystem : MonoBehaviour
         animator = GetComponent<Animator>();
         continueButton.interactable = false;
         blackout.color = Color.black;
+        if(SettingsSave.save.autoPlayCutscenes) continueButton.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -64,6 +65,7 @@ public class CutsceneSystem : MonoBehaviour
     //Callbacks
     public void Pause()
     {
+        if (SettingsSave.save.autoPlayCutscenes) return;
         animator.speed = 0;
         waitingForPlayer = true;
         continueButton.interactable = true;

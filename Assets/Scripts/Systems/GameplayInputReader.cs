@@ -31,7 +31,7 @@ public class GameplayInputReader : Singleton<GameplayInputReader>
         }
         else
         {
-            aimOutput += aimDelta.ReadValue<Vector2>();
+            aimOutput += aimDelta.ReadValue<Vector2>() * SettingsSave.save.GetThumbstickSensitivity();
         }
         
         aimOutput.x = Mathf.Clamp(aimOutput.x, 0, Screen.width - 1);

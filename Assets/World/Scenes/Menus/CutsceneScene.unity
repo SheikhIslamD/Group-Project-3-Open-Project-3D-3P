@@ -1317,7 +1317,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2061395518}
         m_TargetAssemblyTypeName: CutsceneSystem, Assembly-CSharp
-        m_MethodName: Finish
+        m_MethodName: End
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
