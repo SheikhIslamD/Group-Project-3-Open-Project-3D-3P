@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 8790100891251961085}
   - component: {fileID: 925643066029185076}
   - component: {fileID: 6430575174448278360}
+  - component: {fileID: 393529623079636057}
   m_Layer: 7
   m_Name: Octoboss
   m_TagString: Untagged
@@ -258,6 +259,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &393529623079636057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957345916220984027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49d365c9c230d1429c27992f71c9e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 3804520487754014988}
 --- !u!1 &2268762303951906270
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,6 +1110,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eba1dab4269022049a0603100a906c5b, type: 3}
+--- !u!23 &3804520487754014988 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: eba1dab4269022049a0603100a906c5b, type: 3}
+  m_PrefabInstance: {fileID: 6878186167071146781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6412704331454571766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: eba1dab4269022049a0603100a906c5b, type: 3}

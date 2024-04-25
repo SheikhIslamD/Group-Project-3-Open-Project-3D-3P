@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 7092222674366919357}
   - component: {fileID: 16157732575536883}
   - component: {fileID: 3162830513798820976}
+  - component: {fileID: 7586494150880057187}
   m_Layer: 7
   m_Name: EnemyBounce
   m_TagString: Enemy
@@ -241,6 +242,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7586494150880057187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145064492344536633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49d365c9c230d1429c27992f71c9e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 1702470520641233801}
 --- !u!1001 &27573873881366285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,6 +323,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 93c155e5d58074ef5a7af4eb8e75e3b7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79c55272868c51244bc697720718af01, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 93c155e5d58074ef5a7af4eb8e75e3b7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: e8dc3cd6b8fe1514aa3a235c02c6c268, type: 2}
     - target: {fileID: 919132149155446097, guid: 93c155e5d58074ef5a7af4eb8e75e3b7, type: 3}
       propertyPath: m_Name
       value: pufferfish
@@ -325,5 +347,10 @@ PrefabInstance:
 --- !u!4 &570636878445467878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 93c155e5d58074ef5a7af4eb8e75e3b7, type: 3}
+  m_PrefabInstance: {fileID: 27573873881366285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1702470520641233801 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 93c155e5d58074ef5a7af4eb8e75e3b7, type: 3}
   m_PrefabInstance: {fileID: 27573873881366285}
   m_PrefabAsset: {fileID: 0}

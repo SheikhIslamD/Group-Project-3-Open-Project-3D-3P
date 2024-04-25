@@ -79,6 +79,6 @@ public class LootBag : MonoBehaviour
 
     private void OnDisable()
     {
-        DropLoot();
+        if(autoDropOnDisable)DropLoot();
     }
 }
