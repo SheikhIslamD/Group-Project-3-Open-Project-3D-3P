@@ -12,11 +12,13 @@ public class Loot : MonoBehaviour
         Seaweed
     }
     public ItemType itemType;
+    bool collected;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerCooking>() == null) return;
+        if (other.GetComponent<PlayerCooking>() == null || collected) return;
         other.GetComponent<PlayerCooking>().AddIngredient((int)itemType);
+        collected = true;
         Destroy(gameObject);
     }
 
