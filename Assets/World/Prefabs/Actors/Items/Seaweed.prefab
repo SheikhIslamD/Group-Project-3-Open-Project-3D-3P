@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4746736983757648747}
   - component: {fileID: 3964461276913841531}
   - component: {fileID: -2104082834689740650}
+  - component: {fileID: 1217795068472902396}
   m_Layer: 10
   m_Name: Seaweed
   m_TagString: Untagged
@@ -170,6 +171,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1217795068472902396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6623233017506720917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bae0168d533ec44bbc8cb389520f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+    _serializedList:
+    - Key: Pickup
+      Value: {fileID: 8300000, guid: 5a2f923c5aba73d4485341965c993a3e, type: 3}
+  remote: {fileID: 0}
 --- !u!1001 &83014628768056677
 PrefabInstance:
   m_ObjectHideFlags: 0
