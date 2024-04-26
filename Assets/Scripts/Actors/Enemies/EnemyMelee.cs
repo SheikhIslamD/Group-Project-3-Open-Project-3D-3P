@@ -58,6 +58,7 @@ public class EnemyMelee : EnemyBase
     public void Attack()
     {
         if (distanceFromPlayer < attackRange) player.GetComponent<Health>()?.Damage(attackDamage, Health.DamageType.Melee, this);
+        audio.PlaySound("Attack");
     }
 
 }
