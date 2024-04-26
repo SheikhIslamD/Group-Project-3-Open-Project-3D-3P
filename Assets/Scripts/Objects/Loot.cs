@@ -17,6 +17,7 @@ public class Loot : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerCooking>() == null || collected) return;
+        GetComponent<AudioCaller>().PlaySound("Pickup");
         other.GetComponent<PlayerCooking>().AddIngredient((int)itemType);
         collected = true;
         Destroy(gameObject);
