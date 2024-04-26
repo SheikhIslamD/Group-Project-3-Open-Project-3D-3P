@@ -3763,16 +3763,16 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.73333335
-    functionName: DecrementAttacks
-    data: 
+  - time: 0.5
+    functionName: PlaySound
+    data: AttackSlam
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.75
-    functionName: PlaySound
-    data: AttackSlam
+  - time: 0.73333335
+    functionName: DecrementAttacks
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
