@@ -133,10 +133,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1025
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4094
+    m_Bits: 3070
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
