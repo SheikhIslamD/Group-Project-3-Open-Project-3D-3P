@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/World/Scenes/Levels/Lobby.unity
     guid: 9065e77f0bc45294488477a44e841355
+  - enabled: 1
+    path: Assets/World/Scenes/Menus/CutsceneScene.unity
+    guid: 688fc17ef8680b94694025cba4513855
   m_configObjects: {}

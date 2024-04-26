@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5389295469971958785}
   - component: {fileID: 1098554619454024640}
   - component: {fileID: 7435059844118025617}
+  - component: {fileID: 7840709344796321591}
   m_Layer: 7
   m_Name: EnemyMelee
   m_TagString: Enemy
@@ -248,6 +249,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 7909480174288845490}
+--- !u!114 &7840709344796321591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433244943992021922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c75614e12f5df478d9880298211139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+    _serializedList:
+    - Key: Death
+      Value:
+        prefab: {fileID: 7072080275861842485, guid: fe05d656c0a1c5440b18124860290b17, type: 3}
+        refTransform: {fileID: 0}
+  remote: {fileID: 0}
 --- !u!1001 &1807183428288200492
 PrefabInstance:
   m_ObjectHideFlags: 0

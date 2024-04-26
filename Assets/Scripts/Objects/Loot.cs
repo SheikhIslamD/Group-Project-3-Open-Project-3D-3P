@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Loot : MonoBehaviour
 {
-
     public enum ItemType
     {
         Rice,
@@ -13,12 +12,13 @@ public class Loot : MonoBehaviour
         Seaweed
     }
     public ItemType itemType;
+    bool collected;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerCooking>() == null) return;
-        GetComponent<AudioCaller>().PlaySound("Pickup");
+        if (other.GetComponent<PlayerCooking>() == null || collected) return;
         other.GetComponent<PlayerCooking>().AddIngredient((int)itemType);
+        collected = true;
         Destroy(gameObject);
     }
 
