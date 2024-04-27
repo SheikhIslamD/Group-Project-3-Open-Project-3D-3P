@@ -241,8 +241,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
     _serializedList:
-    - Key: Death
-      Value: {fileID: 8300000, guid: 8b2dc252b489e0f4785f4433612535d3, type: 3}
+    - Key: Dizzy
+      Value: {fileID: 8300000, guid: 68ce15dee299d3d4c80aaa0dfaa8336d, type: 3}
+    - Key: Mortar
+      Value: {fileID: 8300000, guid: a1c94f3a1a2d84d4d8d40f17779841b9, type: 3}
     - Key: Hurt
       Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
   remote: {fileID: 0}
@@ -1538,7 +1540,7 @@ PrefabInstance:
       addedObject: {fileID: 2849869370288206476}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: db76ad0ce88694c4589c90895458fd17, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5256284658019730111}
+      addedObject: {fileID: 1481070851847939123}
   m_SourcePrefab: {fileID: 100100000, guid: db76ad0ce88694c4589c90895458fd17, type: 3}
 --- !u!4 &1358318253219351843 stripped
 Transform:
@@ -1583,7 +1585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a65c2b18ef90a4a4d807c8ee6d201aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5256284658019730111
+--- !u!114 &1481070851847939123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
