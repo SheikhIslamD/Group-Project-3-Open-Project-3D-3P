@@ -54,6 +54,7 @@ public class CutsceneSystem : MonoBehaviour
 
     private void Continue()
     {
+        if (!waitingForPlayer) return;
         animator.speed = 1;
         waitingForPlayer = false;
         continueButton.interactable = false;

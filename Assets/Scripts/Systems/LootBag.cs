@@ -77,8 +77,10 @@ public class LootBag : MonoBehaviour
             Quaternion.identity);
     }
 
+    /*
     private void OnDisable()
     {
-        if(autoDropOnDisable)DropLoot();
+        if (autoDropOnDisable) DropLoot();
     }
+     */
 }

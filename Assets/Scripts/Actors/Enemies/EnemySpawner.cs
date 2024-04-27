@@ -7,7 +7,7 @@ public class EnemySpawner : EnemyBase
     [SerializeField] private float spawnRate = 5f;
     [SerializeField] private int maxEnemies = 12;
     //[SerializeField] private GameObject[] enemyPrefabs;
-    [SerializeField] private bool canSpawn = true;
+    //[SerializeField] private bool canSpawn = true;
 
     //Components
     private ObjectPool[] objectPools;

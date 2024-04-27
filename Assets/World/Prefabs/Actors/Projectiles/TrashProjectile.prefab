@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6411714178731913168}
   - component: {fileID: 7129876478521412511}
   - component: {fileID: 3947855421655349844}
-  - component: {fileID: 1982843776594997954}
   m_Layer: 0
   m_Name: TrashProjectile
   m_TagString: Untagged
@@ -155,28 +154,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1982843776594997954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4694897382438389035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1365110010c7e426d835a4dfd9319442, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lootList:
-  - loot: {fileID: 2317741100199364913, guid: b96850cc1f148ce4db6ee03a1f9a1b6e, type: 3}
-    dropChance: 19.2
-  - loot: {fileID: 2978663373069622260, guid: 684c66c6a294e68448318f78a0b3973a, type: 3}
-    dropChance: 11
-  - loot: {fileID: 4746736983757648747, guid: 6196676819234f1419830929ef58edcb, type: 3}
-    dropChance: 19
-  maxDrops: 2
-  dropMultiple: 1
-  autoDropOnDisable: 1
 --- !u!1001 &2154871949236702193
 PrefabInstance:
   m_ObjectHideFlags: 0

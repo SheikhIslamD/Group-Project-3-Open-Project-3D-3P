@@ -33,7 +33,7 @@ public struct ThrowingSystem
              * -1);
         if (float.IsNaN(force) || force > maxSpeed) force = maxSpeed;
 
-        Debug.Log(force);
+        //Debug.Log(force);
 
         return force;
     }

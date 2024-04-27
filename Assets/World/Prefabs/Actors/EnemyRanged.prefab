@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabObject: {fileID: 1926897355690397252, guid: ce199a86d48ac41d091463a324a0a17f, type: 3}
-  defaultPoolDepth: 5
+  defaultPoolDepth: 1
   canGrow: 1
   parent: {fileID: 0}
   autoDisableTime: 3

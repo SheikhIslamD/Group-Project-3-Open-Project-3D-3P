@@ -1,0 +1,457 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlayerTopHalfMask
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Group21375
+    m_Weight: 0
+  - m_Path: mixamorig:Hips
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:LeftUpLeg
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:LeftUpLeg/mixamorig:LeftLeg
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:LeftUpLeg/mixamorig:LeftLeg/mixamorig:LeftFoot
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:LeftUpLeg/mixamorig:LeftLeg/mixamorig:LeftFoot/mixamorig:LeftToeBase
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:LeftUpLeg/mixamorig:LeftLeg/mixamorig:LeftFoot/mixamorig:LeftToeBase/mixamorig:LeftToe_End
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:RightUpLeg
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:RightUpLeg/mixamorig:RightLeg
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:RightUpLeg/mixamorig:RightLeg/mixamorig:RightFoot
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:RightUpLeg/mixamorig:RightLeg/mixamorig:RightFoot/mixamorig:RightToeBase
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:RightUpLeg/mixamorig:RightLeg/mixamorig:RightFoot/mixamorig:RightToeBase/mixamorig:RightToe_End
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:Spine
+    m_Weight: 0
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandIndex1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandIndex1/mixamorig:LeftHandIndex2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandIndex1/mixamorig:LeftHandIndex2/mixamorig:LeftHandIndex3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandIndex1/mixamorig:LeftHandIndex2/mixamorig:LeftHandIndex3/mixamorig:LeftHandIndex4
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandMiddle1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandMiddle1/mixamorig:LeftHandMiddle2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandMiddle1/mixamorig:LeftHandMiddle2/mixamorig:LeftHandMiddle3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandMiddle1/mixamorig:LeftHandMiddle2/mixamorig:LeftHandMiddle3/mixamorig:LeftHandMiddle4
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandPinky1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandPinky1/mixamorig:LeftHandPinky2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandPinky1/mixamorig:LeftHandPinky2/mixamorig:LeftHandPinky3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandPinky1/mixamorig:LeftHandPinky2/mixamorig:LeftHandPinky3/mixamorig:LeftHandPinky4
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandRing1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandRing1/mixamorig:LeftHandRing2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandRing1/mixamorig:LeftHandRing2/mixamorig:LeftHandRing3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandRing1/mixamorig:LeftHandRing2/mixamorig:LeftHandRing3/mixamorig:LeftHandRing4
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandThumb1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandThumb1/mixamorig:LeftHandThumb2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandThumb1/mixamorig:LeftHandThumb2/mixamorig:LeftHandThumb3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:LeftShoulder/mixamorig:LeftArm/mixamorig:LeftForeArm/mixamorig:LeftHand/mixamorig:LeftHandThumb1/mixamorig:LeftHandThumb2/mixamorig:LeftHandThumb3/mixamorig:LeftHandThumb4
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:Neck
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:Neck/mixamorig:Head
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:Neck/mixamorig:Head/mixamorig:HeadTop_End
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandIndex1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandIndex1/mixamorig:RightHandIndex2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandIndex1/mixamorig:RightHandIndex2/mixamorig:RightHandIndex3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandIndex1/mixamorig:RightHandIndex2/mixamorig:RightHandIndex3/mixamorig:RightHandIndex4
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandMiddle1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandMiddle1/mixamorig:RightHandMiddle2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandMiddle1/mixamorig:RightHandMiddle2/mixamorig:RightHandMiddle3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandMiddle1/mixamorig:RightHandMiddle2/mixamorig:RightHandMiddle3/mixamorig:RightHandMiddle4
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandPinky1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandPinky1/mixamorig:RightHandPinky2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandPinky1/mixamorig:RightHandPinky2/mixamorig:RightHandPinky3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandPinky1/mixamorig:RightHandPinky2/mixamorig:RightHandPinky3/mixamorig:RightHandPinky4
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandRing1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandRing1/mixamorig:RightHandRing2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandRing1/mixamorig:RightHandRing2/mixamorig:RightHandRing3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandRing1/mixamorig:RightHandRing2/mixamorig:RightHandRing3/mixamorig:RightHandRing4
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandThumb1
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandThumb1/mixamorig:RightHandThumb2
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandThumb1/mixamorig:RightHandThumb2/mixamorig:RightHandThumb3
+    m_Weight: 1
+  - m_Path: mixamorig:Hips/mixamorig:Spine/mixamorig:Spine1/mixamorig:Spine2/mixamorig:RightShoulder/mixamorig:RightArm/mixamorig:RightForeArm/mixamorig:RightHand/mixamorig:RightHandThumb1/mixamorig:RightHandThumb2/mixamorig:RightHandThumb3/mixamorig:RightHandThumb4
+    m_Weight: 1
+  - m_Path: Player_Model_Ctrl:Reference
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:ChestEndEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:ChestOriginEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:HeadEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:LeftUpLeg
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:LeftUpLeg/Player_Model_Ctrl:LeftLeg
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:LeftUpLeg/Player_Model_Ctrl:LeftLeg/Player_Model_Ctrl:LeftFoot
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:LeftUpLeg/Player_Model_Ctrl:LeftLeg/Player_Model_Ctrl:LeftFoot/Player_Model_Ctrl:LeftToeBase
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:RightUpLeg
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:RightUpLeg/Player_Model_Ctrl:RightLeg
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:RightUpLeg/Player_Model_Ctrl:RightLeg/Player_Model_Ctrl:RightFoot
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:RightUpLeg/Player_Model_Ctrl:RightLeg/Player_Model_Ctrl:RightFoot/Player_Model_Ctrl:RightToeBase
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandIndex1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandIndex1/Player_Model_Ctrl:LeftHandIndex2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandIndex1/Player_Model_Ctrl:LeftHandIndex2/Player_Model_Ctrl:LeftHandIndex3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandIndex1/Player_Model_Ctrl:LeftHandIndex2/Player_Model_Ctrl:LeftHandIndex3/Player_Model_Ctrl:LeftHandIndex4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandMiddle1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandMiddle1/Player_Model_Ctrl:LeftHandMiddle2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandMiddle1/Player_Model_Ctrl:LeftHandMiddle2/Player_Model_Ctrl:LeftHandMiddle3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandMiddle1/Player_Model_Ctrl:LeftHandMiddle2/Player_Model_Ctrl:LeftHandMiddle3/Player_Model_Ctrl:LeftHandMiddle4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandPinky1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandPinky1/Player_Model_Ctrl:LeftHandPinky2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandPinky1/Player_Model_Ctrl:LeftHandPinky2/Player_Model_Ctrl:LeftHandPinky3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandPinky1/Player_Model_Ctrl:LeftHandPinky2/Player_Model_Ctrl:LeftHandPinky3/Player_Model_Ctrl:LeftHandPinky4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandRing1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandRing1/Player_Model_Ctrl:LeftHandRing2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandRing1/Player_Model_Ctrl:LeftHandRing2/Player_Model_Ctrl:LeftHandRing3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandRing1/Player_Model_Ctrl:LeftHandRing2/Player_Model_Ctrl:LeftHandRing3/Player_Model_Ctrl:LeftHandRing4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandThumb1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandThumb1/Player_Model_Ctrl:LeftHandThumb2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandThumb1/Player_Model_Ctrl:LeftHandThumb2/Player_Model_Ctrl:LeftHandThumb3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:LeftShoulder/Player_Model_Ctrl:LeftArm/Player_Model_Ctrl:LeftForeArm/Player_Model_Ctrl:LeftHand/Player_Model_Ctrl:LeftHandThumb1/Player_Model_Ctrl:LeftHandThumb2/Player_Model_Ctrl:LeftHandThumb3/Player_Model_Ctrl:LeftHandThumb4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:Neck
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:Neck/Player_Model_Ctrl:Head
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandIndex1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandIndex1/Player_Model_Ctrl:RightHandIndex2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandIndex1/Player_Model_Ctrl:RightHandIndex2/Player_Model_Ctrl:RightHandIndex3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandIndex1/Player_Model_Ctrl:RightHandIndex2/Player_Model_Ctrl:RightHandIndex3/Player_Model_Ctrl:RightHandIndex4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandMiddle1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandMiddle1/Player_Model_Ctrl:RightHandMiddle2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandMiddle1/Player_Model_Ctrl:RightHandMiddle2/Player_Model_Ctrl:RightHandMiddle3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandMiddle1/Player_Model_Ctrl:RightHandMiddle2/Player_Model_Ctrl:RightHandMiddle3/Player_Model_Ctrl:RightHandMiddle4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandPinky1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandPinky1/Player_Model_Ctrl:RightHandPinky2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandPinky1/Player_Model_Ctrl:RightHandPinky2/Player_Model_Ctrl:RightHandPinky3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandPinky1/Player_Model_Ctrl:RightHandPinky2/Player_Model_Ctrl:RightHandPinky3/Player_Model_Ctrl:RightHandPinky4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandRing1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandRing1/Player_Model_Ctrl:RightHandRing2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandRing1/Player_Model_Ctrl:RightHandRing2/Player_Model_Ctrl:RightHandRing3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandRing1/Player_Model_Ctrl:RightHandRing2/Player_Model_Ctrl:RightHandRing3/Player_Model_Ctrl:RightHandRing4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandThumb1
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandThumb1/Player_Model_Ctrl:RightHandThumb2
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandThumb1/Player_Model_Ctrl:RightHandThumb2/Player_Model_Ctrl:RightHandThumb3
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:Hips/Player_Model_Ctrl:Spine/Player_Model_Ctrl:Spine1/Player_Model_Ctrl:Spine2/Player_Model_Ctrl:RightShoulder/Player_Model_Ctrl:RightArm/Player_Model_Ctrl:RightForeArm/Player_Model_Ctrl:RightHand/Player_Model_Ctrl:RightHandThumb1/Player_Model_Ctrl:RightHandThumb2/Player_Model_Ctrl:RightHandThumb3/Player_Model_Ctrl:RightHandThumb4
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:HipsEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftAnkleEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftElbowEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftFootEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftHandIndexEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftHandMiddleEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftHandPinkyEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftHandRingEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftHandThumbEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftHipEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftKneeEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftShoulderEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:LeftWristEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightAnkleEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightElbowEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightFootEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightHandIndexEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightHandMiddleEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightHandPinkyEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightHandRingEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightHandThumbEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightHipEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightKneeEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightShoulderEffector
+    m_Weight: 0
+  - m_Path: Player_Model_Ctrl:Reference/Player_Model_Ctrl:RightWristEffector
+    m_Weight: 0
+  - m_Path: Player_Root
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LIndex1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LIndex1/Player_LIndex2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LIndex1/Player_LIndex2/Player_LIndex3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LIndex1/Player_LIndex2/Player_LIndex3/Player_LIndex3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LMiddle1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LMiddle1/Player_LMiddle2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LMiddle1/Player_LMiddle2/Player_LMiddle3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LMiddle1/Player_LMiddle2/Player_LMiddle3/Player_LMiddle3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LPinky1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LPinky1/Player_LPinky2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LPinky1/Player_LPinky2/Player_LPinky3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LPinky1/Player_LPinky2/Player_LPinky3/Player_LPinky3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LRing1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LRing1/Player_LRing2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LRing1/Player_LRing2/Player_LRing3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LRing1/Player_LRing2/Player_LRing3/Player_LRing3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LThumb1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LThumb1/Player_LThumb2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LThumb1/Player_LThumb2/Player_LThumb3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_LShoulder/Player_LUArm/Player_LFArm/Player_LHand/Player_LThumb1/Player_LThumb2/Player_LThumb3/Player_LThumb3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_Neck
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_Neck/Player_Head
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_Neck/Player_Head/Player_HeadEnd
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RIndex1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RIndex1/Player_RIndex2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RIndex1/Player_RIndex2/Player_RIndex3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RIndex1/Player_RIndex2/Player_RIndex3/Player_RIndex3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RMiddle1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RMiddle1/Player_RMiddle2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RMiddle1/Player_RMiddle2/Player_RMiddle3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RMiddle1/Player_RMiddle2/Player_RMiddle3/Player_RMiddle3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RPinky1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RPinky1/Player_RPinky2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RPinky1/Player_RPinky2/Player_RPinky3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RPinky1/Player_RPinky2/Player_RPinky3/Player_RPinky3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RRing1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RRing1/Player_RRing2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RRing1/Player_RRing2/Player_RRing3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RRing1/Player_RRing2/Player_RRing3/Player_RRing3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RThumb1
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RThumb1/Player_RThumb2
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RThumb1/Player_RThumb2/Player_RThumb3
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_Ab/Player_Chest/Player_RShoulder/Player_RUArm/Player_RFArm/Player_RHand/Player_RThumb1/Player_RThumb2/Player_RThumb3/Player_RThumb3End
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_LThigh
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_LThigh/Player_LShin
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_LThigh/Player_LShin/Player_LFoot
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_LThigh/Player_LShin/Player_LFoot/Player_LToe
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_LThigh/Player_LShin/Player_LFoot/Player_LToe/Player_LToeEnd
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_RThigh
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_RThigh/Player_RShin
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_RThigh/Player_RShin/Player_RFoot
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_RThigh/Player_RShin/Player_RFoot/Player_RToe
+    m_Weight: 0
+  - m_Path: Player_Root/Player_Player/Player_RThigh/Player_RShin/Player_RFoot/Player_RToe/Player_RToeEnd
+    m_Weight: 0

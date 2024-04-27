@@ -20,6 +20,7 @@ public class PlayerAnimator : MonoBehaviour
     private float p_walkX { set => animator.SetFloat("walkX", value); }
     private float p_walkZ { set => animator.SetFloat("walkZ", value); }
     public bool p_inAir { set => animator.SetBool("InAir", value); }
+    bool p_moving { set => animator.SetBool("Moving", value); }
 
     public void Dodge() => animator.SetTrigger("Dodge");
     public void Melee() => animator.SetTrigger("Melee");
@@ -48,6 +49,8 @@ public class PlayerAnimator : MonoBehaviour
 
         p_walkX = result.x;
         p_walkZ = result.z;
+
+        p_moving = result.x.Abs() > 0.2f || result.z.Abs() > 0.2f;
 
         //Neither of these worked and I honestly have no clue why
         //Vector3 result = ((Direction)moveDirection).RotateTo(aimDirection, Direction.front);
