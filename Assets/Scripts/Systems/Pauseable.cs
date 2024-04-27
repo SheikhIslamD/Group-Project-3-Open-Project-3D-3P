@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,13 +6,13 @@ public class Pauseable : MonoBehaviour
 {
     public bool paused { get; private set; }
 
-    void Awake()
+    private void Awake()
     {
-        List<MonoBehaviour> getMonos = new List<MonoBehaviour>(GetComponents<MonoBehaviour>());
+        List<MonoBehaviour> getMonos = new(GetComponents<MonoBehaviour>());
         getMonos.Remove(this);
         monos = getMonos.ToArray();
 
-        animator = GetComponent<Animator>();
+        if (!TryGetComponent(out animator)) animator = GetComponentInChildren<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
         rigidBody = GetComponent<Rigidbody>();
         constForce = GetComponent<ConstantForce>();
@@ -36,9 +35,9 @@ public class Pauseable : MonoBehaviour
         HandleComponent(rigidBody);
 
     }
-    public void Pause()         => SetPause(true);
-    public void UnPause()       => SetPause(false);
-    public void TogglePause()   => SetPause(!paused);  
+    public void Pause() => SetPause(true);
+    public void UnPause() => SetPause(false);
+    public void TogglePause() => SetPause(!paused);
 
     private MonoBehaviour[] monos;
 
@@ -47,7 +46,7 @@ public class Pauseable : MonoBehaviour
     private bool s_anim_enabled;
     private void HandleComponent(Animator anim)
     {
-        if(!anim) return;
+        if (!anim) return;
 
         if (paused)
         {
@@ -66,7 +65,7 @@ public class Pauseable : MonoBehaviour
     private Vector3 s_nav_velocity;
     private void HandleComponent(NavMeshAgent nav)
     {
-        if(!nav) return;
+        if (!nav) return;
 
         if (paused)
         {
@@ -90,7 +89,7 @@ public class Pauseable : MonoBehaviour
     private Vector3 s_rb_angularVelocity;
     private void HandleComponent(Rigidbody rb)
     {
-        if(!rb) return;
+        if (!rb) return;
 
         if (paused)
         {
@@ -112,7 +111,7 @@ public class Pauseable : MonoBehaviour
     private ConstantForce constForce;
     private void HandleComponent(ConstantForce force)
     {
-        if(!force) return;
+        if (!force) return;
         constForce.enabled = !paused;
     }
 
