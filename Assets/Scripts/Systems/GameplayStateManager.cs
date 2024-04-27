@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class GameplayStateManager : Singleton<GameplayStateManager>
 {
+    public static int currentLevel;
+
     GameplayInputReader input;
     GameplayPauseManager pause;
     HUDUIManager hudUI;
@@ -20,7 +22,8 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
         GameplayPauseManager.Get(ref pause);
         HUDUIManager.Get(ref hudUI);
 
-        if (levelID == 0) TUTORIALPOSITION();
+        currentLevel = levelID;
+        if (currentLevel == 0) TUTORIALPOSITION();
     }
 
     public void TogglePause()
@@ -34,14 +37,23 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
     //public void SwitchPrototypeLevel() => SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex == 1) ? 0 : 1);
 
-    public void QuitToMenu() => SceneManager.LoadScene(Scenes.mainMenu);
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene(Scenes.mainMenu);
+    }
     public void QuitApplication() => Application.Quit();
 
     public void LoadLevel(string levelname) => UnityEngine.SceneManagement.SceneManager.LoadScene(levelname);
 
+    public void LoadLevel(int id)
+    {
+        LoadLevel(Scenes.levelNames[currentLevel]);
+    }
+
+
     public void FinishLevel()
     {
-        switch (levelID)
+        switch (currentLevel)
         {
             case 0: SaveSystem.i.SetTutorialComplete(true); break;
             case 1: SaveSystem.i.SetLevelComplete1(true); break;
@@ -50,11 +62,13 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
             default:
                 break;
         }
-        if(levelID != 0)
+        if(currentLevel != 0)
         {
             GetComponent<CutsceneCaller>().CallCutscene();
         }
     }
+
+    public void ReturnToCurrentLevel() => LoadLevel(currentLevel);
 
     void TUTORIALPOSITION()
     {

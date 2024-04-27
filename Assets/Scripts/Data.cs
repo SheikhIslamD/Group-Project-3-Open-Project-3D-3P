@@ -9,6 +9,15 @@ public static class Scenes
     public const string lose = "LoseScene";
     public const string cutsceneScene = "CutsceneScene";
 
+    public static string[] levelNames =
+        {
+            "Hub",
+            "Lobby",
+            "Shrink_Kitchen",
+            "Storage"
+        };
+
+
 }
 
 public static class Layers

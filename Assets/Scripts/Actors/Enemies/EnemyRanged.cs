@@ -31,6 +31,7 @@ public class EnemyRanged : EnemyBase
 
     private void Update()
     {
+        if (player == null) return;
         inSightRange = distanceFromPlayer < sightRange;
         inAttackRange = distanceFromPlayer < attackRange;
 

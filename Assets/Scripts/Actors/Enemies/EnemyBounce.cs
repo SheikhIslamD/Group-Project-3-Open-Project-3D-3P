@@ -27,6 +27,7 @@ public class EnemyBounce : EnemyBase
 
     void Update()
     {
+        if (player == null) return;
         inSightRange = distanceFromPlayer < sightRange;
         if (!inSightRange) Idle();
         if (inSightRange) Chase();

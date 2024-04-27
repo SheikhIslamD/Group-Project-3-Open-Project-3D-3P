@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-
+﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class GameplayPauseManager : Singleton<GameplayPauseManager>
 {
@@ -39,6 +39,7 @@ public class GameplayPauseManager : Singleton<GameplayPauseManager>
 
     private void UnRegisterAll()
     {
+        Debug.Log("Unregistering Pausables");
         for (int i = 0; i < pauseables.Count; i++) UnRegisterPausable(pauseables[i]);
     }
 

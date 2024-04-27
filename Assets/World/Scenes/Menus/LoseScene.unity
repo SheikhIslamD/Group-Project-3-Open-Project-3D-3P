@@ -699,9 +699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Exit
-
-'
+  m_text: Return to Hub
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38b00fc9f7461da44a485ca49e4bb315, type: 2}
   m_sharedMaterial: {fileID: 4107169767776512789, guid: 38b00fc9f7461da44a485ca49e4bb315, type: 2}
@@ -764,7 +762,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -69.78169, y: -18.784426, z: -70.10651, w: -14.198835}
+  m_margin: {x: -151.02959, y: -18.784426, z: -150.95721, w: -14.198835}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -980,8 +978,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 704497374}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
+        m_MethodName: ReturnToCurrentLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1066,7 +1064,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -266}
-  m_SizeDelta: {x: 100, y: 40}
+  m_SizeDelta: {x: 187.4559, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1271173740
 MonoBehaviour:
@@ -1115,13 +1113,13 @@ MonoBehaviour:
       - m_Target: {fileID: 704497374}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: LoadLevel
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MenuScene
+          m_StringArgument: Hub
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1271173741

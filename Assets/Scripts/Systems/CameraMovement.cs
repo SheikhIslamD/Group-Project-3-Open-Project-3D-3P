@@ -27,7 +27,7 @@ public class CameraMovement : Singleton<CameraMovement>
 
     private void Update()
     {
-        if (!currentPath) return;
+        if (currentPath == null || player == null) return;
 
         if (transitionTime < 1) transitionTime += Time.deltaTime / transitionDuration;
         if (transitionTime > 1) transitionTime = 1;
@@ -36,11 +36,11 @@ public class CameraMovement : Singleton<CameraMovement>
         camera.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBeginRot), Quaternion.Euler(currentPath.cameraRotation), transitionTime);
         cameraCam.fieldOfView = Mathf.Lerp(transitionFov, currentPath.cameraFOV, transitionTime);
 
-        Vector3 targetBackPos = (currentPath.backFromPlayer ? player.position : camera.position) + camera.TransformDirection(currentPath.backOffset);
-
-        backCollider.transform.position = Vector3.Lerp(transitionBackOffset, targetBackPos, transitionTime);
-        backCollider.transform.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBackRotation), Quaternion.Euler(camera.eulerAngles + currentPath.backRotation), transitionTime);
-        backCollider.transform.eulerAngles += new Vector3(-90, 0, 0);
+        //Vector3 targetBackPos = (currentPath.backFromPlayer ? player.position : camera.position) + camera.TransformDirection(currentPath.backOffset);
+        //
+        //backCollider.transform.position = Vector3.Lerp(transitionBackOffset, targetBackPos, transitionTime);
+        //backCollider.transform.rotation = Quaternion.Lerp(Quaternion.Euler(transitionBackRotation), Quaternion.Euler(camera.eulerAngles + currentPath.backRotation), transitionTime);
+        //backCollider.transform.eulerAngles += new Vector3(-90, 0, 0);
     }
 
     Vector3 transitionBeginPos;

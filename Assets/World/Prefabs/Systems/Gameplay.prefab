@@ -1383,7 +1383,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8498879615782036343}
         m_TargetAssemblyTypeName: GameplayStateManager, Assembly-CSharp
-        m_MethodName: QuitApplication
+        m_MethodName: QuitToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1422,7 +1422,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7921975746351103594}
   m_Father: {fileID: 2723082300647999425}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 6, y: 0, z: 0}
@@ -2120,13 +2121,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3104299993200208306}
-  m_LocalRotation: {x: -0.7071066, y: -0, z: -0, w: 0.70710707}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 50}
   m_LocalScale: {x: 90, y: 1, z: 60}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2723082300647999425}
-  m_RootOrder: 4
+  m_Father: {fileID: 427828530587234272}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &9185607634098012446
 MeshFilter:
@@ -2562,7 +2563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main Menu
+  m_text: Return to Hub
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 38b00fc9f7461da44a485ca49e4bb315, type: 2}
   m_sharedMaterial: {fileID: 4107169767776512789, guid: 38b00fc9f7461da44a485ca49e4bb315, type: 2}
@@ -2625,7 +2626,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -69.78169, y: -18.784426, z: -70.10651, w: -14.198835}
+  m_margin: {x: -88.16887, y: -18.784426, z: -88.911835, w: -14.198835}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4127,7 +4128,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 327.36963, y: -149.28427}
-  m_SizeDelta: {x: 189.3011, y: 40}
+  m_SizeDelta: {x: 217.8745, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7045851728765380197
 CanvasRenderer:
@@ -4213,14 +4214,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8498879615782036343}
         m_TargetAssemblyTypeName: GameplayStateManager, Assembly-CSharp
-        m_MethodName: QuitToMenu
-        m_Mode: 1
+        m_MethodName: LoadLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Hub
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6506401328975601654
@@ -4689,7 +4690,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 427828530587234272}
-  - {fileID: 7921975746351103594}
   m_Father: {fileID: 8650564425491833517}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5858,7 +5858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5874,7 +5874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ResetLevel
+      value: LoadLevel
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: healthChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -5891,6 +5891,10 @@ PrefabInstance:
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameplayStateManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
+      propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: LoseScene
       objectReference: {fileID: 0}
     - target: {fileID: 244743286390461041, guid: dfbedfd0a4b122f459c1e08d9c503ffa, type: 3}
       propertyPath: healthChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

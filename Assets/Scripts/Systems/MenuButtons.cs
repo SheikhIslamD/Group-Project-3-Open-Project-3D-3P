@@ -6,7 +6,17 @@ public class MenuButtons : MonoBehaviour
 
     public void LoadLevel(string levelname) => UnityEngine.SceneManagement.SceneManager.LoadScene(levelname);
 
+    public void LoadLevel(int id)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(Scenes.levelNames[id]);
+    }
+
     public void QuitGame() => Application.Quit();
+
+    public void ReturnToCurrentLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(Scenes.levelNames[GameplayStateManager.currentLevel]);
+    }
 
     public void BeginGame()
     {

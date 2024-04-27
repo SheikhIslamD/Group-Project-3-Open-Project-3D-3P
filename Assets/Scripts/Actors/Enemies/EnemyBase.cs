@@ -9,7 +9,18 @@ public class EnemyBase : MonoBehaviour
     protected new AudioCaller audio;
 
     //Data
-    protected float distanceFromPlayer => Vector3.Distance(transform.position, player.position);
+    protected float distanceFromPlayer
+    {
+        get
+        {
+            if (player == null)
+            {
+                gameObject.SetActive(false);
+                return 0f;
+            }
+            return Vector3.Distance(transform.position, player.position);
+        }
+    }
 
     protected virtual void Awake()
     {
