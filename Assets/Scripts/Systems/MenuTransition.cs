@@ -1,34 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.Events;
 
 public class MenuTransition : MonoBehaviour
 {
     public Transform box;
     public Transform titletext;
     public CanvasGroup background;
+    public bool reverse;
+    public UnityEvent AppearEvent;
+    public UnityEvent ReturnEvent;
 
     private void OnEnable()
     {
         background.alpha = 0;
         background.LeanAlpha(1, 0.5f);
 
-        box.localPosition = new Vector2(-Screen.height, 0);
-        box.LeanMoveLocalX(0, 0.5f).setEaseOutExpo().delay = 0.1f;
+        box.localPosition = new Vector2((!reverse) ? -Screen.height : Screen.height, 0);
+        box.LeanMoveLocalX(0, 0.5f).setEaseOutExpo().setOnComplete(OnCompleteAppear);
 
-        titletext.localPosition = new Vector2(0, -Screen.height);
-        titletext.LeanMoveLocalY(0, 0.5f).setEaseOutExpo().delay = 0.5f;
+        titletext.localPosition = new Vector2(0, (!reverse) ? -Screen.height : Screen.height);
+        titletext.LeanMoveLocalY(0, 0.5f).setEaseOutExpo();
     }
 
     public void Return()
     {
         background.LeanAlpha(0, 0.5f);
-        box.LeanMoveLocalX(-Screen.height, 0.5f).setEaseInExpo().setOnComplete(OnComplete);
+        box.LeanMoveLocalX((!reverse) ? -Screen.height : Screen.height, 0.5f).setEaseInExpo().setOnComplete(OnCompleteReturn);
     }
 
-    void OnComplete()
+    private void OnCompleteAppear()
     {
-        gameObject.SetActive(false);
+        AppearEvent?.Invoke();
+    }
+    private void OnCompleteReturn()
+    {
+        ReturnEvent?.Invoke();
     }
 }
