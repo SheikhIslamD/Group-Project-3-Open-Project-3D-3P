@@ -583,9 +583,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1093219448}
-        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
+        m_TargetAssemblyTypeName: GameplayStateManager, Assembly-CSharp
+        m_MethodName: QuitToMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -745,9 +745,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1093219443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 941029c45afbae14ab6349d0b4265bcd, type: 3}
+  m_Script: {fileID: 11500000, guid: b22b04d7a2017cf46b4c83dd321e9332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 0
+  inGame: 0
+  pauseMenuHolder: {fileID: 0}
+  levelID: -1
+  endCutsceneID: 0
 --- !u!1 &1194811894
 GameObject:
   m_ObjectHideFlags: 0

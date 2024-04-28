@@ -133,7 +133,7 @@ public class Pauseable : MonoBehaviour
     public void UnRegister()
     {
         if (!registered) return;
-        if (!GameplayPauseManager.Get()) return;
+        if (GameplayPauseManager.NullCheck()) return;
 
         GameplayPauseManager.UnRegisterPausable(this);
     }

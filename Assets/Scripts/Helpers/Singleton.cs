@@ -8,7 +8,10 @@ using UnityEngine;
 public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     private static T _Instance;
-    public static T instance { get { 
+    public static T instance
+    {
+        get
+        {
             if (!_Instance)
             {
                 T findAttempt = FindFirstObjectByType<T>();
@@ -16,23 +19,24 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
                 {
                     findAttempt.Awake();
                     return findAttempt;
-                } 
+                }
                 else
                 {
                     Debug.LogWarning("There's no Singleton of that type in this scene.");
                     return null;
                 }
             }
-            else return _Instance; } }
+            else return _Instance;
+        }
+    }
     public static T Get() => instance;
     public static T inst => instance;
     public static T i => instance;
     public static T single => instance;
 
-    public static bool IsInitialized
-    {
-        get { return _Instance; }
-    }
+    public static bool NullCheck() => !FindFirstObjectByType<T>();
+
+    public static bool IsInitialized => _Instance;
 
     /// <summary>
     /// This is the Unity Function which runs some code necessary for Singleton Function. Use OnAwake() instead.
@@ -42,7 +46,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
         if (_Instance && _Instance != this)
         {
             Debug.LogError(
-                "Something or someone is attempting to create a second " + 
+                "Something or someone is attempting to create a second " +
                 typeof(T).ToString() +
                 ". Which is a Singleton. If you wish to reset the " +
                 typeof(T).ToString() +
@@ -55,7 +59,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
         else
         {
-            _Instance = (T) this;
+            _Instance = (T)this;
             OnAwake();
             //Debug.Log(
             //    "The " +
@@ -65,7 +69,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
     }
 
-    protected virtual void OnAwake(){}
+    protected virtual void OnAwake() { }
 
     /// <summary>
     /// This is the Unity Function which runs some code necessary for Singleton Function. Use OnDestroyed() instead.
@@ -78,7 +82,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
         OnDestroyed();
     }
-    protected virtual void OnDestroyed() {}
+    protected virtual void OnDestroyed() { }
 
     /// <summary>
     /// Destroys the instance of this singleton, wherever it is.
@@ -87,7 +91,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
     public static void Destroy(bool leaveGameObject = false)
     {
         if (!instance) return;
-        if(!leaveGameObject)
+        if (!leaveGameObject)
         {
             MonoBehaviour.Destroy(instance.gameObject);
         }

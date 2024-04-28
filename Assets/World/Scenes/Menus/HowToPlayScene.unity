@@ -207,10 +207,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1918746717}
-        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
+      - m_Target: {fileID: 1918746719}
+        m_TargetAssemblyTypeName: GameplayStateManager, Assembly-CSharp
+        m_MethodName: QuitToMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1687,8 +1687,7 @@ GameObject:
   - component: {fileID: 1918746715}
   - component: {fileID: 1918746714}
   - component: {fileID: 1918746713}
-  - component: {fileID: 1918746717}
-  - component: {fileID: 1918746718}
+  - component: {fileID: 1918746719}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1780,7 +1779,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1918746717
+--- !u!114 &1918746719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1789,18 +1788,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1918746712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 941029c45afbae14ab6349d0b4265bcd, type: 3}
+  m_Script: {fileID: 11500000, guid: b22b04d7a2017cf46b4c83dd321e9332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1918746718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918746712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24730922a54e620478e4bb951c91eaf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  paused: 0
+  inGame: 0
+  pauseMenuHolder: {fileID: 0}
+  levelID: -1
+  endCutsceneID: 0

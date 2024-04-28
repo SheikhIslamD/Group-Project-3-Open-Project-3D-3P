@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,21 +6,18 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 {
     public static int currentLevel;
 
-    GameplayInputReader input;
-    GameplayPauseManager pause;
-    HUDUIManager hudUI;
-
     public bool paused;
 
-    [SerializeField] GameObject pauseMenuHolder;
-    [SerializeField] int levelID = 1;
-    [SerializeField] Vector3 tutorialCompletePosition;
+    [SerializeField] private bool inGame = true;
+    [SerializeField] private GameObject pauseMenuHolder;
+    [SerializeField] private int levelID = 1;
+    [SerializeField] private int endCutsceneID;
 
-    void Awake()
+    #region In Game Functionality
+
+    private void Awake()
     {
-        GameplayInputReader.Get(ref input);
-        GameplayPauseManager.Get(ref pause);
-        HUDUIManager.Get(ref hudUI);
+        if (!inGame) return;
 
         currentLevel = levelID;
         if (currentLevel == 0) TUTORIALPOSITION();
@@ -33,45 +30,52 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
         pauseMenuHolder.SetActive(paused);
     }
 
-    public void ResetLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-    //public void SwitchPrototypeLevel() => SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex == 1) ? 0 : 1);
-
-    public void QuitToMenu()
+    public void FinishTutorial() => SaveSystem.i.SetTutorialComplete(true);
+    private void TUTORIALPOSITION()
     {
-        SceneManager.LoadScene(Scenes.mainMenu);
+        if (SaveSystem.saveData.tutorialComplete) transform.position = GameObject.Find("PostTutorialSpawn").transform.position; ;
     }
-    public void QuitApplication() => Application.Quit();
-
-    public void LoadLevel(string levelname) => UnityEngine.SceneManagement.SceneManager.LoadScene(levelname);
-
-    public void LoadLevel(int id)
-    {
-        LoadLevel(Scenes.levelNames[currentLevel]);
-    }
-
 
     public void FinishLevel()
     {
         switch (currentLevel)
         {
-            case 0: SaveSystem.i.SetTutorialComplete(true); break;
             case 1: SaveSystem.i.SetLevelComplete1(true); break;
             case 2: SaveSystem.i.SetLevelComplete2(true); break;
             case 3: SaveSystem.i.SetLevelComplete3(true); break;
             default:
                 break;
         }
-        if(currentLevel != 0)
-        {
-            GetComponent<CutsceneCaller>().CallCutscene();
-        }
+        if (currentLevel != 0) CallCutscene(endCutsceneID);
     }
 
-    public void ReturnToCurrentLevel() => LoadLevel(currentLevel);
+    #endregion
 
-    void TUTORIALPOSITION()
+    #region Scene Management Methods
+
+    public void LoadLevel(string levelname) => SceneManager.LoadScene(levelname);
+    public void LoadLevel(int levelID) => SceneManager.LoadScene(Scenes.levelNames[levelID]);
+
+    public void BeginGame() => SceneManager.LoadScene(SaveSystem.saveData.tutorialComplete ? Scenes.hub : Scenes.cutsceneScene);
+
+    public void ResetLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+    public void ReturnToCurrentLevel() => SceneManager.LoadScene(Scenes.levelNames[currentLevel]);
+
+    public void QuitToHub() => SceneManager.LoadScene(Scenes.hub);
+    public void QuitToMenu() => SceneManager.LoadScene(Scenes.mainMenu);
+    public void QuitApplication()
     {
-        if (SaveSystem.saveData.tutorialComplete) transform.position = tutorialCompletePosition;
+        if (Application.isEditor) EditorApplication.ExitPlaymode();
+        else Application.Quit();
     }
+
+    public void CallCutscene(int id)
+    {
+        CutsceneSystem.cutsceneID = id;
+        SceneManager.LoadScene(Scenes.cutsceneScene);
+    }
+
+    #endregion
+
 }

@@ -3,6 +3,7 @@
 public static class Scenes
 {
     public const string mainMenu = "MenuScene";
+    public const string hub = "Hub";
     public const string credits = "CreditsScene";
     public const string howToPlay = "HowToPlayScene";
     public const string win = "WinScene";
