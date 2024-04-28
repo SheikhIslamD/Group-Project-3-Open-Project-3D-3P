@@ -7854,7 +7854,7 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Hurt
-      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
+      Value: {fileID: 8300000, guid: a5b7133d83ae53e4fa7a336fd689a636, type: 3}
   remote: {fileID: 0}
 --- !u!114 &419465812
 MonoBehaviour:
@@ -8889,7 +8889,7 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Hurt
-      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
+      Value: {fileID: 8300000, guid: a5b7133d83ae53e4fa7a336fd689a636, type: 3}
   remote: {fileID: 0}
 --- !u!114 &481431458
 MonoBehaviour:
@@ -22333,7 +22333,7 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Hurt
-      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
+      Value: {fileID: 8300000, guid: a5b7133d83ae53e4fa7a336fd689a636, type: 3}
   remote: {fileID: 0}
 --- !u!114 &1149661192
 MonoBehaviour:
@@ -37878,7 +37878,7 @@ MonoBehaviour:
   clips:
     _serializedList:
     - Key: Hurt
-      Value: {fileID: 8300000, guid: a6e5eeee89536f148b2ea22c4281b40d, type: 3}
+      Value: {fileID: 8300000, guid: a5b7133d83ae53e4fa7a336fd689a636, type: 3}
   remote: {fileID: 0}
 --- !u!114 &1945436558
 MonoBehaviour:
