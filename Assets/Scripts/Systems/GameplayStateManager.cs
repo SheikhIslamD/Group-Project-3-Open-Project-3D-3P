@@ -1,6 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameplayStateManager : Singleton<GameplayStateManager>
 {
@@ -12,6 +13,7 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
     [SerializeField] private GameObject pauseMenuHolder;
     [SerializeField] private int levelID = 1;
     [SerializeField] private int endCutsceneID;
+    [SerializeField] UnityEvent unPauseEvent;
 
     #region In Game Functionality
 
@@ -25,8 +27,14 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
     public void TogglePause()
     {
+        //Debug.Log("Test");
         paused.Toggle();
         GameplayPauseManager.SetPause(paused);
+        if (!paused)
+        {
+            unPauseEvent?.Invoke();
+            return;
+        }
         pauseMenuHolder.SetActive(paused);
     }
 
