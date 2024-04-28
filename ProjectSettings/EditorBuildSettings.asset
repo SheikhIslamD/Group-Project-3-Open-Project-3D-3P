@@ -15,12 +15,6 @@ EditorBuildSettings:
     path: Assets/World/Scenes/Menus/LoseScene.unity
     guid: 29f6d0bd62560440e921bc81ac5e9e6a
   - enabled: 1
-    path: Assets/World/Scenes/Menus/CreditsScene.unity
-    guid: b3c517a3e088f420696d9a6f3f45f240
-  - enabled: 1
-    path: Assets/World/Scenes/Menus/HowToPlayScene.unity
-    guid: 016159bf4c5774a359fb61215a21858a
-  - enabled: 1
     path: Assets/World/Scenes/Levels/Hub.unity
     guid: 94efb6dd41f8e0a44964e8b1ab33c687
   - enabled: 1
