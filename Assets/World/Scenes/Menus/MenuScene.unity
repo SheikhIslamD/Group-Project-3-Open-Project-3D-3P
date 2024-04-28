@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 68525880}
   - component: {fileID: 68525881}
+  - component: {fileID: 68525882}
   m_Layer: 0
   m_Name: Buttons
   m_TagString: Untagged
@@ -191,6 +192,26 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &68525882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68525879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2448a27fb6fa57647b3172dfbcf145de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlighter: {fileID: 1840892904}
+  buttons:
+  - {fileID: 352798283}
+  - {fileID: 71228433}
+  - {fileID: 1502828892}
+  - {fileID: 646770811}
+  - {fileID: 671105648}
+  xPos: 1426.5
 --- !u!1 &71228432
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,14 +376,14 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedCredits
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 1
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -371,14 +392,14 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedCredits
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 1
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -415,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 352798282}
-  m_sendNavigationEvents: 1
+  m_sendNavigationEvents: 0
   m_DragThreshold: 10
 --- !u!4 &181669038
 Transform:
@@ -1550,10 +1571,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedStart
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1566,10 +1587,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedStart
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2080,14 +2101,14 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedHow
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 3
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -2096,14 +2117,14 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedHow
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 3
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -2260,14 +2281,14 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedExit
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 4
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -2276,14 +2297,14 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedExit
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 4
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -4308,18 +4329,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1840892903}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1502828894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4375,14 +4384,14 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedSettings
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 2
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -4391,14 +4400,14 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1840892907}
+        - m_Target: {fileID: 68525882}
           m_TargetAssemblyTypeName: Highlighter, Assembly-CSharp
-          m_MethodName: SelectedSettings
-          m_Mode: 1
+          m_MethodName: SelectItem
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 2
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -5510,7 +5519,6 @@ GameObject:
   - component: {fileID: 1840892904}
   - component: {fileID: 1840892906}
   - component: {fileID: 1840892905}
-  - component: {fileID: 1840892907}
   m_Layer: 0
   m_Name: Highlight
   m_TagString: Untagged
@@ -5576,24 +5584,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840892903}
   m_CullTransparentMesh: 1
---- !u!114 &1840892907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840892903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2448a27fb6fa57647b3172dfbcf145de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  start: {fileID: 352798282}
-  credits: {fileID: 71228432}
-  howtoplay: {fileID: 646770810}
-  settings: {fileID: 1502828891}
-  exit: {fileID: 671105647}
-  transformed: {fileID: 1840892904}
 --- !u!1 &1916279979
 GameObject:
   m_ObjectHideFlags: 0
