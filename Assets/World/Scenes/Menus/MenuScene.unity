@@ -211,7 +211,6 @@ MonoBehaviour:
   - {fileID: 1502828892}
   - {fileID: 646770811}
   - {fileID: 671105648}
-  xPos: 1426.5
 --- !u!1 &71228432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,6 +1192,13 @@ MonoBehaviour:
   box: {fileID: 693793883}
   titletext: {fileID: 2006476669}
   background: {fileID: 623140383}
+  reverse: 0
+  AppearEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ReturnEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &298333861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2971,7 +2977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &853691528
@@ -3781,6 +3787,13 @@ MonoBehaviour:
   box: {fileID: 1245566711}
   titletext: {fileID: 2000529685}
   background: {fileID: 1510702933}
+  reverse: 0
+  AppearEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ReturnEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1108808214
 GameObject:
   m_ObjectHideFlags: 0
@@ -4570,6 +4583,25 @@ MonoBehaviour:
   box: {fileID: 1108808215}
   titletext: {fileID: 1971163158}
   background: {fileID: 433463775}
+  reverse: 0
+  AppearEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  ReturnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1557671074}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1634867918
 GameObject:
   m_ObjectHideFlags: 0
@@ -4713,6 +4745,9 @@ MonoBehaviour:
   pauseMenuHolder: {fileID: 0}
   levelID: -1
   endCutsceneID: 0
+  unPauseEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1674916481
 GameObject:
   m_ObjectHideFlags: 0
