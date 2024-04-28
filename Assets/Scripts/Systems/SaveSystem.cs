@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class SaveSystem : Singleton<SaveSystem>
 {
@@ -23,11 +24,22 @@ public class SaveSystem : Singleton<SaveSystem>
         Level2DataEvent?.Invoke(saveData.levelComplete2);
         Level3DataEvent?.Invoke(saveData.levelComplete3);
 
+        {
+            int stars = 0;
+            if (saveData.levelComplete1) stars++;
+            if (saveData.levelComplete2) stars++;
+            if (saveData.levelComplete3) stars++;
+
+            completionText.text = stars.ToString() + "/3";
+            if(stars == 3) finalCutsceneTrigger.SetActive(true);
+        }
     }
 
     public UnityEvent<bool> Level1DataEvent;
     public UnityEvent<bool> Level2DataEvent;
     public UnityEvent<bool> Level3DataEvent;
+    public TextMeshProUGUI completionText;
+    public GameObject finalCutsceneTrigger;
 
     public void SetLevelComplete1(bool value) 
     { 
