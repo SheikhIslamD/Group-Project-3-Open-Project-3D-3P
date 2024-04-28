@@ -5,40 +5,18 @@ using UnityEngine.EventSystems;
 
 public class Highlighter : MonoBehaviour
 {
-    public GameObject start;
-    public GameObject credits;
-    public GameObject howtoplay;
-    public GameObject settings;
-    public GameObject exit;
-    public Transform transformed;
+    new Transform transform;
+    public Transform[] buttons;
+    public float xPos = 1426.5f;
 
-    public void SelectedStart()
+    private void Awake()
     {
-        transformed.LeanMoveLocal(new Vector2(960,-80), 0.1f);
-        Debug.Log(start.name + " was selected");
+        transform = GetComponent<RectTransform>();
+        SelectItem(0);
     }
 
-    public void SelectedCredits()
+    public void SelectItem(int id)
     {
-        transformed.LeanMoveLocal(new Vector2(960,-158.4f), 0.1f);
-        Debug.Log(credits.name + " was selected");
-    }
-
-    public void SelectedSettings()
-    {
-        transformed.LeanMoveLocal(new Vector2(960,-236.8f), 0.1f);
-        Debug.Log(howtoplay.name + " was selected");
-    }
-
-    public void SelectedHow()
-    {
-        transformed.LeanMoveLocal(new Vector2(960,-315.2f), 0.1f);
-        Debug.Log(settings.name + " was selected");
-    }
-
-    public void SelectedExit()
-    {
-        transformed.LeanMoveLocal(new Vector2(960,-393.6f), 0.1f);
-        Debug.Log(exit.name + " was selected");
+        transform.LeanMove(new Vector2(xPos, buttons[id].position.y), 0.1f);
     }
 }
