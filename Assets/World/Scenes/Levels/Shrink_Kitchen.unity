@@ -25673,6 +25673,10 @@ PrefabInstance:
       propertyPath: levelID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8498879615782036343, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
+      propertyPath: endCutsceneID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8650564425491833517, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
       propertyPath: m_RootOrder
       value: 1
