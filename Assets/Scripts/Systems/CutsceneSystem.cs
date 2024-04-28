@@ -25,7 +25,7 @@ public class CutsceneSystem : MonoBehaviour
         input = new();
         input.Cutscenes.Enable();
         animator = GetComponent<Animator>();
-        continueButton.interactable = false;
+        ContinueButtonPower(false);
         blackout.color = Color.black;
         if(SettingsSave.save.autoPlayCutscenes) continueButton.gameObject.SetActive(false);
     }
@@ -57,7 +57,7 @@ public class CutsceneSystem : MonoBehaviour
         if (!waitingForPlayer) return;
         animator.speed = 1;
         waitingForPlayer = false;
-        continueButton.interactable = false;
+        ContinueButtonPower(false);
     }
 
     private void BeginAnimation() => animator.Play(animationName + cutsceneID);
@@ -69,11 +69,14 @@ public class CutsceneSystem : MonoBehaviour
         if (SettingsSave.save.autoPlayCutscenes) return;
         animator.speed = 0;
         waitingForPlayer = true;
-        continueButton.interactable = true;
+        ContinueButtonPower(true);
     }
     public void End() => fadingOut = true;
 
-
+    void ContinueButtonPower(bool value)
+    {
+        continueButton.gameObject.SetActive(value);
+    }
 
 
 
