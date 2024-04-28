@@ -19,8 +19,9 @@ public class UIInputHelper : MonoBehaviour
         //selectables = FindObjectsOfType<Selectable>();
 
         defaultButton = eventSystem.firstSelectedGameObject.GetComponent<Selectable>();
+        defaultButton.Select();
 
-        ui.move.action.performed += ctx => GrabCursor(ctx);
+        //ui.move.action.performed += ctx => GrabCursor(ctx);
         //ui.point.action.performed += ctx => MouseMoved(ctx);
     }
 
@@ -29,6 +30,9 @@ public class UIInputHelper : MonoBehaviour
         if (eventSystem.currentSelectedGameObject == null && defaultButton != null) defaultButton.Select();
 
     }
+    
+
+
     /*
     private void MouseMoved(InputAction.CallbackContext ctx)
     {
