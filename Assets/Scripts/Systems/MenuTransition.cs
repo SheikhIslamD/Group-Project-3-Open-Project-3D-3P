@@ -9,9 +9,11 @@ public class MenuTransition : MonoBehaviour
     public bool reverse;
     public UnityEvent AppearEvent;
     public UnityEvent ReturnEvent;
+    public UnityEvent<bool> LowerButtons;
 
     private void OnEnable()
     {
+        LowerButtons?.Invoke(false);
         background.alpha = 0;
         background.LeanAlpha(1, 0.5f);
 
@@ -35,5 +37,6 @@ public class MenuTransition : MonoBehaviour
     private void OnCompleteReturn()
     {
         ReturnEvent?.Invoke();
+        LowerButtons?.Invoke(true);
     }
 }

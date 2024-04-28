@@ -11702,10 +11702,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 27.094
       objectReference: {fileID: 0}
-    - target: {fileID: 1182632908508507215, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1237374084477378434, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -448
@@ -11793,6 +11789,14 @@ PrefabInstance:
     - target: {fileID: 4123737132616647685, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
       propertyPath: depleteEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ResetLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250696015890243263, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
+      propertyPath: buttons.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250696015890243263, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
+      propertyPath: buttons.Array.data[3]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4310952805719177136, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
       propertyPath: m_AnchorMax.y
