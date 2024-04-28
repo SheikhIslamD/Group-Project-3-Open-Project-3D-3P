@@ -66,10 +66,18 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
     public void QuitToMenu() => SceneManager.LoadScene(Scenes.mainMenu);
     public void QuitApplication()
     {
+<<<<<<< HEAD
         //if (Application.isEditor) EditorApplication.ExitPlaymode();
         //else Application.Quit();
         //if (Application.isEditor) EditorApplication.ExitPlaymode();
         Application.Quit();
+=======
+#if UNITY_EDITOR
+        if (Application.isEditor) EditorApplication.ExitPlaymode();
+        else 
+#endif      
+            Application.Quit();
+>>>>>>> 22f3f35f9b4dc0d8bd4a70661a228f449b4e4052
     }
 
     public void CallCutscene(int id)
