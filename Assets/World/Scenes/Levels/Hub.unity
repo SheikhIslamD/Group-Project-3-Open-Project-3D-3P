@@ -12311,7 +12311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498879615782036343, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
       propertyPath: endCutsceneID
-      value: 9
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8498879615782036343, guid: ecbe9b175f4537d4dacc1fd25fbf5c2c, type: 3}
       propertyPath: tutorialCompletePosition.x

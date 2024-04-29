@@ -51,10 +51,9 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
             case 1: SaveSystem.i.SetLevelComplete1(true); break;
             case 2: SaveSystem.i.SetLevelComplete2(true); break;
             case 3: SaveSystem.i.SetLevelComplete3(true); break;
-            default:
-                break;
+            default: break;
         }
-        if (currentLevel != 0) CallCutscene(endCutsceneID);
+        CallCutscene(endCutsceneID);
     }
 
     #endregion
