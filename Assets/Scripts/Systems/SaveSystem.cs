@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
-using TMPro;
 
 public class SaveSystem : Singleton<SaveSystem>
 {
@@ -14,18 +10,14 @@ public class SaveSystem : Singleton<SaveSystem>
     protected override void OnAwake()
     {
 
-        if (saveData == null)
-        {
-            saveData = new();
-            saveData.ReadData();
-        }
+        SaveData s = saveData;
 
         Level1DataEvent?.Invoke(saveData.levelComplete1);
         Level2DataEvent?.Invoke(saveData.levelComplete2);
         Level3DataEvent?.Invoke(saveData.levelComplete3);
         TutorialDataEvent?.Invoke(saveData.tutorialComplete);
 
-        if(finalCutsceneTrigger)
+        if (finalCutsceneTrigger)
         {
             int stars = 0;
             if (saveData.levelComplete1) stars++;
@@ -33,7 +25,7 @@ public class SaveSystem : Singleton<SaveSystem>
             if (saveData.levelComplete3) stars++;
 
             completionText.text = stars.ToString() + "/3";
-            if(stars == 3) finalCutsceneTrigger.SetActive(true);
+            if (stars == 3) finalCutsceneTrigger.SetActive(true);
         }
     }
 
@@ -44,34 +36,46 @@ public class SaveSystem : Singleton<SaveSystem>
     public TextMeshProUGUI completionText;
     public GameObject finalCutsceneTrigger;
 
-    public void SetLevelComplete1(bool value) 
-    { 
+    public void SetLevelComplete1(bool value)
+    {
         saveData.levelComplete1 = value;
         saveData.WriteData();
     }
-    public void SetLevelComplete2(bool value) 
-    { 
+    public void SetLevelComplete2(bool value)
+    {
         saveData.levelComplete2 = value;
         saveData.WriteData();
     }
-    public void SetLevelComplete3(bool value) 
-    { 
+    public void SetLevelComplete3(bool value)
+    {
         saveData.levelComplete3 = value;
         saveData.WriteData();
     }
-    public void SetTutorialComplete(bool value) 
-    { 
+    public void SetTutorialComplete(bool value)
+    {
         saveData.tutorialComplete = value;
         saveData.WriteData();
     }
 
     public void WriteData() => saveData.WriteData();
     public void ResetSaveData() => saveData.ReadData();
-    
 
 
 
-    public static SaveData saveData;
+
+    public static SaveData saveData
+    {
+        get
+        {
+            if (_saveData == null)
+            {
+                _saveData = new();
+                _saveData.ReadData();
+            }
+            return _saveData;
+        }
+    }
+    public static SaveData _saveData;
     [Serializable]
     public class SaveData
     {
@@ -80,37 +84,29 @@ public class SaveSystem : Singleton<SaveSystem>
         public bool levelComplete3;
         public bool tutorialComplete;
 
-
-        string dataScope()
-        {
+        private string dataScope() =>
 #if UNITY_EDITOR
-            return Application.persistentDataPath + "/UNITYPROJECTDATA";
+            Application.persistentDataPath + "/UNITYPROJECTDATA";
 #else
             return Application.dataPath;
 #endif
 
-        }
 
-        const string dataPath = "/Saves/SaveData.json";
+        private const string dataPath = "/Saves/SaveData.json";
 
         public void WriteData()
         {
-
             Directory.CreateDirectory(dataScope() + "/Saves");
-            using (StreamWriter save = File.CreateText(dataScope() + dataPath))
-            {
-                save.WriteLine(JsonUtility.ToJson(this, true));
-            }
+            using StreamWriter save = File.CreateText(dataScope() + dataPath);
+            save.WriteLine(JsonUtility.ToJson(this, true));
         }
 
         public void ReadData()
         {
             Directory.CreateDirectory(dataScope() + "/Saves");
-            using (StreamReader load = File.OpenText(dataScope() + dataPath))
-            {
-                JsonUtility.FromJsonOverwrite(load.ReadToEnd(), this);
-
-            }
+            if (!File.Exists(dataScope() + dataPath)) WriteData();
+            using StreamReader load = File.OpenText(dataScope() + dataPath);
+            JsonUtility.FromJsonOverwrite(load.ReadToEnd(), this);
         }
 
     }

@@ -44,7 +44,7 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
     public void FinishTutorial() => SaveSystem.i.SetTutorialComplete(true);
     private void TUTORIALPOSITION()
     {
-        if (SaveSystem.saveData.tutorialComplete) transform.position = GameObject.Find("PostTutorialSpawn").transform.position; ;
+        if (SaveSystem.saveData.tutorialComplete) transform.position = GameObject.Find("PostTutorialSpawn").transform.position;
     }
 
     public void FinishLevel()
