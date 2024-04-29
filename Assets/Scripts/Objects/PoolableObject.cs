@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PoolableObject : MonoBehaviour
 {
@@ -14,12 +13,6 @@ public class PoolableObject : MonoBehaviour
     /// If nothing calls this action when this object instance is done the object will never be available for reuse.
     /// </summary>
     public Action<PoolableObject> onDeactivate;
-
-    private void Awake()
-    {
-        SceneManager.sceneUnloaded += Unloading;
-    }
-
 
     /// <summary>
     /// This method is used for Setup of the Pooled Object Instance after it is Activated. In the default base of this script this method does nothing, if not overridden Setup is the responsibility of the script calling Pump();
@@ -44,7 +37,7 @@ public class PoolableObject : MonoBehaviour
     /// </summary>
     public void Disable(bool deactivateGameObject = false)
     {
-        if (unloading) return;
+        if (!gameObject.scene.isLoaded) return;
         bool wasActive = Active;
         Active = false;
         if (onDeactivate.GetInvocationList().Length > 0 && wasActive) onDeactivate(this);
@@ -65,6 +58,4 @@ public class PoolableObject : MonoBehaviour
         return pool;
     }
 
-    bool unloading;
-    void Unloading(Scene scene) => unloading = true;
 }

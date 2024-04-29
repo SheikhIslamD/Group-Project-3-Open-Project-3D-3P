@@ -33,7 +33,7 @@ public class ObjectPool : MonoBehaviour
         pool.canGrow = canGrow;
         pool.parent = parent;
         pool.autoDisableTime = autoDisableTime;
-        
+
         return pool;
     }
 
@@ -72,7 +72,7 @@ public class ObjectPool : MonoBehaviour
 
     private void NewInstance()
     {
-        GameObject pooledObject = Instantiate(prefabObject); 
+        GameObject pooledObject = Instantiate(prefabObject);
         PoolableObject poolable = pooledObject.GetOrAddComponent<PoolableObject>();
         poolable.transform.parent = parent;
         poolable.pool = this;
@@ -115,6 +115,7 @@ public class ObjectPool : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (!gameObject.scene.isLoaded) return;
         for (int i = 0; i < poolList.Count; i++)
         {
             poolList[i].Disable(false);
@@ -125,4 +126,7 @@ public class ObjectPool : MonoBehaviour
     }
 
     public int ActiveObjects() => currentActiveObjects;
+
+
+
 }

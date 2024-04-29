@@ -84,13 +84,15 @@ public class SaveSystem : Singleton<SaveSystem>
         public bool levelComplete3;
         public bool tutorialComplete;
 
+        /*
         private string dataScope() =>
 #if UNITY_EDITOR
             Application.persistentDataPath + "/UNITYPROJECTDATA";
 #else
             return Application.dataPath;
 #endif
-
+         */
+        private string dataScope() => Application.dataPath;
 
         private const string dataPath = "/Saves/SaveData.json";
 
