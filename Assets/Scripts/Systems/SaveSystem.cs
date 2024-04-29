@@ -80,13 +80,24 @@ public class SaveSystem : Singleton<SaveSystem>
         public bool levelComplete3;
         public bool tutorialComplete;
 
-        string dataPath => Application.dataPath + "/Saves/SaveData.json";
+
+        string dataScope()
+        {
+#if UNITY_EDITOR
+            return Application.persistentDataPath + "/UNITYPROJECTDATA";
+#else
+            return Application.dataPath;
+#endif
+
+        }
+
+        const string dataPath = "/Saves/SaveData.json";
 
         public void WriteData()
         {
 
-            Directory.CreateDirectory(Application.dataPath + "/Saves");
-            using (StreamWriter save = File.CreateText(dataPath))
+            Directory.CreateDirectory(dataScope() + "/Saves");
+            using (StreamWriter save = File.CreateText(dataScope() + dataPath))
             {
                 save.WriteLine(JsonUtility.ToJson(this, true));
             }
@@ -94,8 +105,8 @@ public class SaveSystem : Singleton<SaveSystem>
 
         public void ReadData()
         {
-            Directory.CreateDirectory(Application.dataPath + "/Saves");
-            using (StreamReader load = File.OpenText(dataPath))
+            Directory.CreateDirectory(dataScope() + "/Saves");
+            using (StreamReader load = File.OpenText(dataScope() + dataPath))
             {
                 JsonUtility.FromJsonOverwrite(load.ReadToEnd(), this);
 
