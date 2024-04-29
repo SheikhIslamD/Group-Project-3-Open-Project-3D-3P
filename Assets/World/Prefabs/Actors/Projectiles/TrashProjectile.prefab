@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6411714178731913168}
   - component: {fileID: 7129876478521412511}
   - component: {fileID: 3947855421655349844}
+  - component: {fileID: 8148764655019912237}
+  - component: {fileID: 8762715681586525080}
   m_Layer: 0
   m_Name: TrashProjectile
   m_TagString: Untagged
@@ -154,6 +156,39 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8148764655019912237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694897382438389035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bae0168d533ec44bbc8cb389520f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+    _serializedList:
+    - Key: Impact
+      Value: {fileID: 8300000, guid: 37153f815d1aa5a499ab6280d30731b0, type: 3}
+  remote: {fileID: 0}
+--- !u!114 &8762715681586525080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694897382438389035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2233b154574b00f488513e6c3f1621aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pool: {fileID: 0}
+  Active: 0
+  timeExisting: 0
+  makeSoundOnContact: 1
 --- !u!1001 &2154871949236702193
 PrefabInstance:
   m_ObjectHideFlags: 0
