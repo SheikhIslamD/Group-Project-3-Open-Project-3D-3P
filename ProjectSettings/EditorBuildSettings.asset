@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/World/Scenes/Menus/MenuScene.unity
     guid: eb8ba469295be4e83896d7785d21c69f
   - enabled: 1
-    path: Assets/World/Scenes/Menus/WinScene.unity
-    guid: 5452a669e072643e6b6f58b09560713d
-  - enabled: 1
     path: Assets/World/Scenes/Menus/LoseScene.unity
     guid: 29f6d0bd62560440e921bc81ac5e9e6a
   - enabled: 1

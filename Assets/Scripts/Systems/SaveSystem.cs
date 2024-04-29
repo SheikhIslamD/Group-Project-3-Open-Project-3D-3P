@@ -23,6 +23,7 @@ public class SaveSystem : Singleton<SaveSystem>
         Level1DataEvent?.Invoke(saveData.levelComplete1);
         Level2DataEvent?.Invoke(saveData.levelComplete2);
         Level3DataEvent?.Invoke(saveData.levelComplete3);
+        TutorialDataEvent?.Invoke(saveData.tutorialComplete);
 
         if(finalCutsceneTrigger)
         {
@@ -39,6 +40,7 @@ public class SaveSystem : Singleton<SaveSystem>
     public UnityEvent<bool> Level1DataEvent;
     public UnityEvent<bool> Level2DataEvent;
     public UnityEvent<bool> Level3DataEvent;
+    public UnityEvent<bool> TutorialDataEvent;
     public TextMeshProUGUI completionText;
     public GameObject finalCutsceneTrigger;
 
