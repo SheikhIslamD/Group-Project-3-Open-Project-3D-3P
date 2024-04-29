@@ -8,7 +8,7 @@ public class CutsceneSystem : MonoBehaviour
 
     //Config
 
-    [SerializeField] private string[] endScenes;
+    [SerializeField] private CutsceneData[] cutscenes;
     [SerializeField] private string animationName;
     [SerializeField] private float fadeTime = 1;
     [SerializeField] private Image blackout;
@@ -19,6 +19,14 @@ public class CutsceneSystem : MonoBehaviour
     private float fadeTimer = 1;
     private InputActions input;
 
+    [System.Serializable]
+    struct CutsceneData
+    {
+        public string name;
+        public string endScene;
+        public AudioClip music;
+        public bool musicLoops;
+    }
 
     private void Awake()
     {
@@ -27,7 +35,16 @@ public class CutsceneSystem : MonoBehaviour
         animator = GetComponent<Animator>();
         ContinueButtonPower(false);
         blackout.color = Color.black;
-        if(SettingsSave.save.autoPlayCutscenes) continueButton.gameObject.SetActive(false);
+        if (SettingsSave.save.autoPlayCutscenes) continueButton.gameObject.SetActive(false);
+
+        AudioSource audio = GameObject.Find("Audio Source").GetComponent<AudioSource>();
+        if (cutscenes[cutsceneID].music)
+        {
+            audio.clip = cutscenes[cutsceneID].music;
+            audio.loop = true;
+        }
+        audio.Play();
+
     }
 
     private void Update()
@@ -38,7 +55,7 @@ public class CutsceneSystem : MonoBehaviour
         if (fadingOut)
         {
             if (fadeTimer < 1) fadeTimer += Time.deltaTime / fadeTime;
-            else SceneManager.LoadScene(endScenes[cutsceneID]);
+            else SceneManager.LoadScene(cutscenes[cutsceneID].endScene);
         }
         else
         {
@@ -60,7 +77,7 @@ public class CutsceneSystem : MonoBehaviour
         ContinueButtonPower(false);
     }
 
-    private void BeginAnimation() => animator.Play(animationName + cutsceneID);
+    private void BeginAnimation() => animator.Play(cutscenes[cutsceneID].name);
 
 
     //Callbacks
@@ -73,10 +90,7 @@ public class CutsceneSystem : MonoBehaviour
     }
     public void End() => fadingOut = true;
 
-    void ContinueButtonPower(bool value)
-    {
-        continueButton.gameObject.SetActive(value);
-    }
+    private void ContinueButtonPower(bool value) => continueButton.gameObject.SetActive(value);
 
 
 

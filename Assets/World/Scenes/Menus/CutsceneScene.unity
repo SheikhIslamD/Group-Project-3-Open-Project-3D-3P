@@ -1279,7 +1279,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5943f39244ddb1f469b104fbf6c2f460, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2382,11 +2382,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902a6e637d67b0c4d995ea0b180edf2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endScenes:
-  - Hub
-  - Hub
-  - Hub
-  - Hub
+  cutscenes:
+  - name: Intro
+    endScene: Hub
+    music: {fileID: 8300000, guid: 233bdeb0fb440ae45afde76250dd07fe, type: 3}
+    musicLoops: 1
+  - name: Level1Done
+    endScene: Hub
+    music: {fileID: 0}
+    musicLoops: 0
+  - name: Level2Done
+    endScene: Hub
+    music: {fileID: 0}
+    musicLoops: 0
+  - name: Level3Done
+    endScene: Hub
+    music: {fileID: 0}
+    musicLoops: 0
+  - name: Ending
+    endScene: MenuScene
+    music: {fileID: 8300000, guid: ad882927ec3743542992278e513175a3, type: 3}
+    musicLoops: 1
   animationName: Cutscene
   fadeTime: 0.8
   blackout: {fileID: 448913743}

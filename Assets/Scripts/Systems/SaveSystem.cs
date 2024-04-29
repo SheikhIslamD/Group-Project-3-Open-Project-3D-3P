@@ -24,6 +24,7 @@ public class SaveSystem : Singleton<SaveSystem>
         Level2DataEvent?.Invoke(saveData.levelComplete2);
         Level3DataEvent?.Invoke(saveData.levelComplete3);
 
+        if(finalCutsceneTrigger)
         {
             int stars = 0;
             if (saveData.levelComplete1) stars++;
