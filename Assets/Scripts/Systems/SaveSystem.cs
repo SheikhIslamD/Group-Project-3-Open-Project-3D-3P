@@ -80,12 +80,12 @@ public class SaveSystem : Singleton<SaveSystem>
         public bool levelComplete3;
         public bool tutorialComplete;
 
-        string dataPath => Application.persistentDataPath + "/Saves/SaveData.json";
+        string dataPath => Application.dataPath + "/Saves/SaveData.json";
 
         public void WriteData()
         {
 
-            Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
+            Directory.CreateDirectory(Application.dataPath + "/Saves");
             using (StreamWriter save = File.CreateText(dataPath))
             {
                 save.WriteLine(JsonUtility.ToJson(this, true));
@@ -94,7 +94,7 @@ public class SaveSystem : Singleton<SaveSystem>
 
         public void ReadData()
         {
-            Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
+            Directory.CreateDirectory(Application.dataPath + "/Saves");
             using (StreamReader load = File.OpenText(dataPath))
             {
                 JsonUtility.FromJsonOverwrite(load.ReadToEnd(), this);
