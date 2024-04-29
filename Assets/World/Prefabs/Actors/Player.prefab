@@ -348,7 +348,7 @@ MonoBehaviour:
   depleteEvent:
     m_PersistentCalls:
       m_Calls: []
-  destroyOnDeplete: 1
+  destroyOnDeplete: 0
 --- !u!114 &5268864049015096330
 MonoBehaviour:
   m_ObjectHideFlags: 0

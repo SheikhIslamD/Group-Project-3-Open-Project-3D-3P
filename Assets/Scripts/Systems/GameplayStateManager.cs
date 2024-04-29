@@ -68,11 +68,13 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
     IEnumerator LevelLoadCor(string name)
     {
-        float f = 1.5f;
+        float f = 0.5f;
+        if (blackout == null) f = 0;
 
         while (f > 0)
         {
-            blackout.color = new(0, 0, 0, f/1.5f);
+            f -= Time.deltaTime;
+            blackout.color = new(0, 0, 0, 1 - f/0.5f);
             yield return null;
         }
 
@@ -82,14 +84,14 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
 
 
-    public void BeginGame() => SceneManager.LoadScene(SaveSystem.saveData.tutorialComplete ? Scenes.hub : Scenes.cutsceneScene);
+    public void BeginGame() => StartCoroutine(LevelLoadCor(SaveSystem.saveData.tutorialComplete ? Scenes.hub : Scenes.cutsceneScene));
 
-    public void ResetLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    public void ResetLevel() => StartCoroutine(LevelLoadCor(SceneManager.GetActiveScene().name));
 
-    public void ReturnToCurrentLevel() => SceneManager.LoadScene(Scenes.levelNames[currentLevel]);
+    public void ReturnToCurrentLevel() => StartCoroutine(LevelLoadCor(Scenes.levelNames[currentLevel]));
 
-    public void QuitToHub() => SceneManager.LoadScene(Scenes.hub);
-    public void QuitToMenu() => SceneManager.LoadScene(Scenes.mainMenu);
+    public void QuitToHub() => StartCoroutine(LevelLoadCor(Scenes.hub));
+    public void QuitToMenu() => StartCoroutine(LevelLoadCor(Scenes.mainMenu));
     public void QuitApplication()
     {
 #if UNITY_EDITOR
@@ -102,7 +104,7 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
     public void CallCutscene(int id)
     {
         CutsceneSystem.cutsceneID = id;
-        SceneManager.LoadScene(Scenes.cutsceneScene);
+        StartCoroutine(LevelLoadCor(Scenes.cutsceneScene));
     }
 
     #endregion
