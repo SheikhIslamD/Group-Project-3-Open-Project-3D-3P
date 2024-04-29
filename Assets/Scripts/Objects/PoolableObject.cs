@@ -7,6 +7,7 @@ public class PoolableObject : MonoBehaviour
     [HideInInspector] public ObjectPool pool;
     [HideInInspector] public bool Active;
     [HideInInspector] public float timeExisting;
+    [SerializeField] bool makeSoundOnContact;
 
     /// <summary>
     /// If nothing calls this action when this object instance is done the object will never be available for reuse.
@@ -40,8 +41,8 @@ public class PoolableObject : MonoBehaviour
         Active = false;
         if (onDeactivate.GetInvocationList().Length > 0 && wasActive) onDeactivate(this);
         if (deactivateGameObject) gameObject.SetActive(false);
-        
 
+        if (makeSoundOnContact) GetComponent<AudioCaller>().PlaySound("Impact");
         if (!pool) Destroy(gameObject);
     }
 

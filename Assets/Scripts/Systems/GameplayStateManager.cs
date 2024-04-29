@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using UnityEngine.UI;
+using System.Collections;
 
 public class GameplayStateManager : Singleton<GameplayStateManager>
 {
@@ -14,6 +16,7 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
     [SerializeField] private int levelID = 1;
     [SerializeField] private int endCutsceneID;
     [SerializeField] UnityEvent unPauseEvent;
+    [SerializeField] Image blackout;
 
     #region In Game Functionality
 
@@ -60,8 +63,24 @@ public class GameplayStateManager : Singleton<GameplayStateManager>
 
     #region Scene Management Methods
 
-    public void LoadLevel(string levelname) => SceneManager.LoadScene(levelname);
-    public void LoadLevel(int levelID) => SceneManager.LoadScene(Scenes.levelNames[levelID]);
+    public void LoadLevel(string levelname) => StartCoroutine(LevelLoadCor(levelname));
+    public void LoadLevel(int levelID) => StartCoroutine(LevelLoadCor(Scenes.levelNames[levelID]));
+
+    IEnumerator LevelLoadCor(string name)
+    {
+        float f = 1.5f;
+
+        while (f > 0)
+        {
+            blackout.color = new(0, 0, 0, f/1.5f);
+            yield return null;
+        }
+
+        SceneManager.LoadScene(name);
+    }
+
+
+
 
     public void BeginGame() => SceneManager.LoadScene(SaveSystem.saveData.tutorialComplete ? Scenes.hub : Scenes.cutsceneScene);
 
